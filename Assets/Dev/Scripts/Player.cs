@@ -31,8 +31,11 @@ public class Player : MonoBehaviour, IDamagable
     [Header("Aim")]
     [SerializeField] private Transform AimPoint;
     [SerializeField] private Transform DefaultAimPoint;
-    [SerializeField] private TwoBoneIKConstraint LeftArmIK;
     [SerializeField] private Transform LeftArmTarget;
+    [Space]
+    [SerializeField] private TwoBoneIKConstraint LeftArmIK;
+    [SerializeField] private MultiAimConstraint RightArmIK;
+    [SerializeField] private MultiAimConstraint BodyIK;
 
     private Vector3 TargetPoint;
     private Transform ClosestEnemy;
@@ -120,9 +123,13 @@ public class Player : MonoBehaviour, IDamagable
             {
                 EnemyInRange = true;
                 PlayerAnim.SetBool("Aim", true);
-                AimPoint.transform.position = new Vector3(TargetPoint.x, 1.1f, TargetPoint.z);
+                AimPoint.transform.position = new Vector3(TargetPoint.x, DefaultAimPoint.position.y, TargetPoint.z);
                 Body.DOLookAt(new Vector3(TargetPoint.x, Body.position.y, TargetPoint.z), 0.1f);
+
                 LeftArmIK.weight = 1;
+                RightArmIK.weight = 1;
+                BodyIK.weight = 1;
+
                 gun.StartFire();
             }
             else
@@ -131,7 +138,10 @@ public class Player : MonoBehaviour, IDamagable
                 EnemyInRange = false;
                 PlayerAnim.SetBool("Aim", false);
                 AimPoint.transform.position = DefaultAimPoint.position;
+
                 LeftArmIK.weight = 0;
+                RightArmIK.weight = 0;
+                BodyIK.weight = 0;
             }
         }
         else
@@ -140,10 +150,24 @@ public class Player : MonoBehaviour, IDamagable
             EnemyInRange = false;
             PlayerAnim.SetBool("Aim", false);
             AimPoint.transform.position = DefaultAimPoint.position;
+
             LeftArmIK.weight = 0;
+            RightArmIK.weight = 0;
+            BodyIK.weight = 0;
         }
     }
     #endregion
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        switch (other.tag)
+        {
+            case "Gate":
+                other.GetComponent<Gate>().PassGate();
+                break;
+        }
+    }
 
     #region HealthSystem
     public void TakeDamage(float damageTaken)

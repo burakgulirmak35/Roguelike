@@ -7,18 +7,16 @@ using TMPro;
 public class Spawner : MonoBehaviour
 {
     public static Spawner Instance { get; private set; }
-    private PoolManager poolManager;
-    [SerializeField] private int SpawnCount;
+    [SerializeField] private int AliveEnemyCount;
     [SerializeField] private List<Transform> SpawnPositions = new List<Transform>();
-    private GameObject spawnee;
-    private int SpawnPosID;
     [HideInInspector] public KdTree<Transform> ActiveEnemies = new KdTree<Transform>();
     private List<Transform> EnemyList = new List<Transform>();
+    private GameObject spawnee;
+    private int SpawnPosID;
 
     private void Awake()
     {
         Instance = this;
-        poolManager = GetComponent<PoolManager>();
     }
 
     private void Start()
@@ -28,20 +26,23 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnTimer()
     {
-        while (ActiveEnemies.Count < SpawnCount)
+        while (true)
         {
-            spawnee = poolManager.GetFromPool(PoolTypes.Enemy);
-            spawnee.SetActive(true);
-            ActiveEnemies.Add(spawnee.transform);
-            EnemyList.Add(spawnee.transform);
+            while (ActiveEnemies.Count < AliveEnemyCount)
+            {
+                spawnee = PoolManager.Instance.GetFromPool(PoolTypes.Enemy);
+                spawnee.SetActive(true);
+                ActiveEnemies.Add(spawnee.transform);
+                EnemyList.Add(spawnee.transform);
 
-            if (SpawnPosID >= SpawnPositions.Count) { SpawnPosID = 0; }
-            spawnee.transform.position = SpawnPositions[SpawnPosID].position;
-            spawnee.SetActive(true);
-            SpawnPosID++;
-            yield return new WaitForSeconds(0.5f);
+                if (SpawnPosID >= SpawnPositions.Count) { SpawnPosID = 0; }
+                spawnee.transform.position = SpawnPositions[SpawnPosID].position;
+                spawnee.SetActive(true);
+                SpawnPosID++;
+                yield return new WaitForSeconds(0.5f);
+            }
+            yield return new WaitForSeconds(10f);
         }
-        yield return new WaitForSeconds(180f);
     }
 
     public void DeadEnemy(Transform _enemy)
@@ -58,7 +59,7 @@ public class Spawner : MonoBehaviour
     private TextMeshProUGUI tempText;
     public void WorldTextPopup(string text, Vector3 position, Color textColor)
     {
-        tempObject = poolManager.GetFromPool(PoolTypes.WorldTextPopup);
+        tempObject = PoolManager.Instance.GetFromPool(PoolTypes.WorldTextPopup);
         tempText = tempObject.GetComponent<PopupText>().txt_Popup;
         tempObject.transform.position = position;
         tempText.text = text;

@@ -4,13 +4,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private ParticleSystem[] BulletParticles;
+    [SerializeField] private Rigidbody rb;
     [HideInInspector] public float Damage;
-    private Rigidbody rb;
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
 
     private void OnEnable()
     {

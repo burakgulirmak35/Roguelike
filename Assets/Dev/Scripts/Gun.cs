@@ -10,6 +10,8 @@ public class Gun : MonoBehaviour
     [Header("Parts")]
     [SerializeField] private Transform[] firePoint;
     [SerializeField] private Transform LeftHandPos;
+    [Header("VFX")]
+    [SerializeField] private ParticleSystem Muzzle;
 
     [Space]
     private Coroutine FireCoro;
@@ -72,6 +74,7 @@ public class Gun : MonoBehaviour
                         tmpBullet.transform.forward = firePoint[i].forward;
                         tmpBulletSC.Damage = gunSO.Damage;
 
+                        Muzzle.Play();
                         tmpBullet.SetActive(true);
                         soundManager.PlayGunSound(gunSO.gunType);
                         tmpBullet.GetComponent<Rigidbody>().AddForce(tmpBullet.transform.forward * gunSO.BulletSpeed, ForceMode.Impulse);
