@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.AI.Navigation;
+using Unity.VisualScripting;
 
 
 public enum Side { left, right, up, down };
@@ -19,6 +20,7 @@ public class Enviroment : MonoBehaviour
     [Space]
     public NavMeshSurface[] surfaces;
     [SerializeField] private Transform Gates;
+    [SerializeField] private Transform InverseGates;
     [Space]
     private int index;
 
@@ -33,7 +35,7 @@ public class Enviroment : MonoBehaviour
     {
         for (int i = 0; i < surfaces.Length; i++)
         {
-            // surfaces[i].BuildNavMesh();
+            surfaces[i].BuildNavMesh();
         }
     }
 
@@ -79,39 +81,15 @@ public class Enviroment : MonoBehaviour
 
         UpdateNavMesh();
         Gates.transform.position = PartMiddle.transform.position;
+        InverseGates.transform.position = new Vector3(0, -10, 0);
     }
 
-    private void ReplaceSide(Side _side)
+    private void AdjustSides()
     {
-        index = Random.Range(0, CityParts.Count);
-        switch (_side)
-        {
-            case Side.left:
-                PartLeft.SetActive(false);
-                CityParts.Add(PartLeft);
-                PartLeft = CityParts[index];
-                PartLeft.transform.position = PartMiddle.transform.position + new Vector3(-120, 0, 0);
-                break;
-            case Side.right:
-                PartRight.SetActive(false);
-                CityParts.Add(PartRight);
-                PartRight = CityParts[index];
-                PartRight.transform.position = PartMiddle.transform.position + new Vector3(120, 0, 0);
-                break;
-            case Side.up:
-                PartUp.SetActive(false);
-                CityParts.Add(PartUp);
-                PartUp = CityParts[index];
-                PartUp.transform.position = PartMiddle.transform.position + new Vector3(0, 0, 120);
-                break;
-            case Side.down:
-                PartDown.SetActive(false);
-                CityParts.Add(PartDown);
-                PartDown = CityParts[index];
-                PartDown.transform.position = PartMiddle.transform.position + new Vector3(0, 0, -120);
-                break;
-        }
-
+        PartLeft.transform.position = PartMiddle.transform.position + new Vector3(-120, 0, 0);
+        PartRight.transform.position = PartMiddle.transform.position + new Vector3(120, 0, 0);
+        PartUp.transform.position = PartMiddle.transform.position + new Vector3(0, 0, 120);
+        PartDown.transform.position = PartMiddle.transform.position + new Vector3(0, 0, -120);
     }
 
     public void MoveRight()
@@ -126,13 +104,12 @@ public class Enviroment : MonoBehaviour
         PartRight = CityParts[index];
         CityParts.RemoveAt(index);
 
-        PartRight.transform.position = PartMiddle.transform.position + new Vector3(120, 0, 0);
+        AdjustSides();
         PartRight.SetActive(true);
 
-        ReplaceSide(Side.up);
-        ReplaceSide(Side.down);
-
         Gates.transform.position = PartMiddle.transform.position;
+        InverseGates.transform.position = PartLeft.transform.position;
+
         UpdateNavMesh();
     }
 
@@ -148,13 +125,12 @@ public class Enviroment : MonoBehaviour
         PartLeft = CityParts[index];
         CityParts.RemoveAt(index);
 
-        PartLeft.transform.position = PartMiddle.transform.position + new Vector3(-120, 0, 0);
+        AdjustSides();
         PartLeft.SetActive(true);
 
-        ReplaceSide(Side.up);
-        ReplaceSide(Side.down);
-
         Gates.transform.position = PartMiddle.transform.position;
+        InverseGates.transform.position = PartLeft.transform.position;
+
         UpdateNavMesh();
     }
 
@@ -170,13 +146,12 @@ public class Enviroment : MonoBehaviour
         PartUp = CityParts[index];
         CityParts.RemoveAt(index);
 
-        PartUp.transform.position = PartMiddle.transform.position + new Vector3(0, 0, 120);
+        AdjustSides();
         PartUp.SetActive(true);
 
-        ReplaceSide(Side.left);
-        ReplaceSide(Side.right);
-
         Gates.transform.position = PartMiddle.transform.position;
+        InverseGates.transform.position = PartDown.transform.position;
+
         UpdateNavMesh();
     }
 
@@ -192,13 +167,12 @@ public class Enviroment : MonoBehaviour
         PartDown = CityParts[index];
         CityParts.RemoveAt(index);
 
-        PartDown.transform.position = PartMiddle.transform.position + new Vector3(0, 0, -120);
+        AdjustSides();
         PartDown.SetActive(true);
 
-        ReplaceSide(Side.left);
-        ReplaceSide(Side.right);
-
         Gates.transform.position = PartMiddle.transform.position;
+        InverseGates.transform.position = PartUp.transform.position;
+
         UpdateNavMesh();
     }
 }
