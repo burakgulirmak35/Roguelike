@@ -6,6 +6,14 @@ public class Bullet : MonoBehaviour
     [SerializeField] private ParticleSystem[] BulletParticles;
     [SerializeField] private Rigidbody rb;
     [HideInInspector] public float Damage;
+    private PoolManager poolManager;
+    private GameObject tempObject;
+
+    private void Awake()
+    {
+        Debug.Log("I Wake Up");
+        poolManager = FindObjectOfType<PoolManager>();
+    }
 
     private void OnEnable()
     {
@@ -24,6 +32,9 @@ public class Bullet : MonoBehaviour
         {
             case "Enemy":
                 other.gameObject.GetComponent<IDamagable>().TakeDamage(Damage);
+                tempObject = poolManager.GetFromPool(PoolTypes.BloodShot);
+                tempObject.transform.position = transform.position;
+                tempObject.SetActive(true);
                 Disable();
                 break;
             default:

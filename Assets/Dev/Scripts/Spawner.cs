@@ -6,17 +6,22 @@ using TMPro;
 [RequireComponent(typeof(PoolManager))]
 public class Spawner : MonoBehaviour
 {
-    public static Spawner Instance { get; private set; }
+    [SerializeField][Range(10, 30)] private float minEnemyDistanceToSpawn;
     [SerializeField] private int AliveEnemyCount;
-    [SerializeField] private List<Transform> SpawnPositions = new List<Transform>();
+    [SerializeField] public Transform SpawnPointsParent;
+    [SerializeField] private List<Transform> SpawnPoints = new List<Transform>();
     [HideInInspector] public KdTree<Transform> ActiveEnemies = new KdTree<Transform>();
+    [Space]
     private List<Transform> EnemyList = new List<Transform>();
     private GameObject spawnee;
     private int SpawnPosID;
+    private Player player;
 
+    public static Spawner Instance { get; private set; }
     private void Awake()
     {
         Instance = this;
+        player = FindObjectOfType<Player>();
     }
 
     private void Start()
@@ -35,8 +40,14 @@ public class Spawner : MonoBehaviour
                 ActiveEnemies.Add(spawnee.transform);
                 EnemyList.Add(spawnee.transform);
 
-                if (SpawnPosID >= SpawnPositions.Count) { SpawnPosID = 0; }
-                spawnee.transform.position = SpawnPositions[SpawnPosID].position;
+                if (SpawnPosID >= SpawnPoints.Count) { SpawnPosID = 0; }
+                while (Vector3.Distance(SpawnPoints[SpawnPosID].position, player.transform.position) < minEnemyDistanceToSpawn)
+                {
+                    SpawnPosID++;
+                    if (SpawnPosID >= SpawnPoints.Count) { SpawnPosID = 0; }
+                }
+
+                spawnee.transform.position = SpawnPoints[SpawnPosID].position;
                 spawnee.SetActive(true);
                 SpawnPosID++;
                 yield return new WaitForSeconds(0.5f);

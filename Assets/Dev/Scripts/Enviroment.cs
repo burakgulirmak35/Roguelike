@@ -89,6 +89,8 @@ public class Enviroment : MonoBehaviour
         PartRight.transform.position = PartMiddle.transform.position + new Vector3(80, 0, 0);
         PartUp.transform.position = PartMiddle.transform.position + new Vector3(0, 0, 80);
         PartDown.transform.position = PartMiddle.transform.position + new Vector3(0, 0, -80);
+
+        Spawner.Instance.SpawnPointsParent.transform.position = PartMiddle.transform.position;
     }
 
     private Vector3 RandomRotation()

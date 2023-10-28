@@ -57,6 +57,8 @@ public class Gun : MonoBehaviour
         isFire = false;
     }
 
+    private GameObject tmpBullet;
+    private Bullet tmpBulletSC;
     private IEnumerator FireLoop()
     {
         while (isFire)
@@ -68,8 +70,8 @@ public class Gun : MonoBehaviour
                 {
                     if (isFire)
                     {
-                        GameObject tmpBullet = poolManager.GetFromPool(PoolTypes.Bullet);
-                        Bullet tmpBulletSC = tmpBullet.GetComponent<Bullet>();
+                        tmpBullet = poolManager.GetFromPool(PoolTypes.Bullet);
+                        tmpBulletSC = tmpBullet.GetComponent<Bullet>();
                         tmpBullet.transform.position = firePoint[i].position;
                         tmpBullet.transform.forward = firePoint[i].forward;
                         tmpBulletSC.Damage = gunSO.Damage;
