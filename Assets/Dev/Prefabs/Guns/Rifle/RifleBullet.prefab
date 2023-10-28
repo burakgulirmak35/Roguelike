@@ -115,18 +115,6 @@ PrefabInstance:
       value: SM_Wep_Ammo_Rifle_01
       objectReference: {fileID: 0}
     - target: {fileID: 4479199188350380, guid: 71043590938610d4784abb3b88fa0d80, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4479199188350380, guid: 71043590938610d4784abb3b88fa0d80, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4479199188350380, guid: 71043590938610d4784abb3b88fa0d80, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4479199188350380, guid: 71043590938610d4784abb3b88fa0d80, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
@@ -166,10 +154,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4479199188350380, guid: 71043590938610d4784abb3b88fa0d80, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -192,18 +176,6 @@ PrefabInstance:
     - target: {fileID: 1143787252086882, guid: 3f4e18ac0f24f504c860a67517f4dbf3, type: 3}
       propertyPath: m_Name
       value: EnergyMissileBlue
-      objectReference: {fileID: 0}
-    - target: {fileID: 4785618220763852, guid: 3f4e18ac0f24f504c860a67517f4dbf3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4785618220763852, guid: 3f4e18ac0f24f504c860a67517f4dbf3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4785618220763852, guid: 3f4e18ac0f24f504c860a67517f4dbf3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4785618220763852, guid: 3f4e18ac0f24f504c860a67517f4dbf3, type: 3}
       propertyPath: m_LocalPosition.x
