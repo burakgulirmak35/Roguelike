@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.AI.Navigation;
-using Unity.VisualScripting;
 
 
 public enum Side { left, right, up, down };
@@ -20,7 +19,6 @@ public class Enviroment : MonoBehaviour
     [Space]
     public NavMeshSurface[] surfaces;
     [SerializeField] private Transform Gates;
-    [SerializeField] private Transform InverseGates;
     [Space]
     private int index;
 
@@ -61,12 +59,14 @@ public class Enviroment : MonoBehaviour
         PartDown = CityParts[index];
         CityParts.RemoveAt(index);
 
-
         PartMiddle.transform.position = new Vector3(0, 0, 0);
-        PartLeft.transform.position = new Vector3(-120, 0, 0);
-        PartRight.transform.position = new Vector3(120, 0, 0);
-        PartUp.transform.position = new Vector3(0, 0, 120);
-        PartDown.transform.position = new Vector3(0, 0, -120);
+        PartMiddle.transform.eulerAngles = RandomRotation();
+        PartLeft.transform.eulerAngles = RandomRotation();
+        PartRight.transform.eulerAngles = RandomRotation();
+        PartUp.transform.eulerAngles = RandomRotation();
+        PartDown.transform.eulerAngles = RandomRotation();
+
+        AdjustSides();
 
         PartMiddle.SetActive(true);
         PartLeft.SetActive(true);
@@ -81,15 +81,31 @@ public class Enviroment : MonoBehaviour
 
         UpdateNavMesh();
         Gates.transform.position = PartMiddle.transform.position;
-        InverseGates.transform.position = new Vector3(0, -10, 0);
     }
 
     private void AdjustSides()
     {
-        PartLeft.transform.position = PartMiddle.transform.position + new Vector3(-120, 0, 0);
-        PartRight.transform.position = PartMiddle.transform.position + new Vector3(120, 0, 0);
-        PartUp.transform.position = PartMiddle.transform.position + new Vector3(0, 0, 120);
-        PartDown.transform.position = PartMiddle.transform.position + new Vector3(0, 0, -120);
+        PartLeft.transform.position = PartMiddle.transform.position + new Vector3(-80, 0, 0);
+        PartRight.transform.position = PartMiddle.transform.position + new Vector3(80, 0, 0);
+        PartUp.transform.position = PartMiddle.transform.position + new Vector3(0, 0, 80);
+        PartDown.transform.position = PartMiddle.transform.position + new Vector3(0, 0, -80);
+    }
+
+    private Vector3 RandomRotation()
+    {
+        switch (Random.Range(0, 4))
+        {
+            case 0:
+                return new Vector3(0, 0, 0);
+            case 1:
+                return new Vector3(0, 90, 0);
+            case 2:
+                return new Vector3(0, 180, 0);
+            case 3:
+                return new Vector3(0, 270, 0);
+            default:
+                return new Vector3(0, 0, 0);
+        }
     }
 
     public void MoveRight()
@@ -102,13 +118,13 @@ public class Enviroment : MonoBehaviour
 
         index = Random.Range(0, CityParts.Count);
         PartRight = CityParts[index];
+        PartRight.transform.eulerAngles = RandomRotation();
         CityParts.RemoveAt(index);
 
         AdjustSides();
         PartRight.SetActive(true);
 
         Gates.transform.position = PartMiddle.transform.position;
-        InverseGates.transform.position = PartLeft.transform.position;
 
         UpdateNavMesh();
     }
@@ -123,13 +139,13 @@ public class Enviroment : MonoBehaviour
 
         index = Random.Range(0, CityParts.Count);
         PartLeft = CityParts[index];
+        PartLeft.transform.eulerAngles = RandomRotation();
         CityParts.RemoveAt(index);
 
         AdjustSides();
         PartLeft.SetActive(true);
 
         Gates.transform.position = PartMiddle.transform.position;
-        InverseGates.transform.position = PartLeft.transform.position;
 
         UpdateNavMesh();
     }
@@ -144,13 +160,13 @@ public class Enviroment : MonoBehaviour
 
         index = Random.Range(0, CityParts.Count);
         PartUp = CityParts[index];
+        PartUp.transform.eulerAngles = RandomRotation();
         CityParts.RemoveAt(index);
 
         AdjustSides();
         PartUp.SetActive(true);
 
         Gates.transform.position = PartMiddle.transform.position;
-        InverseGates.transform.position = PartDown.transform.position;
 
         UpdateNavMesh();
     }
@@ -165,13 +181,13 @@ public class Enviroment : MonoBehaviour
 
         index = Random.Range(0, CityParts.Count);
         PartDown = CityParts[index];
+        PartDown.transform.eulerAngles = RandomRotation();
         CityParts.RemoveAt(index);
 
         AdjustSides();
         PartDown.SetActive(true);
 
         Gates.transform.position = PartMiddle.transform.position;
-        InverseGates.transform.position = PartUp.transform.position;
 
         UpdateNavMesh();
     }

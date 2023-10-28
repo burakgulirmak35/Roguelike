@@ -164,6 +164,16 @@ public class Player : MonoBehaviour, IDamagable
         switch (other.tag)
         {
             case "Gate":
+
+                break;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        switch (other.tag)
+        {
+            case "Gate":
                 other.GetComponent<Gate>().PassGate();
                 break;
         }
@@ -174,11 +184,6 @@ public class Player : MonoBehaviour, IDamagable
     {
         healthSystem.TakeDamage(damageTaken);
         Spawner.Instance.WorldTextPopup(((int)damageTaken).ToString(), transform.position, Color.red);
-    }
-
-    private void healthSystem_OnDead(object sender, System.EventArgs e)
-    {
-
     }
     #endregion
 }

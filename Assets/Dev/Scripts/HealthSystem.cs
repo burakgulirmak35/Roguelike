@@ -7,14 +7,14 @@ using System;
 [System.Serializable]
 public class HealthSystem
 {
-    public event EventHandler OnDead;
-    [Space]
     [SerializeField] private GameObject HealthBar;
     [SerializeField] private Slider HealthSlider;
     [SerializeField] private TextMeshProUGUI HealthTxt;
     private float maxHealth;
     private float health;
     private float healthAmount;
+
+    public event Action OnDead;
 
     public void SetHealth(float _health)
     {
@@ -44,7 +44,7 @@ public class HealthSystem
             health = 0;
             HealthSlider.value = 0;
             HealthTxt.text = ((int)health).ToString();
-            if (OnDead != null) OnDead(this, EventArgs.Empty);
+            if (OnDead != null) OnDead();
             return;
         }
         healthAmount = health / maxHealth;

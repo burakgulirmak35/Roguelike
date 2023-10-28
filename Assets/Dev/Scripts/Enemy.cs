@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         EnemyAgent.speed = enemySO.Speed;
         EnemyAgent.updateRotation = false;
         //-----------------------------------------------
-        healthSystem.OnDead += healthSystem_OnDead;
+        healthSystem.OnDead += OnDead;
     }
 
     private void OnEnable()
@@ -73,17 +73,17 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
 
     }
 
-    private void healthSystem_OnDead(object sender, System.EventArgs e)
+    private void OnDead()
     {
         if (FollowCorotine != null)
         {
             StopCoroutine(FollowCorotine);
             FollowCorotine = null;
         }
-        if (ShowHeathCoro != null)
+        if (ShowHealthCoro != null)
         {
-            StopCoroutine(ShowHeathCoro);
-            ShowHeathCoro = null;
+            StopCoroutine(ShowHealthCoro);
+            ShowHealthCoro = null;
         }
         Spawner.Instance.DeadEnemy(transform);
         isAlive = false;
@@ -91,15 +91,15 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
 
     private void ShowHealth()
     {
-        if (ShowHeathCoro != null)
+        if (ShowHealthCoro != null)
         {
-            StopCoroutine(ShowHeathCoro);
-            ShowHeathCoro = null;
+            StopCoroutine(ShowHealthCoro);
+            ShowHealthCoro = null;
         }
-        ShowHeathCoro = StartCoroutine(ShowHealthTimer());
+        ShowHealthCoro = StartCoroutine(ShowHealthTimer());
     }
 
-    private Coroutine ShowHeathCoro;
+    private Coroutine ShowHealthCoro;
     private IEnumerator ShowHealthTimer()
     {
         HealthBar.SetActive(true);
