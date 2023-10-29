@@ -56,12 +56,12 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public void DeadEnemy(Transform _enemy)
+    public void DeadEnemy(Transform _enemy, float _time)
     {
         EnemyList.RemoveAt(EnemyList.IndexOf(_enemy));
         ActiveEnemies.Clear();
         ActiveEnemies.AddAll(EnemyList);
-        _enemy.gameObject.SetActive(false);
+        StartCoroutine(DisableObject(_enemy.gameObject, _time));
     }
 
     //-------------------------------------------

@@ -14,6 +14,8 @@ public class HealthSystem
     private float health;
     private float healthAmount;
 
+    [HideInInspector] public bool isAlive;
+
     public event Action OnDead;
 
     public void SetHealth(float _health)
@@ -38,17 +40,18 @@ public class HealthSystem
 
     public void TakeDamage(float amount)
     {
+        if (!isAlive) return;
         health -= amount;
         if (health <= 0)
         {
             health = 0;
             HealthSlider.value = 0;
             HealthTxt.text = ((int)health).ToString();
-            if (OnDead != null) OnDead();
+            OnDead();
             return;
         }
         healthAmount = health / maxHealth;
-        DOTween.To(() => HealthSlider.value, x => HealthSlider.value = x, healthAmount, 0.25f).SetEase(Ease.Linear);
+        DOTween.To(() => HealthSlider.value, x => HealthSlider.value = x, healthAmount, 0.2f).SetEase(Ease.Linear);
         HealthTxt.text = ((int)health).ToString();
     }
 }

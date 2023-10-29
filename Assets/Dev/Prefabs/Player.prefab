@@ -317,6 +317,7 @@ MonoBehaviour:
     HealthBar: {fileID: 8912139923891596796}
     HealthSlider: {fileID: 8912139923451496477}
     HealthTxt: {fileID: 8912139922706543178}
+    isAlive: 0
   speed: 5
   AimPoint: {fileID: 3566983023540628606}
   DefaultAimPoint: {fileID: 1630965514116737679}

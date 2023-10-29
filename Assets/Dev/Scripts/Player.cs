@@ -129,7 +129,6 @@ public class Player : MonoBehaviour, IDamagable
                 LeftArmIK.weight = 1;
                 RightArmIK.weight = 1;
                 BodyIK.weight = 1;
-
                 gun.StartFire();
             }
             else
