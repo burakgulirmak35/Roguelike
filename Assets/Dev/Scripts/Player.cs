@@ -50,12 +50,12 @@ public class Player : MonoBehaviour, IDamagable
         joystick = FindObjectOfType<FloatingJoystick>();
         Agent = GetComponent<NavMeshAgent>();
         Agent.updateRotation = false;
-        EquipGun(SelectedGun);
-        healthSystem.SetHealth(100);
     }
 
-    private void Start()
+    public void StartGame()
     {
+        EquipGun(SelectedGun);
+        healthSystem.SetHealth(100);
         StartCoroutine(TakeAimLoop());
     }
 

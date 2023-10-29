@@ -26,7 +26,6 @@ public class Enviroment : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        CreateCity();
     }
 
     private void UpdateNavMesh()
@@ -37,7 +36,7 @@ public class Enviroment : MonoBehaviour
         }
     }
 
-    private void CreateCity()
+    public void CreateCity()
     {
         index = Random.Range(0, CityParts.Count);
         PartMiddle = CityParts[index];
