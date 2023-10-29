@@ -11,7 +11,6 @@ public class Bullet : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("I Wake Up");
         poolManager = FindObjectOfType<PoolManager>();
     }
 

@@ -18,8 +18,11 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     [SerializeField] private GameObject TargetedIcon;
     [Header("Model")]
     [SerializeField] private Transform Body;
+    [Header("Collider")]
+    private CapsuleCollider myCollider;
     [Header("AI")]
     private NavMeshAgent EnemyAgent;
+
 
 
     private int RandomAnimationIndex;
@@ -53,8 +56,14 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         {
             if (value)
             {
-                if (isAlive) { _canMove = true; }
-                else { _canMove = false; }
+                if (isAlive)
+                {
+                    _canMove = true;
+                }
+                else
+                {
+                    _canMove = false;
+                }
                 EnemyAnim.SetBool("canMove", _canMove);
             }
             else
@@ -70,8 +79,11 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         player = FindObjectOfType<Player>();
         playerTransform = player.transform;
         //-----------------------------------------------
+        myCollider = GetComponent<CapsuleCollider>();
+        //-----------------------------------------------
         EnemyAgent = GetComponent<NavMeshAgent>();
         EnemyAgent.speed = enemySO.Speed;
+        EnemyAgent.stoppingDistance = enemySO.AttackRange;
         EnemyAgent.updateRotation = false;
         //-----------------------------------------------
         healthSystem.OnDead += OnDead;
@@ -81,15 +93,18 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         animEventController.OnAttackEnd += OnAttackEnd;
     }
 
-    private void OnEnable()
+    public void Reborn()
     {
-        canMove = true;
+        isAttacking = false;
         isAlive = true;
+        canMove = true;
         HealthBar.SetActive(false);
         TargetedIcon.SetActive(false);
-        healthSystem.SetHealth(100);
+        healthSystem.SetHealth(enemySO.Health);
+        myCollider.enabled = true;
         EnemyAnim.Play("Idle");
         StartFollow();
+        StopDisable();
     }
 
     private Coroutine FollowCorotine;
@@ -98,7 +113,6 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         if (FollowCorotine != null)
         {
             StopCoroutine(FollowCorotine);
-            FollowCorotine = null;
         }
         FollowCorotine = StartCoroutine(FollowTimer());
     }
@@ -107,7 +121,6 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         if (FollowCorotine != null)
         {
             StopCoroutine(FollowCorotine);
-            FollowCorotine = null;
         }
     }
     private IEnumerator FollowTimer()
@@ -143,6 +156,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     private void OnDead()
     {
         StopFollow();
+        StartDisable();
         if (ShowHealthCoro != null)
         {
             StopCoroutine(ShowHealthCoro);
@@ -150,9 +164,10 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
             HealthBar.SetActive(false);
         }
 
-        Spawner.Instance.DeadEnemy(transform, 2f);
+        Spawner.Instance.DeadEnemy(transform);
         RandomAnimationIndex = Random.Range(0, 4);
         EnemyAnim.Play("Death" + RandomAnimationIndex.ToString());
+        myCollider.enabled = false;
         isAlive = false;
         canMove = false;
     }
@@ -175,7 +190,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     private IEnumerator ShowHealthTimer()
     {
         HealthBar.SetActive(true);
-        yield return new WaitForSeconds(30f);
+        yield return new WaitForSeconds(10f);
         HealthBar.SetActive(false);
     }
     #endregion
@@ -198,23 +213,42 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         EnemyAnim.Play("Attack" + RandomAnimationIndex.ToString());
     }
 
-    private void DamageArea()
+    public void OnAttack()
     {
-        if (DistToPlayer() <= EnemyAgent.stoppingDistance)
+        if (DistToPlayer() <= enemySO.AttackRange + 1)
         {
             player.TakeDamage(enemySO.Damage);
         }
-    }
-
-    public void OnAttack()
-    {
-        DamageArea();
     }
 
     public void OnAttackEnd()
     {
         isAttacking = false;
         canMove = true;
+    }
+    #endregion
+
+    #region  DisableTimer
+    private Coroutine DisableCoro;
+    private void StartDisable()
+    {
+        if (DisableCoro != null)
+        {
+            StopCoroutine(DisableCoro);
+        }
+        DisableCoro = StartCoroutine(DisableTimer());
+    }
+    private void StopDisable()
+    {
+        if (DisableCoro != null)
+        {
+            StopCoroutine(DisableCoro);
+        }
+    }
+    private IEnumerator DisableTimer()
+    {
+        yield return new WaitForSeconds(5f);
+        gameObject.SetActive(false);
     }
     #endregion
 }

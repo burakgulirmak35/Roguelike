@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
         player = FindObjectOfType<Player>();
     }
 
-    private void Start()
+    public void StartGame()
     {
         StartCoroutine(SpawnTimer());
     }
@@ -36,32 +36,36 @@ public class Spawner : MonoBehaviour
             while (ActiveEnemies.Count < AliveEnemyCount)
             {
                 spawnee = PoolManager.Instance.GetFromPool(PoolTypes.Enemy);
-                spawnee.SetActive(true);
+                if (spawnee.gameObject.activeSelf) yield break;
                 ActiveEnemies.Add(spawnee.transform);
                 EnemyList.Add(spawnee.transform);
-
-                if (SpawnPosID >= SpawnPoints.Count) { SpawnPosID = 0; }
-                while (Vector3.Distance(SpawnPoints[SpawnPosID].position, player.transform.position) < minEnemyDistanceToSpawn)
-                {
-                    SpawnPosID++;
-                    if (SpawnPosID >= SpawnPoints.Count) { SpawnPosID = 0; }
-                }
-
-                spawnee.transform.position = SpawnPoints[SpawnPosID].position;
+                spawnee.transform.position = GetSpawnPos();
                 spawnee.SetActive(true);
-                SpawnPosID++;
+                spawnee.GetComponent<Enemy>().Reborn();
                 yield return new WaitForSeconds(0.5f);
             }
             yield return new WaitForSeconds(10f);
         }
     }
 
-    public void DeadEnemy(Transform _enemy, float _time)
+    private Vector3 GetSpawnPos()
     {
-        EnemyList.RemoveAt(EnemyList.IndexOf(_enemy));
+        SpawnPosID++;
+        if (SpawnPosID >= SpawnPoints.Count) { SpawnPosID = 0; }
+        while (Vector3.Distance(SpawnPoints[SpawnPosID].position, player.transform.position) < minEnemyDistanceToSpawn)
+        {
+            SpawnPosID++;
+            if (SpawnPosID >= SpawnPoints.Count) { SpawnPosID = 0; }
+        }
+        return SpawnPoints[SpawnPosID].position;
+    }
+
+    public void DeadEnemy(Transform _enemy)
+    {
+        EnemyList.Remove(_enemy);
         ActiveEnemies.Clear();
         ActiveEnemies.AddAll(EnemyList);
-        StartCoroutine(DisableObject(_enemy.gameObject, _time));
+        ActiveEnemies.UpdatePositions();
     }
 
     //-------------------------------------------
