@@ -22,9 +22,6 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     private CapsuleCollider myCollider;
     [Header("AI")]
     private NavMeshAgent EnemyAgent;
-
-
-
     private int RandomAnimationIndex;
     private Transform playerTransform;
     private Player player;
@@ -95,6 +92,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
 
     public void Reborn()
     {
+        StopDisable();
         isAttacking = false;
         isAlive = true;
         canMove = true;
@@ -103,8 +101,11 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         healthSystem.SetHealth(enemySO.Health);
         myCollider.enabled = true;
         EnemyAnim.Play("Idle");
+    }
+
+    void OnEnable()
+    {
         StartFollow();
-        StopDisable();
     }
 
     private Coroutine FollowCorotine;
@@ -223,8 +224,15 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
 
     public void OnAttackEnd()
     {
-        isAttacking = false;
-        canMove = true;
+        if (DistToPlayer() <= enemySO.AttackRange)
+        {
+            StartAttack();
+        }
+        else
+        {
+            isAttacking = false;
+            canMove = true;
+        }
     }
     #endregion
 

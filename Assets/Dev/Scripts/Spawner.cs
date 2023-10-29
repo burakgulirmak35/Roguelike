@@ -36,12 +36,12 @@ public class Spawner : MonoBehaviour
             while (ActiveEnemies.Count < AliveEnemyCount)
             {
                 spawnee = PoolManager.Instance.GetFromPool(PoolTypes.Enemy);
-                if (spawnee.gameObject.activeSelf) yield break;
+                if (spawnee.gameObject.activeSelf) break;
                 ActiveEnemies.Add(spawnee.transform);
                 EnemyList.Add(spawnee.transform);
                 spawnee.transform.position = GetSpawnPos();
-                spawnee.SetActive(true);
                 spawnee.GetComponent<Enemy>().Reborn();
+                spawnee.SetActive(true);
                 yield return new WaitForSeconds(0.5f);
             }
             yield return new WaitForSeconds(10f);

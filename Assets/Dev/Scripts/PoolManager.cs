@@ -76,22 +76,18 @@ public class PoolManager : MonoBehaviour
             case PoolTypes.Enemy:
                 tempObject = enemyPool.Dequeue();
                 enemyPool.Enqueue(tempObject);
-                tempObject.SetActive(false);
                 return tempObject;
             case PoolTypes.Bullet:
                 tempObject = bulletPool.Dequeue();
                 bulletPool.Enqueue(tempObject);
-                tempObject.SetActive(false);
                 return tempObject;
             case PoolTypes.WorldTextPopup:
                 tempObject = worldTextPool.Dequeue();
                 worldTextPool.Enqueue(tempObject);
-                tempObject.SetActive(false);
                 return tempObject;
             case PoolTypes.BloodShot:
                 tempObject = BloodShotPool.Dequeue();
                 BloodShotPool.Enqueue(tempObject);
-                tempObject.SetActive(false);
                 return tempObject;
             default:
                 tempObject = null;
