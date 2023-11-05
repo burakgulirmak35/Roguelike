@@ -4,31 +4,26 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
-    [Header("Unit Settings")]
-    public float minSpawnDistance;
-    public float unitDissapearDistance;
+    [Header("LevelSettings")]
+    public List<int> expPerLevel = new List<int>();
 
     [Header("Performance Settings")]
-    [SerializeField] public bool vSync_enable = false;
-    [SerializeField] public bool FPS_limit = true;
-    [SerializeField] public bool FPS_counter = true;
-
+    [SerializeField] private bool vSync_enable = false;
+    [SerializeField] private bool FPS_limit = true;
+    [SerializeField] private bool FPS_counter = true;
 
     public static GameManager Instance { get; private set; }
-    private Player player;
 
     private void Awake()
     {
         Instance = this;
-        player = FindObjectOfType<Player>(true);
     }
 
     void Start()
     {
         FPS();
         Enviroment.Instance.CreateCity();
-        player.StartGame();
+        Player.Instance.StartGame();
         Spawner.Instance.StartGame();
     }
 

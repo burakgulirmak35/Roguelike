@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Rifle
   m_EditorClassIdentifier: 
   Damage: 10
-  FireRate: 6
-  FireRange: 20
-  BurstCount: 3
+  FireRate: 3
+  FireRange: 15
+  BurstCount: 1
   EachBurstTime: 0.1
   BulletSpeed: 15
   Penetrability: 0

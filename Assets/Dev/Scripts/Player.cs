@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using DG.Tweening;
 using UnityEngine.Animations.Rigging;
+using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour, IDamagable
 {
@@ -24,8 +26,17 @@ public class Player : MonoBehaviour, IDamagable
     [Header("Health")]
     [SerializeField] private HealthSystem healthSystem;
 
+    [Header("Level")]
+    [SerializeField] private Slider slider_Exp;
+    [SerializeField] private TextMeshProUGUI txt_Level;
+    [SerializeField] private ParticleSystem particle_LevelUp;
+    private float expAmount;
+    private int level;
+    private int exp;
+
     [Header("Stats")]
     [SerializeField] private float speed;
+    [SerializeField] private float maxHealth;
     private GunSO gunSO;
 
     [Header("Aim")]
@@ -45,8 +56,11 @@ public class Player : MonoBehaviour, IDamagable
     private bool Alive = true;
     private bool EnemyInRange = false;
 
+    public static Player Instance { get; private set; }
     private void Awake()
     {
+        Instance = this;
+
         joystick = FindObjectOfType<FloatingJoystick>();
         Agent = GetComponent<NavMeshAgent>();
         Agent.updateRotation = false;
@@ -55,8 +69,9 @@ public class Player : MonoBehaviour, IDamagable
     public void StartGame()
     {
         EquipGun(SelectedGun);
-        healthSystem.SetHealth(100);
+        healthSystem.SetHealth(maxHealth);
         StartCoroutine(TakeAimLoop());
+        LoadLevel();
     }
 
     private void EquipGun(GunType _gunType)
@@ -71,7 +86,6 @@ public class Player : MonoBehaviour, IDamagable
             case GunType.Rifle:
                 Rifle.SetActive(true);
                 gun = Rifle.GetComponent<Gun>();
-                PlayerAnim.SetBool("Rifle", true);
                 break;
         }
 
@@ -165,6 +179,9 @@ public class Player : MonoBehaviour, IDamagable
             case "Gate":
 
                 break;
+            case "Collectable":
+                other.GetComponent<Collectable>().Collect();
+                break;
         }
     }
 
@@ -184,5 +201,47 @@ public class Player : MonoBehaviour, IDamagable
         healthSystem.TakeDamage(damageTaken);
         Spawner.Instance.WorldTextPopup(((int)damageTaken).ToString(), transform.position, Color.red);
     }
+    #endregion
+
+    #region LevelSystem
+
+    public void AddExperience(int _amount)
+    {
+        exp += _amount;
+        if (exp >= GameManager.Instance.expPerLevel[level])
+        {
+            exp = 0;
+            slider_Exp.value = 0;
+            if (GameManager.Instance.expPerLevel.Count > level)
+            {
+                level += 1;
+                txt_Level.text = "Lv." + level.ToString();
+            }
+            else
+            {
+                txt_Level.text = "Max";
+            }
+
+            particle_LevelUp.Play();
+            healthSystem.SetHealth(maxHealth);
+            PlayerPrefs.SetInt("Level", level);
+        }
+        expAmount = (float)exp / (float)GameManager.Instance.expPerLevel[level];
+        DOTween.To(() => slider_Exp.value, x => slider_Exp.value = x, expAmount, 0.25f).SetEase(Ease.Linear);
+        PlayerPrefs.SetInt("Exp", exp);
+    }
+
+    private void LoadLevel()
+    {
+        exp = PlayerPrefs.GetInt("Exp");
+        level = PlayerPrefs.GetInt("Level");
+        AddExperience(0);
+    }
+
+    #endregion
+
+    #region Collect
+
+
     #endregion
 }

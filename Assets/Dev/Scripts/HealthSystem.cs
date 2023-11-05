@@ -15,7 +15,6 @@ public class HealthSystem
     private float healthAmount;
 
     [HideInInspector] public bool isAlive;
-
     public event Action OnDead;
 
     public void SetHealth(float _health)
@@ -25,6 +24,7 @@ public class HealthSystem
         healthAmount = 1f;
         HealthSlider.value = healthAmount;
         HealthTxt.text = ((int)health).ToString();
+        isAlive = true;
     }
 
     public void Heal(float amount)
@@ -47,7 +47,7 @@ public class HealthSystem
             health = 0;
             HealthSlider.value = 0;
             HealthTxt.text = ((int)health).ToString();
-            OnDead();
+            OnDead?.Invoke();
             return;
         }
         healthAmount = health / maxHealth;

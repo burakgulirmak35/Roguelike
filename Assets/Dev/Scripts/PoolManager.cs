@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum PoolTypes
 {
-    Enemy, Bullet, BloodShot, WorldTextPopup
+    Enemy, Bullet, BloodShot, WorldTextPopup, Experience
 }
 
 public class PoolManager : MonoBehaviour
@@ -26,16 +26,22 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private int WorldTextPoolCount;
     [SerializeField] private GameObject WorldTextPrefab;
 
+    [Header("Experience")]
+    [SerializeField] private int ExperiencePoolCount;
+    [SerializeField] private GameObject ExperiencePrefab;
+
     [Header("Holders")]
     [SerializeField] private Transform EnemyHolder;
     [SerializeField] private Transform BulletHolder;
     [SerializeField] private Transform BloodShotHolder;
     [SerializeField] private Transform WorldTextHolder;
+    [SerializeField] public Transform ExperienceHolder;
     [Space]
     private Queue<GameObject> enemyPool = new Queue<GameObject>();
     private Queue<GameObject> bulletPool = new Queue<GameObject>();
-    private Queue<GameObject> BloodShotPool = new Queue<GameObject>();
+    private Queue<GameObject> bloodShotPool = new Queue<GameObject>();
     private Queue<GameObject> worldTextPool = new Queue<GameObject>();
+    private Queue<GameObject> experiencePool = new Queue<GameObject>();
     private GameObject tempObject;
 
     public static PoolManager Instance { get; private set; }
@@ -44,9 +50,9 @@ public class PoolManager : MonoBehaviour
         Instance = this;
         GeneratePool(EnemyPrefab, EnemyPoolCount, enemyPool, EnemyHolder);
         GeneratePool(BulletPrefab, BulletPoolCount, bulletPool, BulletHolder);
+        GeneratePool(BloodShotPrefabs, BloodShotPoolCount, bloodShotPool, BloodShotHolder);
         GeneratePool(WorldTextPrefab, WorldTextPoolCount, worldTextPool, WorldTextHolder);
-
-        GeneratePool(BloodShotPrefabs, BloodShotPoolCount, BloodShotPool, BloodShotHolder);
+        GeneratePool(ExperiencePrefab, ExperiencePoolCount, experiencePool, ExperienceHolder);
     }
 
     private void GeneratePool(GameObject prefab, int count, Queue<GameObject> pool, Transform holder)
@@ -81,13 +87,17 @@ public class PoolManager : MonoBehaviour
                 tempObject = bulletPool.Dequeue();
                 bulletPool.Enqueue(tempObject);
                 return tempObject;
+            case PoolTypes.BloodShot:
+                tempObject = bloodShotPool.Dequeue();
+                bloodShotPool.Enqueue(tempObject);
+                return tempObject;
             case PoolTypes.WorldTextPopup:
                 tempObject = worldTextPool.Dequeue();
                 worldTextPool.Enqueue(tempObject);
                 return tempObject;
-            case PoolTypes.BloodShot:
-                tempObject = BloodShotPool.Dequeue();
-                BloodShotPool.Enqueue(tempObject);
+            case PoolTypes.Experience:
+                tempObject = experiencePool.Dequeue();
+                experiencePool.Enqueue(tempObject);
                 return tempObject;
             default:
                 tempObject = null;

@@ -2,18 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 [RequireComponent(typeof(PoolManager))]
 public class Spawner : MonoBehaviour
 {
-    [SerializeField][Range(10, 30)] private float minEnemyDistanceToSpawn;
-    [SerializeField] private int AliveEnemyCount;
-    [SerializeField] public Transform SpawnPointsParent;
-    [SerializeField] private List<Transform> SpawnPoints = new List<Transform>();
-    [HideInInspector] public KdTree<Transform> ActiveEnemies = new KdTree<Transform>();
+    [Header("Unit")]
+    [SerializeField][Range(10, 30)] public float MinEnemyDistanceToSpawn;
+    [SerializeField][Range(20, 50)] public float UnitDissapearDistance;
+    [SerializeField] public int AliveEnemyCount;
     [Space]
+    [SerializeField] public Transform SpawnPointsParent;
+    [HideInInspector] public KdTree<Transform> ActiveEnemies = new KdTree<Transform>();
+    [Header("Item")]
+    [SerializeField][Range(1, 5)] public float ItemDropDistanceMin;
+    [SerializeField][Range(1, 5)] public float ItemDropDistanceMax;
+    [Space]
+    private List<Transform> SpawnPoints = new List<Transform>();
     private List<Transform> EnemyList = new List<Transform>();
     private GameObject spawnee;
+    private GameObject tempObject;
     private int SpawnPosID;
     private Player player;
 
@@ -22,6 +30,11 @@ public class Spawner : MonoBehaviour
     {
         Instance = this;
         player = FindObjectOfType<Player>();
+
+        for (int i = 0; i < SpawnPointsParent.childCount; i++)
+        {
+            SpawnPoints.Add(SpawnPointsParent.GetChild(i));
+        }
     }
 
     public void StartGame()
@@ -42,7 +55,7 @@ public class Spawner : MonoBehaviour
                 spawnee.transform.position = GetSpawnPos();
                 spawnee.GetComponent<Enemy>().Reborn();
                 spawnee.SetActive(true);
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.3f);
             }
             yield return new WaitForSeconds(10f);
         }
@@ -52,7 +65,7 @@ public class Spawner : MonoBehaviour
     {
         SpawnPosID++;
         if (SpawnPosID >= SpawnPoints.Count) { SpawnPosID = 0; }
-        while (Vector3.Distance(SpawnPoints[SpawnPosID].position, player.transform.position) < minEnemyDistanceToSpawn)
+        while (Vector3.Distance(SpawnPoints[SpawnPosID].position, player.transform.position) < MinEnemyDistanceToSpawn)
         {
             SpawnPosID++;
             if (SpawnPosID >= SpawnPoints.Count) { SpawnPosID = 0; }
@@ -68,9 +81,7 @@ public class Spawner : MonoBehaviour
         ActiveEnemies.UpdatePositions();
     }
 
-    //-------------------------------------------
-
-    private GameObject tempObject;
+    #region CreateText -----------------------
     private TextMeshProUGUI tempText;
     public void WorldTextPopup(string text, Vector3 position, Color textColor)
     {
@@ -82,6 +93,30 @@ public class Spawner : MonoBehaviour
         tempObject.SetActive(true);
         StartCoroutine(DisableObject(tempObject, 1.5f));
     }
+
+    #endregion
+
+    #region Exp -----------------------
+    private Vector3 randomPos;
+    private Vector3 spawnPos;
+    private float randomAngle;
+    private float dropDistance;
+
+    public void DropExperience(Vector3 _pos)
+    {
+        spawnPos = new Vector3(_pos.x, 1, _pos.z);
+        dropDistance = Random.Range(ItemDropDistanceMin, ItemDropDistanceMax);
+
+        randomAngle = Random.Range(0, 360);
+        randomPos.x = Mathf.Sin(randomAngle) * dropDistance;
+        randomPos.z = Mathf.Cos(randomAngle) * dropDistance;
+
+        tempObject = PoolManager.Instance.GetFromPool(PoolTypes.Experience);
+        tempObject.transform.position = spawnPos;
+        tempObject.SetActive(true);
+        tempObject.transform.DOJump(spawnPos + randomPos, 3, 1, 0.5f);
+    }
+    #endregion
 
     private IEnumerator DisableObject(GameObject go, float time)
     {

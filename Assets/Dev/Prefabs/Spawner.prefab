@@ -942,34 +942,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef437d18e48b58848bcfc8ba6b594385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minEnemyDistanceToSpawn: 15
-  AliveEnemyCount: 20
+  MinEnemyDistanceToSpawn: 15
+  UnitDissapearDistance: 40
+  AliveEnemyCount: 40
   SpawnPointsParent: {fileID: 3796402445057192666}
-  SpawnPoints:
-  - {fileID: 3796402443809725039}
-  - {fileID: 8794920603301099678}
-  - {fileID: 3397068202889385213}
-  - {fileID: 7197522639358258109}
-  - {fileID: 6762462502094967997}
-  - {fileID: 4672504796225477568}
-  - {fileID: 4320103586993171273}
-  - {fileID: 729437800186160939}
-  - {fileID: 3100955726730517166}
-  - {fileID: 5322942185719332233}
-  - {fileID: 6161862623231044612}
-  - {fileID: 3840111790108723360}
-  - {fileID: 5293713492271244791}
-  - {fileID: 4967043087595989845}
-  - {fileID: 5805257127458938761}
-  - {fileID: 132165145510470665}
-  - {fileID: 5254078319290499899}
-  - {fileID: 446974568638300874}
-  - {fileID: 299555527839837755}
-  - {fileID: 7474429447530667874}
-  - {fileID: 1980027086688155025}
-  - {fileID: 5617401455355607242}
-  - {fileID: 1396935680281310192}
-  - {fileID: 4265619440287514176}
+  ItemDropDistanceMin: 1
+  ItemDropDistanceMax: 3
 --- !u!114 &3796402444691986334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -982,23 +960,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6915a7a5f6256874e9e716611813a0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPoolCount: 10
+  EnemyPoolCount: 50
   EnemyPrefab: {fileID: 331228732015298750, guid: 0084c496d5959764987e29016149f768,
     type: 3}
-  BulletPoolCount: 15
+  BulletPoolCount: 25
   BulletPrefab: {fileID: 193226, guid: e7cb03a7b43b0484c91e380395f35136, type: 3}
-  BloodShotPoolCount: 20
+  BloodShotPoolCount: 25
   BloodShotPrefabs:
   - {fileID: 1142193931700624, guid: 9d1846a1c8bff7142ab3959923c7d9c2, type: 3}
   - {fileID: 167524, guid: fdac75e990da47649b31f10049c400b0, type: 3}
   - {fileID: 193062, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
-  WorldTextPoolCount: 20
+  WorldTextPoolCount: 25
   WorldTextPrefab: {fileID: 2415433774831474974, guid: 11da45d4a0a22ab48a10bbfed425324a,
+    type: 3}
+  ExperiencePoolCount: 50
+  ExperiencePrefab: {fileID: 2985430304929008089, guid: ddcaea935dd383c4e9535a23d35c2332,
     type: 3}
   EnemyHolder: {fileID: 3796402444794935412}
   BulletHolder: {fileID: 3796402444214295827}
   BloodShotHolder: {fileID: 2975059652233768222}
   WorldTextHolder: {fileID: 1286222905}
+  ExperienceHolder: {fileID: 0}
 --- !u!1 &3796402444794935411
 GameObject:
   m_ObjectHideFlags: 0
