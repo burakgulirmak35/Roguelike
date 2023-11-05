@@ -124,13 +124,17 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
             StopCoroutine(FollowCorotine);
         }
     }
+
+    private float distance;
     private IEnumerator FollowTimer()
     {
         while (isAlive)
         {
             yield return new WaitForSeconds(0.2f);
-            if (DistToPlayer() <= EnemyAgent.stoppingDistance) { StartAttack(); }
-            if (canMove)
+            distance = DistToPlayer();
+            if (distance <= EnemyAgent.stoppingDistance) { StartAttack(); }
+            else if (distance > GameManager.Instance.unitDissapearDistance) { Remove(); }
+            else if (canMove)
             {
                 EnemyAgent.SetDestination(playerTransform.position);
                 Body.DOLookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z), 0.2f);
@@ -158,12 +162,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     {
         StopFollow();
         StartDisable();
-        if (ShowHealthCoro != null)
-        {
-            StopCoroutine(ShowHealthCoro);
-            ShowHealthCoro = null;
-            HealthBar.SetActive(false);
-        }
+        HideHeath();
 
         Spawner.Instance.DeadEnemy(transform);
         RandomAnimationIndex = Random.Range(0, 4);
@@ -171,6 +170,30 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         myCollider.enabled = false;
         isAlive = false;
         canMove = false;
+    }
+
+    // fast remove
+    public void Remove()
+    {
+        StopFollow();
+        HideHeath();
+
+        Spawner.Instance.DeadEnemy(transform);
+        myCollider.enabled = false;
+        isAlive = false;
+        canMove = false;
+
+        gameObject.SetActive(false);
+    }
+
+    private void HideHeath()
+    {
+        if (ShowHealthCoro != null)
+        {
+            StopCoroutine(ShowHealthCoro);
+            ShowHealthCoro = null;
+            HealthBar.SetActive(false);
+        }
     }
 
     private void ShowHealth()

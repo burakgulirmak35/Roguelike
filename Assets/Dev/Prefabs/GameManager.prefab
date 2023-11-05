@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54570f0fd72ebfe429df33d423817426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minSpawnDistance: 15
+  unitDissapearDistance: 40
   vSync_enable: 0
   FPS_limit: 1
   FPS_counter: 1

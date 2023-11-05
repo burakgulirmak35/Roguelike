@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a83117644b397b4ea98e5778bedc668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: c74ce169346197144ad48fd1baaf0e77, type: 2}
   HealthBar: {fileID: 8128780007266755564}
   healthSystem:
     HealthBar: {fileID: 8128780007266755564}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GunSO", menuName = "Apocalypse/GunSO", order = 0)]
+[CreateAssetMenu(menuName = "Roguelike/GunSO")]
 public class GunSO : ScriptableObject
 {
     [Header("Stats")]

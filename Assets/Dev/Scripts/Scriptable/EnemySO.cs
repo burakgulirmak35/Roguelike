@@ -1,9 +1,8 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemySO", menuName = "Apocalypse/EnemySO", order = 0)]
+[CreateAssetMenu(menuName = "Roguelike/EnemySO")]
 public class EnemySO : ScriptableObject
 {
-
     public float Health;
     public float Speed;
 

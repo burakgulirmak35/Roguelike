@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
-    private Player player;
 
-    [Header("Settings")]
+    [Header("Unit Settings")]
+    public float minSpawnDistance;
+    public float unitDissapearDistance;
+
+    [Header("Performance Settings")]
     [SerializeField] public bool vSync_enable = false;
     [SerializeField] public bool FPS_limit = true;
     [SerializeField] public bool FPS_counter = true;
+
+
+    public static GameManager Instance { get; private set; }
+    private Player player;
 
     private void Awake()
     {
