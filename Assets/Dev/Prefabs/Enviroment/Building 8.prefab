@@ -312,7 +312,8 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64008834751710936, guid: ebd0e90cdd8572142b5395fd3ad58a26, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -710,7 +711,8 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64611572703713626, guid: 33efe5ac2cfd633448c31adb8c1eeccb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1026,7 +1028,8 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64611572703713626, guid: 33efe5ac2cfd633448c31adb8c1eeccb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1369,7 +1372,8 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 65598676188030236, guid: 53597c8bf8fac774b9f55260a5ddadc8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2129,7 +2133,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -180.00002
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 65437792649363808, guid: 2550aaaacfde22f4993a04a13d4f5b05, type: 3}
+    - {fileID: 65156044048595418, guid: 2550aaaacfde22f4993a04a13d4f5b05, type: 3}
+    - {fileID: 65667328652972902, guid: 2550aaaacfde22f4993a04a13d4f5b05, type: 3}
+    - {fileID: 65996161477276154, guid: 2550aaaacfde22f4993a04a13d4f5b05, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4946131603998220, guid: 2550aaaacfde22f4993a04a13d4f5b05,
@@ -3562,7 +3570,8 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 65179864495725586, guid: 30b74090ba79abb4a921ed08cf6365c6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3617,7 +3626,8 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 65179864495725586, guid: 30b74090ba79abb4a921ed08cf6365c6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
