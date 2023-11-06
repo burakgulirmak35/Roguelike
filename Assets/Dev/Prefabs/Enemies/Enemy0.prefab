@@ -50,12 +50,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a83117644b397b4ea98e5778bedc668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBar: {fileID: 8128780007266755564}
-  healthSystem:
+  basicHealthSystem:
     HealthBar: {fileID: 8128780007266755564}
-    HealthSlider: {fileID: 8128780007757268493}
-    HealthTxt: {fileID: 8128780008229190746}
-    isAlive: 0
+    slider_Health: {fileID: 8128780007757268493}
+    txt_Health: {fileID: 8128780008229190746}
   enemySO: {fileID: 11400000, guid: 7c8262e5019a47a48b02f60f2266e12a, type: 2}
   EnemyAnim: {fileID: 6112879269371486627}
   TargetedIcon: {fileID: 2170706084202013523}
@@ -431,36 +429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805217d6d79cff04cb854c5d3c7e06d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnAttack:
-    m_PersistentCalls:
-      m_Calls: []
-  OnAttackEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &6163328032059569809 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4432881096010420, guid: 9d6944272ca1ef448a6c08e77fec10f0,

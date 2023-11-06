@@ -48,6 +48,10 @@ public class PoolManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    public void GeneratePools()
+    {
         GeneratePool(EnemyPrefab, EnemyPoolCount, enemyPool, EnemyHolder);
         GeneratePool(BulletPrefab, BulletPoolCount, bulletPool, BulletHolder);
         GeneratePool(BloodShotPrefabs, BloodShotPoolCount, bloodShotPool, BloodShotHolder);

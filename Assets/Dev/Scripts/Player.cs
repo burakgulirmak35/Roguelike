@@ -9,7 +9,10 @@ using TMPro;
 
 public class Player : MonoBehaviour, IDamagable
 {
-    [SerializeField] private GunType SelectedGun;
+    [Header("Data")]
+    private PlayerData playerData;
+
+    [Header("Gun")]
     private Gun gun;
 
     [Header("Animations")]
@@ -24,20 +27,13 @@ public class Player : MonoBehaviour, IDamagable
     private Vector3 direction;
 
     [Header("Health")]
-    [SerializeField] private HealthSystem healthSystem;
+    [SerializeField] public HealthSystem healthSystem;
 
     [Header("Level")]
     [SerializeField] private Slider slider_Exp;
     [SerializeField] private TextMeshProUGUI txt_Level;
     [SerializeField] private ParticleSystem particle_LevelUp;
     private float expAmount;
-    private int level;
-    private int exp;
-
-    [Header("Stats")]
-    [SerializeField] private float speed;
-    [SerializeField] private float maxHealth;
-    private GunSO gunSO;
 
     [Header("Aim")]
     [SerializeField] private Transform AimPoint;
@@ -61,6 +57,7 @@ public class Player : MonoBehaviour, IDamagable
     {
         Instance = this;
 
+        playerData = FindObjectOfType<PlayerData>();
         joystick = FindObjectOfType<FloatingJoystick>();
         Agent = GetComponent<NavMeshAgent>();
         Agent.updateRotation = false;
@@ -68,10 +65,18 @@ public class Player : MonoBehaviour, IDamagable
 
     public void StartGame()
     {
-        EquipGun(SelectedGun);
-        healthSystem.SetHealth(maxHealth);
+        playerData.LoadData();
+        EquipGun(playerData.SelectedGun);
+        healthSystem.SetHealth(playerData.MaxHealth);
+
         StartCoroutine(TakeAimLoop());
-        LoadLevel();
+        AddExperience(0);
+    }
+
+    public void CheckUpgrades()
+    {
+        // EquipGun(playerData.SelectedGun);
+        healthSystem.UpgradeMaxHealth(playerData.MaxHealth);
     }
 
     private void EquipGun(GunType _gunType)
@@ -88,8 +93,6 @@ public class Player : MonoBehaviour, IDamagable
                 gun = Rifle.GetComponent<Gun>();
                 break;
         }
-
-        gunSO = gun.GetGunSO();
         LeftArmTarget.position = gun.GetLeftHandPos().position;
         LeftArmTarget.rotation = gun.GetLeftHandPos().rotation;
     }
@@ -98,7 +101,7 @@ public class Player : MonoBehaviour, IDamagable
     private void Update()
     {
         direction = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
-        Agent.Move(direction * speed * Time.deltaTime);
+        Agent.Move(direction * playerData.MovementSpeed * Time.deltaTime);
 
         if (direction.magnitude > 0 && !EnemyInRange)
         {
@@ -133,7 +136,7 @@ public class Player : MonoBehaviour, IDamagable
             DistanceToEnemy = Vector3.Distance(ClosestEnemy.position, transform.position);
             TargetPoint = ClosestEnemy.position + new Vector3(0, 2f, 0);
 
-            if (DistanceToEnemy <= gunSO.FireRange)
+            if (DistanceToEnemy <= playerData.FireRange)
             {
                 EnemyInRange = true;
                 PlayerAnim.SetBool("Aim", true);
@@ -204,38 +207,35 @@ public class Player : MonoBehaviour, IDamagable
     #endregion
 
     #region LevelSystem
-
     public void AddExperience(int _amount)
     {
-        exp += _amount;
-        if (exp >= GameManager.Instance.expPerLevel[level])
+        playerData.exp += _amount;
+        if (playerData.exp >= playerData.expPerLevel[playerData.level])
         {
-            exp = 0;
-            slider_Exp.value = 0;
-            if (GameManager.Instance.expPerLevel.Count > level)
-            {
-                level += 1;
-                txt_Level.text = "Lv." + level.ToString();
-            }
-            else
-            {
-                txt_Level.text = "Max";
-            }
-
-            particle_LevelUp.Play();
-            healthSystem.SetHealth(maxHealth);
-            PlayerPrefs.SetInt("Level", level);
+            OnLevelUp();
         }
-        expAmount = (float)exp / (float)GameManager.Instance.expPerLevel[level];
+        expAmount = (float)playerData.exp / (float)playerData.expPerLevel[playerData.level];
         DOTween.To(() => slider_Exp.value, x => slider_Exp.value = x, expAmount, 0.25f).SetEase(Ease.Linear);
-        PlayerPrefs.SetInt("Exp", exp);
+        PlayerPrefs.SetInt("Exp", playerData.exp);
     }
 
-    private void LoadLevel()
+    private void OnLevelUp()
     {
-        exp = PlayerPrefs.GetInt("Exp");
-        level = PlayerPrefs.GetInt("Level");
-        AddExperience(0);
+        playerData.exp = 0;
+        slider_Exp.value = 0;
+        if (playerData.expPerLevel.Count > playerData.level)
+        {
+            playerData.level += 1;
+            txt_Level.text = "Lv." + (playerData.level + 1).ToString();
+        }
+        else
+        {
+            txt_Level.text = "Max";
+        }
+
+        particle_LevelUp.Play();
+        PlayerPrefs.SetInt("Level", playerData.level);
+        UIManager.Instance.EnablePanelUpgrade(true);
     }
 
     #endregion

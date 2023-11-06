@@ -7,8 +7,7 @@ using DG.Tweening;
 public class Enemy : MonoBehaviour, IDamagable, ITargetable
 {
     [Header("HealtSystem")]
-    [SerializeField] private GameObject HealthBar;
-    [SerializeField] private HealthSystem healthSystem;
+    [SerializeField] private BasicHealthSystem basicHealthSystem;
     [Header("Stats")]
     [SerializeField] private EnemySO enemySO;
     [Header("Animations")]
@@ -23,24 +22,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     [Header("AI")]
     private NavMeshAgent EnemyAgent;
     private int RandomAnimationIndex;
-
-    private bool isAlive
-    {
-        get { return healthSystem.isAlive; }
-        set
-        {
-            if (value)
-            {
-                healthSystem.isAlive = true;
-                EnemyAnim.SetBool("isAlive", true);
-            }
-            else
-            {
-                healthSystem.isAlive = false;
-                EnemyAnim.SetBool("isAlive", false);
-            }
-        }
-    }
+    private bool isAlive;
 
     private void Awake()
     {
@@ -51,26 +33,26 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         EnemyAgent.stoppingDistance = enemySO.StartAttackRange;
         EnemyAgent.updateRotation = false;
         //-----------------------------------------------
-        healthSystem.OnDead += OnDead;
+        basicHealthSystem.OnDead += OnDead;
         //-----------------------------------------------
         animEventController = EnemyAnim.GetComponent<AnimEventController>();
         animEventController.OnAttack += OnAttack;
-        animEventController.OnAttackEnd += OnAttackEnd;
     }
 
     public void Reborn()
     {
         StopDisable();
         isAlive = true;
-        HealthBar.SetActive(false);
+        basicHealthSystem.HealthBar.SetActive(false);
         TargetedIcon.SetActive(false);
-        healthSystem.SetHealth(enemySO.Health);
+        basicHealthSystem.SetHealth(enemySO.Health);
         myCollider.enabled = true;
     }
 
     void OnEnable()
     {
         StartFollow();
+        EnemyAnim.SetBool("isAlive", true);
         EnemyAnim.Play("Idle");
         EnemyAnim.SetBool("canMove", true);
     }
@@ -90,6 +72,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         {
             StopCoroutine(FollowCorotine);
         }
+        EnemyAgent.ResetPath();
     }
 
     private float distance;
@@ -120,7 +103,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     {
         if (!isAlive) { return; }
         ShowHealth();
-        healthSystem.TakeDamage(damageTaken);
+        basicHealthSystem.TakeDamage(damageTaken);
         Spawner.Instance.WorldTextPopup(((int)damageTaken).ToString(), transform.position, Color.red);
 
     }
@@ -129,15 +112,15 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     {
         StopFollow();
         StartDisable();
-        HideHeath();
+        HideHealth();
         DropExperience();
-        EnemyAgent.ResetPath();
 
         Spawner.Instance.DeadEnemy(transform);
         RandomAnimationIndex = Random.Range(0, 4);
         EnemyAnim.Play("Death" + RandomAnimationIndex.ToString());
         myCollider.enabled = false;
         isAlive = false;
+        EnemyAnim.SetBool("isAlive", false);
     }
 
     public void DropExperience()
@@ -152,23 +135,22 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     public void Remove()
     {
         StopFollow();
-        HideHeath();
+        HideHealth();
 
-        EnemyAgent.ResetPath();
         Spawner.Instance.DeadEnemy(transform);
         myCollider.enabled = false;
         isAlive = false;
-
+        EnemyAnim.SetBool("isAlive", false);
         gameObject.SetActive(false);
     }
 
-    private void HideHeath()
+    private void HideHealth()
     {
         if (ShowHealthCoro != null)
         {
             StopCoroutine(ShowHealthCoro);
             ShowHealthCoro = null;
-            HealthBar.SetActive(false);
+            basicHealthSystem.HealthBar.SetActive(false);
         }
     }
 
@@ -189,9 +171,9 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     private Coroutine ShowHealthCoro;
     private IEnumerator ShowHealthTimer()
     {
-        HealthBar.SetActive(true);
+        basicHealthSystem.HealthBar.SetActive(true);
         yield return new WaitForSeconds(10f);
-        HealthBar.SetActive(false);
+        basicHealthSystem.HealthBar.SetActive(false);
     }
     #endregion
 
@@ -206,11 +188,12 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         if (!isAlive) return;
 
         StopFollow();
-        EnemyAgent.ResetPath();
 
         EnemyAnim.SetFloat("AttackSpeed", 1);
         RandomAnimationIndex = Random.Range(0, 4);
         EnemyAnim.Play("Attack" + RandomAnimationIndex.ToString());
+        if (AttackCoro != null) { StopCoroutine(AttackCoro); }
+        AttackCoro = StartCoroutine(AttackTimer());
     }
 
     public void OnAttack()
@@ -221,18 +204,13 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
             Player.Instance.TakeDamage(enemySO.Damage);
         }
     }
-
-    public void OnAttackEnd()
+    private Coroutine AttackCoro;
+    private IEnumerator AttackTimer()
     {
-        if (DistToPlayer() <= enemySO.StartAttackRange)
-        {
-            StartAttack();
-        }
-        else
-        {
-            StartFollow();
-        }
+        yield return new WaitForSeconds(2f);
+        StartFollow();
     }
+
     #endregion
 
     #region  DisableTimer

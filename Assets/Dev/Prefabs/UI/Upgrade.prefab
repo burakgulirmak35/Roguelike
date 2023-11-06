@@ -110,8 +110,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 6.5}
+  m_SizeDelta: {x: -40, y: -39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7329792351535831855
 CanvasRenderer:
@@ -169,8 +169,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -609,6 +609,7 @@ MonoBehaviour:
   img_SkillImage: {fileID: 8473092486831316515}
   txt_SkillName: {fileID: 5350413277444110453}
   txt_SkillDescription: {fileID: 409422677565346114}
+  upgradeType: 0
 --- !u!114 &3335355748162159337
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("LevelSettings")]
-    public List<int> expPerLevel = new List<int>();
-
     [Header("Performance Settings")]
     [SerializeField] private bool vSync_enable = false;
     [SerializeField] private bool FPS_limit = true;
@@ -22,6 +19,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         FPS();
+        PoolManager.Instance.GeneratePools();
         Enviroment.Instance.CreateCity();
         Player.Instance.StartGame();
         Spawner.Instance.StartGame();

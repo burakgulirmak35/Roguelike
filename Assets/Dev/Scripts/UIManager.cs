@@ -9,12 +9,23 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject PanelUpgrade;
     [SerializeField] private List<UpgradeButton> upgradeButtons = new List<UpgradeButton>();
-    [SerializeField] private List<Upgrade> upgrades = new List<Upgrade>();
-    private Upgrade _upgrade;
+    private UpgradeSO upgradeSO;
+    private PlayerData playerData;
 
     void Awake()
     {
         Instance = this;
+        playerData = FindObjectOfType<PlayerData>();
+    }
+
+    void Start()
+    {
+        CloseAllPanels();
+    }
+
+    private void CloseAllPanels()
+    {
+        EnablePanelUpgrade(false);
     }
 
     public void EnablePanelUpgrade(bool _state)
@@ -23,15 +34,16 @@ public class UIManager : MonoBehaviour
         {
             for (int i = 0; i < upgradeButtons.Count; i++)
             {
-                _upgrade = upgrades[Random.Range(0, upgrades.Count)];
-                //  upgradeButtons[i].
+                upgradeSO = playerData.Upgrades[Random.Range(0, playerData.Upgrades.Count)];
+                upgradeButtons[i].SetUpgradeSO(upgradeSO);
             }
-
             PanelUpgrade.SetActive(true);
+            Time.timeScale = 0;
         }
         else
         {
             PanelUpgrade.SetActive(false);
+            Time.timeScale = 1;
         }
     }
 }

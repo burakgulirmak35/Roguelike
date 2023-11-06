@@ -5,8 +5,7 @@ public class Gun : MonoBehaviour
 {
     private PoolManager poolManager;
     private SoundManager soundManager;
-    [Header("Stats")]
-    [SerializeField] private GunSO gunSO;
+    private PlayerData playerData;
     [Header("Parts")]
     [SerializeField] private Transform[] firePoint;
     [SerializeField] private Transform LeftHandPos;
@@ -17,15 +16,11 @@ public class Gun : MonoBehaviour
     private Coroutine FireCoro;
     private bool isFire;
 
-    private void Start()
+    private void Awake()
     {
         poolManager = FindObjectOfType<PoolManager>();
         soundManager = FindObjectOfType<SoundManager>();
-    }
-
-    public GunSO GetGunSO()
-    {
-        return gunSO;
+        playerData = FindObjectOfType<PlayerData>();
     }
 
     public Transform GetLeftHandPos()
@@ -58,30 +53,27 @@ public class Gun : MonoBehaviour
     }
 
     private GameObject tmpBullet;
-    private Bullet tmpBulletSC;
     private IEnumerator FireLoop()
     {
         while (isFire)
         {
-            yield return new WaitForSeconds(1.0f / gunSO.FireRate);
+            yield return new WaitForSeconds(1.0f / playerData.FireRate);
             for (int i = 0; i < firePoint.Length; i++)
             {
-                for (int j = 0; j < gunSO.BurstCount; j++)
+                for (int j = 0; j < playerData.BurstCount; j++)
                 {
                     if (isFire)
                     {
                         tmpBullet = poolManager.GetFromPool(PoolTypes.Bullet);
-                        tmpBulletSC = tmpBullet.GetComponent<Bullet>();
                         tmpBullet.transform.position = firePoint[i].position;
                         tmpBullet.transform.forward = firePoint[i].forward;
-                        tmpBulletSC.Damage = gunSO.Damage;
 
                         Muzzle.Play();
                         tmpBullet.SetActive(true);
-                        soundManager.PlayGunSound(gunSO.gunType);
-                        tmpBullet.GetComponent<Rigidbody>().AddForce(tmpBullet.transform.forward * gunSO.BulletSpeed, ForceMode.Impulse);
+                        soundManager.PlayGunSound(playerData.SelectedGun);
+                        tmpBullet.GetComponent<Rigidbody>().AddForce(tmpBullet.transform.forward * playerData.BulletSpeed, ForceMode.Impulse);
 
-                        yield return new WaitForSeconds(gunSO.EachBurstTime);
+                        yield return new WaitForSeconds(playerData.EachBurstTime);
                     }
                 }
             }

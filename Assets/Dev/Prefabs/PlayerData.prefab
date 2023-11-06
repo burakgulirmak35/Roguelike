@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2336307545478593671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7072549771530387807}
+  - component: {fileID: 6170483529227738340}
+  m_Layer: 0
+  m_Name: PlayerData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7072549771530387807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336307545478593671}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6170483529227738340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336307545478593671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 071c06f249d272e48a3e9afe6f78a575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expPerLevel: 010000000300000005000000080000000a000000
+  Upgrades:
+  - {fileID: 11400000, guid: 77a47c6f963a7c34fb9b746e9e41ffd6, type: 2}
+  - {fileID: 11400000, guid: 3539fa6b1e7718c4eb4410e229140ac2, type: 2}
+  - {fileID: 11400000, guid: c8387f611001030438f621070036b195, type: 2}
+  - {fileID: 11400000, guid: 1972291e57c8ed5438d8998bb1cce547, type: 2}
+  - {fileID: 11400000, guid: 0eaa129a92fa8d140b48f4efa5b11f4a, type: 2}
+  - {fileID: 11400000, guid: c2761de045633784ea2e6d09385fb664, type: 2}
+  - {fileID: 11400000, guid: 98b2edef82241f942ba24479d49f4725, type: 2}
+  - {fileID: 11400000, guid: 792837883c669cc43a5e97075d1c78ff, type: 2}
+  - {fileID: 11400000, guid: 83330c37e65ae28448d5282e83c25556, type: 2}
+  - {fileID: 11400000, guid: 9e1a44d38d206af4c91aef5aaf768a06, type: 2}
+  - {fileID: 11400000, guid: 1afd3712b2cc79740bcdc064e24fb982, type: 2}
+  - {fileID: 11400000, guid: d6d815a988701834bae07aa61dbcca04, type: 2}
+  - {fileID: 11400000, guid: a49ffed96fde420459533af9da89b45f, type: 2}
+  - {fileID: 11400000, guid: 829def710fec3ff4f9ce764e38c0fa68, type: 2}
+  EachBurstTime: 0.1
+  BulletSpeed: 15
+  BaseMaxHealth: 50
+  BaseMovementSpeed: 5
+  BaseDamage: 10
+  BaseFireRate: 3
+  BaseFireRange: 15
+  BaseBurstCount: 1
+  BaseBounceCount: 0
+  BaseExplosiveAmmoRange: 0
+  BaseExplosiveAmmoDamage: 0
+  MaxHealth: 0
+  MovementSpeed: 0
+  Damage: 0
+  FireRate: 0
+  FireRange: 0
+  BurstCount: 0
+  BounceCount: 0
+  ExplosiveAmmoRange: 0
+  ExplosiveAmmoDamage: 0
+  Penetrability: 0
+  ExplosiveAmmo: 0
+  SelectedGun: 0
+  level: 0
+  exp: 0
