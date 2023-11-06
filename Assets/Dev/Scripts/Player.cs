@@ -61,6 +61,8 @@ public class Player : MonoBehaviour, IDamagable
         joystick = FindObjectOfType<FloatingJoystick>();
         Agent = GetComponent<NavMeshAgent>();
         Agent.updateRotation = false;
+
+        healthSystem.OnDead += OnDead;
     }
 
     public void StartGame()
@@ -204,6 +206,11 @@ public class Player : MonoBehaviour, IDamagable
         healthSystem.TakeDamage(damageTaken);
         Spawner.Instance.WorldTextPopup(((int)damageTaken).ToString(), transform.position, Color.red);
     }
+
+    private void OnDead()
+    {
+        GameManager.Instance.Reload();
+    }
     #endregion
 
     #region LevelSystem
@@ -223,7 +230,7 @@ public class Player : MonoBehaviour, IDamagable
     {
         playerData.exp = 0;
         slider_Exp.value = 0;
-        if (playerData.expPerLevel.Count > playerData.level)
+        if (playerData.level < playerData.expPerLevel.Count - 1)
         {
             playerData.level += 1;
             txt_Level.text = "Lv." + (playerData.level + 1).ToString();

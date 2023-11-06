@@ -64,6 +64,7 @@ public class HealthSystem
 
     public void TakeDamage(float amount)
     {
+        return;
         if (!isAlive) return;
         health -= amount;
         if (health <= 0)

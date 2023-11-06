@@ -53,6 +53,7 @@ MonoBehaviour:
   - {fileID: 3987366181688294986}
   - {fileID: 3975129903939973866}
   - {fileID: 3975008756899991854}
+  ExplosionParticles: {fileID: 5271995992933846488}
   rb: {fileID: 639844217121153286}
 --- !u!54 &639844217121153286
 Rigidbody:
@@ -303,6 +304,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21e4798e9eade864d86e5c2a28f0edbe, type: 3}
+--- !u!198 &5271995992933846488 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19843092, guid: 21e4798e9eade864d86e5c2a28f0edbe,
+    type: 3}
+  m_PrefabInstance: {fileID: 5271995992952276428}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5271995992952219732 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 470424, guid: 21e4798e9eade864d86e5c2a28f0edbe,
