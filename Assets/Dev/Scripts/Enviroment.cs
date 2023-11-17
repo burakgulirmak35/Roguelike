@@ -126,7 +126,6 @@ public class Enviroment : MonoBehaviour
         PartRight.SetActive(true);
 
         Gates.transform.position = PartMiddle.transform.position;
-
         UpdateNavMesh();
     }
 

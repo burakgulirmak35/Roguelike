@@ -12,21 +12,25 @@ public class Gate : MonoBehaviour
         environment = FindObjectOfType<Enviroment>();
     }
 
-    public void PassGate()
+    public void PassGate(Vector3 exitPoint)
     {
         switch (side)
         {
-            case Side.left:
-                environment.MoveLeft();
-                break;
             case Side.right:
-                environment.MoveRight();
+                if (exitPoint.x > transform.position.x)
+                    environment.MoveRight();
+                break;
+            case Side.left:
+                if (exitPoint.x < transform.position.x)
+                    environment.MoveLeft();
                 break;
             case Side.up:
-                environment.MoveUp();
+                if (exitPoint.z > transform.position.z)
+                    environment.MoveUp();
                 break;
             case Side.down:
-                environment.MoveDown();
+                if (exitPoint.z < transform.position.z)
+                    environment.MoveDown();
                 break;
         }
     }

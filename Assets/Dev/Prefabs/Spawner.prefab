@@ -944,11 +944,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinEnemyDistanceToSpawn: 15
-  UnitDissapearDistance: 40
+  UnitDissapearDistance: 30
   AliveEnemyCount: 40
   SpawnPointsParent: {fileID: 3796402445057192666}
   ItemDropDistanceMin: 1
-  ItemDropDistanceMax: 3
+  ItemDropDistanceMax: 5
 --- !u!114 &3796402444691986334
 MonoBehaviour:
   m_ObjectHideFlags: 0

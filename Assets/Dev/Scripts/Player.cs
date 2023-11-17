@@ -176,7 +176,6 @@ public class Player : MonoBehaviour, IDamagable
     }
     #endregion
 
-
     private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
@@ -195,7 +194,7 @@ public class Player : MonoBehaviour, IDamagable
         switch (other.tag)
         {
             case "Gate":
-                other.GetComponent<Gate>().PassGate();
+                other.GetComponent<Gate>().PassGate(transform.position);
                 break;
         }
     }
@@ -219,14 +218,14 @@ public class Player : MonoBehaviour, IDamagable
         playerData.exp += _amount;
         if (playerData.exp >= playerData.expPerLevel[playerData.level])
         {
-            OnLevelUp();
+            LevelUp();
         }
         expAmount = (float)playerData.exp / (float)playerData.expPerLevel[playerData.level];
         DOTween.To(() => slider_Exp.value, x => slider_Exp.value = x, expAmount, 0.25f).SetEase(Ease.Linear);
         PlayerPrefs.SetInt("Exp", playerData.exp);
     }
 
-    private void OnLevelUp()
+    private void LevelUp()
     {
         playerData.exp = 0;
         slider_Exp.value = 0;
