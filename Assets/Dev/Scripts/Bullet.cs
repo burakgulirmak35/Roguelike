@@ -4,7 +4,6 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private ParticleSystem[] BulletParticles;
-    [SerializeField] private ParticleSystem ExplosionParticles;
     [SerializeField] private Rigidbody rb;
 
     private PoolManager poolManager;
@@ -56,10 +55,15 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    Collider[] hitColliders;
+
+    private GameObject explosion;
+    private Collider[] hitColliders;
     private void Explode()
     {
-        ExplosionParticles.Play();
+        explosion = PoolManager.Instance.GetFromPool(PoolTypes.BulletExplosion);
+        explosion.transform.position = transform.position;
+        explosion.SetActive(true);
+
         hitColliders = Physics.OverlapSphere(transform.position, playerData.ExplosiveAmmoRange);
         for (int i = 0; i < hitColliders.Length; i++)
         {

@@ -972,6 +972,9 @@ MonoBehaviour:
   - {fileID: 1142193931700624, guid: 9d1846a1c8bff7142ab3959923c7d9c2, type: 3}
   - {fileID: 167524, guid: fdac75e990da47649b31f10049c400b0, type: 3}
   - {fileID: 193062, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+  BulletExplosionPoolCount: 25
+  BulletExplosionPrefab: {fileID: 109660, guid: 21e4798e9eade864d86e5c2a28f0edbe,
+    type: 3}
   WorldTextPoolCount: 25
   WorldTextPrefab: {fileID: 2415433774831474974, guid: 11da45d4a0a22ab48a10bbfed425324a,
     type: 3}
@@ -980,6 +983,7 @@ MonoBehaviour:
     type: 3}
   EnemyHolder: {fileID: 3796402444794935412}
   BulletHolder: {fileID: 3796402444214295827}
+  BulletExplosionHolder: {fileID: 0}
   BloodShotHolder: {fileID: 2975059652233768222}
   WorldTextHolder: {fileID: 1286222905}
   ExperienceHolder: {fileID: 4253823321912014313}
