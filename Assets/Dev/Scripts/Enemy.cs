@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     {
         while (isAlive)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             distance = DistToPlayer();
             if (distance <= enemySO.StartAttackRange) { StartAttack(); }
             else if (distance > Spawner.Instance.UnitDissapearDistance) { Remove(); }
@@ -92,7 +92,6 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         }
     }
 
-    // icon under unity will open if targeted
     public void Targeted(bool state)
     {
         TargetedIcon.SetActive(state);
@@ -115,6 +114,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         HideHealth();
         DropExperience();
 
+        TargetedIcon.SetActive(false);
         Spawner.Instance.DeadEnemy(transform);
         RandomAnimationIndex = Random.Range(0, 4);
         EnemyAnim.Play("Death" + RandomAnimationIndex.ToString());
@@ -189,7 +189,8 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
 
         StopFollow();
 
-        EnemyAnim.SetFloat("AttackSpeed", 1);
+        // vuruş animasyonları 2 saniye
+        EnemyAnim.SetFloat("AttackSpeed", 2);
         RandomAnimationIndex = Random.Range(0, 4);
         EnemyAnim.Play("Attack" + RandomAnimationIndex.ToString());
         if (AttackCoro != null) { StopCoroutine(AttackCoro); }
@@ -207,7 +208,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     private Coroutine AttackCoro;
     private IEnumerator AttackTimer()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         StartFollow();
     }
 

@@ -944,11 +944,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinEnemyDistanceToSpawn: 15
-  UnitDissapearDistance: 30
-  AliveEnemyCount: 40
+  UnitDissapearDistance: 50
+  AliveEnemyCount: 95
+  spawnDelay: 0.2
   SpawnPointsParent: {fileID: 3796402445057192666}
-  ItemDropDistanceMin: 1
-  ItemDropDistanceMax: 5
+  ItemDropDistanceMin: 1.5
+  ItemDropDistanceMax: 4
 --- !u!114 &3796402444691986334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -961,10 +962,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6915a7a5f6256874e9e716611813a0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPoolCount: 50
+  EnemyPoolCount: 100
   EnemyPrefab: {fileID: 331228732015298750, guid: 0084c496d5959764987e29016149f768,
     type: 3}
-  BulletPoolCount: 25
+  BulletPoolCount: 50
   BulletPrefab: {fileID: 193226, guid: e7cb03a7b43b0484c91e380395f35136, type: 3}
   BloodShotPoolCount: 25
   BloodShotPrefabs:

@@ -11,6 +11,7 @@ public class Spawner : MonoBehaviour
     [SerializeField][Range(10, 30)] public float MinEnemyDistanceToSpawn;
     [SerializeField][Range(20, 50)] public float UnitDissapearDistance;
     [SerializeField] public int AliveEnemyCount;
+    [SerializeField][Range(0, 1)] public float spawnDelay;
     [Space]
     [SerializeField] public Transform SpawnPointsParent;
     [HideInInspector] public KdTree<Transform> ActiveEnemies = new KdTree<Transform>();
@@ -55,7 +56,7 @@ public class Spawner : MonoBehaviour
                 spawnee.transform.position = GetSpawnPos();
                 spawnee.GetComponent<Enemy>().Reborn();
                 spawnee.SetActive(true);
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(spawnDelay);
             }
             yield return new WaitForSeconds(10f);
         }
@@ -114,7 +115,7 @@ public class Spawner : MonoBehaviour
         tempObject = PoolManager.Instance.GetFromPool(PoolTypes.Experience);
         tempObject.transform.position = spawnPos;
         tempObject.SetActive(true);
-        tempObject.transform.DOJump(spawnPos + randomPos, 3, 1, 0.5f);
+        tempObject.transform.DOJump(spawnPos + randomPos, 3, 1, 0.5f * dropDistance);
     }
     #endregion
 

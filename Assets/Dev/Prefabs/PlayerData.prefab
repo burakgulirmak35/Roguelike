@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071c06f249d272e48a3e9afe6f78a575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expPerLevel: 050000000a0000000f0000001400000019000000
+  expPerLevel: 0300000006000000090000000c0000000f000000
   Upgrades:
   - {fileID: 11400000, guid: 77a47c6f963a7c34fb9b746e9e41ffd6, type: 2}
   - {fileID: 11400000, guid: 3539fa6b1e7718c4eb4410e229140ac2, type: 2}
