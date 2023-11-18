@@ -32,7 +32,7 @@ public class Player : MonoBehaviour, IDamagable
     [Header("Level")]
     [SerializeField] private Slider slider_Exp;
     [SerializeField] private TextMeshProUGUI txt_Level;
-    [SerializeField] private ParticleSystem particle_LevelUp;
+    [SerializeField] private GameObject particle_LevelUp;
     private float expAmount;
 
     [Header("Aim")]
@@ -239,7 +239,7 @@ public class Player : MonoBehaviour, IDamagable
             txt_Level.text = "Max";
         }
 
-        particle_LevelUp.Play();
+        particle_LevelUp.SetActive(true);
         PlayerPrefs.SetInt("Level", playerData.level);
         UIManager.Instance.EnablePanelUpgrade(true);
     }
