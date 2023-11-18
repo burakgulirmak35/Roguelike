@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vSync_enable: 0
   FPS_limit: 1
-  FPS_target: 60
+  FPS_target: 45
   FPS_counter: 0
