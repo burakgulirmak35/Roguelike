@@ -925,6 +925,7 @@ Transform:
   m_Children:
   - {fileID: 3796402444794935412}
   - {fileID: 3796402444214295827}
+  - {fileID: 1566154814157520216}
   - {fileID: 1286222905}
   - {fileID: 2975059652233768222}
   - {fileID: 4253823321912014313}
@@ -973,7 +974,7 @@ MonoBehaviour:
   - {fileID: 167524, guid: fdac75e990da47649b31f10049c400b0, type: 3}
   - {fileID: 193062, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
   BulletExplosionPoolCount: 25
-  BulletExplosionPrefab: {fileID: 109660, guid: 21e4798e9eade864d86e5c2a28f0edbe,
+  BulletExplosionPrefab: {fileID: 127072, guid: 901cb763553a9c948a201ff4479d311a,
     type: 3}
   WorldTextPoolCount: 25
   WorldTextPrefab: {fileID: 2415433774831474974, guid: 11da45d4a0a22ab48a10bbfed425324a,
@@ -983,7 +984,7 @@ MonoBehaviour:
     type: 3}
   EnemyHolder: {fileID: 3796402444794935412}
   BulletHolder: {fileID: 3796402444214295827}
-  BulletExplosionHolder: {fileID: 0}
+  BulletExplosionHolder: {fileID: 1566154814157520216}
   BloodShotHolder: {fileID: 2975059652233768222}
   WorldTextHolder: {fileID: 1286222905}
   ExperienceHolder: {fileID: 4253823321912014313}
@@ -1851,6 +1852,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7611261157086649581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1566154814157520216}
+  m_Layer: 0
+  m_Name: BulletExplosionHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1566154814157520216
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7611261157086649581}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3796402444691986332}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7627573005180354781
 GameObject:
   m_ObjectHideFlags: 0

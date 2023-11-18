@@ -52,6 +52,9 @@ public class Player : MonoBehaviour, IDamagable
     private bool Alive = true;
     private bool EnemyInRange = false;
 
+    [Space]
+    private Transform myTransform;
+
     public static Player Instance { get; private set; }
     private void Awake()
     {
@@ -61,6 +64,7 @@ public class Player : MonoBehaviour, IDamagable
         joystick = FindObjectOfType<FloatingJoystick>();
         Agent = GetComponent<NavMeshAgent>();
         Agent.updateRotation = false;
+        myTransform = this.transform;
 
         healthSystem.OnDead += OnDead;
     }
@@ -102,7 +106,8 @@ public class Player : MonoBehaviour, IDamagable
     //Vertical yukarı aşağı
     private void Update()
     {
-        direction = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
+        direction.x = joystick.Horizontal;
+        direction.z = joystick.Vertical;
         Agent.Move(direction * playerData.MovementSpeed * Time.deltaTime);
 
         if (direction.magnitude > 0 && !EnemyInRange)
@@ -133,17 +138,21 @@ public class Player : MonoBehaviour, IDamagable
         if (Spawner.Instance.ActiveEnemies.Count > 0)
         {
             if (ClosestEnemy != null) ClosestEnemy.GetComponent<ITargetable>().Targeted(false);
-            ClosestEnemy = Spawner.Instance.ActiveEnemies.FindClosest(transform.position);
+            ClosestEnemy = Spawner.Instance.ActiveEnemies.FindClosest(myTransform.position);
             ClosestEnemy.GetComponent<ITargetable>().Targeted(true);
-            DistanceToEnemy = Vector3.Distance(ClosestEnemy.position, transform.position);
-            TargetPoint = ClosestEnemy.position + new Vector3(0, 2f, 0);
+            DistanceToEnemy = Vector3.Distance(ClosestEnemy.position, myTransform.position);
+
+            TargetPoint = ClosestEnemy.position;
+            TargetPoint.y += DefaultAimPoint.position.y;
 
             if (DistanceToEnemy <= playerData.FireRange)
             {
                 EnemyInRange = true;
                 PlayerAnim.SetBool("Aim", true);
-                AimPoint.transform.position = new Vector3(TargetPoint.x, DefaultAimPoint.position.y, TargetPoint.z);
-                Body.DOLookAt(new Vector3(TargetPoint.x, Body.position.y, TargetPoint.z), 0.1f);
+                AimPoint.position = TargetPoint;
+
+                TargetPoint.y = Body.position.y;
+                Body.DOLookAt(TargetPoint, 0.1f);
 
                 LeftArmIK.weight = 1;
                 RightArmIK.weight = 1;
@@ -155,7 +164,7 @@ public class Player : MonoBehaviour, IDamagable
                 gun.StopFire();
                 EnemyInRange = false;
                 PlayerAnim.SetBool("Aim", false);
-                AimPoint.transform.position = DefaultAimPoint.position;
+                AimPoint.position = DefaultAimPoint.position;
 
                 LeftArmIK.weight = 0;
                 RightArmIK.weight = 0;
@@ -167,7 +176,7 @@ public class Player : MonoBehaviour, IDamagable
             gun.StopFire();
             EnemyInRange = false;
             PlayerAnim.SetBool("Aim", false);
-            AimPoint.transform.position = DefaultAimPoint.position;
+            AimPoint.position = DefaultAimPoint.position;
 
             LeftArmIK.weight = 0;
             RightArmIK.weight = 0;
@@ -194,7 +203,7 @@ public class Player : MonoBehaviour, IDamagable
         switch (other.tag)
         {
             case "Gate":
-                other.GetComponent<Gate>().PassGate(transform.position);
+                other.GetComponent<Gate>().PassGate(myTransform.position);
                 break;
         }
     }
@@ -203,7 +212,7 @@ public class Player : MonoBehaviour, IDamagable
     public void TakeDamage(float damageTaken)
     {
         healthSystem.TakeDamage(damageTaken);
-        Spawner.Instance.WorldTextPopup(((int)damageTaken).ToString(), transform.position, Color.red);
+        Spawner.Instance.WorldTextPopup(((int)damageTaken).ToString(), myTransform.position, Color.red);
     }
 
     private void OnDead()

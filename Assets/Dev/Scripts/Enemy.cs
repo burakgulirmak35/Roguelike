@@ -24,6 +24,11 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     private int RandomAnimationIndex;
     private bool isAlive;
 
+    [Space]
+    private Player player;
+    private Transform playerTransform;
+    private Transform myTransform;
+
     private void Awake()
     {
         myCollider = GetComponent<CapsuleCollider>();
@@ -37,6 +42,10 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         //-----------------------------------------------
         animEventController = EnemyAnim.GetComponent<AnimEventController>();
         animEventController.OnAttack += OnAttack;
+        //-----------------------------------------------
+        player = FindObjectOfType<Player>();
+        playerTransform = player.transform;
+        myTransform = this.transform;
     }
 
     public void Reborn()
@@ -76,18 +85,21 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     }
 
     private float distance;
+    private Vector3 lookPos;
     private IEnumerator FollowTimer()
     {
         while (isAlive)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             distance = DistToPlayer();
             if (distance <= enemySO.StartAttackRange) { StartAttack(); }
             else if (distance > Spawner.Instance.UnitDissapearDistance) { Remove(); }
             else
             {
-                EnemyAgent.SetDestination(Player.Instance.transform.position);
-                Body.DOLookAt(new Vector3(Player.Instance.transform.position.x, transform.position.y, Player.Instance.transform.position.z), 0.2f);
+                lookPos = playerTransform.position;
+                lookPos.y = myTransform.position.y;
+                EnemyAgent.SetDestination(playerTransform.position);
+                Body.DOLookAt(lookPos, 0.2f);
             }
         }
     }
@@ -103,7 +115,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         if (!isAlive) { return; }
         ShowHealth();
         basicHealthSystem.TakeDamage(damageTaken);
-        Spawner.Instance.WorldTextPopup(((int)damageTaken).ToString(), transform.position, Color.red);
+        Spawner.Instance.WorldTextPopup(((int)damageTaken).ToString(), myTransform.position, Color.red);
 
     }
 
@@ -127,7 +139,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     {
         for (int i = 0; i < enemySO.ExperienceAmount; i++)
         {
-            Spawner.Instance.DropExperience(transform.position);
+            Spawner.Instance.DropExperience(myTransform.position);
         }
     }
 
@@ -180,7 +192,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     #region  Attack
     private float DistToPlayer()
     {
-        return Vector3.Distance(Player.Instance.transform.position, transform.position);
+        return Vector3.Distance(playerTransform.position, myTransform.position);
     }
 
     private void StartAttack()
