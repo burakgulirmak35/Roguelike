@@ -10,17 +10,31 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject PanelUpgrade;
     [SerializeField] private List<UpgradeButton> upgradeButtons = new List<UpgradeButton>();
     private UpgradeSO upgradeSO;
-    private PlayerData playerData;
+    [Header("Controllers")]
+    [SerializeField] private GameObject AimJoystick;
 
     void Awake()
     {
         Instance = this;
-        playerData = FindObjectOfType<PlayerData>();
     }
 
     void Start()
     {
         CloseAllPanels();
+    }
+
+    private void CheckOrientation()
+    {
+        if (Screen.orientation == ScreenOrientation.Portrait)
+        {
+            AimJoystick.SetActive(false);
+            Player.Instance.EnableAutoAim(false);
+        }
+        else
+        {
+            AimJoystick.SetActive(true);
+            Player.Instance.EnableAutoAim(true);
+        }
     }
 
     private void CloseAllPanels()
@@ -34,7 +48,7 @@ public class UIManager : MonoBehaviour
         {
             for (int i = 0; i < upgradeButtons.Count; i++)
             {
-                upgradeSO = playerData.Upgrades[Random.Range(0, playerData.Upgrades.Count)];
+                upgradeSO = PlayerData.Instance.Upgrades[Random.Range(0, PlayerData.Instance.Upgrades.Count)];
                 upgradeButtons[i].SetUpgradeSO(upgradeSO);
             }
             PanelUpgrade.SetActive(true);

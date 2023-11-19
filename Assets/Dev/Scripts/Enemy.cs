@@ -25,8 +25,6 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     private bool isAlive;
 
     [Space]
-    private Player player;
-    private Transform playerTransform;
     private Transform myTransform;
 
     private void Awake()
@@ -43,8 +41,6 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         animEventController = EnemyAnim.GetComponent<AnimEventController>();
         animEventController.OnAttack += OnAttack;
         //-----------------------------------------------
-        player = FindObjectOfType<Player>();
-        playerTransform = player.transform;
         myTransform = this.transform;
     }
 
@@ -96,9 +92,9 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
             else if (distance > Spawner.Instance.UnitDissapearDistance) { Remove(); }
             else
             {
-                lookPos = playerTransform.position;
+                lookPos = Player.Instance.PlayerTransform.position;
                 lookPos.y = myTransform.position.y;
-                EnemyAgent.SetDestination(playerTransform.position);
+                EnemyAgent.SetDestination(Player.Instance.PlayerTransform.position);
                 Body.DOLookAt(lookPos, 0.2f);
             }
         }
@@ -192,7 +188,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     #region  Attack
     private float DistToPlayer()
     {
-        return Vector3.Distance(playerTransform.position, myTransform.position);
+        return Vector3.Distance(Player.Instance.PlayerTransform.position, myTransform.position);
     }
 
     private void StartAttack()

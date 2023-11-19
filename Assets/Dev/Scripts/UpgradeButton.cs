@@ -12,10 +12,12 @@ public class UpgradeButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txt_SkillDescription;
     [SerializeField] private UpgradeType upgradeType;
     private PlayerData playerData;
+    private Player player;
 
     void Awake()
     {
         playerData = FindObjectOfType<PlayerData>();
+        player = FindObjectOfType<Player>();
         btn_Upgrade.onClick.AddListener(BtnUpgrade);
     }
 
@@ -32,13 +34,13 @@ public class UpgradeButton : MonoBehaviour
         switch (upgradeType)
         {
             case UpgradeType.SmallHeal:
-                Player.Instance.healthSystem.HealPercent(0.25f);
+                player.healthSystem.HealPercent(0.25f);
                 break;
             case UpgradeType.MediumHeal:
-                Player.Instance.healthSystem.HealPercent(0.5f);
+                player.healthSystem.HealPercent(0.5f);
                 break;
             case UpgradeType.LargeHeal:
-                Player.Instance.healthSystem.HealPercent(1f);
+                player.healthSystem.HealPercent(1f);
                 break;
             case UpgradeType.AddMaxHealth:
                 PlayerPrefs.SetInt("AddedMaxHealth", PlayerPrefs.GetInt("AddedMaxHealth") + 25);
@@ -76,7 +78,7 @@ public class UpgradeButton : MonoBehaviour
         }
         UIManager.Instance.EnablePanelUpgrade(false);
         playerData.LoadData();
-        Player.Instance.CheckUpgrades();
+        player.CheckUpgrades();
     }
 
 

@@ -9,9 +9,6 @@ using TMPro;
 
 public class Player : MonoBehaviour, IDamagable
 {
-    [Header("Data")]
-    private PlayerData playerData;
-
     [Header("Gun")]
     private Gun gun;
 
@@ -51,29 +48,31 @@ public class Player : MonoBehaviour, IDamagable
     [Header("State")]
     private bool Alive = true;
     private bool EnemyInRange = false;
+    private bool isAutoAim = false;
 
     [Space]
-    private Transform myTransform;
+    [HideInInspector] public Transform PlayerTransform;
 
     public static Player Instance { get; private set; }
+
     private void Awake()
     {
         Instance = this;
 
-        playerData = FindObjectOfType<PlayerData>();
         joystick = FindObjectOfType<FloatingJoystick>();
         Agent = GetComponent<NavMeshAgent>();
+
         Agent.updateRotation = false;
-        myTransform = this.transform;
+        PlayerTransform = this.transform;
 
         healthSystem.OnDead += OnDead;
     }
 
     public void StartGame()
     {
-        playerData.LoadData();
-        EquipGun(playerData.SelectedGun);
-        healthSystem.SetHealth(playerData.MaxHealth);
+        PlayerData.Instance.LoadData();
+        EquipGun(PlayerData.Instance.SelectedGun);
+        healthSystem.SetHealth(PlayerData.Instance.MaxHealth);
 
         StartCoroutine(TakeAimLoop());
         AddExperience(0);
@@ -81,8 +80,8 @@ public class Player : MonoBehaviour, IDamagable
 
     public void CheckUpgrades()
     {
-        // EquipGun(playerData.SelectedGun);
-        healthSystem.UpgradeMaxHealth(playerData.MaxHealth);
+        //EquipGun(PlayerData.Instance.SelectedGun);
+        healthSystem.UpgradeMaxHealth(PlayerData.Instance.MaxHealth);
     }
 
     private void EquipGun(GunType _gunType)
@@ -108,7 +107,7 @@ public class Player : MonoBehaviour, IDamagable
     {
         direction.x = joystick.Horizontal;
         direction.z = joystick.Vertical;
-        Agent.Move(direction * playerData.MovementSpeed * Time.deltaTime);
+        Agent.Move(direction * PlayerData.Instance.MovementSpeed * Time.deltaTime);
 
         if (direction.magnitude > 0 && !EnemyInRange)
         {
@@ -124,6 +123,12 @@ public class Player : MonoBehaviour, IDamagable
     }
 
     #region GunFire
+    public void EnableAutoAim(bool state)
+    {
+        isAutoAim = state;
+    }
+
+    #region ---AutoAim---
     private IEnumerator TakeAimLoop()
     {
         while (Alive)
@@ -137,15 +142,19 @@ public class Player : MonoBehaviour, IDamagable
         Spawner.Instance.ActiveEnemies.UpdatePositions();
         if (Spawner.Instance.ActiveEnemies.Count > 0)
         {
-            if (ClosestEnemy != null) ClosestEnemy.GetComponent<ITargetable>().Targeted(false);
-            ClosestEnemy = Spawner.Instance.ActiveEnemies.FindClosest(myTransform.position);
+            if (ClosestEnemy != null)
+            {
+                ClosestEnemy.GetComponent<ITargetable>().Targeted(false);
+            }
+
+            ClosestEnemy = Spawner.Instance.ActiveEnemies.FindClosest(PlayerTransform.position);
             ClosestEnemy.GetComponent<ITargetable>().Targeted(true);
-            DistanceToEnemy = Vector3.Distance(ClosestEnemy.position, myTransform.position);
+            DistanceToEnemy = Vector3.Distance(ClosestEnemy.position, PlayerTransform.position);
 
             TargetPoint = ClosestEnemy.position;
             TargetPoint.y += DefaultAimPoint.position.y;
 
-            if (DistanceToEnemy <= playerData.FireRange)
+            if (DistanceToEnemy <= PlayerData.Instance.FireRange)
             {
                 EnemyInRange = true;
                 PlayerAnim.SetBool("Aim", true);
@@ -185,6 +194,8 @@ public class Player : MonoBehaviour, IDamagable
     }
     #endregion
 
+    #endregion
+
     private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
@@ -203,7 +214,7 @@ public class Player : MonoBehaviour, IDamagable
         switch (other.tag)
         {
             case "Gate":
-                other.GetComponent<Gate>().PassGate(myTransform.position);
+                other.GetComponent<Gate>().PassGate(PlayerTransform.position);
                 break;
         }
     }
@@ -212,7 +223,7 @@ public class Player : MonoBehaviour, IDamagable
     public void TakeDamage(float damageTaken)
     {
         healthSystem.TakeDamage(damageTaken);
-        Spawner.Instance.WorldTextPopup(((int)damageTaken).ToString(), myTransform.position, Color.red);
+        Spawner.Instance.WorldTextPopup(((int)damageTaken).ToString(), PlayerTransform.position, Color.red);
     }
 
     private void OnDead()
@@ -224,24 +235,24 @@ public class Player : MonoBehaviour, IDamagable
     #region LevelSystem
     public void AddExperience(int _amount)
     {
-        playerData.exp += _amount;
-        if (playerData.exp >= playerData.expPerLevel[playerData.level])
+        PlayerData.Instance.exp += _amount;
+        if (PlayerData.Instance.exp >= PlayerData.Instance.expPerLevel[PlayerData.Instance.level])
         {
             LevelUp();
         }
-        expAmount = (float)playerData.exp / (float)playerData.expPerLevel[playerData.level];
+        expAmount = (float)PlayerData.Instance.exp / (float)PlayerData.Instance.expPerLevel[PlayerData.Instance.level];
         DOTween.To(() => slider_Exp.value, x => slider_Exp.value = x, expAmount, 0.25f).SetEase(Ease.Linear);
-        PlayerPrefs.SetInt("Exp", playerData.exp);
+        PlayerPrefs.SetInt("Exp", PlayerData.Instance.exp);
     }
 
     private void LevelUp()
     {
-        playerData.exp = 0;
+        PlayerData.Instance.exp = 0;
         slider_Exp.value = 0;
-        if (playerData.level < playerData.expPerLevel.Count - 1)
+        if (PlayerData.Instance.level < PlayerData.Instance.expPerLevel.Count - 1)
         {
-            playerData.level += 1;
-            txt_Level.text = "Lv." + (playerData.level + 1).ToString();
+            PlayerData.Instance.level += 1;
+            txt_Level.text = "Lv." + (PlayerData.Instance.level + 1).ToString();
         }
         else
         {
@@ -249,7 +260,7 @@ public class Player : MonoBehaviour, IDamagable
         }
 
         particle_LevelUp.SetActive(true);
-        PlayerPrefs.SetInt("Level", playerData.level);
+        PlayerPrefs.SetInt("Level", PlayerData.Instance.level);
         UIManager.Instance.EnablePanelUpgrade(true);
     }
 

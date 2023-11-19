@@ -11,16 +11,11 @@ public class GameManager : MonoBehaviour
     [Range(30, 60)][SerializeField] private int FPS_target = 60;
     [SerializeField] private bool FPS_counter = true;
 
-    public static GameManager Instance { get; private set; }
 
-    private void Awake()
+    public static GameManager Instance { get; private set; }
+    void Awake()
     {
         Instance = this;
-    }
-
-    public void Reload()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void Start()
@@ -30,6 +25,11 @@ public class GameManager : MonoBehaviour
         Enviroment.Instance.CreateCity();
         Player.Instance.StartGame();
         Spawner.Instance.StartGame();
+    }
+
+    public void Reload()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void FPS()

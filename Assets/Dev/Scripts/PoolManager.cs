@@ -52,7 +52,7 @@ public class PoolManager : MonoBehaviour
     private GameObject tempObject;
 
     public static PoolManager Instance { get; private set; }
-    private void Awake()
+    void Awake()
     {
         Instance = this;
     }

@@ -24,14 +24,11 @@ public class Spawner : MonoBehaviour
     private GameObject spawnee;
     private GameObject tempObject;
     private int SpawnPosID;
-    private Player player;
-
     public static Spawner Instance { get; private set; }
+
     private void Awake()
     {
         Instance = this;
-        player = FindObjectOfType<Player>();
-
         for (int i = 0; i < SpawnPointsParent.childCount; i++)
         {
             SpawnPoints.Add(SpawnPointsParent.GetChild(i));
@@ -66,7 +63,7 @@ public class Spawner : MonoBehaviour
     {
         SpawnPosID++;
         if (SpawnPosID >= SpawnPoints.Count) { SpawnPosID = 0; }
-        while (Vector3.Distance(SpawnPoints[SpawnPosID].position, player.transform.position) < MinEnemyDistanceToSpawn)
+        while (Vector3.Distance(SpawnPoints[SpawnPosID].position, Player.Instance.PlayerTransform.position) < MinEnemyDistanceToSpawn)
         {
             SpawnPosID++;
             if (SpawnPosID >= SpawnPoints.Count) { SpawnPosID = 0; }
@@ -99,13 +96,12 @@ public class Spawner : MonoBehaviour
 
     #region Exp -----------------------
     private Vector3 randomPos;
-    private Vector3 spawnPos;
     private float randomAngle;
     private float dropDistance;
 
-    public void DropExperience(Vector3 _pos)
+    public void DropExperience(Vector3 _dropPos)
     {
-        spawnPos = new Vector3(_pos.x, 1, _pos.z);
+        _dropPos.y += 1;
         dropDistance = Random.Range(ItemDropDistanceMin, ItemDropDistanceMax);
 
         randomAngle = Random.Range(0, 360);
@@ -113,9 +109,9 @@ public class Spawner : MonoBehaviour
         randomPos.z = Mathf.Cos(randomAngle) * dropDistance;
 
         tempObject = PoolManager.Instance.GetFromPool(PoolTypes.Experience);
-        tempObject.transform.position = spawnPos;
+        tempObject.transform.position = _dropPos;
         tempObject.SetActive(true);
-        tempObject.transform.DOJump(spawnPos + randomPos, 3, 1, 0.5f * dropDistance);
+        tempObject.transform.DOJump(_dropPos + randomPos, 3, 1, 0.5f * dropDistance);
     }
     #endregion
 

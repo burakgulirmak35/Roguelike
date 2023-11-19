@@ -5,17 +5,8 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private ParticleSystem[] BulletParticles;
     [SerializeField] private Rigidbody rb;
-
-    private PoolManager poolManager;
-    private PlayerData playerData;
     private int bounceCount;
-
     private GameObject tempObject;
-    private void Awake()
-    {
-        poolManager = FindObjectOfType<PoolManager>();
-        playerData = FindObjectOfType<PlayerData>();
-    }
 
     private void OnEnable()
     {
@@ -25,7 +16,7 @@ public class Bullet : MonoBehaviour
             BulletParticles[i].time = 0;
             BulletParticles[i].Play();
         }
-        bounceCount = playerData.BounceCount;
+        bounceCount = PlayerData.Instance.BounceCount;
         StartDisableTimer();
     }
 
@@ -35,12 +26,12 @@ public class Bullet : MonoBehaviour
         switch (other.tag)
         {
             case "Enemy":
-                other.gameObject.GetComponent<IDamagable>().TakeDamage(playerData.Damage);
-                tempObject = poolManager.GetFromPool(PoolTypes.BloodShot);
+                other.gameObject.GetComponent<IDamagable>().TakeDamage(PlayerData.Instance.Damage);
+                tempObject = PoolManager.Instance.GetFromPool(PoolTypes.BloodShot);
                 tempObject.transform.position = transform.position;
                 tempObject.SetActive(true);
-                if (playerData.ExplosiveAmmo) { Explode(); }
-                if (playerData.Penetrability) { Penetration(); }
+                if (PlayerData.Instance.ExplosiveAmmo) { Explode(); }
+                if (PlayerData.Instance.Penetrability) { Penetration(); }
                 else { Disable(); }
 
                 break;
@@ -64,12 +55,12 @@ public class Bullet : MonoBehaviour
         explosion.transform.position = transform.position;
         explosion.SetActive(true);
 
-        hitColliders = Physics.OverlapSphere(transform.position, playerData.ExplosiveAmmoRange);
+        hitColliders = Physics.OverlapSphere(transform.position, PlayerData.Instance.ExplosiveAmmoRange);
         for (int i = 0; i < hitColliders.Length; i++)
         {
             if (hitColliders[i].tag.Equals("Enemy"))
             {
-                hitColliders[i].gameObject.GetComponent<IDamagable>().TakeDamage(playerData.ExplosiveAmmoDamage);
+                hitColliders[i].gameObject.GetComponent<IDamagable>().TakeDamage(PlayerData.Instance.ExplosiveAmmoDamage);
             }
         }
     }
@@ -91,7 +82,7 @@ public class Bullet : MonoBehaviour
             dir = Vector3.Reflect(rb.velocity.normalized, hit.normal);
             rb.velocity = Vector3.zero;
             transform.forward = dir;
-            rb.velocity = transform.forward * playerData.BulletSpeed;
+            rb.velocity = transform.forward * PlayerData.Instance.BulletSpeed;
         }
     }
 

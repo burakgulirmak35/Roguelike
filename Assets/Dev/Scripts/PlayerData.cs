@@ -48,6 +48,12 @@ public class PlayerData : MonoBehaviour
     public int level;
     public int exp;
 
+    public static PlayerData Instance { get; private set; }
+    void Awake()
+    {
+        Instance = this;
+    }
+
     public void LoadData()
     {
         exp = PlayerPrefs.GetInt("Exp");

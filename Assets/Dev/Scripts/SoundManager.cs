@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager Instance { get; private set; }
     public float volume;
     [Header("----------------------------")]
     public Sound GrenadeExplosion;
@@ -17,11 +16,6 @@ public class SoundManager : MonoBehaviour
     public Sound Grenade;
     public Sound Minigun;
     public Sound Rocket;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
 
     public void PlayGunSound(GunType gunType)
     {
