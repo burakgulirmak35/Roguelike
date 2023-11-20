@@ -69,8 +69,8 @@ MonoBehaviour:
   BaseFireRange: 15
   BaseBurstCount: 1
   BaseBounceCount: 0
-  BaseExplosiveAmmoRange: 5
-  BaseExplosiveAmmoDamage: 5
+  BaseExplosiveAmmoRange: 1
+  BaseExplosiveAmmoDamage: 1
   MaxHealth: 0
   MovementSpeed: 0
   Damage: 0

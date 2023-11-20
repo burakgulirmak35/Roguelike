@@ -64,7 +64,6 @@ public class HealthSystem
 
     public void TakeDamage(float amount)
     {
-        return;
         if (!isAlive) return;
         health -= amount;
         if (health <= 0)
@@ -72,7 +71,7 @@ public class HealthSystem
             health = 0;
             slider_Health.value = 0;
             txt_Health.text = ((int)health).ToString();
-            OnDead?.Invoke();
+            // OnDead?.Invoke();
             return;
         }
         healthAmount = health / maxHealth;

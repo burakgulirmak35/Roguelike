@@ -547,6 +547,8 @@ MonoBehaviour:
   LeftArmIK: {fileID: 8367365376771678976}
   RightArmIK: {fileID: 7198098958840519036}
   BodyIK: {fileID: 5673174587452668376}
+  isAutoAim: 0
+  PlayerTransform: {fileID: 0}
 --- !u!54 &736094241523218622
 Rigidbody:
   m_ObjectHideFlags: 0

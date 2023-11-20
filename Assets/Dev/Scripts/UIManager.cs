@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,7 +13,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<UpgradeButton> upgradeButtons = new List<UpgradeButton>();
     private UpgradeSO upgradeSO;
     [Header("Controllers")]
-    [SerializeField] private GameObject AimJoystick;
+    [SerializeField] private GameObject LeftJoystick;
+    [SerializeField] private GameObject RightJoystick;
+    [Header("Buttons")]
+    [SerializeField] private GameObject img_ToggleAim;
+    [SerializeField] private GameObject img_AutoAim;
+    [SerializeField] private GameObject img_ManuelAim;
 
     void Awake()
     {
@@ -23,17 +30,21 @@ public class UIManager : MonoBehaviour
         CloseAllPanels();
     }
 
-    private void CheckOrientation()
+    public void ToggleAim()
     {
-        if (Screen.orientation == ScreenOrientation.Portrait)
+        if (Player.Instance.isAutoAim)
         {
-            AimJoystick.SetActive(false);
-            Player.Instance.EnableAutoAim(false);
+            RightJoystick.SetActive(false);
+
+            img_AutoAim.SetActive(true);
+            img_ManuelAim.SetActive(false);
         }
         else
         {
-            AimJoystick.SetActive(true);
-            Player.Instance.EnableAutoAim(true);
+            RightJoystick.SetActive(true);
+
+            img_AutoAim.SetActive(false);
+            img_ManuelAim.SetActive(true);
         }
     }
 

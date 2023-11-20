@@ -6,6 +6,7 @@ using DG.Tweening;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, IDamagable
 {
@@ -19,9 +20,16 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private Transform Body;
     [SerializeField] private GameObject Rifle;
     [Space]
+    private PlayerInputActions playerInputActions;
+    private InputAction moveAction;
+    private InputAction aimAction;
+    private InputAction toggleAimAction;
+    [Space]
     private NavMeshAgent Agent;
-    private FloatingJoystick joystick;
-    private Vector3 direction;
+    private Vector3 moveDirection;
+    private Vector3 aimDirection;
+    private Vector2 leftJoystick;
+    private Vector2 rightJoystick;
 
     [Header("Health")]
     [SerializeField] public HealthSystem healthSystem;
@@ -47,8 +55,8 @@ public class Player : MonoBehaviour, IDamagable
 
     [Header("State")]
     private bool Alive = true;
-    private bool EnemyInRange = false;
-    private bool isAutoAim = false;
+    [HideInInspector] public bool isAutoAim = false;
+    private bool isAiming = false;
 
     [Space]
     [HideInInspector] public Transform PlayerTransform;
@@ -58,14 +66,24 @@ public class Player : MonoBehaviour, IDamagable
     private void Awake()
     {
         Instance = this;
-
-        joystick = FindObjectOfType<FloatingJoystick>();
         Agent = GetComponent<NavMeshAgent>();
 
         Agent.updateRotation = false;
         PlayerTransform = this.transform;
 
         healthSystem.OnDead += OnDead;
+
+        playerInputActions = new PlayerInputActions();
+
+        moveAction = playerInputActions.Player.Move;
+        moveAction.Enable();
+
+        aimAction = playerInputActions.Player.Aim;
+        aimAction.Enable();
+
+        toggleAimAction = playerInputActions.Player.ToggleAim;
+        toggleAimAction.performed += ToggleAim;
+        toggleAimAction.Enable();
     }
 
     public void StartGame()
@@ -73,9 +91,19 @@ public class Player : MonoBehaviour, IDamagable
         PlayerData.Instance.LoadData();
         EquipGun(PlayerData.Instance.SelectedGun);
         healthSystem.SetHealth(PlayerData.Instance.MaxHealth);
-
-        StartCoroutine(TakeAimLoop());
         AddExperience(0);
+        PrepareAim();
+    }
+
+    private void PrepareAim()
+    {
+        Aim(false);
+        isAutoAim = PlayerPrefs.GetInt("AutoAim") == 1 ? true : false;
+        UIManager.Instance.ToggleAim();
+        if (isAutoAim)
+        {
+            AutoAimCoro = StartCoroutine(AutoAimLoop());
+        }
     }
 
     public void CheckUpgrades()
@@ -102,42 +130,133 @@ public class Player : MonoBehaviour, IDamagable
         LeftArmTarget.rotation = gun.GetLeftHandPos().rotation;
     }
 
+
     //Vertical yukarı aşağı
+    private float velocityZ;
+    private float velocityX;
     private void Update()
     {
-        direction.x = joystick.Horizontal;
-        direction.z = joystick.Vertical;
-        Agent.Move(direction * PlayerData.Instance.MovementSpeed * Time.deltaTime);
-
-        if (direction.magnitude > 0 && !EnemyInRange)
+        JoystickMove();
+        if (!isAutoAim)
         {
-            Body.forward = direction;
+            JoystickAim();
+        }
+    }
+
+    #region --- Movement ---
+    private void JoystickMove()
+    {
+        leftJoystick = moveAction.ReadValue<Vector2>();
+        moveDirection.x = leftJoystick.x;
+        moveDirection.z = leftJoystick.y;
+
+        Agent.Move(moveDirection * PlayerData.Instance.MovementSpeed * Time.deltaTime);
+        if (moveDirection.magnitude > 0 && !isAiming)
+        {
+            Body.forward = moveDirection;
         }
 
-        float velocityZ = Vector3.Dot(direction.normalized, Body.forward);
-        float velocityX = Vector3.Dot(direction.normalized, Body.right);
+        velocityZ = Vector3.Dot(moveDirection.normalized, Body.forward);
+        velocityX = Vector3.Dot(moveDirection.normalized, Body.right);
 
-        PlayerAnim.SetFloat("Speed", direction.magnitude * 2);
+        PlayerAnim.SetFloat("Speed", moveDirection.magnitude);
         PlayerAnim.SetFloat("Vertical", velocityZ);
         PlayerAnim.SetFloat("Horizontal", velocityX);
     }
+    #endregion
 
     #region GunFire
-    public void EnableAutoAim(bool state)
+    public void ToggleAim(InputAction.CallbackContext callbackContext)
     {
-        isAutoAim = state;
+        Aim(false);
+        isAutoAim = !isAutoAim;
+        UIManager.Instance.ToggleAim();
+        PlayerPrefs.SetInt("AutoAim", isAutoAim ? 1 : 0);
+
+        if (isAutoAim)
+        {
+            if (AutoAimCoro != null)
+            {
+                StopCoroutine(AutoAimCoro);
+            }
+            AutoAimCoro = StartCoroutine(AutoAimLoop());
+        }
+        else
+        {
+            if (AutoAimCoro != null)
+            {
+                StopCoroutine(AutoAimCoro);
+            }
+        }
     }
 
+    #region ---JoystickAim---
+    private void Aim(bool state)
+    {
+        if (state)
+        {
+            isAiming = true;
+            PlayerAnim.SetBool("Aim", true);
+            LeftArmIK.weight = 1;
+            RightArmIK.weight = 1;
+            BodyIK.weight = 1;
+
+            gun.StartFire();
+        }
+        else
+        {
+            gun.StopFire();
+
+            isAiming = false;
+            PlayerAnim.SetBool("Aim", false);
+            AimPoint.position = DefaultAimPoint.position;
+            LeftArmIK.weight = 0;
+            RightArmIK.weight = 0;
+            BodyIK.weight = 0;
+        }
+
+    }
+    #endregion
+
+    #region ---JoystickAim---
+    private void JoystickAim()
+    {
+        rightJoystick = aimAction.ReadValue<Vector2>();
+        aimDirection.x = rightJoystick.x;
+        aimDirection.z = rightJoystick.y;
+        aimDirection = aimDirection.normalized;
+
+        if (rightJoystick.magnitude > 0)
+        {
+            TargetPoint = Body.position + aimDirection;
+            Body.forward = aimDirection;
+
+            TargetPoint.y = DefaultAimPoint.position.y;
+            AimPoint.position = TargetPoint;
+
+            if (!isAiming)
+            {
+                Aim(true);
+            }
+        }
+        else if (isAiming)
+        {
+            Aim(false);
+        }
+    }
+    #endregion
+
     #region ---AutoAim---
-    private IEnumerator TakeAimLoop()
+    private Coroutine AutoAimCoro;
+    private IEnumerator AutoAimLoop()
     {
         while (Alive)
         {
-            TakeAim();
+            AutoAim();
             yield return new WaitForSeconds(0.1f);
         }
     }
-    private void TakeAim()
+    private void AutoAim()
     {
         Spawner.Instance.ActiveEnemies.UpdatePositions();
         if (Spawner.Instance.ActiveEnemies.Count > 0)
@@ -152,44 +271,25 @@ public class Player : MonoBehaviour, IDamagable
             DistanceToEnemy = Vector3.Distance(ClosestEnemy.position, PlayerTransform.position);
 
             TargetPoint = ClosestEnemy.position;
-            TargetPoint.y += DefaultAimPoint.position.y;
+            TargetPoint.y = DefaultAimPoint.position.y;
 
             if (DistanceToEnemy <= PlayerData.Instance.FireRange)
             {
-                EnemyInRange = true;
-                PlayerAnim.SetBool("Aim", true);
                 AimPoint.position = TargetPoint;
-
                 TargetPoint.y = Body.position.y;
                 Body.DOLookAt(TargetPoint, 0.1f);
-
-                LeftArmIK.weight = 1;
-                RightArmIK.weight = 1;
-                BodyIK.weight = 1;
-                gun.StartFire();
+                Aim(true);
             }
             else
             {
-                gun.StopFire();
-                EnemyInRange = false;
-                PlayerAnim.SetBool("Aim", false);
                 AimPoint.position = DefaultAimPoint.position;
-
-                LeftArmIK.weight = 0;
-                RightArmIK.weight = 0;
-                BodyIK.weight = 0;
+                Aim(false);
             }
         }
         else
         {
-            gun.StopFire();
-            EnemyInRange = false;
-            PlayerAnim.SetBool("Aim", false);
             AimPoint.position = DefaultAimPoint.position;
-
-            LeftArmIK.weight = 0;
-            RightArmIK.weight = 0;
-            BodyIK.weight = 0;
+            Aim(false);
         }
     }
     #endregion
