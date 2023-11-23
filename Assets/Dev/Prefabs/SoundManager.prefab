@@ -67,8 +67,7 @@ MonoBehaviour:
     maxPitch: 1
   Rifle:
     audioClip:
-    - {fileID: 8300000, guid: 92a79699f236d3341bd4f95d66f33bee, type: 3}
-    - {fileID: 8300000, guid: ed0248ee2f79347479c2d8c657bf2c16, type: 3}
+    - {fileID: 8300000, guid: c922c34f559ead440a273a13a924cfc7, type: 3}
     minVolume: 1
     maxVolume: 1
     minPitch: 1.1

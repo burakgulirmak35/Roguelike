@@ -77,7 +77,7 @@ public class Bullet : MonoBehaviour
         bounceCount--;
         StartDisableTimer();
 
-        if (Physics.Raycast(transform.position - Vector3.forward * 10, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, 7))
+        if (Physics.Raycast(transform.position - Vector3.forward * 1, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, 7))
         {
             dir = Vector3.Reflect(rb.velocity.normalized, hit.normal);
             rb.velocity = Vector3.zero;

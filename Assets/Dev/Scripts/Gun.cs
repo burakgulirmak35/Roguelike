@@ -53,6 +53,8 @@ public class Gun : MonoBehaviour
     }
 
     private GameObject tmpBullet;
+    private Transform tmpBulletTransform;
+    private Rigidbody tmpBulletRB;
     private IEnumerator FireLoop()
     {
         while (isFire)
@@ -65,13 +67,16 @@ public class Gun : MonoBehaviour
                     if (isFire)
                     {
                         tmpBullet = poolManager.GetFromPool(PoolTypes.Bullet);
-                        tmpBullet.transform.position = firePoint[i].position;
-                        tmpBullet.transform.forward = firePoint[i].forward;
+                        tmpBulletTransform = tmpBullet.transform;
+                        tmpBulletTransform.position = firePoint[i].position;
+                        tmpBulletTransform.forward = firePoint[i].forward;
+                        tmpBulletRB = tmpBullet.GetComponent<Rigidbody>();
+                        tmpBulletRB.velocity = Vector3.zero;
 
                         Muzzle.Play();
                         tmpBullet.SetActive(true);
                         soundManager.PlayGunSound(playerData.SelectedGun);
-                        tmpBullet.GetComponent<Rigidbody>().AddForce(tmpBullet.transform.forward * playerData.BulletSpeed, ForceMode.Impulse);
+                        tmpBulletRB.AddForce(tmpBullet.transform.forward * playerData.BulletSpeed, ForceMode.Impulse);
 
                         yield return new WaitForSeconds(playerData.EachBurstTime);
                     }

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     [Header("Performance Settings")]
     [SerializeField] private bool vSync_enable = false;
     [SerializeField] private bool FPS_limit = true;
-    [Range(30, 60)][SerializeField] private int FPS_target = 60;
+    [Range(-1, 60)][SerializeField] private int FPS_target = 60;
     [SerializeField] private bool FPS_counter = true;
 
 
