@@ -53,7 +53,7 @@ public class SoundManager : MonoBehaviour
         audioSource.clip = _audio.audioClip[Random.Range(0, _audio.audioClip.Length)];
         audioSource.dopplerLevel = 0;
         audioSource.reverbZoneMix = 0;
-        audioSource.volume = Random.Range(_audio.minVolume, _audio.maxVolume);
+        audioSource.volume = Random.Range(_audio.minVolume, _audio.maxVolume)*volume;
         audioSource.pitch = Random.Range(_audio.minPitch, _audio.maxPitch);
         audioSource.Play();
         Destroy(audioSource, 1f);
