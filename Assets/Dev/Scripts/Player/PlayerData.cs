@@ -10,14 +10,16 @@ public enum GunType
 
 public class PlayerData : MonoBehaviour
 {
-    [Header("LevelSettings")]
+    [Header("------------LevelSettings------------")]
     public List<int> expPerLevel = new List<int>();
-    public List<UpgradeSO> Upgrades = new List<UpgradeSO>();
+    [Header("------------Level------------")]
+    public int level;
+    public int exp;
 
     [Header("DontChange")]
     public float EachBurstTime;
     public float BulletSpeed;
-    [Header("Base")]
+    [Header("------------Base------------")]
     public float BaseMaxHealth;
     public float BaseMovementSpeed;
     [Space]
@@ -29,7 +31,7 @@ public class PlayerData : MonoBehaviour
     [Space]
     public float BaseExplosiveAmmoRange;
     public float BaseExplosiveAmmoDamage;
-    [Header("Current")]
+    [Header("------------Current------------")]
     public float MaxHealth;
     public float MovementSpeed;
     [Space]
@@ -40,13 +42,23 @@ public class PlayerData : MonoBehaviour
     public int BounceCount;
     public float ExplosiveAmmoRange;
     public float ExplosiveAmmoDamage;
-    [Header("Special")]
+    [Space]
     public bool Penetrability;
     public bool ExplosiveAmmo;
     public GunType SelectedGun;
-    [Header("Level")]
-    public int level;
-    public int exp;
+
+    [Header("------------UpgradeSettings------------")]
+    public List<UpgradeSO> Upgrades = new List<UpgradeSO>();
+    [Range(0, 1)] public float SmallHealPercent;
+    [Range(0, 1)] public float MediumHealPercent;
+    [Range(0, 1)] public float LargeHealPercent;
+    [Range(0, 1)] public float AddMaxHealthPercent;
+    [Range(0, 1)] public float AddMovementSpeed;
+    [Range(0, 100)] public int AddDamage;
+    [Range(0, 1)] public float AddedFireRateAmount;
+    [Range(0, 1)] public float AddedFireRangeAmount;
+    [Range(0, 100)] public float AddExplosiveAmmoRange;
+    [Range(0, 100)] public int AddExplosiveAmmoDamage;
 
     public static PlayerData Instance { get; private set; }
     void Awake()
@@ -59,15 +71,15 @@ public class PlayerData : MonoBehaviour
         exp = PlayerPrefs.GetInt("Exp");
         level = PlayerPrefs.GetInt("Level");
 
-        MaxHealth = BaseMaxHealth + PlayerPrefs.GetInt("AddedMaxHealth");
+        MaxHealth = BaseMaxHealth + PlayerPrefs.GetFloat("AddedMaxHealth");
         MovementSpeed = BaseMovementSpeed + PlayerPrefs.GetFloat("AddedMovementSpeed");
         Damage = BaseDamage + PlayerPrefs.GetInt("AddedDamage");
         FireRate = BaseFireRate + PlayerPrefs.GetFloat("AddedFireRate");
         FireRange = BaseFireRange + PlayerPrefs.GetFloat("AddedFireRange");
         BurstCount = BaseBurstCount + PlayerPrefs.GetInt("AddedBurstCount");
         BounceCount = BaseBounceCount + PlayerPrefs.GetInt("AddedBounceCount");
-        ExplosiveAmmoRange = BaseExplosiveAmmoRange + PlayerPrefs.GetInt("AddedExplosiveAmmoRange");
-        ExplosiveAmmoDamage = BaseExplosiveAmmoDamage + PlayerPrefs.GetInt("AddedExplosiveAmmoDamage");
+        ExplosiveAmmoRange = BaseExplosiveAmmoRange + PlayerPrefs.GetFloat("AddedExplosiveAmmoRange");
+        ExplosiveAmmoDamage = BaseExplosiveAmmoDamage + PlayerPrefs.GetFloat("AddedExplosiveAmmoDamage");
 
         Penetrability = PlayerPrefs.GetInt("Penetrability") == 1 ? true : false;
         ExplosiveAmmo = PlayerPrefs.GetInt("ExplosiveAmmo") == 1 ? true : false;

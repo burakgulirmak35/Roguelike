@@ -12,6 +12,7 @@ public class LookCam : MonoBehaviour
 
     private void LateUpdate()
     {
+        Debug.LogError("hello");
         transform.LookAt(MainCam);
     }
 }

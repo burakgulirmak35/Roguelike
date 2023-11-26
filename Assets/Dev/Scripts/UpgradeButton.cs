@@ -34,28 +34,28 @@ public class UpgradeButton : MonoBehaviour
         switch (upgradeType)
         {
             case UpgradeType.SmallHeal:
-                player.healthSystem.HealPercent(0.25f);
+                player.healthSystem.HealPercent(PlayerData.Instance.SmallHealPercent);
                 break;
             case UpgradeType.MediumHeal:
-                player.healthSystem.HealPercent(0.5f);
+                player.healthSystem.HealPercent(PlayerData.Instance.MediumHealPercent);
                 break;
             case UpgradeType.LargeHeal:
-                player.healthSystem.HealPercent(1f);
+                player.healthSystem.HealPercent(PlayerData.Instance.LargeHealPercent);
                 break;
             case UpgradeType.AddMaxHealth:
-                PlayerPrefs.SetInt("AddedMaxHealth", PlayerPrefs.GetInt("AddedMaxHealth") + 25);
+                PlayerPrefs.SetFloat("AddedMaxHealth", PlayerPrefs.GetFloat("AddedMaxHealth") + (PlayerPrefs.GetFloat("AddedMaxHealth") * PlayerData.Instance.AddMaxHealthPercent));
                 break;
             case UpgradeType.AddMovementSpeed:
-                PlayerPrefs.SetFloat("AddedMovementSpeed", PlayerPrefs.GetFloat("AddedMovementSpeed") + 0.25f);
+                PlayerPrefs.SetFloat("AddedMovementSpeed", PlayerPrefs.GetFloat("AddedMovementSpeed") + PlayerData.Instance.AddMovementSpeed);
                 break;
             case UpgradeType.AddDamage:
-                PlayerPrefs.SetInt("AddedDamage", PlayerPrefs.GetInt("AddedDamage") + 5);
+                PlayerPrefs.SetInt("AddedDamage", PlayerPrefs.GetInt("AddedDamage") + PlayerData.Instance.AddDamage);
                 break;
             case UpgradeType.AddFireRate:
-                PlayerPrefs.SetFloat("AddedFireRate", PlayerPrefs.GetFloat("AddedFireRate") + 0.25f);
+                PlayerPrefs.SetFloat("AddedFireRate", PlayerPrefs.GetFloat("AddedFireRate") + PlayerData.Instance.AddedFireRateAmount);
                 break;
             case UpgradeType.AddFireRange:
-                PlayerPrefs.SetFloat("AddedFireRange", PlayerPrefs.GetFloat("AddedFireRange") + 1);
+                PlayerPrefs.SetFloat("AddedFireRange", PlayerPrefs.GetFloat("AddedFireRange") + PlayerData.Instance.AddedFireRangeAmount);
                 break;
             case UpgradeType.AddBurstCount:
                 PlayerPrefs.SetInt("AddedBurstCount", PlayerPrefs.GetInt("AddedBurstCount") + 1);
@@ -70,10 +70,10 @@ public class UpgradeButton : MonoBehaviour
                 PlayerPrefs.SetInt("ExplosiveAmmo", 1);
                 break;
             case UpgradeType.ExplosiveAmmoRange:
-                PlayerPrefs.SetInt("AddedExplosiveAmmoRange", 1);
+                PlayerPrefs.SetFloat("AddedExplosiveAmmoRange", PlayerData.Instance.AddExplosiveAmmoRange);
                 break;
             case UpgradeType.ExplosiveAmmoDamage:
-                PlayerPrefs.SetInt("AddedExplosiveAmmoDamage", 1);
+                PlayerPrefs.SetInt("AddedExplosiveAmmoDamage", PlayerData.Instance.AddExplosiveAmmoDamage);
                 break;
         }
         UIManager.Instance.EnablePanelUpgrade(false);

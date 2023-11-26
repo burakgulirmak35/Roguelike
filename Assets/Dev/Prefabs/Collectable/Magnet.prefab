@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7263793619974930167}
   - component: {fileID: 4364502991029078623}
   m_Layer: 0
-  m_Name: Experience
+  m_Name: Magnet
   m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c64628cde31b9b48b07a266ac555354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectableSO: {fileID: 11400000, guid: 397c90c5785830144852bb81ad8c49c7, type: 2}
+  collectableSO: {fileID: 11400000, guid: 2d3262972dbe8c949a7a0af9ddbe60de, type: 2}
 --- !u!135 &7263793619974930167
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -169,7 +169,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8865df1114fa24fed914687ef9ce0ce8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea73c8c20afcd4bf4b8a82f0bedfe2ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -326,10 +326,34 @@ public class Player : MonoBehaviour, IDamagable
         Spawner.Instance.WorldTextPopup(((int)damageTaken).ToString(), PlayerTransform.position, Color.red);
     }
 
+    private int RandomAnimationIndex()
+    {
+        return Random.Range(0, 4);
+    }
     private void OnDead()
     {
-        GameManager.Instance.Reload();
+        this.enabled = false;
+        Agent.enabled = false;
+
+        Aim(false);
+        Alive = false;
+
+        PlayerAnim.Play("Dead " + RandomAnimationIndex().ToString());
+        UIManager.Instance.EnablePanelPlayerDead(true);
     }
+
+    public void ReBorn()
+    {
+        Agent.enabled = true;
+        PlayerAnim.SetBool("Alive", true);
+        healthSystem.HealPercent(1f);
+        Alive = true;
+
+        this.enabled = true;
+        PrepareAim();
+
+    }
+
     #endregion
 
     #region LevelSystem

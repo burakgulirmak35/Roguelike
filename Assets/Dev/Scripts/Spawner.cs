@@ -21,9 +21,7 @@ public class Spawner : MonoBehaviour
     [Space]
     private List<Transform> SpawnPoints = new List<Transform>();
     private List<Transform> EnemyList = new List<Transform>();
-    private GameObject spawnee;
-    private GameObject tempObject;
-    private int SpawnPosID;
+
     public static Spawner Instance { get; private set; }
 
     private void Awake()
@@ -40,6 +38,8 @@ public class Spawner : MonoBehaviour
         StartCoroutine(SpawnTimer());
     }
 
+    private int SpawnPosID;
+    private GameObject spawnee;
     private IEnumerator SpawnTimer()
     {
         while (true)
@@ -81,40 +81,64 @@ public class Spawner : MonoBehaviour
 
     #region CreateText -----------------------
     private TextMeshProUGUI tempText;
+    private GameObject tempTextObject;
     public void WorldTextPopup(string text, Vector3 position, Color textColor)
     {
-        tempObject = PoolManager.Instance.GetFromPool(PoolTypes.WorldTextPopup);
-        tempText = tempObject.GetComponent<PopupText>().txt_Popup;
-        tempObject.transform.position = position;
+        tempTextObject = PoolManager.Instance.GetFromPool(PoolTypes.WorldTextPopup);
+        tempText = tempTextObject.GetComponent<PopupText>().txt_Popup;
+        tempTextObject.transform.position = position;
         tempText.text = text;
         tempText.color = textColor;
-        tempObject.SetActive(true);
-        StartCoroutine(DisableObject(tempObject, 1.5f));
+        tempTextObject.SetActive(true);
+        StartCoroutine(DisableObject(tempTextObject, 1.5f));
     }
 
     #endregion
 
-    #region Exp -----------------------
-    private Vector3 randomPos;
+    #region Drop -----------------------
     private float randomAngle;
-    private float dropDistance;
+    private Vector3 randomPos;
+    private Vector3 RandomPos
+    {
+        get
+        {
+            randomAngle = Random.Range(0, 360);
+            randomPos.x = Mathf.Sin(randomAngle) * randomDistance;
+            randomPos.z = Mathf.Cos(randomAngle) * randomDistance;
+            return randomPos;
+        }
+    }
+    private float randomDistance
+    {
+        get
+        {
+            return Random.Range(ItemDropDistanceMin, ItemDropDistanceMax);
+        }
+    }
 
+    private GameObject tempExperience;
     public void DropExperience(Vector3 _dropPos)
     {
+        tempExperience = PoolManager.Instance.GetItemFromPool(ItemType.Experience);
+
         _dropPos.y += 1;
-        dropDistance = Random.Range(ItemDropDistanceMin, ItemDropDistanceMax);
-
-        randomAngle = Random.Range(0, 360);
-        randomPos.x = Mathf.Sin(randomAngle) * dropDistance;
-        randomPos.z = Mathf.Cos(randomAngle) * dropDistance;
-
-        tempObject = PoolManager.Instance.GetFromPool(PoolTypes.Experience);
-        tempObject.transform.position = _dropPos;
-        tempObject.SetActive(true);
-        tempObject.transform.DOJump(_dropPos + randomPos, 3, 1, 0.5f * dropDistance);
+        tempExperience.transform.position = _dropPos;
+        tempExperience.SetActive(true);
+        tempExperience.transform.DOJump(_dropPos + RandomPos, 3, 1, 0.5f * randomDistance);
     }
-    #endregion
 
+    private GameObject tempDropItem;
+    public void DropRandomItem(Vector3 _dropPos)
+    {
+        tempDropItem = PoolManager.Instance.GetItemFromPool((ItemType)Random.Range(1, 8));
+
+        _dropPos.y += 1;
+        tempDropItem.transform.position = _dropPos;
+        tempDropItem.SetActive(true);
+        tempDropItem.transform.DOJump(_dropPos + RandomPos, 3, 1, 0.5f * randomDistance);
+    }
+
+    #endregion
     private IEnumerator DisableObject(GameObject go, float time)
     {
         yield return new WaitForSeconds(time);

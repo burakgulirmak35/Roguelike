@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Upgrade", menuName = "Roguelike/UpgradeSO", order = 0)]
+[CreateAssetMenu(fileName = "Upgrade", menuName = "Roguelike/UpgradeSO")]
 public class UpgradeSO : ScriptableObject
 {
     public UpgradeType upgradeType;

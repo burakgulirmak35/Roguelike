@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ac87126862bc1c428745b6e29d9d267, type: 3}
-  m_Name: Enemy0
+  m_Script: {fileID: 11500000, guid: ea6b54f6f34d6174d8f37f0159fd765d, type: 3}
+  m_Name: Bomb
   m_EditorClassIdentifier: 
-  Health: 25
-  Speed: 3
-  StartAttackRange: 2
-  AttackRange: 4
-  Damage: 5
-  ExperienceAmount: 1
+  itemType: 1
+  LocalCollectedPos: {x: 0, y: 1, z: 0}

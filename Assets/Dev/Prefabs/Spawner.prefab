@@ -612,6 +612,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2417813370558427734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4576891412879383221}
+  m_Layer: 0
+  m_Name: ExperienceHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4576891412879383221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2417813370558427734}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3796402444691986332}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2571090720823060755
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +960,7 @@ Transform:
   - {fileID: 1286222905}
   - {fileID: 2975059652233768222}
   - {fileID: 4253823321912014313}
+  - {fileID: 4576891412879383221}
   - {fileID: 3796402445057192666}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -982,12 +1014,28 @@ MonoBehaviour:
   ExperiencePoolCount: 50
   ExperiencePrefab: {fileID: 2985430304929008089, guid: ddcaea935dd383c4e9535a23d35c2332,
     type: 3}
+  CollectableCount: 2
+  CollectableBombPrefab: {fileID: 2985430304929008089, guid: 54c6050e4b4e8454d9ac617c937a3658,
+    type: 3}
+  CollectableBoosterPrefab: {fileID: 2985430304929008089, guid: 063624f8b0fe14149be7b871e33ccaff,
+    type: 3}
+  CollectableHealthPrefab: {fileID: 2985430304929008089, guid: 4b2a300a88c0e8a43990d9001e828ee2,
+    type: 3}
+  CollectableHowerBoardPrefab: {fileID: 2985430304929008089, guid: f8b0f298d38554f40b28c24185640240,
+    type: 3}
+  CollectableMagnetPrefab: {fileID: 2985430304929008089, guid: 136c9c38020f1244fa287814699facd9,
+    type: 3}
+  CollectableSlowMotionPrefab: {fileID: 2985430304929008089, guid: 70e8d0388afcc5447966dc1d2971cd3e,
+    type: 3}
+  CollectableSpeedBoostPrefab: {fileID: 2985430304929008089, guid: a61c42c11f39aca43a66c0ff1e2d9ce9,
+    type: 3}
   EnemyHolder: {fileID: 3796402444794935412}
   BulletHolder: {fileID: 3796402444214295827}
   BulletExplosionHolder: {fileID: 1566154814157520216}
   BloodShotHolder: {fileID: 2975059652233768222}
   WorldTextHolder: {fileID: 1286222905}
-  ExperienceHolder: {fileID: 4253823321912014313}
+  ExperienceHolder: {fileID: 4576891412879383221}
+  CollectableHolder: {fileID: 4253823321912014313}
 --- !u!1 &3796402444794935411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,7 +1630,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4253823321912014313}
   m_Layer: 0
-  m_Name: ExperienceHolder
+  m_Name: CollectableHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

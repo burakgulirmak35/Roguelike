@@ -54,7 +54,7 @@ public class HealthSystem
             health = maxHealth;
         }
         healthAmount = health / maxHealth;
-        DOTween.To(() => slider_Health.value, x => slider_Health.value = x, healthAmount, 0.25f).SetEase(Ease.Linear);
+        DOTween.To(() => slider_Health.value, x => slider_Health.value = x, healthAmount, 0.2f).SetEase(Ease.Linear);
     }
 
     public void HealPercent(float percent)
@@ -71,7 +71,7 @@ public class HealthSystem
             health = 0;
             slider_Health.value = 0;
             txt_Health.text = ((int)health).ToString();
-            // OnDead?.Invoke();
+            OnDead?.Invoke();
             return;
         }
         healthAmount = health / maxHealth;

@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     private CapsuleCollider myCollider;
     [Header("AI")]
     private NavMeshAgent EnemyAgent;
-    private int RandomAnimationIndex;
     private bool isAlive;
 
     [Space]
@@ -115,29 +114,41 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
 
     }
 
+    private int RandomDeadAnimationIndex()
+    {
+        return Random.Range(0, 4);
+    }
     private void OnDead()
     {
         StopFollow();
         StartDisable();
         HideHealth();
+
         DropExperience();
+        DropItem();
 
         TargetedIcon.SetActive(false);
         Spawner.Instance.DeadEnemy(transform);
-        RandomAnimationIndex = Random.Range(0, 4);
-        EnemyAnim.Play("Death" + RandomAnimationIndex.ToString());
+        EnemyAnim.Play("Dead " + RandomDeadAnimationIndex().ToString());
         myCollider.enabled = false;
         isAlive = false;
         EnemyAnim.SetBool("isAlive", false);
     }
 
-    public void DropExperience()
+    private void DropExperience()
     {
         for (int i = 0; i < enemySO.ExperienceAmount; i++)
         {
             Spawner.Instance.DropExperience(myTransform.position);
         }
     }
+
+    private void DropItem()
+    {
+        if (enemySO.DropRate >= Random.Range(1, 101))
+            Spawner.Instance.DropRandomItem(myTransform.position);
+    }
+
 
     // fast remove
     public void Remove()
@@ -191,16 +202,20 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         return Vector3.Distance(Player.Instance.PlayerTransform.position, myTransform.position);
     }
 
+    private int RandomAttackAnimationIndex()
+    {
+        return Random.Range(0, 4);
+    }
+
     private void StartAttack()
     {
         if (!isAlive) return;
 
         StopFollow();
 
-        // vuruş animasyonları 2 saniye
+        // vuruş animasyonları 2 saniye sürüyor hepsi aynı süre
         EnemyAnim.SetFloat("AttackSpeed", 2);
-        RandomAnimationIndex = Random.Range(0, 4);
-        EnemyAnim.Play("Attack" + RandomAnimationIndex.ToString());
+        EnemyAnim.Play("Attack" + RandomAttackAnimationIndex().ToString());
         if (AttackCoro != null) { StopCoroutine(AttackCoro); }
         AttackCoro = StartCoroutine(AttackTimer());
     }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Roguelike/EnemySO")]
@@ -11,4 +12,5 @@ public class EnemySO : ScriptableObject
     public float Damage;
 
     public int ExperienceAmount;
+    [Range(0, 100)] public int DropRate;
 }

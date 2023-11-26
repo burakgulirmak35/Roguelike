@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     [Header("Performance Settings")]
     [SerializeField] private bool vSync_enable = false;
-    [SerializeField] private bool FPS_limit = true;
     [Range(-1, 60)][SerializeField] private int FPS_target = 60;
     [SerializeField] private bool FPS_counter = true;
 
@@ -27,24 +26,33 @@ public class GameManager : MonoBehaviour
         Spawner.Instance.StartGame();
     }
 
-    public void Reload()
+    #region RestartGame
+    public void RestartGame()
     {
+        StartCoroutine(RestartGameTimer());
+    }
+
+    private IEnumerator RestartGameTimer()
+    {
+        UIManager.Instance.panelFadeInOut.FadeOut(1);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    #endregion
+
+    #region RestartGame
+    public void ContinueGame()
+    {
+        UIManager.Instance.EnablePanelPlayerDead(false);
+        Player.Instance.ReBorn();
+        Time.timeScale = 1;
+    }
+    #endregion
 
     private void FPS()
     {
         if (!vSync_enable) { QualitySettings.vSyncCount = 0; }
-
-        if (FPS_limit)
-        {
-            Application.targetFrameRate = FPS_target;
-        }
-        else
-        {
-            Application.targetFrameRate = -1;
-        }
-
+        Application.targetFrameRate = FPS_target;
         FindObjectOfType<FPSCounter>(true).gameObject.SetActive(FPS_counter);
     }
 }
