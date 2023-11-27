@@ -2206,6 +2206,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerData
       objectReference: {fileID: 0}
+    - target: {fileID: 6170483529227738340, guid: 2968374ca1a459a4ebb64c70820170a0,
+        type: 3}
+      propertyPath: expPerLevel.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170483529227738340, guid: 2968374ca1a459a4ebb64c70820170a0,
+        type: 3}
+      propertyPath: expPerLevel.Array.data[2]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170483529227738340, guid: 2968374ca1a459a4ebb64c70820170a0,
+        type: 3}
+      propertyPath: expPerLevel.Array.data[3]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170483529227738340, guid: 2968374ca1a459a4ebb64c70820170a0,
+        type: 3}
+      propertyPath: expPerLevel.Array.data[4]
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7072549771530387807, guid: 2968374ca1a459a4ebb64c70820170a0,
         type: 3}
       propertyPath: m_LocalPosition.x

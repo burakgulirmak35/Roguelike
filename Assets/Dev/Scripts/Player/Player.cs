@@ -346,7 +346,7 @@ public class Player : MonoBehaviour, IDamagable
     {
         Agent.enabled = true;
         PlayerAnim.SetBool("Alive", true);
-        healthSystem.HealPercent(1f);
+        healthSystem.SetHealth(PlayerData.Instance.MaxHealth);
         Alive = true;
 
         this.enabled = true;

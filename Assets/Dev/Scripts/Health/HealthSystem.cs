@@ -68,6 +68,7 @@ public class HealthSystem
         health -= amount;
         if (health <= 0)
         {
+            isAlive = false;
             health = 0;
             slider_Health.value = 0;
             txt_Health.text = ((int)health).ToString();
