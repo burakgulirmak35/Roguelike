@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     [Header("AI")]
     private NavMeshAgent EnemyAgent;
     private bool isAlive;
+    private bool isBusy;
 
     [Space]
     private Transform myTransform;
@@ -55,37 +56,18 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
 
     void OnEnable()
     {
-        StartFollow();
+        EnemyManager.Instance.AddEnemy(this);
         EnemyAnim.SetBool("isAlive", true);
         EnemyAnim.Play("Idle");
         EnemyAnim.SetBool("canMove", true);
     }
 
-    private Coroutine FollowCorotine;
-    private void StartFollow()
-    {
-        if (FollowCorotine != null)
-        {
-            StopCoroutine(FollowCorotine);
-        }
-        FollowCorotine = StartCoroutine(FollowTimer());
-    }
-    private void StopFollow()
-    {
-        if (FollowCorotine != null)
-        {
-            StopCoroutine(FollowCorotine);
-        }
-        EnemyAgent.ResetPath();
-    }
-
     private float distance;
     private Vector3 lookPos;
-    private IEnumerator FollowTimer()
+    public void FollowPlayer()
     {
-        while (isAlive)
+        if (isAlive && !isBusy)
         {
-            yield return new WaitForSeconds(0.2f);
             distance = DistToPlayer();
             if (distance <= enemySO.StartAttackRange) { StartAttack(); }
             else if (distance > Spawner.Instance.UnitDissapearDistance) { Remove(); }
@@ -120,7 +102,8 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     }
     private void OnDead()
     {
-        StopFollow();
+        EnemyManager.Instance.DeadEnemy(this);
+        EnemyAgent.ResetPath();
         StartDisable();
         HideHealth();
 
@@ -128,7 +111,6 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         DropItem();
 
         TargetedIcon.SetActive(false);
-        Spawner.Instance.DeadEnemy(transform);
         EnemyAnim.Play("Dead " + RandomDeadAnimationIndex().ToString());
         myCollider.enabled = false;
         isAlive = false;
@@ -153,10 +135,9 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     // fast remove
     public void Remove()
     {
-        StopFollow();
+        EnemyManager.Instance.DeadEnemy(this);
+        EnemyAgent.ResetPath();
         HideHealth();
-
-        Spawner.Instance.DeadEnemy(transform);
         myCollider.enabled = false;
         isAlive = false;
         EnemyAnim.SetBool("isAlive", false);
@@ -211,7 +192,8 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     {
         if (!isAlive) return;
 
-        StopFollow();
+        isBusy = true;
+        EnemyAgent.ResetPath();
 
         // vuruş animasyonları 2 saniye sürüyor hepsi aynı süre
         EnemyAnim.SetFloat("AttackSpeed", 2);
@@ -232,7 +214,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     private IEnumerator AttackTimer()
     {
         yield return new WaitForSeconds(1f);
-        StartFollow();
+        isBusy = false;
     }
 
     #endregion
