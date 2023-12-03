@@ -16,3 +16,5 @@ MonoBehaviour:
   sprite_SkillImage: {fileID: 21300000, guid: ed363bdfd7b62094694d63fb86e65d3d, type: 3}
   string_SkillName: Explosive Damage
   string_SkillDescription: Increases explosive ammo damage
+  NextUpgrades:
+  - {fileID: 11400000}

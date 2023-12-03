@@ -16,3 +16,5 @@ MonoBehaviour:
   sprite_SkillImage: {fileID: 21300000, guid: d53ae583f08602d4dad8cb2f469f447b, type: 3}
   string_SkillName: Damage
   string_SkillDescription: Increases the damage of your bullets
+  NextUpgrades:
+  - {fileID: 11400000}

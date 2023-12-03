@@ -16,3 +16,5 @@ MonoBehaviour:
   sprite_SkillImage: {fileID: 21300000, guid: 4f246c6153857994db2542d27f3969b1, type: 3}
   string_SkillName: Bounce Count
   string_SkillDescription: Your bullets ricochet when they hit objects
+  NextUpgrades:
+  - {fileID: 11400000}

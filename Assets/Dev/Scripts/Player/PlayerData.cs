@@ -84,4 +84,24 @@ public class PlayerData : MonoBehaviour
         Penetrability = PlayerPrefs.GetInt("Penetrability") == 1 ? true : false;
         ExplosiveAmmo = PlayerPrefs.GetInt("ExplosiveAmmo") == 1 ? true : false;
     }
+
+    public void ResetData()
+    {
+        PlayerPrefs.SetInt("Exp", 0);
+        PlayerPrefs.SetInt("Level", 0);
+
+        PlayerPrefs.SetFloat("AddedMaxHealth", 0);
+        PlayerPrefs.SetFloat("AddedMovementSpeed", 0);
+        PlayerPrefs.SetInt("AddedDamage", 0);
+        PlayerPrefs.SetFloat("AddedFireRate", 0);
+        PlayerPrefs.SetFloat("AddedFireRange", 0);
+        PlayerPrefs.SetInt("AddedBurstCount", 0);
+        PlayerPrefs.SetInt("AddedBounceCount", 0);
+        PlayerPrefs.SetFloat("AddedExplosiveAmmoRange", 0);
+        PlayerPrefs.SetFloat("AddedExplosiveAmmoDamage", 0);
+
+        PlayerPrefs.GetInt("Penetrability", 0);
+        PlayerPrefs.GetInt("ExplosiveAmmo", 0);
+        PlayerPrefs.GetInt("AutoAim", 1);
+    }
 }

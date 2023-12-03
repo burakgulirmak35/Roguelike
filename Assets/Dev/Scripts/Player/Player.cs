@@ -62,7 +62,6 @@ public class Player : MonoBehaviour, IDamagable
     [HideInInspector] public Transform PlayerTransform;
 
     public static Player Instance { get; private set; }
-
     private void Awake()
     {
         Instance = this;
@@ -98,7 +97,7 @@ public class Player : MonoBehaviour, IDamagable
     private void PrepareAim()
     {
         Aim(false);
-        isAutoAim = PlayerPrefs.GetInt("AutoAim") == 1 ? true : false;
+        isAutoAim = PlayerPrefs.GetInt("AutoAim", 1) == 1 ? true : false;
         UIManager.Instance.ToggleAim();
         if (isAutoAim)
         {
@@ -183,6 +182,7 @@ public class Player : MonoBehaviour, IDamagable
         }
         else
         {
+            UnTarget();
             if (AutoAimCoro != null)
             {
                 StopCoroutine(AutoAimCoro);
@@ -261,10 +261,7 @@ public class Player : MonoBehaviour, IDamagable
         Spawner.Instance.ActiveEnemies.UpdatePositions();
         if (Spawner.Instance.ActiveEnemies.Count > 0)
         {
-            if (ClosestEnemy != null)
-            {
-                ClosestEnemy.GetComponent<ITargetable>().Targeted(false);
-            }
+            UnTarget();
 
             ClosestEnemy = Spawner.Instance.ActiveEnemies.FindClosest(PlayerTransform.position);
             ClosestEnemy.GetComponent<ITargetable>().Targeted(true);
@@ -290,6 +287,14 @@ public class Player : MonoBehaviour, IDamagable
         {
             AimPoint.position = DefaultAimPoint.position;
             Aim(false);
+        }
+    }
+
+    private void UnTarget()
+    {
+        if (ClosestEnemy != null)
+        {
+            ClosestEnemy.GetComponent<ITargetable>().Targeted(false);
         }
     }
     #endregion
@@ -344,6 +349,8 @@ public class Player : MonoBehaviour, IDamagable
 
     public void ReBorn()
     {
+        Spawner.Instance.SpawnAtPos(PoolTypes.SimpleExplosion, PlayerTransform.position);
+
         Agent.enabled = true;
         PlayerAnim.SetBool("Alive", true);
         healthSystem.SetHealth(PlayerData.Instance.MaxHealth);
@@ -351,7 +358,6 @@ public class Player : MonoBehaviour, IDamagable
 
         this.enabled = true;
         PrepareAim();
-
     }
 
     #endregion

@@ -1000,12 +1000,12 @@ MonoBehaviour:
     type: 3}
   BulletPoolCount: 50
   BulletPrefab: {fileID: 193226, guid: e7cb03a7b43b0484c91e380395f35136, type: 3}
-  BloodShotPoolCount: 25
+  BloodShotPoolCount: 10
   BloodShotPrefabs:
   - {fileID: 1142193931700624, guid: 9d1846a1c8bff7142ab3959923c7d9c2, type: 3}
   - {fileID: 167524, guid: fdac75e990da47649b31f10049c400b0, type: 3}
   - {fileID: 193062, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
-  BulletExplosionPoolCount: 25
+  BulletExplosionPoolCount: 10
   BulletExplosionPrefab: {fileID: 127072, guid: 901cb763553a9c948a201ff4479d311a,
     type: 3}
   WorldTextPoolCount: 25
@@ -1013,6 +1013,9 @@ MonoBehaviour:
     type: 3}
   ExperiencePoolCount: 50
   ExperiencePrefab: {fileID: 2985430304929008089, guid: ddcaea935dd383c4e9535a23d35c2332,
+    type: 3}
+  SimpleExplosionPoolCount: 5
+  SimpleExplosionPrefab: {fileID: 168694, guid: 034c52719098cbf418ecd254fb44aec1,
     type: 3}
   CollectableCount: 2
   CollectableBombPrefab: {fileID: 2985430304929008089, guid: 54c6050e4b4e8454d9ac617c937a3658,
@@ -1034,6 +1037,7 @@ MonoBehaviour:
   BulletExplosionHolder: {fileID: 1566154814157520216}
   BloodShotHolder: {fileID: 2975059652233768222}
   WorldTextHolder: {fileID: 1286222905}
+  ExplosionHolder: {fileID: 0}
   ExperienceHolder: {fileID: 4576891412879383221}
   CollectableHolder: {fileID: 4253823321912014313}
 --- !u!1 &3796402444794935411

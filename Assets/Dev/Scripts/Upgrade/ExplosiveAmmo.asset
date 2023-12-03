@@ -16,3 +16,6 @@ MonoBehaviour:
   sprite_SkillImage: {fileID: 21300000, guid: 3ae163715859cea49813337637853b4d, type: 3}
   string_SkillName: Explosive Ammo
   string_SkillDescription: Your bullets explode when they hit an enemy
+  NextUpgrades:
+  - {fileID: 11400000, guid: a49ffed96fde420459533af9da89b45f, type: 2}
+  - {fileID: 11400000, guid: 829def710fec3ff4f9ce764e38c0fa68, type: 2}

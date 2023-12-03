@@ -7,6 +7,7 @@ public class UpgradeSO : ScriptableObject
     public Sprite sprite_SkillImage;
     public string string_SkillName;
     public string string_SkillDescription;
+    public UpgradeSO[] NextUpgrades;
 }
 
 public enum UpgradeType

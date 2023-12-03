@@ -15,6 +15,7 @@ public enum PoolTypes
     BloodShot,
     WorldTextPopup,
     Collectable,
+    SimpleExplosion,
 }
 
 [Serializable]

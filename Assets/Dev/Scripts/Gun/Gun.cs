@@ -6,6 +6,7 @@ public class Gun : MonoBehaviour
     private PoolManager poolManager;
     private SoundManager soundManager;
     private PlayerData playerData;
+    private CameraManager cameraManager;
     [Header("Parts")]
     [SerializeField] private Transform[] firePoint;
     [SerializeField] private Transform LeftHandPos;
@@ -21,6 +22,7 @@ public class Gun : MonoBehaviour
         poolManager = FindObjectOfType<PoolManager>();
         soundManager = FindObjectOfType<SoundManager>();
         playerData = FindObjectOfType<PlayerData>();
+        cameraManager = FindObjectOfType<CameraManager>();
     }
 
     public Transform GetLeftHandPos()
@@ -64,6 +66,7 @@ public class Gun : MonoBehaviour
             {
                 for (int j = 0; j < playerData.BurstCount; j++)
                 {
+                    cameraManager.ShakeCamera();
                     if (isFire)
                     {
                         tmpBullet = poolManager.GetFromPool(PoolTypes.Bullet);

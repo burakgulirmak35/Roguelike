@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     #region RestartGame
     public void RestartGame()
     {
+        PlayerData.Instance.ResetData();
         StartCoroutine(RestartGameTimer());
     }
 

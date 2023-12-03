@@ -16,3 +16,5 @@ MonoBehaviour:
   sprite_SkillImage: {fileID: 21300000, guid: 2f5e271819f8cbd4bbb5f13f8b22e444, type: 3}
   string_SkillName: Burst Count
   string_SkillDescription: Increases the number of shots fired quickly
+  NextUpgrades:
+  - {fileID: 11400000}

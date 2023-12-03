@@ -56,6 +56,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
 
     void OnEnable()
     {
+        EnemyAgent.enabled = true;
         EnemyManager.Instance.AddEnemy(this);
         EnemyAnim.SetBool("isAlive", true);
         EnemyAnim.Play("Idle");
@@ -102,8 +103,10 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     }
     private void OnDead()
     {
-        EnemyManager.Instance.DeadEnemy(this);
+        Spawner.Instance.DeadEnemy(transform);
         EnemyAgent.ResetPath();
+        EnemyAgent.enabled = false;
+
         StartDisable();
         HideHealth();
 
@@ -137,6 +140,8 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     {
         EnemyManager.Instance.DeadEnemy(this);
         EnemyAgent.ResetPath();
+        EnemyAgent.enabled = false;
+
         HideHealth();
         myCollider.enabled = false;
         isAlive = false;

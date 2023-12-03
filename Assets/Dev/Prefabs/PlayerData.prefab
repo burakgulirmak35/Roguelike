@@ -48,7 +48,7 @@ MonoBehaviour:
   level: 0
   exp: 0
   EachBurstTime: 0.1
-  BulletSpeed: 15
+  BulletSpeed: 20
   BaseMaxHealth: 50
   BaseMovementSpeed: 5
   BaseDamage: 10
@@ -71,15 +71,18 @@ MonoBehaviour:
   ExplosiveAmmo: 0
   SelectedGun: 0
   Upgrades:
-  - {fileID: 11400000, guid: 77a47c6f963a7c34fb9b746e9e41ffd6, type: 2}
-  - {fileID: 11400000, guid: 3539fa6b1e7718c4eb4410e229140ac2, type: 2}
-  - {fileID: 11400000, guid: 0eaa129a92fa8d140b48f4efa5b11f4a, type: 2}
   - {fileID: 11400000, guid: c2761de045633784ea2e6d09385fb664, type: 2}
+  - {fileID: 11400000, guid: 3539fa6b1e7718c4eb4410e229140ac2, type: 2}
+  - {fileID: 11400000, guid: c8387f611001030438f621070036b195, type: 2}
+  - {fileID: 11400000, guid: 1972291e57c8ed5438d8998bb1cce547, type: 2}
+  - {fileID: 11400000, guid: 0eaa129a92fa8d140b48f4efa5b11f4a, type: 2}
+  - {fileID: 11400000, guid: 77a47c6f963a7c34fb9b746e9e41ffd6, type: 2}
   - {fileID: 11400000, guid: 98b2edef82241f942ba24479d49f4725, type: 2}
   - {fileID: 11400000, guid: 792837883c669cc43a5e97075d1c78ff, type: 2}
   - {fileID: 11400000, guid: 83330c37e65ae28448d5282e83c25556, type: 2}
   - {fileID: 11400000, guid: 9e1a44d38d206af4c91aef5aaf768a06, type: 2}
   - {fileID: 11400000, guid: 1afd3712b2cc79740bcdc064e24fb982, type: 2}
+  - {fileID: 11400000, guid: d6d815a988701834bae07aa61dbcca04, type: 2}
   SmallHealPercent: 0.25
   MediumHealPercent: 0.5
   LargeHealPercent: 1

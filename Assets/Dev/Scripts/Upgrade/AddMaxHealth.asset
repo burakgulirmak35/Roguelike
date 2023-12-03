@@ -16,3 +16,5 @@ MonoBehaviour:
   sprite_SkillImage: {fileID: 21300000, guid: 1fd0dc9244477de42a45c1417e4b06c7, type: 3}
   string_SkillName: Max Health
   string_SkillDescription: Increases your max health
+  NextUpgrades:
+  - {fileID: 11400000}

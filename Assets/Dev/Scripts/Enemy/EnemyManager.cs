@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-
     private List<Enemy> enemies = new List<Enemy>();
 
     public static EnemyManager Instance { get; private set; }
@@ -27,7 +26,7 @@ public class EnemyManager : MonoBehaviour
     public void DeadEnemy(Enemy _enemy)
     {
         enemies.Remove(_enemy);
-        Spawner.Instance.DeadEnemy(transform);
+        Spawner.Instance.DeadEnemy(_enemy.transform);
     }
 
     private IEnumerator FollowPlayerTimer()

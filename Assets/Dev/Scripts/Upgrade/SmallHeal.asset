@@ -16,3 +16,5 @@ MonoBehaviour:
   sprite_SkillImage: {fileID: 21300000, guid: 237909442d83fb14ea7611046c3be348, type: 3}
   string_SkillName: Small Heal
   string_SkillDescription: You will recover little
+  NextUpgrades:
+  - {fileID: 11400000}

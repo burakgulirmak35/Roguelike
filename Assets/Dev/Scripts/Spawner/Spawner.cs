@@ -21,7 +21,8 @@ public class Spawner : MonoBehaviour
     [Space]
     private List<Transform> SpawnPoints = new List<Transform>();
     private List<Transform> EnemyList = new List<Transform>();
-
+    [Space]
+    private GameObject tempItem;
     public static Spawner Instance { get; private set; }
 
     private void Awake()
@@ -139,6 +140,26 @@ public class Spawner : MonoBehaviour
     }
 
     #endregion
+
+    #region SpawnAtPos -----------------------
+
+    public void SpawnAtPos(PoolTypes _poolTypes, Vector3 _pos)
+    {
+        tempItem = PoolManager.Instance.GetFromPool(_poolTypes);
+        tempItem.transform.position = _pos;
+        tempItem.SetActive(true);
+    }
+
+    public void SpawnAtPos(ItemType _itemType, Vector3 _pos)
+    {
+        tempItem = PoolManager.Instance.GetItemFromPool(_itemType);
+        tempItem.transform.position = _pos;
+        tempItem.SetActive(true);
+    }
+
+    #endregion
+
+
     private IEnumerator DisableObject(GameObject go, float time)
     {
         yield return new WaitForSeconds(time);

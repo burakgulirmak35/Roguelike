@@ -11,22 +11,20 @@ public class UpgradeButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txt_SkillName;
     [SerializeField] private TextMeshProUGUI txt_SkillDescription;
     [SerializeField] private UpgradeType upgradeType;
-    private PlayerData playerData;
-    private Player player;
+    private UpgradeSO upgradeSO;
 
     void Awake()
     {
-        playerData = FindObjectOfType<PlayerData>();
-        player = FindObjectOfType<Player>();
         btn_Upgrade.onClick.AddListener(BtnUpgrade);
     }
 
-    public void SetUpgradeSO(UpgradeSO upgradeSO)
+    public void SetUpgradeSO(UpgradeSO _upgradeSO)
     {
-        img_SkillImage.sprite = upgradeSO.sprite_SkillImage;
-        txt_SkillName.text = upgradeSO.string_SkillName;
-        txt_SkillDescription.text = upgradeSO.string_SkillDescription;
-        upgradeType = upgradeSO.upgradeType;
+        upgradeSO = _upgradeSO;
+        img_SkillImage.sprite = _upgradeSO.sprite_SkillImage;
+        txt_SkillName.text = _upgradeSO.string_SkillName;
+        txt_SkillDescription.text = _upgradeSO.string_SkillDescription;
+        upgradeType = _upgradeSO.upgradeType;
     }
 
     private void BtnUpgrade()
@@ -34,13 +32,13 @@ public class UpgradeButton : MonoBehaviour
         switch (upgradeType)
         {
             case UpgradeType.SmallHeal:
-                player.healthSystem.HealPercent(PlayerData.Instance.SmallHealPercent);
+                Player.Instance.healthSystem.HealPercent(PlayerData.Instance.SmallHealPercent);
                 break;
             case UpgradeType.MediumHeal:
-                player.healthSystem.HealPercent(PlayerData.Instance.MediumHealPercent);
+                Player.Instance.healthSystem.HealPercent(PlayerData.Instance.MediumHealPercent);
                 break;
             case UpgradeType.LargeHeal:
-                player.healthSystem.HealPercent(PlayerData.Instance.LargeHealPercent);
+                Player.Instance.healthSystem.HealPercent(PlayerData.Instance.LargeHealPercent);
                 break;
             case UpgradeType.AddMaxHealth:
                 PlayerPrefs.SetFloat("AddedMaxHealth", PlayerPrefs.GetFloat("AddedMaxHealth") + (PlayerPrefs.GetFloat("AddedMaxHealth") * PlayerData.Instance.AddMaxHealthPercent));
@@ -76,10 +74,14 @@ public class UpgradeButton : MonoBehaviour
                 PlayerPrefs.SetInt("AddedExplosiveAmmoDamage", PlayerData.Instance.AddExplosiveAmmoDamage);
                 break;
         }
+        PlayerData.Instance.Upgrades.Remove(upgradeSO);
+        if (upgradeSO.NextUpgrades != null)
+        {
+            PlayerData.Instance.Upgrades.AddRange(upgradeSO.NextUpgrades);
+        }
+
         UIManager.Instance.EnablePanelUpgrade(false);
-        playerData.LoadData();
-        player.CheckUpgrades();
+        PlayerData.Instance.LoadData();
+        Player.Instance.CheckUpgrades();
     }
-
-
 }

@@ -16,3 +16,5 @@ MonoBehaviour:
   sprite_SkillImage: {fileID: 21300000, guid: ff227171e8367464a88c6ec73f4a4139, type: 3}
   string_SkillName: Fire Rate
   string_SkillDescription: Increases fire rate
+  NextUpgrades:
+  - {fileID: 11400000}
