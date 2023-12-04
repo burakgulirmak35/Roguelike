@@ -16,6 +16,8 @@ public enum PoolTypes
     Collectable,
     BulletExplosion,
     SimpleExplosion,
+    MegaExplosion,
+    Magnet,
 }
 
 [Serializable]

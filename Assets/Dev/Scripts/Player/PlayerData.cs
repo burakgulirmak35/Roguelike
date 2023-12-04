@@ -60,6 +60,10 @@ public class PlayerData : MonoBehaviour
     [Range(0, 100)] public float AddExplosiveAmmoRange;
     [Range(0, 100)] public int AddExplosiveAmmoDamage;
 
+    [Header("------------Effects------------")]
+    public float SlowMotionTime;
+    public float SlowMotionPercent;
+
     [Header("------------Scriptables------------")]
     [SerializeField] private ExplosionSO BulletExplosionSO;
 

@@ -86,6 +86,8 @@ public class Collectable : MonoBehaviour
     {
         myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
+
+        Player.Instance.healthSystem.HealPercent(0.25f);
     }
 
     private void HowerBoard()
@@ -104,6 +106,8 @@ public class Collectable : MonoBehaviour
     {
         myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
+
+        GameManager.Instance.SlowMotion();
     }
 
     private void SpeedBoost()

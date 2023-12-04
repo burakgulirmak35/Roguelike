@@ -959,6 +959,7 @@ Transform:
   - {fileID: 1566154814157520216}
   - {fileID: 1286222905}
   - {fileID: 2975059652233768222}
+  - {fileID: 3112212410656466143}
   - {fileID: 4253823321912014313}
   - {fileID: 4576891412879383221}
   - {fileID: 3796402445057192666}
@@ -1014,8 +1015,11 @@ MonoBehaviour:
   ExperiencePoolCount: 50
   ExperiencePrefab: {fileID: 2985430304929008089, guid: ddcaea935dd383c4e9535a23d35c2332,
     type: 3}
-  SimpleExplosionPoolCount: 5
-  SimpleExplosionPrefab: {fileID: 168694, guid: 034c52719098cbf418ecd254fb44aec1,
+  VFXPoolCount: 2
+  SimpleExplosionPrefab: {fileID: 168694, guid: 1bfdf09308bfebf48909709dc9b8701d,
+    type: 3}
+  MegaExplosionPrefab: {fileID: 168694, guid: 034c52719098cbf418ecd254fb44aec1, type: 3}
+  MagnetPrefab: {fileID: 7610516396084273526, guid: f2f940502f41e674fae4f5fecf5be020,
     type: 3}
   CollectableCount: 2
   CollectableBombPrefab: {fileID: 2985430304929008089, guid: 54c6050e4b4e8454d9ac617c937a3658,
@@ -1037,7 +1041,7 @@ MonoBehaviour:
   BulletExplosionHolder: {fileID: 1566154814157520216}
   BloodShotHolder: {fileID: 2975059652233768222}
   WorldTextHolder: {fileID: 1286222905}
-  ExplosionHolder: {fileID: 0}
+  VFXHolder: {fileID: 3112212410656466143}
   ExperienceHolder: {fileID: 4576891412879383221}
   CollectableHolder: {fileID: 4253823321912014313}
 --- !u!1 &3796402444794935411
@@ -1821,6 +1825,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7143787975303059654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3112212410656466143}
+  m_Layer: 0
+  m_Name: VFXHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3112212410656466143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7143787975303059654}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3796402444691986332}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7272362714413112461
 GameObject:
   m_ObjectHideFlags: 0

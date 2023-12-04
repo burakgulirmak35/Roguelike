@@ -26,6 +26,42 @@ public class GameManager : MonoBehaviour
         Spawner.Instance.StartGame();
     }
 
+    #region Effects
+
+    public void SlowMotion()
+    {
+        if (slowMotionCoro != null)
+        {
+            StopCoroutine(slowMotionCoro);
+        }
+        slowMotionCoro = StartCoroutine(SlowMotionTimer());
+    }
+
+    private Coroutine slowMotionCoro;
+    private IEnumerator SlowMotionTimer()
+    {
+        Time.timeScale = PlayerData.Instance.SlowMotionPercent;
+        yield return new WaitForSeconds(PlayerData.Instance.SlowMotionTime);
+        if (Player.Instance.healthSystem.isAlive)
+        {
+            Time.timeScale = 1;
+        }
+    }
+
+    #endregion
+
+    #region Timee
+    public void FreezeGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+    }
+    #endregion
+
     #region RestartGame
     public void RestartGame()
     {
@@ -41,12 +77,12 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region RestartGame
+    #region ContinueGame
     public void ContinueGame()
     {
         UIManager.Instance.EnablePanelPlayerDead(false);
         Player.Instance.ReBorn();
-        Time.timeScale = 1;
+        ResumeGame();
     }
     #endregion
 

@@ -48,14 +48,17 @@ public class UIManager : MonoBehaviour
         {
             panelUpgrade.SetUpgradeButtons();
             panelUpgrade.gameObject.SetActive(true);
-            Time.timeScale = 0;
+
+            GameManager.Instance.FreezeGame();
         }
         else
         {
             panelUpgrade.gameObject.SetActive(false);
-            Time.timeScale = 1;
+
+            GameManager.Instance.ResumeGame();
         }
     }
+
 
     public void ToggleAim()
     {

@@ -28,9 +28,11 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private int ExperiencePoolCount;
     [SerializeField] private GameObject ExperiencePrefab;
 
-    [Header("SimpleExpolosion")]
-    [SerializeField] private int SimpleExplosionPoolCount;
+    [Header("VFX")]
+    [SerializeField] private int VFXPoolCount;
     [SerializeField] private GameObject SimpleExplosionPrefab;
+    [SerializeField] private GameObject MegaExplosionPrefab;
+    [SerializeField] private GameObject MagnetPrefab;
 
     [Header("Collectable")]
     [SerializeField] private int CollectableCount;
@@ -49,9 +51,7 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private Transform BulletExplosionHolder;
     [SerializeField] private Transform BloodShotHolder;
     [SerializeField] private Transform WorldTextHolder;
-    [SerializeField] private Transform ExplosionHolder;
-
-
+    [SerializeField] private Transform VFXHolder;
     [SerializeField] public Transform ExperienceHolder;
     [SerializeField] public Transform CollectableHolder;
     [Space]
@@ -62,6 +62,8 @@ public class PoolManager : MonoBehaviour
     private Queue<GameObject> worldTextPool = new Queue<GameObject>();
     private Queue<GameObject> experiencePool = new Queue<GameObject>();
     private Queue<GameObject> SimpleExplosionPool = new Queue<GameObject>();
+    private Queue<GameObject> MegaExplosionPool = new Queue<GameObject>();
+    private Queue<GameObject> MagnetPool = new Queue<GameObject>();
     [Space]
     private Queue<GameObject> collectableBombPool = new Queue<GameObject>();
     private Queue<GameObject> collectableBoosterPool = new Queue<GameObject>();
@@ -86,7 +88,9 @@ public class PoolManager : MonoBehaviour
         GeneratePool(BulletExplosionPrefab, BulletExplosionPoolCount, bulletexplosionPool, BulletExplosionHolder);
         GeneratePool(BloodShotPrefabs, BloodShotPoolCount, bloodShotPool, BloodShotHolder);
         GeneratePool(WorldTextPrefab, WorldTextPoolCount, worldTextPool, WorldTextHolder);
-        GeneratePool(SimpleExplosionPrefab, SimpleExplosionPoolCount, SimpleExplosionPool, ExplosionHolder);
+        GeneratePool(SimpleExplosionPrefab, VFXPoolCount, SimpleExplosionPool, VFXHolder);
+        GeneratePool(MegaExplosionPrefab, VFXPoolCount, MegaExplosionPool, VFXHolder);
+        GeneratePool(MagnetPrefab, VFXPoolCount, MagnetPool, VFXHolder);
 
         GeneratePool(ExperiencePrefab, ExperiencePoolCount, experiencePool, ExperienceHolder);
         GeneratePool(CollectableBombPrefab, CollectableCount, collectableBombPool, CollectableHolder);
@@ -123,7 +127,7 @@ public class PoolManager : MonoBehaviour
     private GameObject tempBulletExplosion;
     private GameObject tempBloodShot;
     private GameObject tempWorldTextPopup;
-    private GameObject explosion;
+    private GameObject tempVfx;
     public GameObject GetFromPool(PoolTypes type)
     {
         switch (type)
@@ -149,9 +153,17 @@ public class PoolManager : MonoBehaviour
                 worldTextPool.Enqueue(tempWorldTextPopup);
                 return tempWorldTextPopup;
             case PoolTypes.SimpleExplosion:
-                explosion = SimpleExplosionPool.Dequeue();
-                SimpleExplosionPool.Enqueue(explosion);
-                return explosion;
+                tempVfx = SimpleExplosionPool.Dequeue();
+                SimpleExplosionPool.Enqueue(tempVfx);
+                return tempVfx;
+            case PoolTypes.MegaExplosion:
+                tempVfx = MegaExplosionPool.Dequeue();
+                MegaExplosionPool.Enqueue(tempVfx);
+                return tempVfx;
+            case PoolTypes.Magnet:
+                tempVfx = MagnetPool.Dequeue();
+                MagnetPool.Enqueue(tempVfx);
+                return tempVfx;
             default:
                 tempObject = null;
                 return tempObject;

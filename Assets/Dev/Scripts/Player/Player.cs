@@ -60,6 +60,7 @@ public class Player : MonoBehaviour, IDamagable
 
     [Space]
     [HideInInspector] public Transform PlayerTransform;
+    [SerializeField] public Transform VFXTransform;
 
     public static Player Instance { get; private set; }
     private void Awake()
@@ -349,7 +350,7 @@ public class Player : MonoBehaviour, IDamagable
 
     public void ReBorn()
     {
-        Spawner.Instance.SpawnAtPos(PoolTypes.SimpleExplosion, PlayerTransform.position);
+        Spawner.Instance.SpawnAtPos(PoolTypes.MegaExplosion, VFXTransform.position);
 
         Agent.enabled = true;
         PlayerAnim.SetBool("Alive", true);

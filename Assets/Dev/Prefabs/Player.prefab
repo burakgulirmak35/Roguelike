@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &437556260230914214
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4145545199189936232}
-  m_Layer: 0
-  m_Name: Heal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4145545199189936232
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437556260230914214}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6933269659279115873}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &778777683689052885
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,6 +680,7 @@ MonoBehaviour:
   BodyIK: {fileID: 5673174587452668376}
   isAutoAim: 0
   PlayerTransform: {fileID: 0}
+  VFXTransform: {fileID: 6933269659279115873}
 --- !u!54 &736094241523218622
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1176,13 +1146,12 @@ Transform:
   m_GameObject: {fileID: 8694945649069065787}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 941238223506823528}
   - {fileID: 8127633311279046535}
-  - {fileID: 4145545199189936232}
   m_Father: {fileID: 1733268544316508090}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8733773194639718818
@@ -1235,7 +1204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 422108, guid: a55875570efadc946b2006d9f61ddc65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 422108, guid: a55875570efadc946b2006d9f61ddc65, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1302,7 +1271,7 @@ PrefabInstance:
     - target: {fileID: 343473208926135921, guid: ad0a9636765e94e4ea25ba4c026a7c21,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 343473208926135921, guid: ad0a9636765e94e4ea25ba4c026a7c21,
         type: 3}
@@ -1348,6 +1317,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LevelupCylinderYellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158635742410941698, guid: ad0a9636765e94e4ea25ba4c026a7c21,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3227,7 +3201,7 @@ PrefabInstance:
     - target: {fileID: 4569046032542325852, guid: a1c9d46c955bec0478685d2cc3b5a238,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4569046032542325852, guid: a1c9d46c955bec0478685d2cc3b5a238,
         type: 3}
@@ -3548,7 +3522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 424006, guid: 22ee717e7813f564e9ffbd17db9fc388, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 424006, guid: 22ee717e7813f564e9ffbd17db9fc388, type: 3}
       propertyPath: m_LocalPosition.z

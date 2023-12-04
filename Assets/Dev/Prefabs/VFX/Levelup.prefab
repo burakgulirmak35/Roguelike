@@ -9677,7 +9677,7 @@ GameObject:
   - component: {fileID: 6973703425810668286}
   - component: {fileID: 7936622540829502461}
   m_Layer: 0
-  m_Name: LevelupCylinderYellow
+  m_Name: Levelup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
