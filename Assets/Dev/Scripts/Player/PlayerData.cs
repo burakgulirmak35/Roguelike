@@ -60,6 +60,9 @@ public class PlayerData : MonoBehaviour
     [Range(0, 100)] public float AddExplosiveAmmoRange;
     [Range(0, 100)] public int AddExplosiveAmmoDamage;
 
+    [Header("------------Scriptables------------")]
+    [SerializeField] private ExplosionSO BulletExplosionSO;
+
     public static PlayerData Instance { get; private set; }
     void Awake()
     {
@@ -83,6 +86,9 @@ public class PlayerData : MonoBehaviour
 
         Penetrability = PlayerPrefs.GetInt("Penetrability") == 1 ? true : false;
         ExplosiveAmmo = PlayerPrefs.GetInt("ExplosiveAmmo") == 1 ? true : false;
+
+        BulletExplosionSO.Range = ExplosiveAmmoRange;
+        BulletExplosionSO.Damage = ExplosiveAmmoDamage;
     }
 
     public void ResetData()
@@ -103,5 +109,8 @@ public class PlayerData : MonoBehaviour
         PlayerPrefs.GetInt("Penetrability", 0);
         PlayerPrefs.GetInt("ExplosiveAmmo", 0);
         PlayerPrefs.GetInt("AutoAim", 1);
+
+        BulletExplosionSO.Range = ExplosiveAmmoRange;
+        BulletExplosionSO.Damage = ExplosiveAmmoDamage;
     }
 }

@@ -9,10 +9,12 @@ public class Collectable : MonoBehaviour
 {
     [SerializeField] private CollectableSO collectableSO;
     private SphereCollider myCollider;
+    private Transform myTransform;
 
     void Awake()
     {
         myCollider = GetComponent<SphereCollider>();
+        myTransform = this.transform;
     }
 
     private void OnEnable()
@@ -22,8 +24,8 @@ public class Collectable : MonoBehaviour
 
     public void Collect()
     {
-        transform.parent = Player.Instance.PlayerTransform;
-        transform.DOLocalJump(collectableSO.LocalCollectedPos, 2, 1, 0.2f).OnComplete(() => OnCollected());
+        myTransform.parent = Player.Instance.PlayerTransform;
+        myTransform.DOLocalJump(collectableSO.LocalCollectedPos, 2, 1, 0.2f).OnComplete(() => OnCollected());
         myCollider.enabled = false;
     }
 
@@ -50,7 +52,7 @@ public class Collectable : MonoBehaviour
                 Magnet();
                 break;
             case ItemType.SlowMotion:
-                SLowMotion();
+                SlowMotion();
                 break;
             case ItemType.SpeedBoost:
                 SpeedBoost();
@@ -60,50 +62,53 @@ public class Collectable : MonoBehaviour
 
     private void Experience()
     {
-        transform.parent = PoolManager.Instance.ExperienceHolder;
-        Player.Instance.AddExperience(1);
+        myTransform.parent = PoolManager.Instance.ExperienceHolder;
         gameObject.SetActive(false);
+
+        Player.Instance.AddExperience(1);
     }
 
     private void Bomb()
     {
-        transform.parent = PoolManager.Instance.CollectableHolder;
+        myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
+
+        Spawner.Instance.SpawnAtPos(PoolTypes.SimpleExplosion, myTransform.position);
     }
 
     private void Booster()
     {
-        transform.parent = PoolManager.Instance.CollectableHolder;
+        myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
     }
 
     private void Health()
     {
-        transform.parent = PoolManager.Instance.CollectableHolder;
+        myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
     }
 
     private void HowerBoard()
     {
-        transform.parent = PoolManager.Instance.CollectableHolder;
+        myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
     }
 
     private void Magnet()
     {
-        transform.parent = PoolManager.Instance.CollectableHolder;
+        myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
     }
 
-    private void SLowMotion()
+    private void SlowMotion()
     {
-        transform.parent = PoolManager.Instance.CollectableHolder;
+        myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
     }
 
     private void SpeedBoost()
     {
-        transform.parent = PoolManager.Instance.CollectableHolder;
+        myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
     }
 }

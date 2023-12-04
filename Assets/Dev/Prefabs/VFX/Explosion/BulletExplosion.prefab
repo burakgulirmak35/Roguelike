@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 484736}
   - component: {fileID: 19818802}
   - component: {fileID: 19954344}
+  - component: {fileID: 6326299033694070855}
   m_Layer: 0
-  m_Name: RoundHitBlue
+  m_Name: BulletExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4830,6 +4831,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6326299033694070855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d5723548c6909a4b87a7713b5f8d21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionSO: {fileID: 11400000, guid: a0a75e080e767a94f8dd2813321b5afa, type: 2}
 --- !u!1 &150488
 GameObject:
   m_ObjectHideFlags: 0

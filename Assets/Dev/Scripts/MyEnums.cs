@@ -11,10 +11,10 @@ public enum PoolTypes
 {
     Enemy,
     Bullet,
-    BulletExplosion,
     BloodShot,
     WorldTextPopup,
     Collectable,
+    BulletExplosion,
     SimpleExplosion,
 }
 

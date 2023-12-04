@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
                 tempObject = PoolManager.Instance.GetFromPool(PoolTypes.BloodShot);
                 tempObject.transform.position = transform.position;
                 tempObject.SetActive(true);
-                if (PlayerData.Instance.ExplosiveAmmo) { Explode(); }
+                if (PlayerData.Instance.ExplosiveAmmo) { Spawner.Instance.SpawnAtPos(PoolTypes.BulletExplosion, transform.position); }
                 if (PlayerData.Instance.Penetrability) { Penetration(); }
                 else { Disable(); }
 
@@ -43,25 +43,6 @@ public class Bullet : MonoBehaviour
                 break;
             default:
                 break;
-        }
-    }
-
-
-    private GameObject explosion;
-    private Collider[] hitColliders;
-    private void Explode()
-    {
-        explosion = PoolManager.Instance.GetFromPool(PoolTypes.BulletExplosion);
-        explosion.transform.position = transform.position;
-        explosion.SetActive(true);
-
-        hitColliders = Physics.OverlapSphere(transform.position, PlayerData.Instance.ExplosiveAmmoRange);
-        for (int i = 0; i < hitColliders.Length; i++)
-        {
-            if (hitColliders[i].tag.Equals("Enemy"))
-            {
-                hitColliders[i].gameObject.GetComponent<IDamagable>().TakeDamage(PlayerData.Instance.ExplosiveAmmoDamage);
-            }
         }
     }
 
