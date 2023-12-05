@@ -18,7 +18,6 @@ public class MagnetVFX : MonoBehaviour
                 if (hitColliders[i].tag.Equals("Collectable"))
                 {
                     hitColliders[i].GetComponent<Collectable>().Collect();
-
                 }
             }
         }

@@ -58,6 +58,11 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        if (slowMotionCoro != null)
+        {
+            Time.timeScale = PlayerData.Instance.SlowMotionPercent;
+            return;
+        }
         Time.timeScale = 1;
     }
     #endregion
@@ -82,6 +87,7 @@ public class GameManager : MonoBehaviour
     {
         UIManager.Instance.EnablePanelPlayerDead(false);
         Player.Instance.ReBorn();
+        CameraManager.Instance.ZoomTo(1);
         ResumeGame();
     }
     #endregion

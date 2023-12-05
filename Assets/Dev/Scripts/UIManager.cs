@@ -39,6 +39,7 @@ public class UIManager : MonoBehaviour
 
     public void EnablePanelPlayerDead(bool _state)
     {
+        CameraManager.Instance.ZoomTo(0);
         panelPlayerDead.gameObject.SetActive(_state);
     }
 

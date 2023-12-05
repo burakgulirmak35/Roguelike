@@ -24,6 +24,7 @@ public class Player : MonoBehaviour, IDamagable
     private InputAction moveAction;
     private InputAction aimAction;
     private InputAction toggleAimAction;
+    private InputAction mapAction;
     [Space]
     private NavMeshAgent Agent;
     private Vector3 moveDirection;
@@ -84,7 +85,29 @@ public class Player : MonoBehaviour, IDamagable
         toggleAimAction = playerInputActions.Player.ToggleAim;
         toggleAimAction.performed += ToggleAim;
         toggleAimAction.Enable();
+
+        mapAction = playerInputActions.Player.ClickMap;
+        mapAction.performed += ClickMap;
+        mapAction.Enable();
     }
+
+    #region --- Map ---
+    private bool ZoomOut;
+    private void ClickMap(InputAction.CallbackContext callbackContext)
+    {
+        if (ZoomOut)
+        {
+            ZoomOut = false;
+            CameraManager.Instance.ZoomTo(1);
+        }
+        else
+        {
+            ZoomOut = true;
+            CameraManager.Instance.ZoomTo(2);
+        }
+    }
+
+    #endregion
 
     public void StartGame()
     {
@@ -190,6 +213,7 @@ public class Player : MonoBehaviour, IDamagable
             }
         }
     }
+    #endregion
 
     #region ---JoystickAim---
     private void Aim(bool state)
@@ -217,9 +241,7 @@ public class Player : MonoBehaviour, IDamagable
         }
 
     }
-    #endregion
 
-    #region ---JoystickAim---
     private void JoystickAim()
     {
         rightJoystick = aimAction.ReadValue<Vector2>();
@@ -298,8 +320,6 @@ public class Player : MonoBehaviour, IDamagable
             ClosestEnemy.GetComponent<ITargetable>().Targeted(false);
         }
     }
-    #endregion
-
     #endregion
 
     private void OnTriggerEnter(Collider other)

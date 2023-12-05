@@ -170,5 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a02c054cb16404f8a473e87d34b26e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FollowPoints:
+  - {x: 0, y: 8, z: -2.5}
+  - {x: 0, y: 12, z: -4}
+  - {x: 0, y: 25, z: -8.5}
   shakeCameraTime: 0.1
   shakeCameraIntensity: 1
