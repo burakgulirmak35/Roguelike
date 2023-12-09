@@ -29,16 +29,16 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5707694581601540121}
-  - {fileID: 748288098414855203}
   - {fileID: 7000585522168830087}
   - {fileID: 3510247026258531569}
   - {fileID: 7499423541820466390}
-  - {fileID: 3250246192041406807}
   - {fileID: 2065858486734117705}
   - {fileID: 451753501784217857}
   - {fileID: 52600481274558080}
   - {fileID: 3898874215628633499}
+  - {fileID: 5707694581601540121}
+  - {fileID: 748288098414855203}
+  - {fileID: 3250246192041406807}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &48163709874003614
@@ -378,6 +378,10 @@ PrefabInstance:
       value: SM_Bld_Power_03
       objectReference: {fileID: 0}
     - target: {fileID: 1650256952041124, guid: 0fafb1450aa63ce469d1b0dde39971c1, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650256952041124, guid: 0fafb1450aa63ce469d1b0dde39971c1, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -459,6 +463,14 @@ PrefabInstance:
     - target: {fileID: 1368912188496530, guid: f3ffd5a2a26fdf04e93bfde173e2b50d, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Section_Window_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368912188496530, guid: f3ffd5a2a26fdf04e93bfde173e2b50d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368912188496530, guid: f3ffd5a2a26fdf04e93bfde173e2b50d, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1368912188496530, guid: f3ffd5a2a26fdf04e93bfde173e2b50d, type: 3}
       propertyPath: m_StaticEditorFlags
