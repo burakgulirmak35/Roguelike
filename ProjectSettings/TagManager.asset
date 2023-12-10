@@ -8,6 +8,7 @@ TagManager:
   - Gate
   - Collectable
   - Enviroment
+  - Hideable
   layers:
   - Default
   - TransparentFX

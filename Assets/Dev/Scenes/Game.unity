@@ -2166,11 +2166,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Virtual Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 8092369562461620945, guid: eb5b15426f15d194bb30ea07aba93a0d,
-        type: 3}
-      propertyPath: HiddenObjectMask.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
