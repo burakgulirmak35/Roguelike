@@ -49,6 +49,7 @@ public class PlayerData : MonoBehaviour
 
     [Header("------------UpgradeSettings------------")]
     public List<UpgradeSO> Upgrades = new List<UpgradeSO>();
+    [Header("------------------------")]
     [Range(0, 1)] public float SmallHealPercent;
     [Range(0, 1)] public float MediumHealPercent;
     [Range(0, 1)] public float LargeHealPercent;
@@ -65,12 +66,26 @@ public class PlayerData : MonoBehaviour
     public float SlowMotionPercent;
 
     [Header("------------Scriptables------------")]
-    [SerializeField] private ExplosionSO BulletExplosionSO;
+    [SerializeField][Tooltip("Script Will Set Values")] private ExplosionSO BulletExplosionSO;
 
     public static PlayerData Instance { get; private set; }
     void Awake()
     {
         Instance = this;
+
+        for (int i = 0; i < Upgrades.Count; i++)
+        {
+            if (Upgrades[i].upgradeType.Equals(UpgradeType.Penetrability) && PlayerPrefs.GetInt("Penetrability") == 1)
+            {
+                Upgrades.AddRange(Upgrades[i].NextUpgrades);
+                Upgrades.RemoveAt(i);
+            }
+            if (Upgrades[i].upgradeType.Equals(UpgradeType.ExplosiveAmmo) && PlayerPrefs.GetInt("ExplosiveAmmo") == 1)
+            {
+                Upgrades.AddRange(Upgrades[i].NextUpgrades);
+                Upgrades.RemoveAt(i);
+            }
+        }
     }
 
     public void LoadData()
@@ -110,9 +125,9 @@ public class PlayerData : MonoBehaviour
         PlayerPrefs.SetFloat("AddedExplosiveAmmoRange", 0);
         PlayerPrefs.SetFloat("AddedExplosiveAmmoDamage", 0);
 
-        PlayerPrefs.GetInt("Penetrability", 0);
-        PlayerPrefs.GetInt("ExplosiveAmmo", 0);
-        PlayerPrefs.GetInt("AutoAim", 1);
+        PlayerPrefs.SetInt("Penetrability", 0);
+        PlayerPrefs.SetInt("ExplosiveAmmo", 0);
+        // PlayerPrefs.SetInt("AutoAim", 1);
 
         BulletExplosionSO.Range = ExplosiveAmmoRange;
         BulletExplosionSO.Damage = ExplosiveAmmoDamage;

@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     [Range(-1, 60)][SerializeField] private int FPS_target = 60;
     [SerializeField] private bool FPS_counter = true;
 
-
     public static GameManager Instance { get; private set; }
     void Awake()
     {
@@ -70,6 +69,7 @@ public class GameManager : MonoBehaviour
     #region MainMenu
     public void MainMenu()
     {
+        Player.Instance.ClearInputs();
         PlayerData.Instance.ResetData();
         StartCoroutine(MainMenuTimer());
     }
@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
     #region RestartGame
     public void RestartGame()
     {
+        Player.Instance.ClearInputs();
         PlayerData.Instance.ResetData();
         StartCoroutine(RestartGameTimer());
     }

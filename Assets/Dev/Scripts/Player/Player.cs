@@ -76,22 +76,38 @@ public class Player : MonoBehaviour, IDamagable
         PlayerTransform = this.transform;
 
         healthSystem.OnDead += OnDead;
+    }
 
+    public void SetInputs()
+    {
         playerInputActions = new PlayerInputActions();
-
+        #region Move
         moveAction = playerInputActions.Player.Move;
         moveAction.Enable();
+        #endregion
 
+        #region Aim
         aimAction = playerInputActions.Player.Aim;
         aimAction.Enable();
+        #endregion
 
+        #region ToggleAim
         toggleAimAction = playerInputActions.Player.ToggleAim;
         toggleAimAction.performed += ToggleAim;
         toggleAimAction.Enable();
+        #endregion
 
+        #region ClickMap
         mapAction = playerInputActions.Player.ClickMap;
         mapAction.performed += ClickMap;
         mapAction.Enable();
+        #endregion
+    }
+
+    public void ClearInputs()
+    {
+        toggleAimAction.performed -= ToggleAim;
+        mapAction.performed -= ClickMap;
     }
 
     #region --- Map ---
@@ -114,7 +130,9 @@ public class Player : MonoBehaviour, IDamagable
 
     public void StartGame()
     {
+        SetInputs();
         SetCharacter();
+
         PlayerData.Instance.LoadData();
         EquipGun(PlayerData.Instance.SelectedGun);
         healthSystem.SetHealth(PlayerData.Instance.MaxHealth);
@@ -185,6 +203,7 @@ public class Player : MonoBehaviour, IDamagable
     private void JoystickMove()
     {
         leftJoystick = moveAction.ReadValue<Vector2>();
+
         moveDirection.x = leftJoystick.x;
         moveDirection.z = leftJoystick.y;
 
