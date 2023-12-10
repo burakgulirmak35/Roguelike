@@ -92,18 +92,18 @@ public class Player : MonoBehaviour, IDamagable
     }
 
     #region --- Map ---
-    private bool ZoomOut;
     private void ClickMap(InputAction.CallbackContext callbackContext)
     {
-        if (ZoomOut)
+        switch (CameraManager.Instance.CurrentCamIndex)
         {
-            ZoomOut = false;
-            CameraManager.Instance.ZoomTo(1);
-        }
-        else
-        {
-            ZoomOut = true;
-            CameraManager.Instance.ZoomTo(2);
+            case 1:
+                CameraManager.Instance.ZoomTo(2);
+                break;
+            case 2:
+                CameraManager.Instance.ZoomTo(1);
+                break;
+            default:
+                break;
         }
     }
 
@@ -116,6 +116,8 @@ public class Player : MonoBehaviour, IDamagable
         healthSystem.SetHealth(PlayerData.Instance.MaxHealth);
         AddExperience(0);
         PrepareAim();
+
+        CameraManager.Instance.ZoomTo(1);
     }
 
     private void PrepareAim()

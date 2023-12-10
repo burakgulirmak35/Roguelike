@@ -176,3 +176,7 @@ MonoBehaviour:
   - {x: 0, y: 25, z: -8.5}
   shakeCameraTime: 0.1
   shakeCameraIntensity: 1
+  HiddenObjectMask:
+    serializedVersion: 2
+    m_Bits: 512
+  CurrentCamIndex: 0

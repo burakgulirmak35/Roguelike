@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class CameraManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField][Range(0, 5)] private float shakeCameraIntensity = 1f;
 
     public static CameraManager Instance { get; private set; }
-    void Awake()
+    private void Awake()
     {
         Instance = this;
         MainCam = Camera.main;
@@ -29,8 +30,10 @@ public class CameraManager : MonoBehaviour
     }
 
     #region Zoom
+    [HideInInspector] public int CurrentCamIndex;
     public void ZoomTo(int Index)
     {
+        CurrentCamIndex = Index;
         if (Index >= FollowPoints.Count) Index = FollowPoints.Count - 1;
         else if (Index <= 0) Index = 0;
 
