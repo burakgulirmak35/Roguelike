@@ -19,8 +19,11 @@ public class Player : MonoBehaviour, IDamagable
     [Header("Animations")]
     [SerializeField] private Animator PlayerAnim;
 
+    [Header("Trail")]
+    [SerializeField] public MeshTrail meshTrail;
+
     [Header("Model")]
-    [SerializeField] private Transform Body;
+    [SerializeField] public Transform Body;
     [SerializeField] private GameObject Rifle;
     [Space]
     private PlayerInputActions playerInputActions;
@@ -149,6 +152,7 @@ public class Player : MonoBehaviour, IDamagable
             Characters[i].SetActive(false);
         }
         Characters[PlayerPrefs.GetInt("SelectedCharacterIndex")].SetActive(true);
+        meshTrail.skinnedMeshRenderer = Characters[PlayerPrefs.GetInt("SelectedCharacterIndex")].GetComponent<SkinnedMeshRenderer>();
     }
 
     private void PrepareAim()

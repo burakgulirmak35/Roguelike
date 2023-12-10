@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7263793619974930167}
   - component: {fileID: 4364502991029078623}
   m_Layer: 0
-  m_Name: HowerBoard
+  m_Name: MeshTrain
   m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

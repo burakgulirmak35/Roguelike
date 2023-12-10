@@ -1015,11 +1015,13 @@ MonoBehaviour:
   ExperiencePoolCount: 50
   ExperiencePrefab: {fileID: 2985430304929008089, guid: ddcaea935dd383c4e9535a23d35c2332,
     type: 3}
-  VFXPoolCount: 2
-  SimpleExplosionPrefab: {fileID: 168694, guid: 1bfdf09308bfebf48909709dc9b8701d,
-    type: 3}
+  MegaExplosionPoolCount: 2
   MegaExplosionPrefab: {fileID: 168694, guid: 034c52719098cbf418ecd254fb44aec1, type: 3}
+  MagnetPoolCount: 2
   MagnetPrefab: {fileID: 7610516396084273526, guid: f2f940502f41e674fae4f5fecf5be020,
+    type: 3}
+  SimpleExplosionPoolCount: 10
+  SimpleExplosionPrefab: {fileID: 168694, guid: 1bfdf09308bfebf48909709dc9b8701d,
     type: 3}
   CollectableCount: 2
   CollectableBombPrefab: {fileID: 2985430304929008089, guid: 54c6050e4b4e8454d9ac617c937a3658,
@@ -1028,7 +1030,7 @@ MonoBehaviour:
     type: 3}
   CollectableHealthPrefab: {fileID: 2985430304929008089, guid: 4b2a300a88c0e8a43990d9001e828ee2,
     type: 3}
-  CollectableHowerBoardPrefab: {fileID: 2985430304929008089, guid: f8b0f298d38554f40b28c24185640240,
+  CollectableMeshTrainPrefab: {fileID: 2985430304929008089, guid: f8b0f298d38554f40b28c24185640240,
     type: 3}
   CollectableMagnetPrefab: {fileID: 2985430304929008089, guid: 136c9c38020f1244fa287814699facd9,
     type: 3}

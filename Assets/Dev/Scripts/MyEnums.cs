@@ -27,7 +27,7 @@ public enum ItemType
     Bomb,
     Booster,
     Health,
-    HowerBoard,
+    MeshTrain,
     Magnet,
     SlowMotion,
     SpeedBoost,

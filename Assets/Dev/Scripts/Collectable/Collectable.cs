@@ -43,8 +43,8 @@ public class Collectable : MonoBehaviour
             case ItemType.Health:
                 Health();
                 break;
-            case ItemType.HowerBoard:
-                HowerBoard();
+            case ItemType.MeshTrain:
+                MeshTrain();
                 break;
             case ItemType.Magnet:
                 Magnet();
@@ -88,10 +88,12 @@ public class Collectable : MonoBehaviour
         Player.Instance.healthSystem.HealPercent(0.25f);
     }
 
-    private void HowerBoard()
+    private void MeshTrain()
     {
         myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
+
+        Player.Instance.meshTrail.ActiveTrail();
     }
 
     private void Magnet()
