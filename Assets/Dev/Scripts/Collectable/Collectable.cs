@@ -98,6 +98,7 @@ public class Collectable : MonoBehaviour
     {
         myTransform.parent = PoolManager.Instance.CollectableHolder;
         Spawner.Instance.SpawnAtPos(PoolTypes.Magnet, Player.Instance.VFXTransform.position);
+
         gameObject.SetActive(false);
     }
 
