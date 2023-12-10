@@ -10,6 +10,9 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, IDamagable
 {
+    [Header("Character")]
+    [SerializeField] private List<GameObject> Characters = new List<GameObject>();
+
     [Header("Gun")]
     private Gun gun;
 
@@ -111,6 +114,7 @@ public class Player : MonoBehaviour, IDamagable
 
     public void StartGame()
     {
+        SetCharacter();
         PlayerData.Instance.LoadData();
         EquipGun(PlayerData.Instance.SelectedGun);
         healthSystem.SetHealth(PlayerData.Instance.MaxHealth);
@@ -118,6 +122,15 @@ public class Player : MonoBehaviour, IDamagable
         PrepareAim();
 
         CameraManager.Instance.ZoomTo(1);
+    }
+
+    private void SetCharacter()
+    {
+        for (int i = 0; i < Characters.Count; i++)
+        {
+            Characters[i].SetActive(false);
+        }
+        Characters[PlayerPrefs.GetInt("SelectedCharacterIndex")].SetActive(true);
     }
 
     private void PrepareAim()

@@ -67,6 +67,21 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region MainMenu
+    public void MainMenu()
+    {
+        PlayerData.Instance.ResetData();
+        StartCoroutine(MainMenuTimer());
+    }
+
+    private IEnumerator MainMenuTimer()
+    {
+        UIManager.Instance.panelFadeInOut.FadeOut(1);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("MainMenu");
+    }
+    #endregion
+
     #region RestartGame
     public void RestartGame()
     {
