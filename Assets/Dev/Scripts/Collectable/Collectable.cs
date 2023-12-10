@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-
-
 public class Collectable : MonoBehaviour
 {
     [SerializeField] private CollectableSO collectableSO;
@@ -99,6 +97,7 @@ public class Collectable : MonoBehaviour
     private void Magnet()
     {
         myTransform.parent = PoolManager.Instance.CollectableHolder;
+        Spawner.Instance.SpawnAtPos(PoolTypes.Magnet, Player.Instance.VFXTransform.position);
         gameObject.SetActive(false);
     }
 

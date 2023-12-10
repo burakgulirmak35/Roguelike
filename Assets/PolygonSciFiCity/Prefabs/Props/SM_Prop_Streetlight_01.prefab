@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4013905553807786}
   - component: {fileID: 33324074931371536}
   - component: {fileID: 23191129113140476}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Streetlight_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
