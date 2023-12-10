@@ -37,10 +37,13 @@ public class GameManager : MonoBehaviour
     }
 
     private Coroutine slowMotionCoro;
+    private bool isSlowMotion;
     private IEnumerator SlowMotionTimer()
     {
+        isSlowMotion = true;
         Time.timeScale = PlayerData.Instance.SlowMotionPercent;
         yield return new WaitForSeconds(PlayerData.Instance.SlowMotionTime);
+        isSlowMotion = false;
         if (Player.Instance.healthSystem.isAlive)
         {
             Time.timeScale = 1;
@@ -57,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        if (slowMotionCoro != null)
+        if (isSlowMotion)
         {
             Time.timeScale = PlayerData.Instance.SlowMotionPercent;
             return;
