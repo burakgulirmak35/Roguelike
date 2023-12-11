@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 203196815253580561}
   - component: {fileID: 191696811178368075}
   - component: {fileID: 183393937837071577}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Security_Scanner_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 701832329940905125}
   - component: {fileID: 709945037696322317}
   - component: {fileID: 720413953394268465}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Billboard_Border_Tall_04 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 1454087148036493513}
   - component: {fileID: 1462296495222486845}
   - component: {fileID: 1472377316397957535}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_SatDish_02 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 2073753203807445666}
   - component: {fileID: 2071549019711591928}
   - component: {fileID: 2061837399785624938}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Security_Scanner_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 2541016930954789249}
   - component: {fileID: 2538815240457670193}
   - component: {fileID: 2530921350223555921}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Sidewalk_Barrier_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 2672294248472626110}
   - component: {fileID: 2698029610551903566}
   - component: {fileID: 2690084654516051660}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Large_Part_07 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 3391821469904574948}
   - component: {fileID: 3414938570106072726}
   - component: {fileID: 3407237305560103660}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Security_WatchStation_01_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -595,7 +595,7 @@ GameObject:
   - component: {fileID: 3390410276429513464}
   - component: {fileID: 3414953615397852562}
   - component: {fileID: 3409095346881821544}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Security_WatchStation_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -679,7 +679,7 @@ GameObject:
   - component: {fileID: 3797865375936656154}
   - component: {fileID: 3804431410628212778}
   - component: {fileID: 3813347197181104528}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Ad_26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -762,7 +762,7 @@ GameObject:
   - component: {fileID: 3958420344138628547}
   - component: {fileID: 3933939902777709817}
   - component: {fileID: 3941140077315547255}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Ad_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -845,7 +845,7 @@ GameObject:
   - component: {fileID: 4198156644929532290}
   - component: {fileID: 4189928743457980460}
   - component: {fileID: 4179750051772814768}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Neon_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -928,7 +928,7 @@ GameObject:
   - component: {fileID: 4349574747601326863}
   - component: {fileID: 4339754656227626663}
   - component: {fileID: 4332172182352526461}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Billboard_Border_04 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1011,7 +1011,7 @@ GameObject:
   - component: {fileID: 4492537903691130442}
   - component: {fileID: 4477048434992681176}
   - component: {fileID: 4468993743500540106}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Ad_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1092,7 +1092,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7636129075416045318}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building 24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1148,7 +1148,7 @@ GameObject:
   - component: {fileID: 5295385649084550082}
   - component: {fileID: 5261922284403872330}
   - component: {fileID: 5269441844278195520}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Ad_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1231,7 +1231,7 @@ GameObject:
   - component: {fileID: 5510201460379937447}
   - component: {fileID: 5485138321740435335}
   - component: {fileID: 5493617719930263723}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Wall_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1314,7 +1314,7 @@ GameObject:
   - component: {fileID: 5644404128813777812}
   - component: {fileID: 5637842040972751822}
   - component: {fileID: 5626778224475915504}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_08 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1397,7 +1397,7 @@ GameObject:
   - component: {fileID: 6278741834049254934}
   - component: {fileID: 6288754309795066086}
   - component: {fileID: 6296716892309334884}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Large_Part_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1480,7 +1480,7 @@ GameObject:
   - component: {fileID: 6464359997206393084}
   - component: {fileID: 6476166144976672390}
   - component: {fileID: 6482265035825616320}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Ad_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1563,7 +1563,7 @@ GameObject:
   - component: {fileID: 6620840632725240539}
   - component: {fileID: 6595754205046508567}
   - component: {fileID: 6603890013807793207}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Ad_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1646,7 +1646,7 @@ GameObject:
   - component: {fileID: 7292778179165763477}
   - component: {fileID: 7300999741289921677}
   - component: {fileID: 7309349967109746751}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Ad_31 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1729,7 +1729,7 @@ GameObject:
   - component: {fileID: 8184193701923884396}
   - component: {fileID: 8209153938151050332}
   - component: {fileID: 8199039963010233332}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Billboard_Border_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1814,7 +1814,7 @@ GameObject:
   - component: {fileID: 8628874164128073770}
   - component: {fileID: 8635874718186282584}
   - component: {fileID: 8645994751279430662}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Atm_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1897,7 +1897,7 @@ GameObject:
   - component: {fileID: 8877430767769768795}
   - component: {fileID: 8888549207248340309}
   - component: {fileID: 8894863210556457167}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Underpass_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1980,7 +1980,7 @@ GameObject:
   - component: {fileID: 9071163419389614928}
   - component: {fileID: 9044401113555994526}
   - component: {fileID: 9052591185907519778}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Security_Camera_02_Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2063,7 +2063,7 @@ GameObject:
   - component: {fileID: 9078511278358773548}
   - component: {fileID: 9045274589103357808}
   - component: {fileID: 9052371017388626692}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Security_Camera_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2144,6 +2144,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8184193701923884396}
     m_Modifications:
+    - target: {fileID: 1208114884974774, guid: 67baa394647fed247a81a54b8efb236a, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4116221497936594, guid: 67baa394647fed247a81a54b8efb236a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2202,6 +2206,10 @@ PrefabInstance:
     - target: {fileID: 1208114884974774, guid: 67baa394647fed247a81a54b8efb236a, type: 3}
       propertyPath: m_Name
       value: SM_Sign_Billboard_Attachmentl_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1208114884974774, guid: 67baa394647fed247a81a54b8efb236a, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4116221497936594, guid: 67baa394647fed247a81a54b8efb236a, type: 3}
       propertyPath: m_RootOrder
@@ -2270,6 +2278,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Sign_Billboard_Attachmentl_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1208114884974774, guid: 67baa394647fed247a81a54b8efb236a, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4116221497936594, guid: 67baa394647fed247a81a54b8efb236a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2333,6 +2345,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 701832329940905125}
     m_Modifications:
+    - target: {fileID: 1208114884974774, guid: 67baa394647fed247a81a54b8efb236a, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4116221497936594, guid: 67baa394647fed247a81a54b8efb236a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2387,6 +2403,10 @@ PrefabInstance:
     - target: {fileID: 1208114884974774, guid: 67baa394647fed247a81a54b8efb236a, type: 3}
       propertyPath: m_Name
       value: SM_Sign_Billboard_Attachmentl_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1208114884974774, guid: 67baa394647fed247a81a54b8efb236a, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4116221497936594, guid: 67baa394647fed247a81a54b8efb236a, type: 3}
       propertyPath: m_RootOrder

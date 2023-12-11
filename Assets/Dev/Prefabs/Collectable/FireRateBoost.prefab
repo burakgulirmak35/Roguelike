@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7263793619974930167}
   - component: {fileID: 4364502991029078623}
   m_Layer: 0
-  m_Name: Booster
+  m_Name: FireRateBoost
   m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,6 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1498399612209974250}
+  - {fileID: 1095230806064004144}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8906427574561883675
@@ -169,7 +170,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ccf97ddb50dc9437e9899ba23fab088a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f5077902f34e4dcda6e69df4ced83a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -180,3 +181,66 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1097776300491788394
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1825441266929084342}
+    m_Modifications:
+    - target: {fileID: 1074443191018688, guid: 5876a7f3d6de79a4c9d9864e08e3f6b8, type: 3}
+      propertyPath: m_Name
+      value: PowerboxMetalBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256377671625818, guid: 5876a7f3d6de79a4c9d9864e08e3f6b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256377671625818, guid: 5876a7f3d6de79a4c9d9864e08e3f6b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256377671625818, guid: 5876a7f3d6de79a4c9d9864e08e3f6b8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256377671625818, guid: 5876a7f3d6de79a4c9d9864e08e3f6b8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256377671625818, guid: 5876a7f3d6de79a4c9d9864e08e3f6b8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256377671625818, guid: 5876a7f3d6de79a4c9d9864e08e3f6b8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256377671625818, guid: 5876a7f3d6de79a4c9d9864e08e3f6b8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256377671625818, guid: 5876a7f3d6de79a4c9d9864e08e3f6b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256377671625818, guid: 5876a7f3d6de79a4c9d9864e08e3f6b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256377671625818, guid: 5876a7f3d6de79a4c9d9864e08e3f6b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5876a7f3d6de79a4c9d9864e08e3f6b8, type: 3}
+--- !u!4 &1095230806064004144 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4256377671625818, guid: 5876a7f3d6de79a4c9d9864e08e3f6b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1097776300491788394}
+  m_PrefabAsset: {fileID: 0}

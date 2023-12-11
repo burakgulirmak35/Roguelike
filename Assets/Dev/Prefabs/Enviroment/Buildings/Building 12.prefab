@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 247448262670208998}
   - component: {fileID: 223465746835189892}
   - component: {fileID: 231194916542930712}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Door_05_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 247361130689813942}
   - component: {fileID: 222486759821133596}
   - component: {fileID: 230543427066630040}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Door_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 991253662417313276}
   - component: {fileID: 983067959644815444}
   - component: {fileID: 973797185660023438}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Billboard_Border_04 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 1877993952584329849}
   - component: {fileID: 1903702523914988681}
   - component: {fileID: 1895739760944723723}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Large_Part_07 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 2283897806123032543}
   - component: {fileID: 2290942750658931021}
   - component: {fileID: 2301257763146678623}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Ad_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 3485089357236605093}
   - component: {fileID: 3469213515248493465}
   - component: {fileID: 3459053725980396145}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Vent_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 3504192958491555247}
   - component: {fileID: 3515620611179677329}
   - component: {fileID: 3523028248398635821}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Door_03_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,7 +593,7 @@ GameObject:
   - component: {fileID: 3504030440159257359}
   - component: {fileID: 3514129079341183381}
   - component: {fileID: 3522513531016330389}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Door_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 763645261848683702}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building 12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -719,7 +719,7 @@ GameObject:
   - component: {fileID: 4078626097208695177}
   - component: {fileID: 4106422384618286003}
   - component: {fileID: 4096354983564703423}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -802,7 +802,7 @@ GameObject:
   - component: {fileID: 4473919655929144877}
   - component: {fileID: 4499121367884878187}
   - component: {fileID: 4491256565858236037}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_TrashCan_Lid_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -885,7 +885,7 @@ GameObject:
   - component: {fileID: 4474164437129060349}
   - component: {fileID: 4503286447333791459}
   - component: {fileID: 4491324058227462685}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_TrashCan_01 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -969,7 +969,7 @@ GameObject:
   - component: {fileID: 5221676868017698302}
   - component: {fileID: 5192151564196447588}
   - component: {fileID: 5200312121757168714}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Ad_09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1052,7 +1052,7 @@ GameObject:
   - component: {fileID: 5798393923806303278}
   - component: {fileID: 5764788494317860036}
   - component: {fileID: 5775248297214703508}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Building_Shack_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1135,7 +1135,7 @@ GameObject:
   - component: {fileID: 6557275983458761129}
   - component: {fileID: 6586954467896750263}
   - component: {fileID: 6576117976533136457}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_TrashCan_01 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1219,7 +1219,7 @@ GameObject:
   - component: {fileID: 6557800860415049849}
   - component: {fileID: 6586343006841141055}
   - component: {fileID: 6576193439885414609}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_TrashCan_Lid_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4068118705098369842}
   - component: {fileID: 4043543750855884640}
   - component: {fileID: 4049073558621471306}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Large_Part_08 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5699755155474440809}
   - component: {fileID: 5719752051399002269}
   - component: {fileID: 5712432729933917423}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Corner_01_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 5699854068760940335}
   - component: {fileID: 5723883391763603325}
   - component: {fileID: 5711825015355746279}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Corner_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 5892663680667013127}
   - component: {fileID: 5886103090507121749}
   - component: {fileID: 5873570224079190399}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Large_Part_08 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8210096301823436934}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building 20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 8736741578420169644}
   - component: {fileID: 8743585114371809342}
   - component: {fileID: 8754198937710294320}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Corner_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,7 +463,7 @@ GameObject:
   - component: {fileID: 9104973609820638144}
   - component: {fileID: 9093626611713081426}
   - component: {fileID: 9086382656767530332}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Corner_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 258540150899913080}
   - component: {fileID: 284215465988434934}
   - component: {fileID: 275584438382191476}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Env_Greeble_Cube_02 (63)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1642980441688879656}
   - component: {fileID: 1633173416997464230}
   - component: {fileID: 1623719679815213092}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Env_Greeble_Cube_02 (64)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 2699276638592954828}
   - component: {fileID: 2671533574439166198}
   - component: {fileID: 2679849260444901600}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Door_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 2778505887029471746}
   - component: {fileID: 2807967958729386306}
   - component: {fileID: 2797573604106490502}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Paper_Lantern_01 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 3019395622171395088}
   - component: {fileID: 2998451839329404990}
   - component: {fileID: 3007619682734545152}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Pillar_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1007601076160052132}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 3767009795506781681}
   - component: {fileID: 3764680054399566699}
   - component: {fileID: 3754617415376916939}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_SatDish_Base_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 3766827600808266591}
   - component: {fileID: 3764998276602003489}
   - component: {fileID: 3754975589586260587}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_SatDish_Attach_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 4843738678317619699}
   - component: {fileID: 4846931993202316765}
   - component: {fileID: 4855532213661975779}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Pillar_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 5196164373578993887}
   - component: {fileID: 5216734141328171445}
   - component: {fileID: 5206707253044829873}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Window_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -807,7 +807,7 @@ GameObject:
   - component: {fileID: 6201073674109477657}
   - component: {fileID: 6226678619203926423}
   - component: {fileID: 6218122901450109205}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Env_Greeble_Cube_02 (71)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 7250977575166980278}
   - component: {fileID: 7266696772647515126}
   - component: {fileID: 7277082056068778034}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Paper_Lantern_01 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -973,7 +973,7 @@ GameObject:
   - component: {fileID: 7655438523499572493}
   - component: {fileID: 7663694622279221185}
   - component: {fileID: 7673869846610179025}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Window_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1056,7 +1056,7 @@ GameObject:
   - component: {fileID: 8725360654731513470}
   - component: {fileID: 8750473117542780988}
   - component: {fileID: 8740258049039504668}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_VRBooth_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1139,7 +1139,7 @@ GameObject:
   - component: {fileID: 8760722216116162410}
   - component: {fileID: 8786522327841828554}
   - component: {fileID: 8777139800372274142}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Env_Hedge_03 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1222,7 +1222,7 @@ GameObject:
   - component: {fileID: 9148619126917384573}
   - component: {fileID: 9119427536152300093}
   - component: {fileID: 9127576687494476281}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Paper_Lantern_01 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1305,7 +1305,7 @@ GameObject:
   - component: {fileID: 9216605552218368200}
   - component: {fileID: 9196120031893203848}
   - component: {fileID: 9203725791251238988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Paper_Lantern_01 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1389,6 +1389,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Overhang_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1083068638560774, guid: 799bc30141649c94b83c28803d619b42, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4247531794298980, guid: 799bc30141649c94b83c28803d619b42, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1440,6 +1444,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2699276638592954828}
     m_Modifications:
+    - target: {fileID: 1083068638560774, guid: 799bc30141649c94b83c28803d619b42, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4247531794298980, guid: 799bc30141649c94b83c28803d619b42, type: 3}
       propertyPath: m_RootOrder
       value: 1

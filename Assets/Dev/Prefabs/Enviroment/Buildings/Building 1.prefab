@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 574535408385382382}
   - component: {fileID: 544563727142879332}
   - component: {fileID: 551522566998736564}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Wall_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1405474275196372651}
   - component: {fileID: 1434291065843455933}
   - component: {fileID: 1423746535613990971}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Door_06 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 4080200231816600665}
   - component: {fileID: 4105230207125507733}
   - component: {fileID: 4097522836475380357}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Window_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 5524848180334497453}
   - component: {fileID: 5537824965864835273}
   - component: {fileID: 5544494004086410489}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Billboard_Large_04 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3183277536784810162}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

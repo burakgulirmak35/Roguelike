@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 333819463687919850}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 940369254562536032}
   - component: {fileID: 966569799259902854}
   - component: {fileID: 957159308737709756}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Large_04 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 1945981628655954795}
   - component: {fileID: 1974224888517678061}
   - component: {fileID: 1964157770941566513}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_WallAttach_Electronics_06 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 2637106715536764835}
   - component: {fileID: 2665210127005521701}
   - component: {fileID: 2655846666773416697}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_WallAttach_Electronics_06 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 3056809183951093805}
   - component: {fileID: 3031850378806363563}
   - component: {fileID: 3041674937937086815}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Door_02 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 4644789556051789144}
   - component: {fileID: 4615388516518772958}
   - component: {fileID: 4623050028348673066}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Door_02 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 4691456423854717755}
   - component: {fileID: 4711850257153539773}
   - component: {fileID: 4703625250446373449}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Door_02 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +547,7 @@ GameObject:
   - component: {fileID: 8142299115642169045}
   - component: {fileID: 8114106707119545939}
   - component: {fileID: 8123602070057436047}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_WallAttach_Electronics_06 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

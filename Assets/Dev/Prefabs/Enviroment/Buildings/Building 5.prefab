@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2145746981814843198}
   - component: {fileID: 2138717428889071084}
   - component: {fileID: 2126949419118457262}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_VendingMachine_Soda_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2150939631516886854}
   - component: {fileID: 2134921819880524656}
   - component: {fileID: 2126960558903613942}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_VendingMachine_Soda_01_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 7955611545653539303}
   - component: {fileID: 7930243046356930121}
   - component: {fileID: 7938694850536095489}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Large_03 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3050098228572997291}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}

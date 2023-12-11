@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea6b54f6f34d6174d8f37f0159fd765d, type: 3}
-  m_Name: Booster
+  m_Name: FireRateBoost
   m_EditorClassIdentifier: 
   itemType: 2
   LocalCollectedPos: {x: 0, y: 1, z: 0}

@@ -39,7 +39,7 @@ public class PoolManager : MonoBehaviour
     [Header("Collectable")]
     [SerializeField] private int CollectableCount;
     [SerializeField] private GameObject CollectableBombPrefab;
-    [SerializeField] private GameObject CollectableBoosterPrefab;
+    [SerializeField] private GameObject CollectableFireRateBoostPrefab;
     [SerializeField] private GameObject CollectableHealthPrefab;
     [SerializeField] private GameObject CollectableMeshTrainPrefab;
     [SerializeField] private GameObject CollectableMagnetPrefab;
@@ -68,7 +68,7 @@ public class PoolManager : MonoBehaviour
     private Queue<GameObject> magnetPool = new Queue<GameObject>();
     [Space]
     private Queue<GameObject> collectableBombPool = new Queue<GameObject>();
-    private Queue<GameObject> collectableBoosterPool = new Queue<GameObject>();
+    private Queue<GameObject> collectableFireRateBoostPool = new Queue<GameObject>();
     private Queue<GameObject> collectableHealthPool = new Queue<GameObject>();
     private Queue<GameObject> collectableMeshTrainPool = new Queue<GameObject>();
     private Queue<GameObject> collectableMagnetPool = new Queue<GameObject>();
@@ -96,7 +96,7 @@ public class PoolManager : MonoBehaviour
 
         GeneratePool(ExperiencePrefab, ExperiencePoolCount, experiencePool, ExperienceHolder);
         GeneratePool(CollectableBombPrefab, CollectableCount, collectableBombPool, CollectableHolder);
-        GeneratePool(CollectableBoosterPrefab, CollectableCount, collectableBoosterPool, CollectableHolder);
+        GeneratePool(CollectableFireRateBoostPrefab, CollectableCount, collectableFireRateBoostPool, CollectableHolder);
         GeneratePool(CollectableHealthPrefab, CollectableCount, collectableHealthPool, CollectableHolder);
         GeneratePool(CollectableMeshTrainPrefab, CollectableCount, collectableMeshTrainPool, CollectableHolder);
         GeneratePool(CollectableMagnetPrefab, CollectableCount, collectableMagnetPool, CollectableHolder);
@@ -187,9 +187,9 @@ public class PoolManager : MonoBehaviour
                 tempDropItem = collectableBombPool.Dequeue();
                 collectableBombPool.Enqueue(tempDropItem);
                 return tempDropItem;
-            case ItemType.Booster:
-                tempDropItem = collectableBoosterPool.Dequeue();
-                collectableBoosterPool.Enqueue(tempDropItem);
+            case ItemType.FireRateBoost:
+                tempDropItem = collectableFireRateBoostPool.Dequeue();
+                collectableFireRateBoostPool.Enqueue(tempDropItem);
                 return tempDropItem;
             case ItemType.Health:
                 tempDropItem = collectableHealthPool.Dequeue();

@@ -25,7 +25,7 @@ public enum ItemType
 {
     Experience,
     Bomb,
-    Booster,
+    FireRateBoost,
     Health,
     MeshTrain,
     Magnet,

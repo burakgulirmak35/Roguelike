@@ -26,33 +26,28 @@ public class GameManager : MonoBehaviour
     }
 
     #region Effects
-
+    private bool isSlowMotion;
     public void SlowMotion()
     {
-        if (slowMotionCoro != null)
+        if (!isSlowMotion)
         {
-            StopCoroutine(slowMotionCoro);
+            isSlowMotion = true;
+            StartCoroutine(SlowMotionTimer());
         }
-        slowMotionCoro = StartCoroutine(SlowMotionTimer());
     }
-
-    private Coroutine slowMotionCoro;
-    private bool isSlowMotion;
     private IEnumerator SlowMotionTimer()
     {
-        isSlowMotion = true;
         Time.timeScale = PlayerData.Instance.SlowMotionPercent;
         yield return new WaitForSeconds(PlayerData.Instance.SlowMotionTime);
-        isSlowMotion = false;
         if (Player.Instance.healthSystem.isAlive)
         {
             Time.timeScale = 1;
         }
+        isSlowMotion = false;
     }
-
     #endregion
 
-    #region Timee
+    #region Time
     public void FreezeGame()
     {
         Time.timeScale = 0;

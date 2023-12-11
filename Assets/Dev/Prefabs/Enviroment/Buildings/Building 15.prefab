@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 536405289330840290}
   - component: {fileID: 506380504258107048}
   - component: {fileID: 516921929644082722}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Ad_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 799877769600902805}
   - component: {fileID: 824330723997667417}
   - component: {fileID: 819080188330969209}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Ad_05 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 1568993674819483494}
   - component: {fileID: 1567032562830459380}
   - component: {fileID: 1556998784800860646}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Ad_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 1710496548554426021}
   - component: {fileID: 1717498145275326569}
   - component: {fileID: 1727321827330648137}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Ad_05 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 2047453828152508477}
   - component: {fileID: 2018582217987496327}
   - component: {fileID: 2028976931973082797}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Neon_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8924663015901433372}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building 15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 2725732453485207230}
   - component: {fileID: 2714373841743388158}
   - component: {fileID: 2706233490252408378}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Paper_Lantern_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -559,7 +559,7 @@ GameObject:
   - component: {fileID: 4708249529693768236}
   - component: {fileID: 4696999619291423688}
   - component: {fileID: 4687568845584091524}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Roof_Pagoda_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 4806283361984210005}
   - component: {fileID: 4813084499102869269}
   - component: {fileID: 4822967606884408529}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Paper_Lantern_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -725,7 +725,7 @@ GameObject:
   - component: {fileID: 5089437140004781201}
   - component: {fileID: 5100236246501671135}
   - component: {fileID: 5108231526158971947}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Building_Shack_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 6067471195442888961}
   - component: {fileID: 6076795243746636811}
   - component: {fileID: 6084911728523392169}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Paper_Banner_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -891,7 +891,7 @@ GameObject:
   - component: {fileID: 7000128673094346820}
   - component: {fileID: 7015517968930090890}
   - component: {fileID: 7025389067877274834}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Sidewalk_Pipe_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,7 +974,7 @@ GameObject:
   - component: {fileID: 7139986042222025989}
   - component: {fileID: 7166204031749498303}
   - component: {fileID: 7156846733651196613}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Ad_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1057,7 +1057,7 @@ GameObject:
   - component: {fileID: 8095969734956031048}
   - component: {fileID: 8087418609503758658}
   - component: {fileID: 8077390142721583584}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Paper_Banner_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1140,7 +1140,7 @@ GameObject:
   - component: {fileID: 8168094869757122018}
   - component: {fileID: 8152144902543054498}
   - component: {fileID: 8144514997149478246}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Paper_Lantern_01 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1223,7 +1223,7 @@ GameObject:
   - component: {fileID: 8226514244092805986}
   - component: {fileID: 8238138397314229144}
   - component: {fileID: 8247824769796061884}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Billboard_Large_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1306,7 +1306,7 @@ GameObject:
   - component: {fileID: 8501274539582570444}
   - component: {fileID: 8467867946840016226}
   - component: {fileID: 8477997999031248148}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Door_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1389,7 +1389,7 @@ GameObject:
   - component: {fileID: 8738560531807895110}
   - component: {fileID: 8736612952637774088}
   - component: {fileID: 8727883298696782168}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Posters_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1472,7 +1472,7 @@ GameObject:
   - component: {fileID: 8765398990450873592}
   - component: {fileID: 8780937809035990968}
   - component: {fileID: 8789115298870176892}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Paper_Lantern_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1555,7 +1555,7 @@ GameObject:
   - component: {fileID: 8965584001227650100}
   - component: {fileID: 8940941856304591282}
   - component: {fileID: 8949184459927010630}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Door_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

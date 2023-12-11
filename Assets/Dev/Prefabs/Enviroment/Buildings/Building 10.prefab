@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5719143692338372698}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3448126497130766048}
   - component: {fileID: 3440143876517488240}
   - component: {fileID: 3431699309205463968}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Large_05 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

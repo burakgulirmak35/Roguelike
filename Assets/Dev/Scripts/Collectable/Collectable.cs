@@ -6,6 +6,7 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
     [SerializeField] private CollectableSO collectableSO;
+
     private SphereCollider myCollider;
     private Transform myTransform;
 
@@ -37,8 +38,8 @@ public class Collectable : MonoBehaviour
             case ItemType.Bomb:
                 Bomb();
                 break;
-            case ItemType.Booster:
-                Booster();
+            case ItemType.FireRateBoost:
+                FireRateBoost();
                 break;
             case ItemType.Health:
                 Health();
@@ -60,60 +61,64 @@ public class Collectable : MonoBehaviour
 
     private void Experience()
     {
+        Player.Instance.AddExperience(1);
+
         myTransform.parent = PoolManager.Instance.ExperienceHolder;
         gameObject.SetActive(false);
-
-        Player.Instance.AddExperience(1);
     }
 
     private void Bomb()
     {
+        Spawner.Instance.SpawnAtPos(PoolTypes.SimpleExplosion, myTransform.position);
+
         myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
-
-        Spawner.Instance.SpawnAtPos(PoolTypes.SimpleExplosion, myTransform.position);
     }
 
-    private void Booster()
+    private void FireRateBoost()
     {
+        PlayerData.Instance.BoostFireRate();
+
         myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
     }
 
     private void Health()
     {
+        Player.Instance.healthSystem.HealPercent(0.25f);
+
         myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
-
-        Player.Instance.healthSystem.HealPercent(0.25f);
     }
 
     private void MeshTrain()
     {
+        Player.Instance.meshTrail.ActiveTrail();
+
         myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
-
-        Player.Instance.meshTrail.ActiveTrail();
     }
 
     private void Magnet()
     {
-        myTransform.parent = PoolManager.Instance.CollectableHolder;
         Spawner.Instance.SpawnAtPos(PoolTypes.Magnet, Player.Instance.VFXTransform.position);
 
+        myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
     }
 
     private void SlowMotion()
     {
+        GameManager.Instance.SlowMotion();
+
         myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
-
-        GameManager.Instance.SlowMotion();
     }
 
     private void SpeedBoost()
     {
+        PlayerData.Instance.BoostMovementSpeed();
+
         myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
     }

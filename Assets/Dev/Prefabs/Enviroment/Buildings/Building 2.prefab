@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1022928547043971811}
   - component: {fileID: 1029776214584766985}
   - component: {fileID: 1040306427962519897}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Building_Shack_01 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2382695734495382597}
   - component: {fileID: 2411058898265667847}
   - component: {fileID: 2401629081219680375}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Corner_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 3316572113470754687}
   - component: {fileID: 3342016263780554455}
   - component: {fileID: 3333982049378656703}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Door_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 3321705896797028629}
   - component: {fileID: 3341803670479618401}
   - component: {fileID: 3333979280934281539}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Door_07_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 3316645871744153893}
   - component: {fileID: 3342155670496744761}
   - component: {fileID: 3334161441071120715}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Door_07_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 3743896812132850522}
   - component: {fileID: 3714858031848243586}
   - component: {fileID: 3722943015389471952}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Large_Part_01 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 4768642121970180538}
   - component: {fileID: 4779616785574175244}
   - component: {fileID: 4787558717620459756}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_AirConditioningGrid_01 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 5233659312160647633}
   - component: {fileID: 5248414802165116171}
   - component: {fileID: 5258725570666332965}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Detail_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 6140887922739749988}
   - component: {fileID: 6143047457140016270}
   - component: {fileID: 6153346664763017182}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Building_Shack_01 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,7 +760,7 @@ GameObject:
   - component: {fileID: 6345302171062446280}
   - component: {fileID: 6374747065764808738}
   - component: {fileID: 6364377387523263346}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Building_Shack_01 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,7 +841,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1056041690221911186}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -883,7 +883,7 @@ GameObject:
   - component: {fileID: 7606380750456562231}
   - component: {fileID: 7631836910155780347}
   - component: {fileID: 7623408224550684555}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_LargeSign_Burger_03_Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -967,7 +967,7 @@ GameObject:
   - component: {fileID: 7632371360642495511}
   - component: {fileID: 7623824467272691605}
   - component: {fileID: 7551604746919349399}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Hologram_Burger_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}

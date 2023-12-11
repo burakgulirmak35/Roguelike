@@ -61,7 +61,7 @@ public class Gun : MonoBehaviour
     {
         while (isFire)
         {
-            yield return new WaitForSeconds(1.0f / playerData.FireRate);
+            yield return new WaitForSeconds(1.0f / (playerData.FireRate * playerData.FireRateMultipler));
             for (int i = 0; i < firePoint.Length; i++)
             {
                 for (int j = 0; j < playerData.BurstCount; j++)

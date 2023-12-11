@@ -17,8 +17,6 @@ public class MeshTrail : MonoBehaviour
     private GameObject go;
     private int ghostIndex;
 
-    private bool isTrailActive;
-
     private void Awake()
     {
         for (int i = 0; i < maxGhostCount; i++)
@@ -34,6 +32,7 @@ public class MeshTrail : MonoBehaviour
         }
     }
 
+    private bool isTrailActive;
     public void ActiveTrail()
     {
         if (!isTrailActive)

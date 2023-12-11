@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 913567809500432078}
   - component: {fileID: 924861933699278986}
   - component: {fileID: 932526832045116890}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Overhang_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1272272489462888360}
   - component: {fileID: 1283132675350455998}
   - component: {fileID: 1291147231472089400}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Door_06 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 1498174520582170335}
   - component: {fileID: 1494452120828096511}
   - component: {fileID: 1483703302903240517}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Cage_03 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 1906028986407691234}
   - component: {fileID: 1879382906657663226}
   - component: {fileID: 1888894246822241352}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Ad_31 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7633528672644073299}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building 23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 5193713604262616417}
   - component: {fileID: 5220854431908065511}
   - component: {fileID: 5210778100459785891}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Wall_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 6057704742713524381}
   - component: {fileID: 6086644977301204649}
   - component: {fileID: 6076580468103842401}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_AirConditioningUnit_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 6812059918325144229}
   - component: {fileID: 6841513731283738403}
   - component: {fileID: 6833236734500541399}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Door_02 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 7145692708010585694}
   - component: {fileID: 7157262465538389126}
   - component: {fileID: 7166611337563017684}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Large_Part_01 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

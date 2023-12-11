@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 23639416425814533}
   - component: {fileID: 16795691529195927}
   - component: {fileID: 5055885068879001}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Corner_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1293154740461004442}
   - component: {fileID: 1267043825414641460}
   - component: {fileID: 1274968246648619688}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Neon_01 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 2023941848558356137}
   - component: {fileID: 2049903146458330091}
   - component: {fileID: 2041038462251500187}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Corner_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 4576728546555260022}
   - component: {fileID: 4608647914967135262}
   - component: {fileID: 4600582420704715558}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Power_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 4775419599418804158}
   - component: {fileID: 4764940615179140874}
   - component: {fileID: 4757726637571806012}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_RubbishPile_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 5262936297775874520}
   - component: {fileID: 5291576834118480866}
   - component: {fileID: 5281219715496521454}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_09 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 5752329160573957748}
   - component: {fileID: 5741079541150275306}
   - component: {fileID: 5732909247815640272}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_ControlPanel_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,7 +593,7 @@ GameObject:
   - component: {fileID: 6244812328404309204}
   - component: {fileID: 6258955109710052538}
   - component: {fileID: 6266579278252503870}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Door_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -676,7 +676,7 @@ GameObject:
   - component: {fileID: 8083545265954301465}
   - component: {fileID: 8090712599581244619}
   - component: {fileID: 8101356910345248905}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_VendingMachine_Soda_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,7 +760,7 @@ GameObject:
   - component: {fileID: 8083979092964161121}
   - component: {fileID: 8091130150621157975}
   - component: {fileID: 8101350443985717457}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_VendingMachine_Soda_01_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,7 +841,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1923168633583365212}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building 13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -884,7 +884,7 @@ GameObject:
   - component: {fileID: 8362009112341939938}
   - component: {fileID: 8390802986674480664}
   - component: {fileID: 8383319899936915260}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Billboard_Large_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}

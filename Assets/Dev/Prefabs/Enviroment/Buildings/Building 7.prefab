@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 97730160977459825}
   - component: {fileID: 84610780918660779}
   - component: {fileID: 72122952483836037}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Detail_01 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 659937273319822022}
   - component: {fileID: 671086298792531776}
   - component: {fileID: 681544962700532660}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Door_02 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8267831150099548743}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 1165044990743434823}
   - component: {fileID: 1175954570527250231}
   - component: {fileID: 1184713091606857217}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Bottle_01_Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 1168061859930313581}
   - component: {fileID: 1176271677750909249}
   - component: {fileID: 1186529285740533525}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Hologram_Bottle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 1968795670405444997}
   - component: {fileID: 1957413278726118869}
   - component: {fileID: 1949748759552498541}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Large_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 2289361276487683299}
   - component: {fileID: 2284215046477686673}
   - component: {fileID: 2277061460954591071}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 4338023235730824164}
   - component: {fileID: 4344452600443127206}
   - component: {fileID: 4354653237571141766}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_VRBooth_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ GameObject:
   - component: {fileID: 4537868844479226949}
   - component: {fileID: 4512116440077075499}
   - component: {fileID: 4519769761808173237}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Neon_07 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -717,7 +717,7 @@ GameObject:
   - component: {fileID: 4599259612586750704}
   - component: {fileID: 4590468708563141470}
   - component: {fileID: 4580292216964388546}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Neon_01 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -800,7 +800,7 @@ GameObject:
   - component: {fileID: 5135978584545176034}
   - component: {fileID: 5129196772947784174}
   - component: {fileID: 5118192514647774396}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_SatDish_01 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -883,7 +883,7 @@ GameObject:
   - component: {fileID: 8978625057653104381}
   - component: {fileID: 8998777949113984219}
   - component: {fileID: 8991060469638687073}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_Window_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

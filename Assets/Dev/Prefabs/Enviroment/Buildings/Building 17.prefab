@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1226150603661944341}
   - component: {fileID: 1252605453790908623}
   - component: {fileID: 1244699841691533957}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Billboard_Large_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3844197567544641255}
   - component: {fileID: 3832229486853656941}
   - component: {fileID: 3821052922335637437}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Wall_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8764463610748876191}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building 17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 4181910313607819797}
   - component: {fileID: 4210822823735586319}
   - component: {fileID: 4200683464873267507}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Wall_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 4390523303259840613}
   - component: {fileID: 4361387112175701935}
   - component: {fileID: 4372960501697199943}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_SatDish_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 5623333701844277589}
   - component: {fileID: 5652643151511526635}
   - component: {fileID: 5643534356876316695}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_Neon_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 6436545093383678726}
   - component: {fileID: 6423459711176227980}
   - component: {fileID: 6416923145856942684}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Wall_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 6488594288233041413}
   - component: {fileID: 6513647117393919351}
   - component: {fileID: 6507301726635601911}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Door_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 8796208236176720405}
   - component: {fileID: 8825726055301948403}
   - component: {fileID: 8814342573828194297}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Prop_WallAttach_Electronics_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

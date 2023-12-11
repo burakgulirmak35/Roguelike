@@ -19,8 +19,12 @@ public class Player : MonoBehaviour, IDamagable
     [Header("Animations")]
     [SerializeField] private Animator PlayerAnim;
 
-    [Header("Trail")]
+    [Header("meshTrail")]
     [SerializeField] public MeshTrail meshTrail;
+
+    [Header("Effects")]
+    [SerializeField] public GameObject FireRatePowerEffect;
+    [SerializeField] public GameObject WindTrail;
 
     [Header("Model")]
     [SerializeField] public Transform Body;
@@ -211,7 +215,7 @@ public class Player : MonoBehaviour, IDamagable
         moveDirection.x = leftJoystick.x;
         moveDirection.z = leftJoystick.y;
 
-        Agent.Move(moveDirection * PlayerData.Instance.MovementSpeed * Time.deltaTime);
+        Agent.Move(moveDirection * PlayerData.Instance.MovementSpeed * PlayerData.Instance.MovementSpeedMultipler * Time.deltaTime);
         if (moveDirection.magnitude > 0 && !isAiming)
         {
             Body.forward = moveDirection;

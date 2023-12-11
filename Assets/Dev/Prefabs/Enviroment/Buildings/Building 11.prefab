@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3819482719764144599}
   - component: {fileID: 3848467807451247209}
   - component: {fileID: 3837631518737187783}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Power_03 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5128962503996933991}
   - component: {fileID: 5137238769175565937}
   - component: {fileID: 5147239163568425463}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Door_06 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 5289930280881495370}
   - component: {fileID: 5268682337496713920}
   - component: {fileID: 5275920382441157648}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Bld_Section_Wall_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 5310066485243053474}
   - component: {fileID: 5316872469761251478}
   - component: {fileID: 5326341421465455018}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Sign_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5249724035390897461}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
