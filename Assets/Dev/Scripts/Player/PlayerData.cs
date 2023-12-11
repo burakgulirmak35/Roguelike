@@ -69,21 +69,37 @@ public class PlayerData : MonoBehaviour
     [SerializeField][Tooltip("Script Will Set Values")] private ExplosionSO BulletExplosionSO;
 
     public static PlayerData Instance { get; private set; }
+
+
     void Awake()
     {
         Instance = this;
+        CheckUpgradesList();
+    }
 
+    private UpgradeSO upgradeSO;
+    private void CheckUpgradesList()
+    {
         for (int i = 0; i < Upgrades.Count; i++)
         {
-            if (Upgrades[i].upgradeType.Equals(UpgradeType.Penetrability) && PlayerPrefs.GetInt("Penetrability") == 1)
+            switch (Upgrades[i].upgradeType)
             {
-                Upgrades.AddRange(Upgrades[i].NextUpgrades);
-                Upgrades.RemoveAt(i);
-            }
-            if (Upgrades[i].upgradeType.Equals(UpgradeType.ExplosiveAmmo) && PlayerPrefs.GetInt("ExplosiveAmmo") == 1)
-            {
-                Upgrades.AddRange(Upgrades[i].NextUpgrades);
-                Upgrades.RemoveAt(i);
+                case UpgradeType.Penetrability:
+                    if (PlayerPrefs.GetInt("Penetrability") == 1)
+                    {
+                        upgradeSO = Upgrades[i];
+                        Upgrades.RemoveAt(i);
+                        Upgrades.AddRange(upgradeSO.NextUpgrades);
+                    }
+                    break;
+                case UpgradeType.ExplosiveAmmo:
+                    if (PlayerPrefs.GetInt("ExplosiveAmmo") == 1)
+                    {
+                        upgradeSO = Upgrades[i];
+                        Upgrades.RemoveAt(i);
+                        Upgrades.AddRange(upgradeSO.NextUpgrades);
+                    }
+                    break;
             }
         }
     }

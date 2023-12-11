@@ -10,7 +10,6 @@ public class CameraManager : MonoBehaviour
     [Header("CameraSettings")]
     [SerializeField] private List<Vector3> FollowPoints = new List<Vector3>();
 
-    private Camera MainCam;
     private CinemachineVirtualCamera cinemachineVirtualCamera;
     private CinemachineTransposer cinemachineTransposer;
     private CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin;
@@ -23,16 +22,22 @@ public class CameraManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        MainCam = Camera.main;
+
         cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
         cinemachineTransposer = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>();
         cinemachineBasicMultiChannelPerlin = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+    }
+
+    void Start()
+    {
+        cinemachineVirtualCamera.Follow = Player.Instance.PlayerTransform;
     }
 
     #region Zoom
     [HideInInspector] public int CurrentCamIndex;
     public void ZoomTo(int Index)
     {
+
         CurrentCamIndex = Index;
         if (Index >= FollowPoints.Count) Index = FollowPoints.Count - 1;
         else if (Index <= 0) Index = 0;
