@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: New Magnet SO
   m_EditorClassIdentifier: 
   Range: 10
-  RepeatTime: 3
+  RepeatTime: 2

@@ -11,7 +11,7 @@ public class MagnetVFX : MonoBehaviour
     {
         for (int repeat = 0; repeat < magnetSO.RepeatTime; repeat++)
         {
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.4f);
             hitColliders = Physics.OverlapSphere(transform.position, magnetSO.Range);
             for (int i = 0; i < hitColliders.Length; i++)
             {
