@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071c06f249d272e48a3e9afe6f78a575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expPerLevel: 0300000006000000090000000c0000000f000000
+  expPerLevel: 050000000a000000140000001e00000028000000320000003c000000
   level: 0
   exp: 0
   EachBurstTime: 0.1
@@ -95,4 +95,6 @@ MonoBehaviour:
   AddExplosiveAmmoDamage: 1
   SlowMotionTime: 1.5
   SlowMotionPercent: 0.25
+  MovementSpeedMultipler: 0
+  FireRateMultipler: 0
   BulletExplosionSO: {fileID: 11400000, guid: a0a75e080e767a94f8dd2813321b5afa, type: 2}

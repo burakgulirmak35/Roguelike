@@ -62,6 +62,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ClickScreen"",
+                    ""type"": ""Button"",
+                    ""id"": ""4ad5fa20-8a03-4674-962c-b0a19357777f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -185,6 +194,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""ClickMap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""56669545-8526-4adc-bd86-9f601c0c07de"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ClickScreen"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff7e946f-0638-4b1a-b952-f6984c6803f2"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ClickScreen"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -197,6 +228,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_ToggleAim = m_Player.FindAction("ToggleAim", throwIfNotFound: true);
         m_Player_ClickMap = m_Player.FindAction("ClickMap", throwIfNotFound: true);
+        m_Player_ClickScreen = m_Player.FindAction("ClickScreen", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -262,6 +294,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_ToggleAim;
     private readonly InputAction m_Player_ClickMap;
+    private readonly InputAction m_Player_ClickScreen;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -270,6 +303,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @ToggleAim => m_Wrapper.m_Player_ToggleAim;
         public InputAction @ClickMap => m_Wrapper.m_Player_ClickMap;
+        public InputAction @ClickScreen => m_Wrapper.m_Player_ClickScreen;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -291,6 +325,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @ClickMap.started += instance.OnClickMap;
             @ClickMap.performed += instance.OnClickMap;
             @ClickMap.canceled += instance.OnClickMap;
+            @ClickScreen.started += instance.OnClickScreen;
+            @ClickScreen.performed += instance.OnClickScreen;
+            @ClickScreen.canceled += instance.OnClickScreen;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -307,6 +344,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @ClickMap.started -= instance.OnClickMap;
             @ClickMap.performed -= instance.OnClickMap;
             @ClickMap.canceled -= instance.OnClickMap;
+            @ClickScreen.started -= instance.OnClickScreen;
+            @ClickScreen.performed -= instance.OnClickScreen;
+            @ClickScreen.canceled -= instance.OnClickScreen;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -330,5 +370,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnToggleAim(InputAction.CallbackContext context);
         void OnClickMap(InputAction.CallbackContext context);
+        void OnClickScreen(InputAction.CallbackContext context);
     }
 }

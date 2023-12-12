@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
     [Header("Controllers")]
-    [SerializeField] private GameObject LeftJoystick;
+    [SerializeField] public Transform LeftJoystick;
     [SerializeField] private GameObject RightJoystick;
+    private Vector2 LeftJoystickBasePos;
     [Header("Buttons")]
     [SerializeField] private GameObject img_ToggleAim;
     [SerializeField] private GameObject img_AutoAim;
@@ -20,16 +19,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] public PanelUpgrade panelUpgrade;
     [SerializeField] public PanelFadeInOut panelFadeInOut;
 
-    void Awake()
+    private void Awake()
     {
         Instance = this;
         panelFadeInOut.FadeIn(1f);
+        LeftJoystickBasePos = LeftJoystick.position;
     }
 
-    void Start()
+    private void Start()
     {
         CloseAllPanels();
     }
+
 
     private void CloseAllPanels()
     {

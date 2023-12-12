@@ -674,7 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33df15f9ad613424d962c8e6502a41c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftJoystick: {fileID: 5113372539266575707}
+  LeftJoystick: {fileID: 3096287190137212219}
   RightJoystick: {fileID: 1430641934067420393}
   img_ToggleAim: {fileID: 9113752856487908685}
   img_AutoAim: {fileID: 6790321948148123906}
