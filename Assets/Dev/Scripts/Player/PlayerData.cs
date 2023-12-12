@@ -83,26 +83,31 @@ public class PlayerData : MonoBehaviour
     private UpgradeSO upgradeSO;
     private void CheckUpgradesList()
     {
-        for (int i = 0; i < Upgrades.Count; i++)
+        if (PlayerPrefs.GetInt("Penetrability") == 1)
         {
-            switch (Upgrades[i].upgradeType)
+            for (int i = 0; i < Upgrades.Count; i++)
             {
-                case UpgradeType.Penetrability:
-                    if (PlayerPrefs.GetInt("Penetrability") == 1)
-                    {
-                        upgradeSO = Upgrades[i];
-                        Upgrades.RemoveAt(i);
-                        Upgrades.AddRange(upgradeSO.NextUpgrades);
-                    }
+                if (Upgrades[i].upgradeType.Equals(UpgradeType.Penetrability))
+                {
+                    upgradeSO = Upgrades[i];
+                    Upgrades.RemoveAt(i);
+                    Upgrades.AddRange(upgradeSO.NextUpgrades);
                     break;
-                case UpgradeType.ExplosiveAmmo:
-                    if (PlayerPrefs.GetInt("ExplosiveAmmo") == 1)
-                    {
-                        upgradeSO = Upgrades[i];
-                        Upgrades.RemoveAt(i);
-                        Upgrades.AddRange(upgradeSO.NextUpgrades);
-                    }
+                }
+            }
+        }
+
+        if (PlayerPrefs.GetInt("ExplosiveAmmo") == 1)
+        {
+            for (int i = 0; i < Upgrades.Count; i++)
+            {
+                if (Upgrades[i].upgradeType.Equals(UpgradeType.ExplosiveAmmo))
+                {
+                    upgradeSO = Upgrades[i];
+                    Upgrades.RemoveAt(i);
+                    Upgrades.AddRange(upgradeSO.NextUpgrades);
                     break;
+                }
             }
         }
     }

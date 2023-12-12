@@ -94,7 +94,6 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         ShowHealth();
         basicHealthSystem.TakeDamage(damageTaken);
         Spawner.Instance.WorldTextPopup(((int)damageTaken).ToString(), myTransform.position, Color.red);
-
     }
 
     private int RandomDeadAnimationIndex()

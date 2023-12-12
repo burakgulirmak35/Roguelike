@@ -34,6 +34,12 @@ public class BasicHealthSystem
         }
         healthAmount = health / maxHealth;
         DOTween.To(() => slider_Health.value, x => slider_Health.value = x, healthAmount, 0.25f).SetEase(Ease.Linear);
+        txt_Health.text = ((int)health).ToString();
+    }
+
+    public void HealPercent(float percent)
+    {
+        Heal(maxHealth * percent);
     }
 
     public void FullHeal()
