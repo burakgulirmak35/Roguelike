@@ -102,6 +102,8 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     }
     private void OnDead()
     {
+        UIManager.Instance.AddScore();
+
         Spawner.Instance.DeadEnemy(transform);
         EnemyAgent.ResetPath();
         EnemyAgent.enabled = false;

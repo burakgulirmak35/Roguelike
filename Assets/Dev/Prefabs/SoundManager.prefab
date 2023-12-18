@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03bec637e620b0243b60f4038ba4b8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: 0.05
+  musicList: {fileID: 8300000, guid: f9f39a76ff6e65a438a12148a158f8eb, type: 3}
+  SoundVolume: 0.25
   GrenadeExplosion:
     audioClip: []
     minVolume: 1

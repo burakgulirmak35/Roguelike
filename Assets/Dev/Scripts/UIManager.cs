@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,23 +17,56 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject img_ToggleAim;
     [SerializeField] private GameObject img_AutoAim;
     [SerializeField] private GameObject img_ManuelAim;
+    [Space]
+    [SerializeField] private Button btn_ToggleMusic;
+    [SerializeField] public GameObject img_MusicOn;
+    [SerializeField] public GameObject img_MusicOff;
     [Header("Panels")]
     [SerializeField] public PanelPlayerDead panelPlayerDead;
     [SerializeField] public PanelUpgrade panelUpgrade;
     [SerializeField] public PanelFadeInOut panelFadeInOut;
+    [Header("Elements")]
+    [SerializeField] private TextMeshProUGUI txt_Score;
+    private Transform txt_ScoreTransform;
+
+    [Header("DG.T")]
+    private Sequence mySequence;
+
 
     private void Awake()
     {
         Instance = this;
         panelFadeInOut.FadeIn(1f);
         LeftJoystickBasePos = LeftJoystick.position;
+
+        txt_ScoreTransform = txt_Score.transform;
     }
 
     private void Start()
     {
+        btn_ToggleMusic.onClick.AddListener(SoundManager.Instance.ToggleMusic);
+
         CloseAllPanels();
+
+        AddScore();
     }
 
+    #region  Elements
+
+    public void AddScore()
+    {
+        PlayerData.Instance.Score++;
+        PlayerPrefs.SetInt("Score", PlayerData.Instance.Score);
+        txt_Score.text = PlayerData.Instance.Score.ToString();
+
+        if (mySequence != null)
+            mySequence.Kill();
+
+        mySequence = DOTween.Sequence();
+        txt_ScoreTransform.localScale = Vector3.one;
+        mySequence.Append(txt_ScoreTransform.DOScale(1.5f, 0.2f).OnComplete(() => txt_Score.transform.DOScale(1f, 0.2f)));
+    }
+    #endregion
 
     private void CloseAllPanels()
     {

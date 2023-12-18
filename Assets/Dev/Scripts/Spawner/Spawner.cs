@@ -56,7 +56,7 @@ public class Spawner : MonoBehaviour
                 spawnee.SetActive(true);
                 yield return new WaitForSeconds(spawnDelay);
             }
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(5f);
         }
     }
 

@@ -4,18 +4,92 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public float volume;
+    public static SoundManager Instance { get; private set; }
+    void Awake()
+    {
+        Instance = this;
+    }
+
+    private void Start()
+    {
+        StartMusic();
+    }
+
+    [Header("Music----------------------------")]
+    [SerializeField] private AudioClip musicList;
+    private AudioSource musicPlayer;
+    private float MusicVolume;
+
+    private void StartMusic()
+    {
+        musicPlayer = gameObject.AddComponent<AudioSource>();
+        musicPlayer.volume = MusicVolume;
+        musicPlayer.clip = musicList;
+        musicPlayer.dopplerLevel = 0;
+        musicPlayer.reverbZoneMix = 0;
+        musicPlayer.loop = true;
+        musicPlayer.Play();
+        CheckMusic();
+    }
+
+    public void ChangeMusicVolume(float _value)
+    {
+        MusicVolume = _value;
+        musicPlayer.volume = MusicVolume;
+    }
+
+    public void ToggleMusic()
+    {
+        if (PlayerPrefs.GetInt("isMusic", 1) == 1)
+        {
+            PlayerPrefs.SetInt("isMusic", 0);
+            ChangeMusicVolume(0);
+
+            UIManager.Instance.img_MusicOn.SetActive(false);
+            UIManager.Instance.img_MusicOff.SetActive(true);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("isMusic", 1);
+            ChangeMusicVolume(0.5f);
+
+            UIManager.Instance.img_MusicOn.SetActive(true);
+            UIManager.Instance.img_MusicOff.SetActive(false);
+        }
+    }
+
+    public void CheckMusic()
+    {
+        if (PlayerPrefs.GetInt("isMusic", 1) == 1)
+        {
+            ChangeMusicVolume(0.5f);
+
+            UIManager.Instance.img_MusicOn.SetActive(true);
+            UIManager.Instance.img_MusicOff.SetActive(false);
+        }
+        else
+        {
+            ChangeMusicVolume(0);
+
+            UIManager.Instance.img_MusicOn.SetActive(false);
+            UIManager.Instance.img_MusicOff.SetActive(true);
+        }
+    }
+
+
+    [Header("Sounds----------------------------")]
+    [SerializeField] private float SoundVolume;
     [Header("----------------------------")]
-    public Sound GrenadeExplosion;
-    public Sound RocketExplosion;
+    [SerializeField] private Sound GrenadeExplosion;
+    [SerializeField] private Sound RocketExplosion;
     [Header("----------------------------")]
-    public Sound Pistol;
-    public Sound Rifle;
-    public Sound Shotgun;
-    public Sound Sniper;
-    public Sound Grenade;
-    public Sound Minigun;
-    public Sound Rocket;
+    [SerializeField] private Sound Pistol;
+    [SerializeField] private Sound Rifle;
+    [SerializeField] private Sound Shotgun;
+    [SerializeField] private Sound Sniper;
+    [SerializeField] private Sound Grenade;
+    [SerializeField] private Sound Minigun;
+    [SerializeField] private Sound Rocket;
 
     public void PlayGunSound(GunType gunType)
     {
@@ -53,7 +127,7 @@ public class SoundManager : MonoBehaviour
         audioSource.clip = _audio.audioClip[Random.Range(0, _audio.audioClip.Length)];
         audioSource.dopplerLevel = 0;
         audioSource.reverbZoneMix = 0;
-        audioSource.volume = Random.Range(_audio.minVolume, _audio.maxVolume)*volume;
+        audioSource.volume = Random.Range(_audio.minVolume, _audio.maxVolume) * SoundVolume;
         audioSource.pitch = Random.Range(_audio.minPitch, _audio.maxPitch);
         audioSource.Play();
         Destroy(audioSource, 1f);

@@ -70,6 +70,9 @@ public class PlayerData : MonoBehaviour
     [Header("------------Scriptables------------")]
     [SerializeField][Tooltip("Script Will Set Values")] private ExplosionSO BulletExplosionSO;
 
+    [Header("------------Currency------------")]
+    [HideInInspector] public int Score;
+
     public static PlayerData Instance { get; private set; }
     void Awake()
     {
@@ -116,6 +119,7 @@ public class PlayerData : MonoBehaviour
     {
         exp = PlayerPrefs.GetInt("Exp");
         level = PlayerPrefs.GetInt("Level");
+        Score = PlayerPrefs.GetInt("Score");
 
         MaxHealth = BaseMaxHealth + PlayerPrefs.GetFloat("AddedMaxHealth");
         MovementSpeed = BaseMovementSpeed + PlayerPrefs.GetFloat("AddedMovementSpeed");
@@ -138,6 +142,7 @@ public class PlayerData : MonoBehaviour
     {
         PlayerPrefs.SetInt("Exp", 0);
         PlayerPrefs.SetInt("Level", 0);
+        PlayerPrefs.SetInt("Score", 0);
 
         PlayerPrefs.SetFloat("AddedMaxHealth", 0);
         PlayerPrefs.SetFloat("AddedMovementSpeed", 0);
