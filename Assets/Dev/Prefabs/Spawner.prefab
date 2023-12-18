@@ -979,7 +979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinEnemyDistanceToSpawn: 15
   UnitDissapearDistance: 50
-  AliveEnemyCount: 140
+  AliveEnemyCount: 80
   spawnDelay: 0.2
   SpawnPointsParent: {fileID: 3796402445057192666}
   ItemDropDistanceMin: 1.5
@@ -996,7 +996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6915a7a5f6256874e9e716611813a0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPoolCount: 150
+  EnemyPoolCount: 100
   EnemyPrefab: {fileID: 331228732015298750, guid: 0084c496d5959764987e29016149f768,
     type: 3}
   BulletPoolCount: 50
@@ -1012,7 +1012,7 @@ MonoBehaviour:
   WorldTextPoolCount: 25
   WorldTextPrefab: {fileID: 2415433774831474974, guid: 11da45d4a0a22ab48a10bbfed425324a,
     type: 3}
-  ExperiencePoolCount: 100
+  ExperiencePoolCount: 80
   ExperiencePrefab: {fileID: 2985430304929008089, guid: ddcaea935dd383c4e9535a23d35c2332,
     type: 3}
   MegaExplosionPoolCount: 2
