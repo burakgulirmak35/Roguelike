@@ -7,7 +7,7 @@ using DG.Tweening;
 public class Enemy : MonoBehaviour, IDamagable, ITargetable
 {
     [Header("HealtSystem")]
-    [SerializeField] private BasicHealthSystem basicHealthSystem;
+    [SerializeField] private EnemyHealthSystem enemyHealthSystem;
     [Header("Stats")]
     [SerializeField] private EnemySO enemySO;
     [Header("Animations")]
@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         EnemyAgent.stoppingDistance = enemySO.StartAttackRange;
         EnemyAgent.updateRotation = false;
         //-----------------------------------------------
-        basicHealthSystem.OnDead += OnDead;
+        enemyHealthSystem.OnDead += OnDead;
         //-----------------------------------------------
         animEventController = EnemyAnim.GetComponent<AnimEventController>();
         animEventController.OnAttack += OnAttack;
@@ -48,9 +48,9 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     {
         StopDisable();
         isAlive = true;
-        basicHealthSystem.HealthBar.SetActive(false);
+        enemyHealthSystem.HealthBar.SetActive(false);
         TargetedIcon.SetActive(false);
-        basicHealthSystem.SetHealth(enemySO.Health);
+        enemyHealthSystem.SetHealth(enemySO.Health);
         myCollider.enabled = true;
     }
 
@@ -91,8 +91,8 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     public void TakeDamage(float damageTaken)
     {
         if (!isAlive) { return; }
-        ShowHealth();
-        basicHealthSystem.TakeDamage(damageTaken);
+        enemyHealthSystem.ShowHealth();
+        enemyHealthSystem.TakeDamage(damageTaken);
         Spawner.Instance.WorldTextPopup(((int)damageTaken).ToString(), myTransform.position, Color.red);
     }
 
@@ -109,7 +109,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         EnemyAgent.enabled = false;
 
         StartDisable();
-        HideHealth();
+        enemyHealthSystem.HideHealth();
 
         DropExperience();
         DropItem();
@@ -143,43 +143,11 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         EnemyAgent.ResetPath();
         EnemyAgent.enabled = false;
 
-        HideHealth();
+        enemyHealthSystem.HideHealth();
         myCollider.enabled = false;
         isAlive = false;
         EnemyAnim.SetBool("isAlive", false);
         gameObject.SetActive(false);
-    }
-
-    private void HideHealth()
-    {
-        if (ShowHealthCoro != null)
-        {
-            StopCoroutine(ShowHealthCoro);
-            ShowHealthCoro = null;
-            basicHealthSystem.HealthBar.SetActive(false);
-        }
-    }
-
-    private void ShowHealth()
-    {
-        if (ShowHealthCoro != null)
-        {
-            StopCoroutine(ShowHealthCoro);
-            ShowHealthCoro = null;
-        }
-
-        if (isAlive)
-        {
-            ShowHealthCoro = StartCoroutine(ShowHealthTimer());
-        }
-    }
-
-    private Coroutine ShowHealthCoro;
-    private IEnumerator ShowHealthTimer()
-    {
-        basicHealthSystem.HealthBar.SetActive(true);
-        yield return new WaitForSeconds(10f);
-        basicHealthSystem.HealthBar.SetActive(false);
     }
     #endregion
 

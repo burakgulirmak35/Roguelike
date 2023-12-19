@@ -10,21 +10,17 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, IDamagable
 {
-    [Header("Character")]
-    [SerializeField] private List<GameObject> Characters = new List<GameObject>();
+    [Header("---Components---")]
+    [SerializeField] public HealthSystem healthSystem;
+    [SerializeField] public LevelSystem levelSystem;
+    [SerializeField] public EffectSystem effectSystem;
+    [SerializeField] public CostumeSystem costumeSystem;
 
     [Header("Gun")]
     private Gun gun;
 
     [Header("Animations")]
     [SerializeField] private Animator PlayerAnim;
-
-    [Header("meshTrail")]
-    [SerializeField] public MeshTrail meshTrail;
-
-    [Header("Effects")]
-    [SerializeField] public GameObject FireRatePowerEffect;
-    [SerializeField] public GameObject WindTrail;
 
     [Header("Model")]
     [SerializeField] public Transform Body;
@@ -41,15 +37,6 @@ public class Player : MonoBehaviour, IDamagable
     private Vector3 aimDirection;
     private Vector2 leftJoystick;
     private Vector2 rightJoystick;
-
-    [Header("Health")]
-    [SerializeField] public HealthSystem healthSystem;
-
-    [Header("Level")]
-    [SerializeField] private Slider slider_Exp;
-    [SerializeField] private TextMeshProUGUI txt_Level;
-    [SerializeField] private GameObject particle_LevelUp;
-    private float expAmount;
 
     [Header("Aim")]
     [SerializeField] private Transform AimPoint;
@@ -71,7 +58,7 @@ public class Player : MonoBehaviour, IDamagable
 
     [Space]
     [HideInInspector] public Transform PlayerTransform;
-    [SerializeField] public Transform VFXTransform;
+
 
     public static Player Instance { get; private set; }
     private void Awake()
@@ -138,25 +125,16 @@ public class Player : MonoBehaviour, IDamagable
     public void StartGame()
     {
         SetInputs();
-        SetCharacter();
-
         PlayerData.Instance.LoadData();
         EquipGun(PlayerData.Instance.SelectedGun);
+
+        costumeSystem.SetCharacter();
         healthSystem.SetHealth(PlayerData.Instance.MaxHealth);
-        AddExperience(0);
+        levelSystem.SetLevel();
+        effectSystem.SetEffects();
         PrepareAim();
 
         CameraManager.Instance.ZoomTo(1);
-    }
-
-    private void SetCharacter()
-    {
-        for (int i = 0; i < Characters.Count; i++)
-        {
-            Characters[i].SetActive(false);
-        }
-        Characters[PlayerPrefs.GetInt("SelectedCharacterIndex")].SetActive(true);
-        meshTrail.skinnedMeshRenderer = Characters[PlayerPrefs.GetInt("SelectedCharacterIndex")].GetComponent<SkinnedMeshRenderer>();
     }
 
     private void PrepareAim()
@@ -412,7 +390,7 @@ public class Player : MonoBehaviour, IDamagable
 
     public void ReBorn()
     {
-        Spawner.Instance.SpawnAtPos(PoolTypes.MegaExplosion, VFXTransform.position);
+        Spawner.Instance.SpawnAtPos(PoolTypes.MegaExplosion, effectSystem.EffectTransform.position);
 
         Agent.enabled = true;
         PlayerAnim.SetBool("Alive", true);
@@ -422,45 +400,6 @@ public class Player : MonoBehaviour, IDamagable
         this.enabled = true;
         PrepareAim();
     }
-
-    #endregion
-
-    #region LevelSystem
-    public void AddExperience(int _amount)
-    {
-        PlayerData.Instance.exp += _amount;
-        if (PlayerData.Instance.exp >= PlayerData.Instance.expPerLevel[PlayerData.Instance.level])
-        {
-            LevelUp();
-        }
-        expAmount = (float)PlayerData.Instance.exp / (float)PlayerData.Instance.expPerLevel[PlayerData.Instance.level];
-        DOTween.To(() => slider_Exp.value, x => slider_Exp.value = x, expAmount, 0.25f).SetEase(Ease.Linear);
-        PlayerPrefs.SetInt("Exp", PlayerData.Instance.exp);
-    }
-
-    private void LevelUp()
-    {
-        PlayerData.Instance.exp = 0;
-        slider_Exp.value = 0;
-        if (PlayerData.Instance.level < PlayerData.Instance.expPerLevel.Count - 1)
-        {
-            PlayerData.Instance.level += 1;
-            txt_Level.text = "Lv." + (PlayerData.Instance.level + 1).ToString();
-        }
-        else
-        {
-            txt_Level.text = "Max";
-        }
-
-        particle_LevelUp.SetActive(true);
-        PlayerPrefs.SetInt("Level", PlayerData.Instance.level);
-        UIManager.Instance.EnablePanelUpgrade(true);
-    }
-
-    #endregion
-
-    #region Collect
-
 
     #endregion
 }

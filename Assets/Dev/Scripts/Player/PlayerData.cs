@@ -162,45 +162,4 @@ public class PlayerData : MonoBehaviour
         BulletExplosionSO.Damage = ExplosiveAmmoDamage;
     }
 
-
-    #region 
-    private bool isFireRateBoost;
-    public void BoostFireRate()
-    {
-        if (!isFireRateBoost)
-        {
-            isFireRateBoost = true;
-            StartCoroutine(BoostFireRateTimer());
-        }
-    }
-    private IEnumerator BoostFireRateTimer()
-    {
-        FireRateMultipler = 4f;
-        Player.Instance.FireRatePowerEffect.SetActive(true);
-        yield return new WaitForSeconds(3f);
-        Player.Instance.FireRatePowerEffect.SetActive(false);
-        FireRateMultipler = 1f;
-        isFireRateBoost = false;
-    }
-
-    private bool isMovementSpeedBoost;
-    public void BoostMovementSpeed()
-    {
-        if (!isMovementSpeedBoost)
-        {
-            isMovementSpeedBoost = true;
-            StartCoroutine(BoostMovementSpeedTimer());
-        }
-    }
-    private IEnumerator BoostMovementSpeedTimer()
-    {
-
-        MovementSpeedMultipler = 2f;
-        Player.Instance.WindTrail.SetActive(true);
-        yield return new WaitForSeconds(3f);
-        Player.Instance.WindTrail.SetActive(false);
-        MovementSpeedMultipler = 1f;
-        isMovementSpeedBoost = false;
-    }
-    #endregion
 }

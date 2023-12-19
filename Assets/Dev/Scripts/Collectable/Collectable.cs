@@ -61,7 +61,7 @@ public class Collectable : MonoBehaviour
 
     private void Experience()
     {
-        Player.Instance.AddExperience(1);
+        Player.Instance.levelSystem.AddExperience(1);
 
         myTransform.parent = PoolManager.Instance.ExperienceHolder;
         gameObject.SetActive(false);
@@ -77,7 +77,7 @@ public class Collectable : MonoBehaviour
 
     private void FireRateBoost()
     {
-        PlayerData.Instance.BoostFireRate();
+        Player.Instance.effectSystem.BoostFireRate();
 
         myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
@@ -93,7 +93,7 @@ public class Collectable : MonoBehaviour
 
     private void MeshTrain()
     {
-        Player.Instance.meshTrail.ActiveTrail();
+        Player.Instance.effectSystem.meshTrail.ActiveTrail();
 
         myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
@@ -101,7 +101,7 @@ public class Collectable : MonoBehaviour
 
     private void Magnet()
     {
-        Spawner.Instance.SpawnAtPos(PoolTypes.Magnet, Player.Instance.VFXTransform.position);
+        Spawner.Instance.SpawnAtPos(PoolTypes.Magnet, Player.Instance.effectSystem.EffectTransform.position);
 
         myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
@@ -117,7 +117,7 @@ public class Collectable : MonoBehaviour
 
     private void SpeedBoost()
     {
-        PlayerData.Instance.BoostMovementSpeed();
+        Player.Instance.effectSystem.BoostMovementSpeed();
 
         myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
