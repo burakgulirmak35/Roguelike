@@ -46,6 +46,7 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private TwoBoneIKConstraint LeftArmIK;
     [SerializeField] private MultiAimConstraint RightArmIK;
     [SerializeField] private MultiAimConstraint BodyIK;
+    [Space]
 
     private Vector3 TargetPoint;
     private Transform ClosestEnemy;
