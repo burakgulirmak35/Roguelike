@@ -5,8 +5,14 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private ParticleSystem[] BulletParticles;
     [SerializeField] private Rigidbody rb;
+    private Transform bulletTransform;
     private int bounceCount;
     private GameObject tempObject;
+
+    void Awake()
+    {
+        bulletTransform = transform;
+    }
 
     private void OnEnable()
     {
@@ -30,6 +36,7 @@ public class Bullet : MonoBehaviour
                 tempObject = PoolManager.Instance.GetFromPool(PoolTypes.BloodShot);
                 tempObject.transform.position = transform.position;
                 tempObject.SetActive(true);
+
                 if (PlayerData.Instance.ExplosiveAmmo) { Spawner.Instance.SpawnAtPos(PoolTypes.BulletExplosion, transform.position); }
                 if (PlayerData.Instance.Penetrability) { Penetration(); }
                 else { Disable(); }

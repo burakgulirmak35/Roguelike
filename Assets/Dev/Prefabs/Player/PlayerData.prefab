@@ -94,7 +94,7 @@ MonoBehaviour:
   AddExplosiveAmmoRange: 0.5
   AddExplosiveAmmoDamage: 1
   SlowMotionTime: 1.5
-  SlowMotionPercent: 0.25
+  SlowMotionPercent: 0.5
   MovementSpeedMultipler: 0
   FireRateMultipler: 0
   BulletExplosionSO: {fileID: 11400000, guid: a0a75e080e767a94f8dd2813321b5afa, type: 2}

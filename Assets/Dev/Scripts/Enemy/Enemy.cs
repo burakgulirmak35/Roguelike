@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
 
     [Space]
     private Transform myTransform;
+    private Vector3 tempPosition;
 
     private void Awake()
     {
@@ -112,6 +113,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         enemyHealthSystem.HideHealth();
 
         DropExperience();
+        DropBloodPool();
         DropItem();
 
         TargetedIcon.SetActive(false);
@@ -119,6 +121,13 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         myCollider.enabled = false;
         isAlive = false;
         EnemyAnim.SetBool("isAlive", false);
+    }
+
+    private void DropBloodPool()
+    {
+        tempPosition = myTransform.position;
+        tempPosition.y = 0.1f;
+        Spawner.Instance.SpawnAtPos(PoolTypes.BloodLake, tempPosition);
     }
 
     private void DropExperience()

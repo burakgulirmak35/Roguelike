@@ -18,6 +18,7 @@ public enum PoolTypes
     SimpleExplosion,
     MegaExplosion,
     Magnet,
+    BloodLake,
 }
 
 [Serializable]

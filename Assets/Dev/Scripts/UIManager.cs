@@ -13,14 +13,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] public Transform LeftJoystick;
     [SerializeField] private GameObject RightJoystick;
     private Vector2 LeftJoystickBasePos;
-    [Header("Buttons")]
+    [Header("AutoAim")]
     [SerializeField] private GameObject img_ToggleAim;
     [SerializeField] private GameObject img_AutoAim;
     [SerializeField] private GameObject img_ManuelAim;
-    [Space]
+    [Header("Music")]
     [SerializeField] private Button btn_ToggleMusic;
     [SerializeField] public GameObject img_MusicOn;
     [SerializeField] public GameObject img_MusicOff;
+    [Header("HoverBoard")]
+    [SerializeField] public Button btn_HoverBoard;
+    [SerializeField] public Image img_HoverBoard;
+
     [Header("Panels")]
     [SerializeField] public PanelPlayerDead panelPlayerDead;
     [SerializeField] public PanelUpgrade panelUpgrade;
@@ -51,7 +55,7 @@ public class UIManager : MonoBehaviour
         AddScore();
     }
 
-    #region  Elements
+    #region  Score
 
     public void AddScore()
     {
@@ -67,6 +71,7 @@ public class UIManager : MonoBehaviour
         mySequence.Append(txt_ScoreTransform.DOScale(1.5f, 0.2f).OnComplete(() => txt_Score.transform.DOScale(1f, 0.2f)));
     }
     #endregion
+
 
     private void CloseAllPanels()
     {

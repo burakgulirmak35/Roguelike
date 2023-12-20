@@ -123,6 +123,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2808135197232395667}
     m_Modifications:
+    - target: {fileID: 874659587711199917, guid: 8980b86834d5cdf449cb587e25bb77a1,
+        type: 3}
+      propertyPath: meshRefreshRate
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2149810367976322151, guid: 8980b86834d5cdf449cb587e25bb77a1,
         type: 3}
       propertyPath: m_Name

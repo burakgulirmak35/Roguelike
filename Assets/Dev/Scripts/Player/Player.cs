@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using DG.Tweening;
 using UnityEngine.Animations.Rigging;
-using UnityEngine.UI;
-using TMPro;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, IDamagable
@@ -19,11 +17,15 @@ public class Player : MonoBehaviour, IDamagable
     [Header("Gun")]
     private Gun gun;
 
+    [Header("Vehicle")]
+    [SerializeField] public HoverBoard hoverBoard;
+
     [Header("Animations")]
     [SerializeField] private Animator PlayerAnim;
 
     [Header("Model")]
     [SerializeField] public Transform Body;
+    [SerializeField] public Transform Holder;
     [SerializeField] private GameObject Rifle;
     [Space]
     private PlayerInputActions playerInputActions;
@@ -47,7 +49,9 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private MultiAimConstraint RightArmIK;
     [SerializeField] private MultiAimConstraint BodyIK;
     [Space]
-
+    [SerializeField] public TwoBoneIKConstraint LeftLegIK;
+    [SerializeField] public TwoBoneIKConstraint RightLegIK;
+    [Space]
     private Vector3 TargetPoint;
     private Transform ClosestEnemy;
     private float DistanceToEnemy;
@@ -291,6 +295,7 @@ public class Player : MonoBehaviour, IDamagable
     #endregion
 
     #region ---AutoAim---
+    //private Vector3 defaultY = ;
     private Coroutine AutoAimCoro;
     private IEnumerator AutoAimLoop()
     {
@@ -311,12 +316,14 @@ public class Player : MonoBehaviour, IDamagable
             ClosestEnemy.GetComponent<ITargetable>().Targeted(true);
             DistanceToEnemy = Vector3.Distance(ClosestEnemy.position, PlayerTransform.position);
 
-            TargetPoint = ClosestEnemy.position;
-            TargetPoint.y = DefaultAimPoint.position.y;
-
             if (DistanceToEnemy <= PlayerData.Instance.FireRange)
             {
-                AimPoint.position = TargetPoint;
+                TargetPoint = ClosestEnemy.position;
+
+                // TargetPoint.y = DefaultAimPoint.position.y;
+                TargetPoint.y = 1.16f;
+                AimPoint.DOMove(TargetPoint, 0.1f);
+
                 TargetPoint.y = Body.position.y;
                 Body.DOLookAt(TargetPoint, 0.1f);
                 Aim(true);

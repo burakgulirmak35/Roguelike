@@ -8,7 +8,7 @@ public class Gun : MonoBehaviour
     private PlayerData playerData;
     private CameraManager cameraManager;
     [Header("Parts")]
-    [SerializeField] private Transform[] firePoint;
+    [SerializeField] public Transform[] firePoint;
     [SerializeField] private Transform LeftHandPos;
     [Header("VFX")]
     [SerializeField] private ParticleSystem Muzzle;
@@ -71,15 +71,16 @@ public class Gun : MonoBehaviour
                     {
                         tmpBullet = poolManager.GetFromPool(PoolTypes.Bullet);
                         tmpBulletTransform = tmpBullet.transform;
+                        tmpBulletRB = tmpBullet.GetComponent<Rigidbody>();
+
                         tmpBulletTransform.position = firePoint[i].position;
                         tmpBulletTransform.forward = firePoint[i].forward;
-                        tmpBulletRB = tmpBullet.GetComponent<Rigidbody>();
-                        tmpBulletRB.velocity = Vector3.zero;
 
                         Muzzle.Play();
-                        tmpBullet.SetActive(true);
                         soundManager.PlayGunSound(playerData.SelectedGun);
-                        tmpBulletRB.AddForce(tmpBullet.transform.forward * playerData.BulletSpeed, ForceMode.Impulse);
+
+                        tmpBullet.SetActive(true);
+                        tmpBulletRB.AddForce(tmpBulletTransform.forward * playerData.BulletSpeed, ForceMode.Impulse);
 
                         yield return new WaitForSeconds(playerData.EachBurstTime);
                     }

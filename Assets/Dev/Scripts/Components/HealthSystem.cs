@@ -17,10 +17,9 @@ public class HealthSystem : MonoBehaviour
     private float healthAmount;
     private float upgradeAmount;
 
+    [HideInInspector] public bool isDamageble;
     [HideInInspector] public bool isAlive;
     public event Action OnDead;
-
-
 
     public void SetHealth(float _health)
     {
@@ -30,6 +29,7 @@ public class HealthSystem : MonoBehaviour
         slider_Health.value = healthAmount;
         txt_Health.text = ((int)health).ToString();
         isAlive = true;
+        isDamageble = true;
     }
 
     public void UpgradeMaxHealth(float newMaxHeath)
@@ -70,6 +70,7 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        if (!isDamageble) return;
         if (!isAlive) return;
         health -= amount;
         if (health <= 0)

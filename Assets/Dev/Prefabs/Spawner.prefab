@@ -979,7 +979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinEnemyDistanceToSpawn: 15
   UnitDissapearDistance: 50
-  AliveEnemyCount: 80
+  AliveEnemyCount: 75
   spawnDelay: 0.2
   SpawnPointsParent: {fileID: 3796402445057192666}
   ItemDropDistanceMin: 1.5
@@ -996,7 +996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6915a7a5f6256874e9e716611813a0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPoolCount: 100
+  EnemyPoolCount: 80
   EnemyPrefab: {fileID: 331228732015298750, guid: 0084c496d5959764987e29016149f768,
     type: 3}
   BulletPoolCount: 50
@@ -1006,10 +1006,12 @@ MonoBehaviour:
   - {fileID: 1142193931700624, guid: 9d1846a1c8bff7142ab3959923c7d9c2, type: 3}
   - {fileID: 167524, guid: fdac75e990da47649b31f10049c400b0, type: 3}
   - {fileID: 193062, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+  BloodLakePoolCount: 30
+  BloodLakePrefab: {fileID: 192166, guid: aade56583c1d3cf4d91c402e10bab311, type: 3}
   BulletExplosionPoolCount: 10
   BulletExplosionPrefab: {fileID: 127072, guid: 901cb763553a9c948a201ff4479d311a,
     type: 3}
-  WorldTextPoolCount: 25
+  WorldTextPoolCount: 10
   WorldTextPrefab: {fileID: 2415433774831474974, guid: 11da45d4a0a22ab48a10bbfed425324a,
     type: 3}
   ExperiencePoolCount: 80
@@ -1023,7 +1025,7 @@ MonoBehaviour:
   SimpleExplosionPoolCount: 10
   SimpleExplosionPrefab: {fileID: 168694, guid: 1bfdf09308bfebf48909709dc9b8701d,
     type: 3}
-  CollectableCount: 2
+  CollectableCount: 3
   CollectableBombPrefab: {fileID: 2985430304929008089, guid: 54c6050e4b4e8454d9ac617c937a3658,
     type: 3}
   CollectableFireRateBoostPrefab: {fileID: 2985430304929008089, guid: 063624f8b0fe14149be7b871e33ccaff,
@@ -1041,7 +1043,7 @@ MonoBehaviour:
   EnemyHolder: {fileID: 3796402444794935412}
   BulletHolder: {fileID: 3796402444214295827}
   BulletExplosionHolder: {fileID: 1566154814157520216}
-  BloodShotHolder: {fileID: 2975059652233768222}
+  BloodSHolder: {fileID: 2975059652233768222}
   WorldTextHolder: {fileID: 1286222905}
   VFXHolder: {fileID: 3112212410656466143}
   ExperienceHolder: {fileID: 4576891412879383221}
@@ -2397,7 +2399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2975059652233768222}
   m_Layer: 0
-  m_Name: BlootShotHolder
+  m_Name: BloodHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

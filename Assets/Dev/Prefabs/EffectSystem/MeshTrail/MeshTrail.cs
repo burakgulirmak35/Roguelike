@@ -49,7 +49,7 @@ public class MeshTrail : MonoBehaviour
             skinnedMeshRenderer.BakeMesh(mesh[ghostIndex]);
             mf[ghostIndex].mesh = mesh[ghostIndex];
 
-            GhostTransforms[ghostIndex].position = Player.Instance.Body.position;
+            GhostTransforms[ghostIndex].position = Player.Instance.PlayerTransform.position;
             GhostTransforms[ghostIndex].rotation = Player.Instance.Body.rotation;
 
             GhostObjects[ghostIndex].SetActive(true);

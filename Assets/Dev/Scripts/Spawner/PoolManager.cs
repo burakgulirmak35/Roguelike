@@ -16,6 +16,10 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private int BloodShotPoolCount;
     [SerializeField] private GameObject[] BloodShotPrefabs;
 
+    [Header("BloodShot")]
+    [SerializeField] private int BloodLakePoolCount;
+    [SerializeField] private GameObject BloodLakePrefab;
+
     [Header("BulletExplosion")]
     [SerializeField] private int BulletExplosionPoolCount;
     [SerializeField] private GameObject BulletExplosionPrefab;
@@ -51,7 +55,7 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private Transform EnemyHolder;
     [SerializeField] private Transform BulletHolder;
     [SerializeField] private Transform BulletExplosionHolder;
-    [SerializeField] private Transform BloodShotHolder;
+    [SerializeField] private Transform BloodSHolder;
     [SerializeField] private Transform WorldTextHolder;
     [SerializeField] private Transform VFXHolder;
     [SerializeField] public Transform ExperienceHolder;
@@ -61,6 +65,7 @@ public class PoolManager : MonoBehaviour
     private Queue<GameObject> bulletPool = new Queue<GameObject>();
     private Queue<GameObject> bulletexplosionPool = new Queue<GameObject>();
     private Queue<GameObject> bloodShotPool = new Queue<GameObject>();
+    private Queue<GameObject> bloodLakePool = new Queue<GameObject>();
     private Queue<GameObject> worldTextPool = new Queue<GameObject>();
     private Queue<GameObject> experiencePool = new Queue<GameObject>();
     private Queue<GameObject> simpleExplosionPool = new Queue<GameObject>();
@@ -88,7 +93,8 @@ public class PoolManager : MonoBehaviour
         GeneratePool(EnemyPrefab, EnemyPoolCount, enemyPool, EnemyHolder);
         GeneratePool(BulletPrefab, BulletPoolCount, bulletPool, BulletHolder);
         GeneratePool(BulletExplosionPrefab, BulletExplosionPoolCount, bulletexplosionPool, BulletExplosionHolder);
-        GeneratePool(BloodShotPrefabs, BloodShotPoolCount, bloodShotPool, BloodShotHolder);
+        GeneratePool(BloodShotPrefabs, BloodShotPoolCount, bloodShotPool, BloodSHolder);
+        GeneratePool(BloodLakePrefab, BloodLakePoolCount, bloodLakePool, BloodSHolder);
         GeneratePool(WorldTextPrefab, WorldTextPoolCount, worldTextPool, WorldTextHolder);
         GeneratePool(SimpleExplosionPrefab, SimpleExplosionPoolCount, simpleExplosionPool, VFXHolder);
         GeneratePool(MegaExplosionPrefab, MegaExplosionPoolCount, megaExplosionPool, VFXHolder);
@@ -128,6 +134,7 @@ public class PoolManager : MonoBehaviour
     private GameObject tempBullet;
     private GameObject tempBulletExplosion;
     private GameObject tempBloodShot;
+    private GameObject tempBloodLake;
     private GameObject tempWorldTextPopup;
     private GameObject tempVfx;
     public GameObject GetFromPool(PoolTypes type)
@@ -150,6 +157,10 @@ public class PoolManager : MonoBehaviour
                 tempBloodShot = bloodShotPool.Dequeue();
                 bloodShotPool.Enqueue(tempBloodShot);
                 return tempBloodShot;
+            case PoolTypes.BloodLake:
+                tempBloodLake = bloodLakePool.Dequeue();
+                bloodLakePool.Enqueue(tempBloodLake);
+                return tempBloodLake;
             case PoolTypes.WorldTextPopup:
                 tempWorldTextPopup = worldTextPool.Dequeue();
                 worldTextPool.Enqueue(tempWorldTextPopup);
