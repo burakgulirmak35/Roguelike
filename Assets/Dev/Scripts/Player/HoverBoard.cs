@@ -18,10 +18,12 @@ public class HoverBoard : MonoBehaviour
     }
 
 
-    private Coroutine HoverBoardCoro;
-    private IEnumerator HoverBoardTimer()
+    private Coroutine HoverBoardActiveTimerCoro;
+    private IEnumerator HoverBoardActiveTimer()
     {
+        Player.Instance.PlayerState = PlayerState.Flying;
         yield return new WaitForSeconds(15f);
+        Player.Instance.PlayerState = PlayerState.Normal;
         Player.Instance.Holder.DOLocalMove(Vector3.zero, 1f).OnComplete(() => Player.Instance.healthSystem.isDamageble = true);
         UIManager.Instance.img_HoverBoard.DOFillAmount(0, 1f).OnComplete(() => EnableHoverBoard(false));
     }
@@ -31,6 +33,7 @@ public class HoverBoard : MonoBehaviour
         if (state)
         {
             UIManager.Instance.btn_HoverBoard.interactable = false;
+            UIManager.Instance.img_HoverBoard.fillAmount = 0;
 
             Board.SetActive(true);
             Player.Instance.LeftLegIK.weight = 1;
@@ -39,8 +42,8 @@ public class HoverBoard : MonoBehaviour
 
             Player.Instance.Holder.DOLocalMove(Vector3.up * 3, 1f).OnComplete(() => Player.Instance.healthSystem.isDamageble = false);
 
-            if (HoverBoardCoro != null) StopCoroutine(HoverBoardCoro);
-            HoverBoardCoro = StartCoroutine(HoverBoardTimer());
+            if (HoverBoardActiveTimerCoro != null) StopCoroutine(HoverBoardActiveTimerCoro);
+            HoverBoardActiveTimerCoro = StartCoroutine(HoverBoardActiveTimer());
         }
         else
         {
@@ -49,7 +52,7 @@ public class HoverBoard : MonoBehaviour
             HoverBoardAnim.enabled = false;
             Board.SetActive(false);
 
-            UIManager.Instance.img_HoverBoard.DOFillAmount(1, 15f).OnComplete(() => UIManager.Instance.btn_HoverBoard.interactable = true);
+            UIManager.Instance.img_HoverBoard.DOFillAmount(1, 30f).OnComplete(() => UIManager.Instance.btn_HoverBoard.interactable = true);
         }
     }
 }

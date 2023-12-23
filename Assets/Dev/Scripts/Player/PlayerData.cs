@@ -161,5 +161,4 @@ public class PlayerData : MonoBehaviour
         BulletExplosionSO.Range = ExplosiveAmmoRange;
         BulletExplosionSO.Damage = ExplosiveAmmoDamage;
     }
-
 }

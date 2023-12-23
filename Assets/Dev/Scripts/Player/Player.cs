@@ -410,4 +410,37 @@ public class Player : MonoBehaviour, IDamagable
     }
 
     #endregion
+
+    #region States
+
+    [SerializeField] public PlayerState playerState;
+    [SerializeField]
+    public PlayerState PlayerState
+    {
+        get
+        {
+            return playerState;
+        }
+        set
+        {
+            playerState = value;
+            switch (value)
+            {
+                case PlayerState.Normal:
+                    PlayerAnim.SetBool("Alive", true);
+                    break;
+                case PlayerState.Flying:
+                    PlayerAnim.SetBool("Alive", true);
+                    break;
+                case PlayerState.Stunned:
+                    break;
+                case PlayerState.Dead:
+                    PlayerAnim.Play("Dead " + RandomAnimationIndex().ToString());
+                    break;
+            }
+        }
+    }
+
+
+    #endregion
 }

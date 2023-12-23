@@ -7,6 +7,15 @@ public class MyEnums : MonoBehaviour
 }
 
 [Serializable]
+public enum PlayerState
+{
+    Normal,
+    Stunned,
+    Flying,
+    Dead,
+}
+
+[Serializable]
 public enum PoolTypes
 {
     Enemy,
