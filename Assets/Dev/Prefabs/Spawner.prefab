@@ -1006,7 +1006,7 @@ MonoBehaviour:
   - {fileID: 1142193931700624, guid: 9d1846a1c8bff7142ab3959923c7d9c2, type: 3}
   - {fileID: 167524, guid: fdac75e990da47649b31f10049c400b0, type: 3}
   - {fileID: 193062, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
-  BloodLakePoolCount: 30
+  BloodLakePoolCount: 50
   BloodLakePrefab: {fileID: 192166, guid: aade56583c1d3cf4d91c402e10bab311, type: 3}
   BulletExplosionPoolCount: 10
   BulletExplosionPrefab: {fileID: 127072, guid: 901cb763553a9c948a201ff4479d311a,

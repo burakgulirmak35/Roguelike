@@ -11,48 +11,51 @@ public class HoverBoard : MonoBehaviour
     void Start()
     {
         UIManager.Instance.btn_HoverBoard.interactable = false;
-        UIManager.Instance.btn_HoverBoard.onClick.AddListener(() => EnableHoverBoard(true));
-
-        UIManager.Instance.img_HoverBoard.fillAmount = 0;
-        EnableHoverBoard(false);
+        UIManager.Instance.btn_HoverBoard.onClick.AddListener(() => EnableHoverBoard());
+        DisableHowerBoard();
     }
 
 
     private Coroutine HoverBoardActiveTimerCoro;
     private IEnumerator HoverBoardActiveTimer()
     {
+        Player.Instance.playerState = PlayerState.CutScene;
+
+        UIManager.Instance.btn_HoverBoard.interactable = false;
+        UIManager.Instance.img_HoverBoard.fillAmount = 0;
+        Board.SetActive(true);
+        Player.Instance.LeftLegIK.weight = 1;
+        Player.Instance.RightLegIK.weight = 1;
+        Player.Instance.PlayerTransform.DOLocalMove(Player.Instance.PlayerTransform.position + Vector3.up * 3, 1f);
+
+        yield return new WaitForSeconds(1f);
         Player.Instance.playerState = PlayerState.HoverBoard;
+
         yield return new WaitForSeconds(15f);
+        Player.Instance.playerState = PlayerState.CutScene;
+
+        Player.Instance.PlayerTransform.DOLocalMove(Player.Instance.PlayerTransform.position + Vector3.up * -3, 1f);
+
+        yield return new WaitForSeconds(1f);
         Player.Instance.playerState = PlayerState.Normal;
-        Player.Instance.Holder.DOLocalMove(Vector3.zero, 1f).OnComplete(() => Player.Instance.healthSystem.isDamageble = true);
-        UIManager.Instance.img_HoverBoard.DOFillAmount(0, 1f).OnComplete(() => EnableHoverBoard(false));
+
+        DisableHowerBoard();
     }
 
-    public void EnableHoverBoard(bool state)
+    public void EnableHoverBoard()
     {
-        if (state)
-        {
-            UIManager.Instance.btn_HoverBoard.interactable = false;
-            UIManager.Instance.img_HoverBoard.fillAmount = 0;
+        if (HoverBoardActiveTimerCoro != null) StopCoroutine(HoverBoardActiveTimerCoro);
+        HoverBoardActiveTimerCoro = StartCoroutine(HoverBoardActiveTimer());
+    }
 
-            Board.SetActive(true);
-            Player.Instance.LeftLegIK.weight = 1;
-            Player.Instance.RightLegIK.weight = 1;
-            HoverBoardAnim.enabled = true;
+    private void DisableHowerBoard()
+    {
+        Player.Instance.LeftLegIK.weight = 0;
+        Player.Instance.RightLegIK.weight = 0;
+        HoverBoardAnim.enabled = false;
+        Board.SetActive(false);
 
-            Player.Instance.Holder.DOLocalMove(Vector3.up * 3, 1f).OnComplete(() => Player.Instance.healthSystem.isDamageble = false);
-
-            if (HoverBoardActiveTimerCoro != null) StopCoroutine(HoverBoardActiveTimerCoro);
-            HoverBoardActiveTimerCoro = StartCoroutine(HoverBoardActiveTimer());
-        }
-        else
-        {
-            Player.Instance.LeftLegIK.weight = 0;
-            Player.Instance.RightLegIK.weight = 0;
-            HoverBoardAnim.enabled = false;
-            Board.SetActive(false);
-
-            UIManager.Instance.img_HoverBoard.DOFillAmount(1, 5f).OnComplete(() => UIManager.Instance.btn_HoverBoard.interactable = true);
-        }
+        UIManager.Instance.img_HoverBoard.fillAmount = 0;
+        UIManager.Instance.img_HoverBoard.DOFillAmount(1, 5f).OnComplete(() => UIManager.Instance.btn_HoverBoard.interactable = true);
     }
 }

@@ -412,10 +412,16 @@ public class Player : MonoBehaviour
                     Movement = DefaultMovement;
                     break;
                 case PlayerState.HoverBoard:
+                    PlayerAgent.enabled = true;
                     healthSystem.isDamageble = false;
                     Movement = HoverMovement;
                     break;
                 case PlayerState.Stunned:
+                    PlayerAgent.enabled = true;
+                    Movement = null;
+                    break;
+                case PlayerState.CutScene:
+                    PlayerAgent.enabled = false;
                     Movement = null;
                     break;
             }

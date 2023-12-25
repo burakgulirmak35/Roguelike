@@ -146,6 +146,7 @@ public class Spawner : MonoBehaviour
     public void SpawnAtPos(PoolTypes _poolTypes, Vector3 _pos)
     {
         tempItem = PoolManager.Instance.GetFromPool(_poolTypes);
+        tempItem.SetActive(false);
         tempItem.transform.position = _pos;
         tempItem.SetActive(true);
     }
@@ -153,6 +154,7 @@ public class Spawner : MonoBehaviour
     public void SpawnAtPos(ItemType _itemType, Vector3 _pos)
     {
         tempItem = PoolManager.Instance.GetItemFromPool(_itemType);
+        tempItem.SetActive(false);
         tempItem.transform.position = _pos;
         tempItem.SetActive(true);
     }

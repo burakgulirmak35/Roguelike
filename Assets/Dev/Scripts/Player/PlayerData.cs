@@ -77,13 +77,17 @@ public class PlayerData : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        CheckUpgradesList();
 
         MovementSpeedMultipler = 1;
         FireRateMultipler = 1;
     }
 
-    private UpgradeSO upgradeSO;
+    void Start()
+    {
+        CheckUpgradesList();
+    }
+
+    private UpgradeSO tempUpgradeSO;
     private void CheckUpgradesList()
     {
         if (PlayerPrefs.GetInt("Penetrability") == 1)
@@ -92,9 +96,9 @@ public class PlayerData : MonoBehaviour
             {
                 if (Upgrades[i].upgradeType.Equals(UpgradeType.Penetrability))
                 {
-                    upgradeSO = Upgrades[i];
+                    tempUpgradeSO = Upgrades[i];
                     Upgrades.RemoveAt(i);
-                    Upgrades.AddRange(upgradeSO.NextUpgrades);
+                    Upgrades.AddRange(tempUpgradeSO.NextUpgrades);
                     break;
                 }
             }
@@ -106,9 +110,9 @@ public class PlayerData : MonoBehaviour
             {
                 if (Upgrades[i].upgradeType.Equals(UpgradeType.ExplosiveAmmo))
                 {
-                    upgradeSO = Upgrades[i];
+                    tempUpgradeSO = Upgrades[i];
                     Upgrades.RemoveAt(i);
-                    Upgrades.AddRange(upgradeSO.NextUpgrades);
+                    Upgrades.AddRange(tempUpgradeSO.NextUpgrades);
                     break;
                 }
             }

@@ -5187,7 +5187,7 @@ MonoBehaviour:
   levelSystem: {fileID: 9183057140269555356}
   effectSystem: {fileID: 8535342852869798586}
   costumeSystem: {fileID: 3067811512923478729}
-  playerCollider: {fileID: 0}
+  playerCollider: {fileID: 2659778382520983056}
   hoverBoard: {fileID: 5303415238394917656}
   PlayerAnim: {fileID: 6647200804044033869}
   Body: {fileID: 2365476510998824381}

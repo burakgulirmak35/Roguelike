@@ -64,7 +64,6 @@ public class Enemy : MonoBehaviour, ITargetable
     }
 
     private float distance;
-    private Vector3 lookPos;
     public void FollowPlayer()
     {
         if (enemyHealthSystem.isAlive && !isBusy)
@@ -76,9 +75,7 @@ public class Enemy : MonoBehaviour, ITargetable
                 return;
             }
 
-            lookPos = Player.Instance.PlayerTransform.position;
-            lookPos.y = myTransform.position.y;
-            Body.DOLookAt(lookPos, 0.2f);
+            Body.DOLookAt(EnemyManager.Instance.TargetPos, 0.2f);
 
             if (distance <= enemySO.StartAttackRange)
             {
@@ -86,7 +83,7 @@ public class Enemy : MonoBehaviour, ITargetable
             }
             else
             {
-                EnemyAgent.SetDestination(Player.Instance.PlayerTransform.position);
+                EnemyAgent.SetDestination(EnemyManager.Instance.TargetPos);
             }
         }
     }

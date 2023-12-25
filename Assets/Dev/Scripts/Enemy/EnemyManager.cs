@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     private List<Enemy> enemies = new List<Enemy>();
+    [HideInInspector] public Vector3 TargetPos;
 
     public static EnemyManager Instance { get; private set; }
     private void Awake()
@@ -34,6 +35,9 @@ public class EnemyManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.2f);
+            TargetPos = Player.Instance.PlayerTransform.position;
+            TargetPos.y = 0;
+
             for (int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].FollowPlayer();

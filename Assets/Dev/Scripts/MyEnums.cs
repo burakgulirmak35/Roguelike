@@ -13,6 +13,7 @@ public enum PlayerState
     Stunned,
     HoverBoard,
     Dead,
+    CutScene,
 }
 
 [Serializable]
