@@ -13,7 +13,7 @@ public class ExplosionVFX : MonoBehaviour
         {
             if (hitColliders[i].tag.Equals("Enemy"))
             {
-                hitColliders[i].gameObject.GetComponent<IDamagable>().TakeDamage(explosionSO.Damage);
+                hitColliders[i].gameObject.GetComponent<Enemy>().enemyHealthSystem.TakeDamage(explosionSO.Damage);
             }
         }
     }

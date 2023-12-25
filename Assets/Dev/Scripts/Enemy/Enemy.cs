@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.AI;
 using DG.Tweening;
 
-public class Enemy : MonoBehaviour, IDamagable, ITargetable
+public class Enemy : MonoBehaviour, ITargetable
 {
     [Header("HealtSystem")]
-    [SerializeField] private EnemyHealthSystem enemyHealthSystem;
+    [SerializeField] public EnemyHealthSystem enemyHealthSystem;
     [Header("Stats")]
     [SerializeField] private EnemySO enemySO;
     [Header("Animations")]
@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     private CapsuleCollider myCollider;
     [Header("AI")]
     private NavMeshAgent EnemyAgent;
-    private bool isAlive;
     private bool isBusy;
 
     [Space]
@@ -48,7 +47,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     public void Reborn()
     {
         StopDisable();
-        isAlive = true;
+        enemyHealthSystem.isAlive = true;
         enemyHealthSystem.HealthBar.SetActive(false);
         TargetedIcon.SetActive(false);
         enemyHealthSystem.SetHealth(enemySO.Health);
@@ -68,17 +67,26 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
     private Vector3 lookPos;
     public void FollowPlayer()
     {
-        if (isAlive && !isBusy)
+        if (enemyHealthSystem.isAlive && !isBusy)
         {
             distance = DistToPlayer();
-            if (distance <= enemySO.StartAttackRange) { StartAttack(); }
-            else if (distance > Spawner.Instance.UnitDissapearDistance) { Remove(); }
+            if (distance > Spawner.Instance.UnitDissapearDistance)
+            {
+                Remove();
+                return;
+            }
+
+            lookPos = Player.Instance.PlayerTransform.position;
+            lookPos.y = myTransform.position.y;
+            Body.DOLookAt(lookPos, 0.2f);
+
+            if (distance <= enemySO.StartAttackRange)
+            {
+                StartAttack();
+            }
             else
             {
-                lookPos = Player.Instance.PlayerTransform.position;
-                lookPos.y = myTransform.position.y;
                 EnemyAgent.SetDestination(Player.Instance.PlayerTransform.position);
-                Body.DOLookAt(lookPos, 0.2f);
             }
         }
     }
@@ -88,19 +96,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         TargetedIcon.SetActive(state);
     }
 
-    #region HealthSystem
-    public void TakeDamage(float damageTaken)
-    {
-        if (!isAlive) { return; }
-        enemyHealthSystem.ShowHealth();
-        enemyHealthSystem.TakeDamage(damageTaken);
-        Spawner.Instance.WorldTextPopup(((int)damageTaken).ToString(), myTransform.position, Color.red);
-    }
-
-    private int RandomDeadAnimationIndex()
-    {
-        return Random.Range(0, 4);
-    }
+    #region DeadAlive
     private void OnDead()
     {
         UIManager.Instance.AddScore();
@@ -117,9 +113,8 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         DropItem();
 
         TargetedIcon.SetActive(false);
-        EnemyAnim.Play("Dead " + RandomDeadAnimationIndex().ToString());
+        EnemyAnim.Play("Dead " + Random.Range(0, 4).ToString());
         myCollider.enabled = false;
-        isAlive = false;
         EnemyAnim.SetBool("isAlive", false);
     }
 
@@ -154,7 +149,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
 
         enemyHealthSystem.HideHealth();
         myCollider.enabled = false;
-        isAlive = false;
+        enemyHealthSystem.isAlive = false;
         EnemyAnim.SetBool("isAlive", false);
         gameObject.SetActive(false);
     }
@@ -173,7 +168,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
 
     private void StartAttack()
     {
-        if (!isAlive) return;
+        if (!enemyHealthSystem.isAlive) return;
 
         isBusy = true;
         EnemyAgent.ResetPath();
@@ -190,7 +185,7 @@ public class Enemy : MonoBehaviour, IDamagable, ITargetable
         distance = DistToPlayer();
         if (distance <= enemySO.AttackRange)
         {
-            Player.Instance.TakeDamage(enemySO.Damage);
+            Player.Instance.healthSystem.TakeDamage(enemySO.Damage);
         }
     }
     private Coroutine AttackCoro;

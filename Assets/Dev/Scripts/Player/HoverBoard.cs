@@ -21,9 +21,9 @@ public class HoverBoard : MonoBehaviour
     private Coroutine HoverBoardActiveTimerCoro;
     private IEnumerator HoverBoardActiveTimer()
     {
-        Player.Instance.PlayerState = PlayerState.Flying;
+        Player.Instance.playerState = PlayerState.HoverBoard;
         yield return new WaitForSeconds(15f);
-        Player.Instance.PlayerState = PlayerState.Normal;
+        Player.Instance.playerState = PlayerState.Normal;
         Player.Instance.Holder.DOLocalMove(Vector3.zero, 1f).OnComplete(() => Player.Instance.healthSystem.isDamageble = true);
         UIManager.Instance.img_HoverBoard.DOFillAmount(0, 1f).OnComplete(() => EnableHoverBoard(false));
     }
@@ -52,7 +52,7 @@ public class HoverBoard : MonoBehaviour
             HoverBoardAnim.enabled = false;
             Board.SetActive(false);
 
-            UIManager.Instance.img_HoverBoard.DOFillAmount(1, 30f).OnComplete(() => UIManager.Instance.btn_HoverBoard.interactable = true);
+            UIManager.Instance.img_HoverBoard.DOFillAmount(1, 5f).OnComplete(() => UIManager.Instance.btn_HoverBoard.interactable = true);
         }
     }
 }

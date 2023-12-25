@@ -21,6 +21,13 @@ public class HealthSystem : MonoBehaviour
     [HideInInspector] public bool isAlive;
     public event Action OnDead;
 
+    private Transform myTransform;
+
+    void Awake()
+    {
+        myTransform = transform;
+    }
+
     public void SetHealth(float _health)
     {
         maxHealth = _health;
@@ -72,7 +79,10 @@ public class HealthSystem : MonoBehaviour
     {
         if (!isDamageble) return;
         if (!isAlive) return;
+
         health -= amount;
+        Spawner.Instance.WorldTextPopup(((int)amount).ToString(), myTransform.position, Color.red);
+
         if (health <= 0)
         {
             isAlive = false;

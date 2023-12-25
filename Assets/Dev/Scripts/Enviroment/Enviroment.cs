@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.AI.Navigation;
 
-
 public enum Side { left, right, up, down };
 public class Enviroment : MonoBehaviour
 {
@@ -17,7 +16,6 @@ public class Enviroment : MonoBehaviour
     private GameObject PartUp;
     private GameObject PartDown;
     [Space]
-    public NavMeshSurface[] surfaces;
     [SerializeField] private Transform Gates;
     [Space]
     private int index;
@@ -26,14 +24,6 @@ public class Enviroment : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void UpdateNavMesh()
-    {
-        for (int i = 0; i < surfaces.Length; i++)
-        {
-            surfaces[i].BuildNavMesh();
-        }
     }
 
     public void CreateCity()
@@ -78,7 +68,7 @@ public class Enviroment : MonoBehaviour
             CityParts[i].SetActive(false);
         }
 
-        UpdateNavMesh();
+        NavMeshManager.Instance.UpdateNavMesh();
         Gates.transform.position = PartMiddle.transform.position;
     }
 
@@ -126,7 +116,7 @@ public class Enviroment : MonoBehaviour
         PartRight.SetActive(true);
 
         Gates.transform.position = PartMiddle.transform.position;
-        UpdateNavMesh();
+        NavMeshManager.Instance.UpdateNavMesh();
     }
 
     public void MoveLeft()
@@ -147,7 +137,7 @@ public class Enviroment : MonoBehaviour
 
         Gates.transform.position = PartMiddle.transform.position;
 
-        UpdateNavMesh();
+        NavMeshManager.Instance.UpdateNavMesh();
     }
 
     public void MoveUp()
@@ -168,7 +158,7 @@ public class Enviroment : MonoBehaviour
 
         Gates.transform.position = PartMiddle.transform.position;
 
-        UpdateNavMesh();
+        NavMeshManager.Instance.UpdateNavMesh();
     }
 
     public void MoveDown()
@@ -189,6 +179,6 @@ public class Enviroment : MonoBehaviour
 
         Gates.transform.position = PartMiddle.transform.position;
 
-        UpdateNavMesh();
+        NavMeshManager.Instance.UpdateNavMesh();
     }
 }

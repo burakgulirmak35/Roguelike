@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
         switch (other.tag)
         {
             case "Enemy":
-                other.gameObject.GetComponent<IDamagable>().TakeDamage(PlayerData.Instance.Damage);
+                other.gameObject.GetComponent<Enemy>().enemyHealthSystem.TakeDamage(PlayerData.Instance.Damage);
                 tempObject = PoolManager.Instance.GetFromPool(PoolTypes.BloodShot);
                 tempObject.transform.position = transform.position;
                 tempObject.SetActive(true);

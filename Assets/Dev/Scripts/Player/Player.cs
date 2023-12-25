@@ -5,14 +5,16 @@ using UnityEngine.AI;
 using DG.Tweening;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
-public class Player : MonoBehaviour, IDamagable
+public class Player : MonoBehaviour
 {
     [Header("---Components---")]
     [SerializeField] public HealthSystem healthSystem;
     [SerializeField] public LevelSystem levelSystem;
     [SerializeField] public EffectSystem effectSystem;
     [SerializeField] public CostumeSystem costumeSystem;
+    [SerializeField] public PlayerCollider playerCollider;
 
     [Header("Gun")]
     private Gun gun;
@@ -34,7 +36,7 @@ public class Player : MonoBehaviour, IDamagable
     private InputAction toggleAimAction;
     private InputAction mapAction;
     [Space]
-    private NavMeshAgent Agent;
+    [HideInInspector] public NavMeshAgent PlayerAgent;
     private Vector3 moveDirection;
     private Vector3 aimDirection;
     private Vector2 leftJoystick;
@@ -57,7 +59,6 @@ public class Player : MonoBehaviour, IDamagable
     private float DistanceToEnemy;
 
     [Header("State")]
-    private bool Alive = true;
     [HideInInspector] public bool isAutoAim = false;
     private bool isAiming = false;
 
@@ -69,10 +70,10 @@ public class Player : MonoBehaviour, IDamagable
     private void Awake()
     {
         Instance = this;
-        Agent = GetComponent<NavMeshAgent>();
-
-        Agent.updateRotation = false;
+        PlayerAgent = GetComponent<NavMeshAgent>();
+        PlayerAgent.updateRotation = false;
         PlayerTransform = this.transform;
+        playerState = PlayerState.Normal;
 
         healthSystem.OnDead += OnDead;
     }
@@ -191,25 +192,38 @@ public class Player : MonoBehaviour, IDamagable
     }
 
     #region --- Movement ---
+    private event UnityAction Movement;
     private void JoystickMove()
     {
         leftJoystick = moveAction.ReadValue<Vector2>();
 
         moveDirection.x = leftJoystick.x;
         moveDirection.z = leftJoystick.y;
-
-        Agent.Move(moveDirection * PlayerData.Instance.MovementSpeed * PlayerData.Instance.MovementSpeedMultipler * Time.deltaTime);
-        if (moveDirection.magnitude > 0 && !isAiming)
-        {
-            Body.forward = moveDirection;
-        }
-
         velocityZ = Vector3.Dot(moveDirection.normalized, Body.forward);
         velocityX = Vector3.Dot(moveDirection.normalized, Body.right);
+
+        if (moveDirection.magnitude > 0 && !isAiming)
+            Body.forward = moveDirection;
+
+        Movement?.Invoke();
+    }
+
+    private void DefaultMovement()
+    {
+        PlayerAgent.Move(moveDirection * PlayerData.Instance.MovementSpeed * PlayerData.Instance.MovementSpeedMultipler * Time.deltaTime);
 
         PlayerAnim.SetFloat("Speed", moveDirection.magnitude);
         PlayerAnim.SetFloat("Vertical", velocityZ);
         PlayerAnim.SetFloat("Horizontal", velocityX);
+    }
+
+    private void HoverMovement()
+    {
+        PlayerAgent.Move(moveDirection * PlayerData.Instance.MovementSpeed * PlayerData.Instance.MovementSpeedMultipler * Time.deltaTime);
+
+        PlayerAnim.SetFloat("Speed", moveDirection.magnitude);
+        PlayerAnim.SetFloat("Vertical", 0);
+        PlayerAnim.SetFloat("Horizontal", 0);
     }
     #endregion
 
@@ -299,7 +313,7 @@ public class Player : MonoBehaviour, IDamagable
     private Coroutine AutoAimCoro;
     private IEnumerator AutoAimLoop()
     {
-        while (Alive)
+        while (healthSystem.isAlive)
         {
             AutoAim();
             yield return new WaitForSeconds(0.1f);
@@ -350,97 +364,62 @@ public class Player : MonoBehaviour, IDamagable
     }
     #endregion
 
-    private void OnTriggerEnter(Collider other)
-    {
-        switch (other.tag)
-        {
-            case "Gate":
 
-                break;
-            case "Collectable":
-                other.GetComponent<Collectable>().Collect();
-                break;
-        }
-    }
 
-    void OnTriggerExit(Collider other)
-    {
-        switch (other.tag)
-        {
-            case "Gate":
-                other.GetComponent<Gate>().PassGate(PlayerTransform.position);
-                break;
-        }
-    }
-
-    #region HealthSystem
-    public void TakeDamage(float damageTaken)
-    {
-        healthSystem.TakeDamage(damageTaken);
-        Spawner.Instance.WorldTextPopup(((int)damageTaken).ToString(), PlayerTransform.position, Color.red);
-    }
-
-    private int RandomAnimationIndex()
-    {
-        return Random.Range(0, 4);
-    }
+    #region DeadAlive
     private void OnDead()
     {
-        this.enabled = false;
-        Agent.enabled = false;
+        playerState = PlayerState.Dead;
 
         Aim(false);
-        Alive = false;
-
-        PlayerAnim.Play("Dead " + RandomAnimationIndex().ToString());
+        PlayerAnim.Play("Dead " + Random.Range(0, 4).ToString());
         UIManager.Instance.EnablePanelPlayerDead(true);
     }
-
     public void ReBorn()
     {
-        Spawner.Instance.SpawnAtPos(PoolTypes.MegaExplosion, effectSystem.EffectTransform.position);
+        playerState = PlayerState.Normal;
 
-        Agent.enabled = true;
+        Spawner.Instance.SpawnAtPos(PoolTypes.MegaExplosion, effectSystem.EffectTransform.position);
         PlayerAnim.SetBool("Alive", true);
         healthSystem.SetHealth(PlayerData.Instance.MaxHealth);
-        Alive = true;
-
-        this.enabled = true;
+        healthSystem.isAlive = true;
         PrepareAim();
     }
-
     #endregion
 
-    #region States
-
-    [SerializeField] public PlayerState playerState;
-    [SerializeField]
-    public PlayerState PlayerState
+    #region State
+    private PlayerState _playerState;
+    public PlayerState playerState
     {
         get
         {
-            return playerState;
+            return _playerState;
         }
         set
         {
-            playerState = value;
-            switch (value)
+            _playerState = value;
+            switch (_playerState)
             {
-                case PlayerState.Normal:
-                    PlayerAnim.SetBool("Alive", true);
+                case PlayerState.Dead:
+                    PlayerAgent.enabled = false;
+                    healthSystem.isAlive = false;
+                    healthSystem.isDamageble = false;
+                    Movement = null;
                     break;
-                case PlayerState.Flying:
-                    PlayerAnim.SetBool("Alive", true);
+                case PlayerState.Normal:
+                    PlayerAgent.enabled = true;
+                    healthSystem.isDamageble = true;
+                    Movement = DefaultMovement;
+                    break;
+                case PlayerState.HoverBoard:
+                    healthSystem.isDamageble = false;
+                    Movement = HoverMovement;
                     break;
                 case PlayerState.Stunned:
-                    break;
-                case PlayerState.Dead:
-                    PlayerAnim.Play("Dead " + RandomAnimationIndex().ToString());
+                    Movement = null;
                     break;
             }
         }
     }
-
-
     #endregion
 }

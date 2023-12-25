@@ -11,7 +11,7 @@ public enum PlayerState
 {
     Normal,
     Stunned,
-    Flying,
+    HoverBoard,
     Dead,
 }
 

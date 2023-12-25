@@ -14,7 +14,15 @@ public class EnemyHealthSystem : MonoBehaviour
     private float maxHealth;
     private float health;
     private float healthAmount;
+    [HideInInspector] public bool isAlive;
+    private Transform myTransform;
+
     public event Action OnDead;
+
+    void Awake()
+    {
+        myTransform = transform;
+    }
 
     public void SetHealth(float _health)
     {
@@ -49,11 +57,15 @@ public class EnemyHealthSystem : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        if (health <= 0) return;
+        if (!isAlive) return;
+
+        ShowHealth();
+        Spawner.Instance.WorldTextPopup(((int)amount).ToString(), myTransform.position, Color.red);
 
         health -= amount;
         if (health <= 0)
         {
+            isAlive = false;
             health = 0;
             slider_Health.value = 0;
             txt_Health.text = ((int)health).ToString();
