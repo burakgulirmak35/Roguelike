@@ -7,13 +7,13 @@ using UnityEngine.AI;
 public class NavMeshManager : MonoBehaviour
 {
     public NavMeshSurface surfaces;
-    private Vector3 BestPos;
-
+    private Transform playerTransform;
 
     public static NavMeshManager Instance { get; private set; }
     void Awake()
     {
         Instance = this;
+        playerTransform = Player.Instance.PlayerTransform;
     }
 
     public void UpdateNavMesh()
@@ -21,15 +21,32 @@ public class NavMeshManager : MonoBehaviour
         surfaces.BuildNavMesh();
     }
 
+
+    private Vector3 BestPos;
+    private float angle;
+    private Vector3 CheckDir;
     public Vector3 NearestValidPosition()
     {
         NavMeshHit myNavHit;
-        BestPos = Player.Instance.PlayerTransform.position;
-        BestPos.y = 0;
-        if (NavMesh.SamplePosition(BestPos, out myNavHit, 20, -1))
+        BestPos = playerTransform.position;
+        BestPos.y = 1;
+        if (NavMesh.SamplePosition(BestPos, out myNavHit, 10, NavMesh.GetAreaFromName("Walkable")))
         {
             return myNavHit.position;
         }
-        return BestPos;
+
+        for (int i = 0; i < 36; i++)
+        {
+            angle = 10f * i;
+            CheckDir.x = Mathf.Sin(angle);
+            CheckDir.z = Mathf.Cos(angle);
+            CheckDir.y = 0;
+            BestPos = playerTransform.position + CheckDir * 3;
+            if (NavMesh.SamplePosition(BestPos, out myNavHit, 10, NavMesh.GetAreaFromName("Walkable")))
+            {
+                return myNavHit.position;
+            }
+        }
+        return Vector3.zero;
     }
 }
