@@ -26,17 +26,17 @@ public class HoverBoard : MonoBehaviour
         Board.SetActive(true);
         Player.Instance.LeftLegIK.weight = 1;
         Player.Instance.RightLegIK.weight = 1;
-        Player.Instance.PlayerTransform.DOLocalMove(Player.Instance.PlayerTransform.position + Vector3.up * 3, 1f);
+        Player.Instance.PlayerTransform.DOLocalMove(Player.Instance.PlayerTransform.position + Vector3.up * 4, 0.3f);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
         Player.Instance.playerState = PlayerState.HoverBoard;
 
         yield return new WaitForSeconds(15f);
         Player.Instance.playerState = PlayerState.CutScene;
 
-        Player.Instance.PlayerTransform.DOLocalMove(Player.Instance.PlayerTransform.position + Vector3.up * -3, 1f);
+        Player.Instance.PlayerTransform.DOLocalMove(Player.Instance.PlayerTransform.position + Vector3.up * -4, 0.3f);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
         Player.Instance.playerState = PlayerState.Normal;
 
         DisableHowerBoard();
