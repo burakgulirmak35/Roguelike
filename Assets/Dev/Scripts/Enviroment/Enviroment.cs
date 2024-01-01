@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.AI.Navigation;
+using UnityEditorInternal;
 
 public enum Side { left, right, up, down };
 public class Enviroment : MonoBehaviour
@@ -48,7 +49,7 @@ public class Enviroment : MonoBehaviour
         PartDown = CityParts[index];
         CityParts.RemoveAt(index);
 
-        PartMiddle.transform.position = new Vector3(0, 0, 0);
+        PartMiddle.transform.position = Vector3.zero;
         PartMiddle.transform.eulerAngles = RandomRotation();
         PartLeft.transform.eulerAngles = RandomRotation();
         PartRight.transform.eulerAngles = RandomRotation();
@@ -62,6 +63,12 @@ public class Enviroment : MonoBehaviour
         PartRight.SetActive(true);
         PartUp.SetActive(true);
         PartDown.SetActive(true);
+
+        PartMiddle.GetComponent<City>().RandomProps();
+        PartLeft.GetComponent<City>().RandomProps();
+        PartRight.GetComponent<City>().RandomProps();
+        PartUp.GetComponent<City>().RandomProps();
+        PartDown.GetComponent<City>().RandomProps();
 
         for (int i = 0; i < CityParts.Count; i++)
         {
@@ -137,6 +144,7 @@ public class Enviroment : MonoBehaviour
 
         Gates.transform.position = PartMiddle.transform.position;
 
+        PartLeft.GetComponent<City>().RandomProps();
         NavMeshManager.Instance.UpdateNavMesh();
     }
 
@@ -158,6 +166,7 @@ public class Enviroment : MonoBehaviour
 
         Gates.transform.position = PartMiddle.transform.position;
 
+        PartUp.GetComponent<City>().RandomProps();
         NavMeshManager.Instance.UpdateNavMesh();
     }
 
@@ -177,6 +186,7 @@ public class Enviroment : MonoBehaviour
         AdjustSides();
         PartDown.SetActive(true);
 
+        PartDown.GetComponent<City>().RandomProps();
         Gates.transform.position = PartMiddle.transform.position;
 
         NavMeshManager.Instance.UpdateNavMesh();

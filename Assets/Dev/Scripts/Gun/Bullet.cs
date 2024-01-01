@@ -48,6 +48,13 @@ public class Bullet : MonoBehaviour
                 else { Disable(); }
 
                 break;
+            case "Props":
+
+                if (Player.Instance.playerState.Equals(PlayerState.HoverBoard)) return;
+                if (bounceCount > 0) { Bounce(); }
+                else { Disable(); }
+
+                break;
             default:
                 break;
         }
