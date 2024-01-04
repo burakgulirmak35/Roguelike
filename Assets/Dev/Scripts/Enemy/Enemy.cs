@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour, ITargetable
     [SerializeField] public EnemyHealthSystem enemyHealthSystem;
     [Header("Stats")]
     [SerializeField] private EnemySO enemySO;
+    private float attackSpeed;
     [Header("Animations")]
     [SerializeField] private Animator EnemyAnim;
     private AnimEventController animEventController;
@@ -20,7 +21,7 @@ public class Enemy : MonoBehaviour, ITargetable
     [Header("Collider")]
     private CapsuleCollider myCollider;
     [Header("AI")]
-    private NavMeshAgent EnemyAgent;
+    public NavMeshAgent EnemyAgent;
     private bool isBusy;
 
     [Space]
@@ -35,6 +36,7 @@ public class Enemy : MonoBehaviour, ITargetable
         EnemyAgent.speed = enemySO.Speed;
         EnemyAgent.stoppingDistance = enemySO.StartAttackRange;
         EnemyAgent.updateRotation = false;
+        attackSpeed = enemySO.AttackSpeed;
         //-----------------------------------------------
         enemyHealthSystem.OnDead += OnDead;
         //-----------------------------------------------
@@ -52,6 +54,10 @@ public class Enemy : MonoBehaviour, ITargetable
         TargetedIcon.SetActive(false);
         enemyHealthSystem.SetHealth(enemySO.Health);
         myCollider.enabled = true;
+
+        EnemyAgent.speed = enemySO.Speed;
+        attackSpeed = enemySO.AttackSpeed;
+        EnemyAnim.SetFloat("Speed", 1);
     }
 
     void OnEnable()
@@ -135,8 +141,6 @@ public class Enemy : MonoBehaviour, ITargetable
         if (enemySO.DropRate >= Random.Range(1, 101))
             Spawner.Instance.DropRandomItem(myTransform.position);
     }
-
-
     // fast remove
     public void Remove()
     {
@@ -171,7 +175,7 @@ public class Enemy : MonoBehaviour, ITargetable
         EnemyAgent.ResetPath();
 
         // vuruş animasyonları 2 saniye sürüyor hepsi aynı süre
-        EnemyAnim.SetFloat("AttackSpeed", 2);
+        EnemyAnim.SetFloat("AttackSpeed", attackSpeed);
         EnemyAnim.Play("Attack" + RandomAttackAnimationIndex().ToString());
         if (AttackCoro != null) { StopCoroutine(AttackCoro); }
         AttackCoro = StartCoroutine(AttackTimer());
@@ -216,5 +220,29 @@ public class Enemy : MonoBehaviour, ITargetable
         yield return new WaitForSeconds(5f);
         gameObject.SetActive(false);
     }
+    #endregion
+
+
+    #region  Slow
+
+    private Coroutine SlowDownCoro;
+    public void SlowDown(float _percent, float _time)
+    {
+        EnemyAgent.speed = enemySO.Speed * _percent;
+        attackSpeed = enemySO.AttackSpeed * _percent;
+        EnemyAnim.SetFloat("Speed", 1 * _percent);
+
+        if (SlowDownCoro != null) StopCoroutine(SlowDownCoro);
+        SlowDownCoro = StartCoroutine(SlowDownTimer(_time));
+    }
+    private IEnumerator SlowDownTimer(float _time)
+    {
+        yield return new WaitForSeconds(_time);
+
+        EnemyAgent.speed = enemySO.Speed;
+        attackSpeed = enemySO.AttackSpeed;
+        EnemyAnim.SetFloat("Speed", 1);
+    }
+
     #endregion
 }

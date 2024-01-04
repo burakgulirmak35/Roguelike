@@ -50,8 +50,8 @@ public class Collectable : MonoBehaviour
             case ItemType.Magnet:
                 Magnet();
                 break;
-            case ItemType.SlowMotion:
-                SlowMotion();
+            case ItemType.SlowArea:
+                SlowArea();
                 break;
             case ItemType.SpeedBoost:
                 SpeedBoost();
@@ -107,13 +107,15 @@ public class Collectable : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void SlowMotion()
+    #region SlowMotion
+    private void SlowArea()
     {
-        GameManager.Instance.SlowMotion();
-
+        Spawner.Instance.SpawnAtPos(PoolTypes.SlowAreaVFX, myTransform.position);
+        
         myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
     }
+    #endregion
 
     private void SpeedBoost()
     {

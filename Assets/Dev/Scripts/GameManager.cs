@@ -25,28 +25,6 @@ public class GameManager : MonoBehaviour
         Spawner.Instance.StartGame();
     }
 
-    #region Effects
-    private bool isSlowMotion;
-    public void SlowMotion()
-    {
-        if (!isSlowMotion)
-        {
-            isSlowMotion = true;
-            StartCoroutine(SlowMotionTimer());
-        }
-    }
-    private IEnumerator SlowMotionTimer()
-    {
-        Time.timeScale = PlayerData.Instance.SlowMotionPercent;
-        yield return new WaitForSeconds(PlayerData.Instance.SlowMotionTime);
-        if (Player.Instance.healthSystem.isAlive)
-        {
-            Time.timeScale = 1;
-        }
-        isSlowMotion = false;
-    }
-    #endregion
-
     #region Time
     public void FreezeGame()
     {
@@ -55,11 +33,6 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        if (isSlowMotion)
-        {
-            Time.timeScale = PlayerData.Instance.SlowMotionPercent;
-            return;
-        }
         Time.timeScale = 1;
     }
     #endregion

@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ac87126862bc1c428745b6e29d9d267, type: 3}
-  m_Name: StandartZombie
+  m_Script: {fileID: 11500000, guid: b1ce3d585ddc84e43b47ba4a6b6d0479, type: 3}
+  m_Name: SlowAreaSO
   m_EditorClassIdentifier: 
-  Health: 25
-  Speed: 3
-  AttackSpeed: 2
-  StartAttackRange: 2
-  AttackRange: 4
-  Damage: 5
-  ExperienceAmount: 1
-  DropRate: 10
+  SlowAreaTime: 5
+  SlowAreaPercent: 0.25
+  SlowAreaDistance: 20

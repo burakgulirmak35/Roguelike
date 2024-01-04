@@ -1025,6 +1025,9 @@ MonoBehaviour:
   SimpleExplosionPoolCount: 10
   SimpleExplosionPrefab: {fileID: 168694, guid: 1bfdf09308bfebf48909709dc9b8701d,
     type: 3}
+  SlowAreaVFXPoolCount: 2
+  SlowAreaVFXPrefab: {fileID: 2787896152966357126, guid: ef3d919d4322d6942b83ae60aa2d8bc1,
+    type: 3}
   CollectableCount: 3
   CollectableBombPrefab: {fileID: 2985430304929008089, guid: 54c6050e4b4e8454d9ac617c937a3658,
     type: 3}
@@ -1036,7 +1039,7 @@ MonoBehaviour:
     type: 3}
   CollectableMagnetPrefab: {fileID: 2985430304929008089, guid: 136c9c38020f1244fa287814699facd9,
     type: 3}
-  CollectableSlowMotionPrefab: {fileID: 2985430304929008089, guid: 70e8d0388afcc5447966dc1d2971cd3e,
+  CollectableSlowAreaPrefab: {fileID: 2985430304929008089, guid: 70e8d0388afcc5447966dc1d2971cd3e,
     type: 3}
   CollectableSpeedBoostPrefab: {fileID: 2985430304929008089, guid: a61c42c11f39aca43a66c0ff1e2d9ce9,
     type: 3}

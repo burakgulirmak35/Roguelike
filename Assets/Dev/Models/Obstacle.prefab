@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7797585447867878896}
   m_Layer: 6
   m_Name: Enviroment
-  m_TagString: Enviroment
+  m_TagString: Props
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8

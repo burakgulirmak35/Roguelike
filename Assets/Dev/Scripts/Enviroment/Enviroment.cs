@@ -2,8 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.AI.Navigation;
-using UnityEditorInternal;
 
 public enum Side { left, right, up, down };
 public class Enviroment : MonoBehaviour
@@ -25,6 +23,11 @@ public class Enviroment : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    public City GetCurrentCity()
+    {
+        return PartMiddle.GetComponent<City>();
     }
 
     public void CreateCity()

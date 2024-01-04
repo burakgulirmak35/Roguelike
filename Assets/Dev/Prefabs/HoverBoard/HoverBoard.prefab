@@ -47,7 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverBoardAnim: {fileID: 7693627597521491480}
-  Board: {fileID: 8950353215026264448}
+  BoardModel: {fileID: 8950353215026264448}
+  BoardTransform: {fileID: 0}
+  FlyTime: 20
+  CoolDown: 30
 --- !u!95 &7693627597521491480
 Animator:
   serializedVersion: 5

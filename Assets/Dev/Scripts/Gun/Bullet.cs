@@ -43,13 +43,10 @@ public class Bullet : MonoBehaviour
 
                 break;
             case "Enviroment":
-
                 if (bounceCount > 0) { Bounce(); }
                 else { Disable(); }
-
                 break;
             case "Props":
-
                 if (Player.Instance.playerState.Equals(PlayerState.HoverBoard)) return;
                 if (bounceCount > 0) { Bounce(); }
                 else { Disable(); }

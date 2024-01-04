@@ -39,6 +39,8 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private GameObject MagnetPrefab;
     [SerializeField] private int SimpleExplosionPoolCount;
     [SerializeField] private GameObject SimpleExplosionPrefab;
+    [SerializeField] private int SlowAreaVFXPoolCount;
+    [SerializeField] private GameObject SlowAreaVFXPrefab;
 
     [Header("Collectable")]
     [SerializeField] private int CollectableCount;
@@ -47,7 +49,7 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private GameObject CollectableHealthPrefab;
     [SerializeField] private GameObject CollectableMeshTrainPrefab;
     [SerializeField] private GameObject CollectableMagnetPrefab;
-    [SerializeField] private GameObject CollectableSlowMotionPrefab;
+    [SerializeField] private GameObject CollectableSlowAreaPrefab;
     [SerializeField] private GameObject CollectableSpeedBoostPrefab;
 
 
@@ -71,13 +73,14 @@ public class PoolManager : MonoBehaviour
     private Queue<GameObject> simpleExplosionPool = new Queue<GameObject>();
     private Queue<GameObject> megaExplosionPool = new Queue<GameObject>();
     private Queue<GameObject> magnetPool = new Queue<GameObject>();
+    private Queue<GameObject> slowAreaVFXPool = new Queue<GameObject>();
     [Space]
     private Queue<GameObject> collectableBombPool = new Queue<GameObject>();
     private Queue<GameObject> collectableFireRateBoostPool = new Queue<GameObject>();
     private Queue<GameObject> collectableHealthPool = new Queue<GameObject>();
     private Queue<GameObject> collectableMeshTrainPool = new Queue<GameObject>();
     private Queue<GameObject> collectableMagnetPool = new Queue<GameObject>();
-    private Queue<GameObject> collectableSlowMotionPool = new Queue<GameObject>();
+    private Queue<GameObject> collectableSlowAreaPool = new Queue<GameObject>();
     private Queue<GameObject> collectableSpeedBoostPool = new Queue<GameObject>();
     [Space]
     private GameObject tempObject;
@@ -99,6 +102,7 @@ public class PoolManager : MonoBehaviour
         GeneratePool(SimpleExplosionPrefab, SimpleExplosionPoolCount, simpleExplosionPool, VFXHolder);
         GeneratePool(MegaExplosionPrefab, MegaExplosionPoolCount, megaExplosionPool, VFXHolder);
         GeneratePool(MagnetPrefab, MagnetPoolCount, magnetPool, VFXHolder);
+        GeneratePool(SlowAreaVFXPrefab, SlowAreaVFXPoolCount, slowAreaVFXPool, VFXHolder);
 
         GeneratePool(ExperiencePrefab, ExperiencePoolCount, experiencePool, ExperienceHolder);
         GeneratePool(CollectableBombPrefab, CollectableCount, collectableBombPool, CollectableHolder);
@@ -106,7 +110,7 @@ public class PoolManager : MonoBehaviour
         GeneratePool(CollectableHealthPrefab, CollectableCount, collectableHealthPool, CollectableHolder);
         GeneratePool(CollectableMeshTrainPrefab, CollectableCount, collectableMeshTrainPool, CollectableHolder);
         GeneratePool(CollectableMagnetPrefab, CollectableCount, collectableMagnetPool, CollectableHolder);
-        GeneratePool(CollectableSlowMotionPrefab, CollectableCount, collectableSlowMotionPool, CollectableHolder);
+        GeneratePool(CollectableSlowAreaPrefab, CollectableCount, collectableSlowAreaPool, CollectableHolder);
         GeneratePool(CollectableSpeedBoostPrefab, CollectableCount, collectableSpeedBoostPool, CollectableHolder);
     }
 
@@ -177,6 +181,11 @@ public class PoolManager : MonoBehaviour
                 tempVfx = magnetPool.Dequeue();
                 magnetPool.Enqueue(tempVfx);
                 return tempVfx;
+            case PoolTypes.SlowAreaVFX:
+                tempVfx = slowAreaVFXPool.Dequeue();
+                slowAreaVFXPool.Enqueue(tempVfx);
+                return tempVfx;
+
             default:
                 tempObject = null;
                 return tempObject;
@@ -214,9 +223,9 @@ public class PoolManager : MonoBehaviour
                 tempDropItem = collectableMagnetPool.Dequeue();
                 collectableMagnetPool.Enqueue(tempDropItem);
                 return tempDropItem;
-            case ItemType.SlowMotion:
-                tempDropItem = collectableSlowMotionPool.Dequeue();
-                collectableSlowMotionPool.Enqueue(tempDropItem);
+            case ItemType.SlowArea:
+                tempDropItem = collectableSlowAreaPool.Dequeue();
+                collectableSlowAreaPool.Enqueue(tempDropItem);
                 return tempDropItem;
             case ItemType.SpeedBoost:
                 tempDropItem = collectableSpeedBoostPool.Dequeue();

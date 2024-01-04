@@ -29,6 +29,7 @@ public enum PoolTypes
     MegaExplosion,
     Magnet,
     BloodLake,
+    SlowAreaVFX,
 }
 
 [Serializable]
@@ -40,6 +41,6 @@ public enum ItemType
     Health,
     MeshTrain,
     Magnet,
-    SlowMotion,
+    SlowArea,
     SpeedBoost,
 }

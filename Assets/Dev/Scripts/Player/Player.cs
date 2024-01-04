@@ -220,6 +220,7 @@ public class Player : MonoBehaviour
     private void HoverMovement()
     {
         PlayerAgent.Move(moveDirection * PlayerData.Instance.MovementSpeed * PlayerData.Instance.MovementSpeedMultipler * Time.deltaTime);
+        hoverBoard.BoardTransform.forward = moveDirection;
 
         PlayerAnim.SetFloat("Speed", moveDirection.magnitude);
         PlayerAnim.SetFloat("Vertical", 0);

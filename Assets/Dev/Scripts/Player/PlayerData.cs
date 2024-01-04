@@ -62,8 +62,6 @@ public class PlayerData : MonoBehaviour
     [Range(0, 100)] public int AddExplosiveAmmoDamage;
 
     [Header("------------Effects------------")]
-    public float SlowMotionTime;
-    public float SlowMotionPercent;
     [HideInInspector] public float MovementSpeedMultipler;
     [HideInInspector] public float FireRateMultipler;
 
