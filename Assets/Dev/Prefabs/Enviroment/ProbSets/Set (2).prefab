@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &9175886144154421843
 Transform:
@@ -99,7 +99,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!4 &4145149206635464687
 Transform:
@@ -202,6 +202,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -275,6 +280,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (42)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -350,6 +360,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -423,6 +438,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (48)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -498,6 +518,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -571,6 +596,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -646,6 +676,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -719,6 +754,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (51)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -794,6 +834,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -867,6 +912,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -942,6 +992,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1015,6 +1070,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -1090,6 +1150,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1159,9 +1224,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4145149206635464687}
     m_Modifications:
+    - target: {fileID: 1771816592545742, guid: 39d3f166cb803694ebbcc0a2099c833e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1961958707278906, guid: 39d3f166cb803694ebbcc0a2099c833e, type: 3}
       propertyPath: m_Name
       value: SM_Veh_Tank_Russia_Destroyed_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961958707278906, guid: 39d3f166cb803694ebbcc0a2099c833e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4817045965008094, guid: 39d3f166cb803694ebbcc0a2099c833e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1203,6 +1276,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4982518031831416877, guid: 39d3f166cb803694ebbcc0a2099c833e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655571452332236555, guid: 39d3f166cb803694ebbcc0a2099c833e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1226,6 +1309,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -1301,6 +1389,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1375,6 +1468,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (50)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1448,6 +1546,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Veh_Car_Destroyed_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1316948766749552, guid: 1f3a7fa169961a144ab0cb18f336c7b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4290347656613888, guid: 1f3a7fa169961a144ab0cb18f336c7b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.33
@@ -1488,6 +1590,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3473357074581381505, guid: 1f3a7fa169961a144ab0cb18f336c7b8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281237000479276711, guid: 1f3a7fa169961a144ab0cb18f336c7b8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1511,6 +1623,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -1586,6 +1703,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1660,6 +1782,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1733,6 +1860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Veh_Car_Destroyed_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1316948766749552, guid: 1f3a7fa169961a144ab0cb18f336c7b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4290347656613888, guid: 1f3a7fa169961a144ab0cb18f336c7b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.765332
@@ -1773,6 +1904,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3473357074581381505, guid: 1f3a7fa169961a144ab0cb18f336c7b8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281237000479276711, guid: 1f3a7fa169961a144ab0cb18f336c7b8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1796,6 +1937,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -1871,6 +2017,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1944,6 +2095,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -2019,6 +2175,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (49)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2092,6 +2253,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -2167,6 +2333,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2240,6 +2411,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -2315,6 +2491,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2388,6 +2569,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (45)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -2463,6 +2649,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2536,6 +2727,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -2611,6 +2807,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (52)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2685,6 +2886,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2758,6 +2964,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Veh_Tank_USA_Destroyed_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1053460715930104, guid: 57c43a8966d74654c86c3b11e3d5f850, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1514905908761052, guid: 57c43a8966d74654c86c3b11e3d5f850, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4192339149919660, guid: 57c43a8966d74654c86c3b11e3d5f850, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.26500416
@@ -2798,6 +3012,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7402262768040288930, guid: 57c43a8966d74654c86c3b11e3d5f850,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918396053696822660, guid: 57c43a8966d74654c86c3b11e3d5f850,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2821,6 +3045,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -2895,6 +3124,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Veh_Car_Destroyed_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1316948766749552, guid: 1f3a7fa169961a144ab0cb18f336c7b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4290347656613888, guid: 1f3a7fa169961a144ab0cb18f336c7b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.2503934
@@ -2935,6 +3168,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3473357074581381505, guid: 1f3a7fa169961a144ab0cb18f336c7b8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281237000479276711, guid: 1f3a7fa169961a144ab0cb18f336c7b8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2958,6 +3201,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -3033,6 +3281,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3106,6 +3359,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -3181,6 +3439,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3254,6 +3517,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -3329,6 +3597,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3402,6 +3675,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (47)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -3477,6 +3755,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3550,6 +3833,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -3625,6 +3913,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3698,6 +3991,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -3773,6 +4071,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3846,6 +4149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Veh_Truck_Destroyed_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1343484773080560, guid: 624418e581277da4297e7676c2157070, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4106127030525322, guid: 624418e581277da4297e7676c2157070, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.44
@@ -3886,6 +4193,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7086679400597428336, guid: 624418e581277da4297e7676c2157070,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566369372275476310, guid: 624418e581277da4297e7676c2157070,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3909,6 +4226,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -3984,6 +4306,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4057,6 +4384,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (46)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -4132,6 +4464,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4205,6 +4542,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
@@ -4280,6 +4622,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (41)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4354,6 +4701,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4427,6 +4779,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafePoint (43)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615864334201540817, guid: c6531c9992d6f0243bf78db34cd0ae35,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6764525799745409654, guid: c6531c9992d6f0243bf78db34cd0ae35,
         type: 3}

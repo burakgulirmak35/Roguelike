@@ -82,7 +82,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 83330c37e65ae28448d5282e83c25556, type: 2}
   - {fileID: 11400000, guid: 9e1a44d38d206af4c91aef5aaf768a06, type: 2}
   - {fileID: 11400000, guid: 1afd3712b2cc79740bcdc064e24fb982, type: 2}
-  - {fileID: 11400000, guid: d6d815a988701834bae07aa61dbcca04, type: 2}
   SmallHealPercent: 0.25
   MediumHealPercent: 0.5
   LargeHealPercent: 1

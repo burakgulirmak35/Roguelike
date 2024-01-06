@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     {
         FPS();
         PoolManager.Instance.GeneratePools();
-        Enviroment.Instance.CreateCity();
         Player.Instance.StartGame();
         Spawner.Instance.StartGame();
     }

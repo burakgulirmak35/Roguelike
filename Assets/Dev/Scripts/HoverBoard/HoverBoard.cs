@@ -49,7 +49,7 @@ public class HoverBoard : MonoBehaviour
         if (isSafeLanding())
             Player.Instance.PlayerTransform.DOLocalMove(Player.Instance.PlayerTransform.position + Vector3.up * -4, 0.5f);
         else
-            Player.Instance.PlayerTransform.DOLocalMove(Enviroment.Instance.GetCurrentCity().FindClosestSafePoint(), 0.5f);
+            Player.Instance.PlayerTransform.DOLocalMove(Enviroment.Instance.CurrentCity.FindClosestSafePoint(), 0.5f);
 
         yield return new WaitForSeconds(0.5f);
         DisableHowerBoard();

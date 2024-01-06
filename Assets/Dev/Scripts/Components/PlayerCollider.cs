@@ -9,20 +9,10 @@ public class PlayerCollider : MonoBehaviour
         switch (other.tag)
         {
             case "Gate":
-
+                other.GetComponent<Gate>().PassGate();
                 break;
             case "Collectable":
                 other.GetComponent<Collectable>().Collect();
-                break;
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        switch (other.tag)
-        {
-            case "Gate":
-                other.GetComponent<Gate>().PassGate(Player.Instance.PlayerTransform.position);
                 break;
         }
     }

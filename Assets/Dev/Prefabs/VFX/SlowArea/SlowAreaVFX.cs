@@ -6,6 +6,7 @@ public class SlowAreaVFX : MonoBehaviour
 {
     [SerializeField] private SlowAreaSO slowAreaSO;
     [SerializeField] private Animator animator;
+
     void OnEnable()
     {
         animator.Play("SlowAreaEffect");

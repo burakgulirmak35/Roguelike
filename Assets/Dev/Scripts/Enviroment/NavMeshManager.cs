@@ -7,17 +7,23 @@ using UnityEngine.AI;
 public class NavMeshManager : MonoBehaviour
 {
     public NavMeshSurface surfaces;
-    private Transform playerTransform;
-
     public static NavMeshManager Instance { get; private set; }
     void Awake()
     {
         Instance = this;
-        playerTransform = Player.Instance.PlayerTransform;
     }
 
-    public void UpdateNavMesh()
+    public void UpdateNavMesh(float _time = 0)
     {
+        if (_time > 0)
+            StartCoroutine(UpdateNavMeshTimer(_time));
+        else
+            surfaces.BuildNavMesh();
+    }
+
+    private IEnumerator UpdateNavMeshTimer(float _time)
+    {
+        yield return new WaitForSeconds(_time);
         surfaces.BuildNavMesh();
     }
 }

@@ -83,6 +83,7 @@ public class PlayerData : MonoBehaviour
     void Start()
     {
         CheckUpgradesList();
+        CheckUpgradesList();
     }
 
     private UpgradeSO tempUpgradeSO;
@@ -96,6 +97,7 @@ public class PlayerData : MonoBehaviour
                 {
                     tempUpgradeSO = Upgrades[i];
                     Upgrades.RemoveAt(i);
+                    Upgrades.Remove(tempUpgradeSO);
                     Upgrades.AddRange(tempUpgradeSO.NextUpgrades);
                     break;
                 }
@@ -110,6 +112,7 @@ public class PlayerData : MonoBehaviour
                 {
                     tempUpgradeSO = Upgrades[i];
                     Upgrades.RemoveAt(i);
+                    Upgrades.Remove(tempUpgradeSO);
                     Upgrades.AddRange(tempUpgradeSO.NextUpgrades);
                     break;
                 }

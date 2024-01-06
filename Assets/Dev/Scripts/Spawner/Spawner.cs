@@ -13,13 +13,11 @@ public class Spawner : MonoBehaviour
     [SerializeField] public int AliveEnemyCount;
     [SerializeField][Range(0, 1)] public float spawnDelay;
     [Space]
-    [SerializeField] public Transform SpawnPointsParent;
     [HideInInspector] public KdTree<Transform> ActiveEnemies = new KdTree<Transform>();
     [Header("Item")]
     [SerializeField][Range(1, 5)] public float ItemDropDistanceMin;
     [SerializeField][Range(1, 5)] public float ItemDropDistanceMax;
     [Space]
-    private List<Transform> SpawnPoints = new List<Transform>();
     private List<Transform> EnemyList = new List<Transform>();
     [Space]
     private GameObject tempItem;
@@ -28,10 +26,6 @@ public class Spawner : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        for (int i = 0; i < SpawnPointsParent.childCount; i++)
-        {
-            SpawnPoints.Add(SpawnPointsParent.GetChild(i));
-        }
     }
 
     public void StartGame()
@@ -63,13 +57,13 @@ public class Spawner : MonoBehaviour
     private Vector3 GetSpawnPos()
     {
         SpawnPosID++;
-        if (SpawnPosID >= SpawnPoints.Count) { SpawnPosID = 0; }
-        while (Vector3.Distance(SpawnPoints[SpawnPosID].position, Player.Instance.PlayerTransform.position) < MinEnemyDistanceToSpawn)
+        if (SpawnPosID >= Enviroment.Instance.CurrentCity.SpawnPoints.Count) { SpawnPosID = 0; }
+        while (Vector3.Distance(Enviroment.Instance.CurrentCity.SpawnPoints[SpawnPosID].position, Player.Instance.PlayerTransform.position) < MinEnemyDistanceToSpawn)
         {
             SpawnPosID++;
-            if (SpawnPosID >= SpawnPoints.Count) { SpawnPosID = 0; }
+            if (SpawnPosID >= Enviroment.Instance.CurrentCity.SpawnPoints.Count) { SpawnPosID = 0; }
         }
-        return SpawnPoints[SpawnPosID].position;
+        return Enviroment.Instance.CurrentCity.SpawnPoints[SpawnPosID].position;
     }
 
     public void DeadEnemy(Transform _enemy)
