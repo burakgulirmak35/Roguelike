@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5240935054909743491}
   - component: {fileID: 2602810734611615514}
   - component: {fileID: 5166962954015820032}
-  - component: {fileID: 2340615921784030833}
   m_Layer: 0
   m_Name: HideableParts
   m_TagString: Untagged
@@ -134,25 +133,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2340615921784030833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3309912225553058295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 641c69abe57e99641b3914a07d31ed3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}

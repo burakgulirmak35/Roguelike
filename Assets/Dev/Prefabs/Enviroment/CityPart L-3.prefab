@@ -716,12 +716,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProbSets: []
   SpawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 8085756718340212784}
   - {fileID: 7654467440060446628}
   - {fileID: 4254293068544585112}

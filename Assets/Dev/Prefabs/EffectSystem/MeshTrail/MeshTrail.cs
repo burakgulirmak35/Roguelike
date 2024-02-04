@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MeshTrail : MonoBehaviour
 {
-    [SerializeField] private float meshRefreshRate;
+    [SerializeField] private float meshRefreshDistance;
+    [SerializeField] private float timeBetweenExplode;
     [SerializeField] private int maxGhostCount;
     [SerializeField] private Material material;
     [Space]
@@ -16,6 +17,7 @@ public class MeshTrail : MonoBehaviour
     private List<Mesh> mesh = new List<Mesh>();
     private GameObject go;
     private int ghostIndex;
+    private Vector3 lastMeshPos;
 
     private void Awake()
     {
@@ -51,6 +53,7 @@ public class MeshTrail : MonoBehaviour
 
             GhostTransforms[ghostIndex].position = Player.Instance.PlayerTransform.position;
             GhostTransforms[ghostIndex].rotation = Player.Instance.Body.rotation;
+            lastMeshPos = GhostTransforms[ghostIndex].position;
 
             GhostObjects[ghostIndex].SetActive(true);
 
@@ -58,7 +61,10 @@ public class MeshTrail : MonoBehaviour
             if (ghostIndex >= GhostObjects.Count)
                 ghostIndex = 0;
 
-            yield return new WaitForSeconds(meshRefreshRate);
+            while (Vector3.Distance(Player.Instance.PlayerTransform.position, lastMeshPos) < meshRefreshDistance)
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
         }
         StartCoroutine(DisableTrailTimer());
     }
@@ -67,7 +73,7 @@ public class MeshTrail : MonoBehaviour
     {
         for (int i = 0; i < maxGhostCount; i++)
         {
-            yield return new WaitForSeconds(meshRefreshRate);
+            yield return new WaitForSeconds(timeBetweenExplode);
             GhostObjects[i].SetActive(false);
             Spawner.Instance.SpawnAtPos(PoolTypes.SimpleExplosion, GhostTransforms[i].position + Vector3.up * 2);
         }
