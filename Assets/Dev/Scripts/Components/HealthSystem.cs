@@ -11,6 +11,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private ParticleSystem particle_SmallHeal;
     [SerializeField] private ParticleSystem particle_MediumHeal;
     [SerializeField] private ParticleSystem particle_LargeHeal;
+    [SerializeField] private Sound HealSound;
 
     private float maxHealth;
     private float health;
@@ -54,12 +55,14 @@ public class HealthSystem : MonoBehaviour
         if (amount >= maxHealth * 0.75f) { particle_LargeHeal.Play(); }
         else if (amount >= maxHealth * 0.5f) { particle_MediumHeal.Play(); }
         else if (amount > 0) { particle_SmallHeal.Play(); }
+        SoundManager.Instance.PlaySound(HealSound);
 
         health += amount;
         if (health >= maxHealth)
         {
             health = maxHealth;
         }
+
         healthAmount = health / maxHealth;
         DOTween.To(() => slider_Health.value, x => slider_Health.value = x, healthAmount, 0.2f).SetEase(Ease.Linear);
         txt_Health.text = ((int)health).ToString();

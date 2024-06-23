@@ -113,17 +113,7 @@ public class Player : MonoBehaviour
     #region --- Map ---
     private void ClickMap(InputAction.CallbackContext callbackContext)
     {
-        switch (CameraManager.Instance.CurrentCamIndex)
-        {
-            case 1:
-                CameraManager.Instance.ZoomTo(2);
-                break;
-            case 2:
-                CameraManager.Instance.ZoomTo(1);
-                break;
-            default:
-                break;
-        }
+        CameraManager.Instance.CamChangePos();
     }
 
     #endregion
@@ -140,7 +130,7 @@ public class Player : MonoBehaviour
         effectSystem.SetEffects();
         PrepareAim();
 
-        CameraManager.Instance.ZoomTo(1);
+        CameraManager.Instance.CamDefaultPos();
     }
 
     private void PrepareAim()

@@ -85,6 +85,14 @@ MonoBehaviour:
   particle_SmallHeal: {fileID: 1278231710276202569}
   particle_MediumHeal: {fileID: 5359201786999498360}
   particle_LargeHeal: {fileID: 7520236550785060630}
+  HealSound:
+    audioClip:
+    - {fileID: 8300000, guid: 7fb954e1c1961644d85f884b946f53b0, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 0.9
+    maxPitch: 1.1
+  isDamageble: 0
   isAlive: 0
 --- !u!1001 &1278231710257404813
 PrefabInstance:

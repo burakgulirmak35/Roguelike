@@ -9710,7 +9710,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &412392
 Transform:
   m_ObjectHideFlags: 0
@@ -14556,6 +14556,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionSO: {fileID: 11400000, guid: 7e0bc76f0e460454e9b944f1a1f52509, type: 2}
+  sound:
+    audioClip:
+    - {fileID: 8300000, guid: 2d99c166c2da2b14f835eb0d6d418369, type: 3}
+    - {fileID: 8300000, guid: 235db7e7f6d982140a4a5ac56629e519, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 0.9
+    maxPitch: 1.1
 --- !u!1 &1738165949659254
 GameObject:
   m_ObjectHideFlags: 0

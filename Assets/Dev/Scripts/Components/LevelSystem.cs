@@ -10,6 +10,7 @@ public class LevelSystem : MonoBehaviour
     [SerializeField] private Slider slider_Exp;
     [SerializeField] private TextMeshProUGUI txt_Level;
     [SerializeField] private GameObject particle_LevelUp;
+    [SerializeField] private Sound LevelUpSound;
     private float expAmount;
 
     public void SetLevel()
@@ -31,6 +32,8 @@ public class LevelSystem : MonoBehaviour
 
     private void LevelUp()
     {
+        SoundManager.Instance.PlaySound(LevelUpSound);
+
         PlayerData.Instance.exp = 0;
         slider_Exp.value = 0;
         if (PlayerData.Instance.level < PlayerData.Instance.expPerLevel.Count - 1)

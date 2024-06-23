@@ -82,7 +82,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshTrail: {fileID: 296223682007115380}
   FireRatePowerEffect: {fileID: 5813038598627189432}
+  FireRatePowerEffectSound:
+    audioClip:
+    - {fileID: 8300000, guid: b7a210df23bd255428bdf4def67109f2, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 0.9
+    maxPitch: 1.1
   WindTrail: {fileID: 9050808683123118279}
+  WindTrailSound:
+    audioClip:
+    - {fileID: 8300000, guid: e0f8074327731a947b02c18d90cc7085, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 0.9
+    maxPitch: 1.1
   EffectTransform: {fileID: 3779820045048956306}
 --- !u!1 &8582546490433344703
 GameObject:

@@ -11,6 +11,8 @@ TagManager:
   - Hideable
   - SafeLanding
   - Props
+  - Missile
+  - FPSCamera
   layers:
   - Default
   - TransparentFX

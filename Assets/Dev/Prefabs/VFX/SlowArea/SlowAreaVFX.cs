@@ -5,11 +5,11 @@ using UnityEngine;
 public class SlowAreaVFX : MonoBehaviour
 {
     [SerializeField] private SlowAreaSO slowAreaSO;
-    [SerializeField] private Animator animator;
+    [SerializeField] private Sound sound;
 
     void OnEnable()
     {
-        animator.Play("SlowAreaEffect");
+        SoundManager.Instance.PlaySound(sound);
         for (int i = 0; i < Spawner.Instance.ActiveEnemies.Count; i++)
         {
             Spawner.Instance.ActiveEnemies[i].GetComponent<Enemy>().SlowDown(slowAreaSO.SlowAreaPercent, slowAreaSO.SlowAreaTime);

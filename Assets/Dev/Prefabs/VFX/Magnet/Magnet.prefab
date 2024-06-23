@@ -4864,7 +4864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7610516396084504016
 Transform:
   m_ObjectHideFlags: 0
@@ -9707,3 +9707,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magnetSO: {fileID: 11400000, guid: eb4d74746583e48429a11f65b7e2a850, type: 2}
+  sound:
+    audioClip:
+    - {fileID: 8300000, guid: ce4eab13c40dd5c46983f3e002a4f869, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 0.9
+    maxPitch: 1.1

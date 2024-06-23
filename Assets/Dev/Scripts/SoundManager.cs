@@ -119,8 +119,14 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PlaySound(Sound sound)
+    {
+        PlayDirect(sound);
+    }
+
     private void PlayDirect(Sound _audio)
     {
+        Debug.Log(_audio.audioClip);
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.loop = false;
         audioSource.playOnAwake = false;
@@ -132,18 +138,18 @@ public class SoundManager : MonoBehaviour
         audioSource.Play();
         Destroy(audioSource, 1f);
     }
+}
 
-    [System.Serializable]
-    public class Sound
-    {
-        public AudioClip[] audioClip;
-        [Range(0, 2)]
-        public float minVolume = 1;
-        [Range(0, 2)]
-        public float maxVolume = 1;
-        [Range(0, 2)]
-        public float minPitch = 1;
-        [Range(0, 2)]
-        public float maxPitch = 1;
-    }
+[System.Serializable]
+public class Sound
+{
+    public AudioClip[] audioClip;
+    [Range(0, 2)]
+    public float minVolume = 1;
+    [Range(0, 2)]
+    public float maxVolume = 1;
+    [Range(0, 2)]
+    public float minPitch = 1;
+    [Range(0, 2)]
+    public float maxPitch = 1;
 }

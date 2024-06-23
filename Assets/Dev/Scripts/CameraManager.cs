@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class CameraManager : MonoBehaviour
 {
     [Header("CameraSettings")]
+    [SerializeField] private Vector3 DeathPos;
     [SerializeField] private List<Vector3> FollowPoints = new List<Vector3>();
 
     private CinemachineVirtualCamera cinemachineVirtualCamera;
@@ -26,6 +27,7 @@ public class CameraManager : MonoBehaviour
         cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
         cinemachineTransposer = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>();
         cinemachineBasicMultiChannelPerlin = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        cinemachineVirtualCamera.m_Priority = 1;
     }
 
     void Start()
@@ -34,15 +36,23 @@ public class CameraManager : MonoBehaviour
     }
 
     #region Zoom
-    [HideInInspector] public int CurrentCamIndex;
-    public void ZoomTo(int Index)
+    private int CurrentCamIndex;
+    public void CamChangePos()
     {
+        CurrentCamIndex++;
+        if (CurrentCamIndex >= FollowPoints.Count) CurrentCamIndex = 0;
+        DOTween.To(() => cinemachineTransposer.m_FollowOffset, x => cinemachineTransposer.m_FollowOffset = x, FollowPoints[CurrentCamIndex], 0.5f);
+    }
 
-        CurrentCamIndex = Index;
-        if (Index >= FollowPoints.Count) Index = FollowPoints.Count - 1;
-        else if (Index <= 0) Index = 0;
+    public void CamDefaultPos()
+    {
+        CurrentCamIndex = 0;
+        DOTween.To(() => cinemachineTransposer.m_FollowOffset, x => cinemachineTransposer.m_FollowOffset = x, FollowPoints[CurrentCamIndex], 0.5f);
+    }
 
-        DOTween.To(() => cinemachineTransposer.m_FollowOffset, x => cinemachineTransposer.m_FollowOffset = x, FollowPoints[Index], 0.5f);
+    public void CamDeathPos()
+    {
+        DOTween.To(() => cinemachineTransposer.m_FollowOffset, x => cinemachineTransposer.m_FollowOffset = x, DeathPos, 0.5f);
     }
     #endregion
 

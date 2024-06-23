@@ -94,9 +94,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2596908686843642399}
+  - component: {fileID: 8092369562461620945}
   - component: {fileID: 5890425723149535890}
   - component: {fileID: 4343409260804356355}
-  - component: {fileID: 8092369562461620945}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -120,6 +120,28 @@ Transform:
   - {fileID: 7147421101928251626}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
+--- !u!114 &8092369562461620945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6053561087730918186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a02c054cb16404f8a473e87d34b26e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeathPos: {x: 0, y: 8, z: -2.5}
+  DeathRotation: {x: 71.5, y: 0, z: 0}
+  FollowPoints:
+  - {x: 0, y: 12, z: -4}
+  - {x: 0, y: 25, z: -8.5}
+  FollowRotatios:
+  - {x: 71.5, y: 0, z: 0}
+  - {x: 71.5, y: 0, z: 0}
+  shakeCameraTime: 0.1
+  shakeCameraIntensity: 1
 --- !u!114 &5890425723149535890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,22 +211,3 @@ MonoBehaviour:
   m_Damping: 2
   m_DampingWhenOccluded: 2
   m_OptimalTargetDistance: 0
---- !u!114 &8092369562461620945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6053561087730918186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41a02c054cb16404f8a473e87d34b26e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FollowPoints:
-  - {x: 0, y: 8, z: -2.5}
-  - {x: 0, y: 12, z: -4}
-  - {x: 0, y: 25, z: -8.5}
-  shakeCameraTime: 0.1
-  shakeCameraIntensity: 1
-  CurrentCamIndex: 0

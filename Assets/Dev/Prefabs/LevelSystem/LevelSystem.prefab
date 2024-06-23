@@ -49,6 +49,13 @@ MonoBehaviour:
   slider_Exp: {fileID: 5794756702017234997}
   txt_Level: {fileID: 4060505561930261023}
   particle_LevelUp: {fileID: 2562957105347635818}
+  LevelUpSound:
+    audioClip:
+    - {fileID: 8300000, guid: 5052682f23f19384da5d743dc76ed64b, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 0.9
+    maxPitch: 1.1
 --- !u!1 &5727990739707661195
 GameObject:
   m_ObjectHideFlags: 0

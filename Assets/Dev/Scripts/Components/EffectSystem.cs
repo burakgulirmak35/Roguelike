@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class EffectSystem : MonoBehaviour
 {
+    [Header("MeshTrail")]
     [SerializeField] public MeshTrail meshTrail;
+    [Header("FireRatePowerEffect")]
     [SerializeField] public GameObject FireRatePowerEffect;
+    [SerializeField] private Sound FireRatePowerEffectSound;
+    [Header("WindTrail")]
     [SerializeField] public GameObject WindTrail;
+    [SerializeField] private Sound WindTrailSound;
+    [Space]
     [SerializeField] public Transform EffectTransform;
+
 
     public void SetEffects()
     {
@@ -26,6 +33,8 @@ public class EffectSystem : MonoBehaviour
     }
     private IEnumerator BoostFireRateTimer()
     {
+        SoundManager.Instance.PlaySound(FireRatePowerEffectSound);
+
         PlayerData.Instance.FireRateMultipler = 4f;
         Player.Instance.effectSystem.FireRatePowerEffect.SetActive(true);
         yield return new WaitForSeconds(3f);
@@ -47,6 +56,8 @@ public class EffectSystem : MonoBehaviour
     }
     private IEnumerator BoostMovementSpeedTimer()
     {
+        SoundManager.Instance.PlaySound(WindTrailSound);
+
         PlayerData.Instance.MovementSpeedMultipler = 2f;
         Player.Instance.effectSystem.WindTrail.SetActive(true);
         yield return new WaitForSeconds(3f);

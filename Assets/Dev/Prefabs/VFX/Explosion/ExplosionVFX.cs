@@ -5,9 +5,12 @@ using UnityEngine;
 public class ExplosionVFX : MonoBehaviour
 {
     [SerializeField] private ExplosionSO explosionSO;
+    [SerializeField] private Sound sound;
+
     private Collider[] hitColliders;
     private void Explode()
     {
+        SoundManager.Instance.PlaySound(sound);
         hitColliders = Physics.OverlapSphere(transform.position, explosionSO.Range);
         for (int i = 0; i < hitColliders.Length; i++)
         {

@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     {
         UIManager.Instance.EnablePanelPlayerDead(false);
         Player.Instance.ReBorn();
-        CameraManager.Instance.ZoomTo(1);
+        CameraManager.Instance.CamDefaultPos();
         ResumeGame();
     }
     #endregion
