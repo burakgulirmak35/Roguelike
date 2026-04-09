@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f5f8363b1c9ae4f8dd5a6743f777fc, type: 3}
   m_Name: AddBurstCount
   m_EditorClassIdentifier: 
-  upgradeType: 5
-  sprite_SkillImage: {fileID: 21300000, guid: 2f5e271819f8cbd4bbb5f13f8b22e444, type: 3}
-  string_SkillName: Burst Count
-  string_SkillDescription: Increases the number of shots fired quickly
-  NextUpgrades:
+  skillName: AddBurstCount
+  description: +1 Bullet Per Shot
+  icon: {fileID: 21300000, guid: 651ba59a473858048a2ead1967da7dcc, type: 3}
+  rarity: 0
+  effects:
+  - stat: 5
+    operation: 0
+    value: 1
+  nextUpgrades:
   - {fileID: 11400000}

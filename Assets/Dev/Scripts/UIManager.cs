@@ -42,34 +42,44 @@ public class UIManager : MonoBehaviour
         Instance = this;
         panelFadeInOut.FadeIn(1f);
         LeftJoystickBasePos = LeftJoystick.position;
+        txt_ScoreTransform  = txt_Score.transform;
+    }
 
-        txt_ScoreTransform = txt_Score.transform;
+    private void OnEnable()
+    {
+        GameEvents.OnEnemyKilled += OnEnemyKilled;
+        GameEvents.OnPlayerDead  += OnPlayerDead;
+        GameEvents.OnLevelUp     += OnLevelUp;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnEnemyKilled -= OnEnemyKilled;
+        GameEvents.OnPlayerDead  -= OnPlayerDead;
+        GameEvents.OnLevelUp     -= OnLevelUp;
     }
 
     private void Start()
     {
         btn_ToggleMusic.onClick.AddListener(SoundManager.Instance.ToggleMusic);
-
         CloseAllPanels();
-
-        AddScore();
+        txt_Score.text = PlayerData.Instance.Score.ToString();
     }
 
-    #region  Score
+    #region Score
 
-    public void AddScore()
+    private void OnEnemyKilled(Transform t, Vector3 pos)
     {
         PlayerData.Instance.Score++;
-        PlayerPrefs.SetInt("Score", PlayerData.Instance.Score);
         txt_Score.text = PlayerData.Instance.Score.ToString();
 
-        if (mySequence != null)
-            mySequence.Kill();
-
+        if (mySequence != null) mySequence.Kill();
         mySequence = DOTween.Sequence();
         txt_ScoreTransform.localScale = Vector3.one;
-        mySequence.Append(txt_ScoreTransform.DOScale(1.5f, 0.2f).OnComplete(() => txt_Score.transform.DOScale(1f, 0.2f)));
+        mySequence.Append(txt_ScoreTransform.DOScale(1.5f, 0.2f)
+            .OnComplete(() => txt_Score.transform.DOScale(1f, 0.2f)));
     }
+
     #endregion
 
 
@@ -79,14 +89,21 @@ public class UIManager : MonoBehaviour
         EnablePanelPlayerDead(false);
     }
 
+    private void OnPlayerDead()
+    {
+        CameraManager.Instance.CamDeathPos();
+        panelPlayerDead.gameObject.SetActive(true);
+    }
+
     public void EnablePanelPlayerDead(bool _state)
     {
-        if (_state)
-        {
-            CameraManager.Instance.CamDeathPos();
-        }
-
+        if (_state) CameraManager.Instance.CamDeathPos();
         panelPlayerDead.gameObject.SetActive(_state);
+    }
+
+    private void OnLevelUp(int level)
+    {
+        EnablePanelUpgrade(true);
     }
 
     public void EnablePanelUpgrade(bool _state)
@@ -95,13 +112,11 @@ public class UIManager : MonoBehaviour
         {
             panelUpgrade.SetUpgradeButtons();
             panelUpgrade.gameObject.SetActive(true);
-
             GameManager.Instance.FreezeGame();
         }
         else
         {
             panelUpgrade.gameObject.SetActive(false);
-
             GameManager.Instance.ResumeGame();
         }
     }

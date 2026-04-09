@@ -606,10 +606,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btn_Upgrade: {fileID: 1404620164072902994}
-  img_SkillImage: {fileID: 8473092486831316515}
-  txt_SkillName: {fileID: 5350413277444110453}
-  txt_SkillDescription: {fileID: 409422677565346114}
-  upgradeType: 0
+  img_Icon: {fileID: 8473092486831316515}
+  txt_Name: {fileID: 5350413277444110453}
+  txt_Description: {fileID: 409422677565346114}
 --- !u!114 &3335355748162159337
 MonoBehaviour:
   m_ObjectHideFlags: 0

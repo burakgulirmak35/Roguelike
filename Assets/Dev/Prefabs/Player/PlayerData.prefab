@@ -70,6 +70,9 @@ MonoBehaviour:
   Penetrability: 0
   ExplosiveAmmo: 0
   SelectedGun: 0
+  MovementSpeedMultipler: 0
+  FireRateMultipler: 0
+  BulletExplosionSO: {fileID: 11400000, guid: a0a75e080e767a94f8dd2813321b5afa, type: 2}
   Upgrades:
   - {fileID: 11400000, guid: c2761de045633784ea2e6d09385fb664, type: 2}
   - {fileID: 11400000, guid: 3539fa6b1e7718c4eb4410e229140ac2, type: 2}
@@ -82,17 +85,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 83330c37e65ae28448d5282e83c25556, type: 2}
   - {fileID: 11400000, guid: 9e1a44d38d206af4c91aef5aaf768a06, type: 2}
   - {fileID: 11400000, guid: 1afd3712b2cc79740bcdc064e24fb982, type: 2}
-  SmallHealPercent: 0.25
-  MediumHealPercent: 0.5
-  LargeHealPercent: 1
-  AddMaxHealthPercent: 0.25
-  AddMovementSpeed: 0.25
-  AddDamage: 2
-  AddedFireRateAmount: 0.25
-  AddedFireRangeAmount: 1
-  AddExplosiveAmmoRange: 0.5
-  AddExplosiveAmmoDamage: 1
-  MovementSpeedMultipler: 0
-  FireRateMultipler: 0
-  BulletExplosionSO: {fileID: 11400000, guid: a0a75e080e767a94f8dd2813321b5afa, type: 2}
+  - {fileID: 11400000, guid: d6d815a988701834bae07aa61dbcca04, type: 2}
   Score: 0

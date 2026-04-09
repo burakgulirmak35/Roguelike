@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f5f8363b1c9ae4f8dd5a6743f777fc, type: 3}
   m_Name: MediumHeal
   m_EditorClassIdentifier: 
-  upgradeType: 12
-  sprite_SkillImage: {fileID: 21300000, guid: 9c677930bff59f84e8d8d9f5153bd045, type: 3}
-  string_SkillName: Medium Heal
-  string_SkillDescription: You will recover
-  NextUpgrades:
+  skillName: MeadiumHeal
+  description: '%50 Heal'
+  icon: {fileID: 21300000, guid: 8820f2404b85e4c059bb1aff048a3309, type: 3}
+  rarity: 0
+  effects:
+  - stat: 11
+    operation: 0
+    value: 0.5
+  nextUpgrades:
   - {fileID: 11400000}

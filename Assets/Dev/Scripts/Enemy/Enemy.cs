@@ -100,11 +100,13 @@ public class Enemy : MonoBehaviour, ITargetable
     }
 
     #region DeadAlive
+    private static readonly string[] DeadAnims   = { "Dead 0",   "Dead 1",   "Dead 2",   "Dead 3"   };
+    private static readonly string[] AttackAnims = { "Attack0",  "Attack1",  "Attack2",  "Attack3"  };
+
     private void OnDead()
     {
-        UIManager.Instance.AddScore();
+        GameEvents.RaiseEnemyKilled(myTransform, myTransform.position);
 
-        Spawner.Instance.DeadEnemy(transform);
         EnemyAgent.ResetPath();
         EnemyAgent.enabled = false;
 
@@ -116,7 +118,7 @@ public class Enemy : MonoBehaviour, ITargetable
         DropItem();
 
         TargetedIcon.SetActive(false);
-        EnemyAnim.Play("Dead " + Random.Range(0, 4).ToString());
+        EnemyAnim.Play(DeadAnims[Random.Range(0, DeadAnims.Length)]);
         myCollider.enabled = false;
         EnemyAnim.SetBool("isAlive", false);
     }
@@ -176,7 +178,7 @@ public class Enemy : MonoBehaviour, ITargetable
 
         // vuruş animasyonları 2 saniye sürüyor hepsi aynı süre
         EnemyAnim.SetFloat("AttackSpeed", attackSpeed);
-        EnemyAnim.Play("Attack" + RandomAttackAnimationIndex().ToString());
+        EnemyAnim.Play(AttackAnims[RandomAttackAnimationIndex()]);
         if (AttackCoro != null) { StopCoroutine(AttackCoro); }
         AttackCoro = StartCoroutine(AttackTimer());
     }

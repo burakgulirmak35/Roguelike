@@ -28,6 +28,23 @@ public class Spawner : MonoBehaviour
         Instance = this;
     }
 
+    private void OnEnable()
+    {
+        GameEvents.OnEnemyKilled  += OnEnemyKilled;
+        GameEvents.OnDamageTaken  += OnDamageTaken;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnEnemyKilled  -= OnEnemyKilled;
+        GameEvents.OnDamageTaken  -= OnDamageTaken;
+    }
+
+    private void OnEnemyKilled(Transform t, Vector3 pos) => DeadEnemy(t);
+
+    private void OnDamageTaken(float amount, Vector3 pos, bool isPlayer) =>
+        WorldTextPopup(((int)amount).ToString(), pos, Color.red);
+
     public void StartGame()
     {
         StartCoroutine(SpawnTimer());

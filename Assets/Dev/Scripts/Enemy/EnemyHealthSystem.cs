@@ -60,7 +60,7 @@ public class EnemyHealthSystem : MonoBehaviour
         if (!isAlive) return;
 
         ShowHealth();
-        Spawner.Instance.WorldTextPopup(((int)amount).ToString(), myTransform.position, Color.red);
+        GameEvents.RaiseDamageTaken(amount, myTransform.position, isPlayer: false);
 
         health -= amount;
         if (health <= 0)

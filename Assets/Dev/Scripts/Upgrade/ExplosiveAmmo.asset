@@ -12,10 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f5f8363b1c9ae4f8dd5a6743f777fc, type: 3}
   m_Name: ExplosiveAmmo
   m_EditorClassIdentifier: 
-  upgradeType: 8
-  sprite_SkillImage: {fileID: 21300000, guid: 3ae163715859cea49813337637853b4d, type: 3}
-  string_SkillName: Explosive Ammo
-  string_SkillDescription: Your bullets explode when they hit an enemy
-  NextUpgrades:
+  skillName: Exolosive Ammo
+  description: Bullets inflict area damage
+  icon: {fileID: 21300000, guid: d53ae583f08602d4dad8cb2f469f447b, type: 3}
+  rarity: 0
+  effects:
+  - stat: 8
+    operation: 2
+    value: 1
+  - stat: 9
+    operation: 0
+    value: 5
+  - stat: 10
+    operation: 0
+    value: 5
+  nextUpgrades:
   - {fileID: 11400000, guid: a49ffed96fde420459533af9da89b45f, type: 2}
   - {fileID: 11400000, guid: 829def710fec3ff4f9ce764e38c0fa68, type: 2}

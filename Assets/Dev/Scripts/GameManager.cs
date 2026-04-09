@@ -36,10 +36,16 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    private void OnApplicationQuit()
+    {
+        PlayerData.Instance.SaveScore();
+    }
+
     #region MainMenu
     public void MainMenu()
     {
         Player.Instance.ClearInputs();
+        PlayerData.Instance.SaveScore();
         PlayerData.Instance.ResetData();
         StartCoroutine(MainMenuTimer());
     }
@@ -56,6 +62,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Player.Instance.ClearInputs();
+        PlayerData.Instance.SaveScore();
         PlayerData.Instance.ResetData();
         StartCoroutine(RestartGameTimer());
     }

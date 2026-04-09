@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f5f8363b1c9ae4f8dd5a6743f777fc, type: 3}
   m_Name: AddBounceCount
   m_EditorClassIdentifier: 
-  upgradeType: 6
-  sprite_SkillImage: {fileID: 21300000, guid: 4f246c6153857994db2542d27f3969b1, type: 3}
-  string_SkillName: Bounce Count
-  string_SkillDescription: Your bullets ricochet when they hit objects
-  NextUpgrades:
+  skillName: AddBounceCount
+  description: +1 Bounce
+  icon: {fileID: 21300000, guid: da412cdd2750ca54f9bac6c7c099d82e, type: 3}
+  rarity: 0
+  effects:
+  - stat: 6
+    operation: 0
+    value: 1
+  nextUpgrades:
   - {fileID: 11400000}

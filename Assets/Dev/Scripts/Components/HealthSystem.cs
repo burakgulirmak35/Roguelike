@@ -84,7 +84,7 @@ public class HealthSystem : MonoBehaviour
         if (!isAlive) return;
 
         health -= amount;
-        Spawner.Instance.WorldTextPopup(((int)amount).ToString(), myTransform.position, Color.red);
+        GameEvents.RaiseDamageTaken(amount, myTransform.position, isPlayer: true);
 
         if (health <= 0)
         {

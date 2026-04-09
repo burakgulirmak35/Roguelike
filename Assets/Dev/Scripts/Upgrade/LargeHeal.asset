@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f5f8363b1c9ae4f8dd5a6743f777fc, type: 3}
   m_Name: LargeHeal
   m_EditorClassIdentifier: 
-  upgradeType: 13
-  sprite_SkillImage: {fileID: 21300000, guid: 4824b37b20e47684bb5a44e891844ec4, type: 3}
-  string_SkillName: Large Heal
-  string_SkillDescription: You will recover greatly
-  NextUpgrades:
+  skillName: LargeHeal
+  description: '%100 Heal'
+  icon: {fileID: 21300000, guid: 8820f2404b85e4c059bb1aff048a3309, type: 3}
+  rarity: 0
+  effects:
+  - stat: 11
+    operation: 0
+    value: 1
+  nextUpgrades:
   - {fileID: 11400000}

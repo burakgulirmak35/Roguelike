@@ -358,13 +358,15 @@ public class Player : MonoBehaviour
 
 
     #region DeadAlive
+    private static readonly string[] DeadAnims = { "Dead 0", "Dead 1", "Dead 2", "Dead 3" };
+
     private void OnDead()
     {
         playerState = PlayerState.Dead;
 
         Aim(false);
-        PlayerAnim.Play("Dead " + Random.Range(0, 4).ToString());
-        UIManager.Instance.EnablePanelPlayerDead(true);
+        PlayerAnim.Play(DeadAnims[Random.Range(0, DeadAnims.Length)]);
+        GameEvents.RaisePlayerDead();
     }
     public void ReBorn()
     {

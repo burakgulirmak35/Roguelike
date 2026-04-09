@@ -48,6 +48,6 @@ public class LevelSystem : MonoBehaviour
 
         particle_LevelUp.SetActive(true);
         PlayerPrefs.SetInt("Level", PlayerData.Instance.level);
-        UIManager.Instance.EnablePanelUpgrade(true);
+        GameEvents.RaiseLevelUp(PlayerData.Instance.level);
     }
 }
