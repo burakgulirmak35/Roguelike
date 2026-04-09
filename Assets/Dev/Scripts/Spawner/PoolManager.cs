@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private int BloodShotPoolCount;
     [SerializeField] private GameObject[] BloodShotPrefabs;
 
-    [Header("BloodShot")]
+    [Header("BloodLake")]
     [SerializeField] private int BloodLakePoolCount;
     [SerializeField] private GameObject BloodLakePrefab;
 
@@ -52,7 +51,6 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private GameObject CollectableSlowAreaPrefab;
     [SerializeField] private GameObject CollectableSpeedBoostPrefab;
 
-
     [Header("Holders")]
     [SerializeField] private Transform EnemyHolder;
     [SerializeField] private Transform BulletHolder;
@@ -62,78 +60,12 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private Transform VFXHolder;
     [SerializeField] public Transform ExperienceHolder;
     [SerializeField] public Transform CollectableHolder;
-    [Space]
-    private Queue<GameObject> enemyPool = new Queue<GameObject>();
-    private Queue<GameObject> bulletPool = new Queue<GameObject>();
-    private Queue<GameObject> bulletexplosionPool = new Queue<GameObject>();
-    private Queue<GameObject> bloodShotPool = new Queue<GameObject>();
-    private Queue<GameObject> bloodLakePool = new Queue<GameObject>();
-    private Queue<GameObject> worldTextPool = new Queue<GameObject>();
-    private Queue<GameObject> experiencePool = new Queue<GameObject>();
-    private Queue<GameObject> simpleExplosionPool = new Queue<GameObject>();
-    private Queue<GameObject> megaExplosionPool = new Queue<GameObject>();
-    private Queue<GameObject> magnetPool = new Queue<GameObject>();
-    private Queue<GameObject> slowAreaVFXPool = new Queue<GameObject>();
-    [Space]
-    private Queue<GameObject> collectableBombPool = new Queue<GameObject>();
-    private Queue<GameObject> collectableFireRateBoostPool = new Queue<GameObject>();
-    private Queue<GameObject> collectableHealthPool = new Queue<GameObject>();
-    private Queue<GameObject> collectableMeshTrainPool = new Queue<GameObject>();
-    private Queue<GameObject> collectableMagnetPool = new Queue<GameObject>();
-    private Queue<GameObject> collectableSlowAreaPool = new Queue<GameObject>();
-    private Queue<GameObject> collectableSpeedBoostPool = new Queue<GameObject>();
-    [Space]
-    private GameObject tempObject;
 
-    public static PoolManager Instance { get; private set; }
-    void Awake()
-    {
-        Instance = this;
-    }
+    // Enum index ile erişilen pool array'leri
+    private Queue<GameObject>[] _pools;
+    private Queue<GameObject>[] _itemPools;
 
-    public void GeneratePools()
-    {
-        GeneratePool(EnemyPrefab, EnemyPoolCount, enemyPool, EnemyHolder);
-        GeneratePool(BulletPrefab, BulletPoolCount, bulletPool, BulletHolder);
-        GeneratePool(BulletExplosionPrefab, BulletExplosionPoolCount, bulletexplosionPool, BulletExplosionHolder);
-        GeneratePool(BloodShotPrefabs, BloodShotPoolCount, bloodShotPool, BloodSHolder);
-        GeneratePool(BloodLakePrefab, BloodLakePoolCount, bloodLakePool, BloodSHolder);
-        GeneratePool(WorldTextPrefab, WorldTextPoolCount, worldTextPool, WorldTextHolder);
-        GeneratePool(SimpleExplosionPrefab, SimpleExplosionPoolCount, simpleExplosionPool, VFXHolder);
-        GeneratePool(MegaExplosionPrefab, MegaExplosionPoolCount, megaExplosionPool, VFXHolder);
-        GeneratePool(MagnetPrefab, MagnetPoolCount, magnetPool, VFXHolder);
-        GeneratePool(SlowAreaVFXPrefab, SlowAreaVFXPoolCount, slowAreaVFXPool, VFXHolder);
-
-        GeneratePool(ExperiencePrefab, ExperiencePoolCount, experiencePool, ExperienceHolder);
-        GeneratePool(CollectableBombPrefab, CollectableCount, collectableBombPool, CollectableHolder);
-        GeneratePool(CollectableFireRateBoostPrefab, CollectableCount, collectableFireRateBoostPool, CollectableHolder);
-        GeneratePool(CollectableHealthPrefab, CollectableCount, collectableHealthPool, CollectableHolder);
-        GeneratePool(CollectableMeshTrainPrefab, CollectableCount, collectableMeshTrainPool, CollectableHolder);
-        GeneratePool(CollectableMagnetPrefab, CollectableCount, collectableMagnetPool, CollectableHolder);
-        GeneratePool(CollectableSlowAreaPrefab, CollectableCount, collectableSlowAreaPool, CollectableHolder);
-        GeneratePool(CollectableSpeedBoostPrefab, CollectableCount, collectableSpeedBoostPool, CollectableHolder);
-    }
-
-    private void GeneratePool(GameObject prefab, int count, Queue<GameObject> pool, Transform holder)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            tempObject = Instantiate(prefab, holder);
-            tempObject.SetActive(false);
-            pool.Enqueue(tempObject);
-        }
-    }
-
-    private void GeneratePool(GameObject[] prefabs, int count, Queue<GameObject> pool, Transform holder)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            tempObject = Instantiate(prefabs[Random.Range(0, prefabs.Length)], holder);
-            tempObject.SetActive(false);
-            pool.Enqueue(tempObject);
-        }
-    }
-
+    // Geliştirme sırasında takip için temp field'lar
     private GameObject tempEnemy;
     private GameObject tempBullet;
     private GameObject tempBulletExplosion;
@@ -141,99 +73,114 @@ public class PoolManager : MonoBehaviour
     private GameObject tempBloodLake;
     private GameObject tempWorldTextPopup;
     private GameObject tempVfx;
-    public GameObject GetFromPool(PoolTypes type)
-    {
-        switch (type)
-        {
-            case PoolTypes.Enemy:
-                tempEnemy = enemyPool.Dequeue();
-                enemyPool.Enqueue(tempEnemy);
-                return tempEnemy;
-            case PoolTypes.Bullet:
-                tempBullet = bulletPool.Dequeue();
-                bulletPool.Enqueue(tempBullet);
-                return tempBullet;
-            case PoolTypes.BulletExplosion:
-                tempBulletExplosion = bulletexplosionPool.Dequeue();
-                bulletexplosionPool.Enqueue(tempBulletExplosion);
-                return tempBulletExplosion;
-            case PoolTypes.BloodShot:
-                tempBloodShot = bloodShotPool.Dequeue();
-                bloodShotPool.Enqueue(tempBloodShot);
-                return tempBloodShot;
-            case PoolTypes.BloodLake:
-                tempBloodLake = bloodLakePool.Dequeue();
-                bloodLakePool.Enqueue(tempBloodLake);
-                return tempBloodLake;
-            case PoolTypes.WorldTextPopup:
-                tempWorldTextPopup = worldTextPool.Dequeue();
-                worldTextPool.Enqueue(tempWorldTextPopup);
-                return tempWorldTextPopup;
-            case PoolTypes.SimpleExplosion:
-                tempVfx = simpleExplosionPool.Dequeue();
-                simpleExplosionPool.Enqueue(tempVfx);
-                return tempVfx;
-            case PoolTypes.MegaExplosion:
-                tempVfx = megaExplosionPool.Dequeue();
-                megaExplosionPool.Enqueue(tempVfx);
-                return tempVfx;
-            case PoolTypes.Magnet:
-                tempVfx = magnetPool.Dequeue();
-                magnetPool.Enqueue(tempVfx);
-                return tempVfx;
-            case PoolTypes.SlowAreaVFX:
-                tempVfx = slowAreaVFXPool.Dequeue();
-                slowAreaVFXPool.Enqueue(tempVfx);
-                return tempVfx;
-
-            default:
-                tempObject = null;
-                return tempObject;
-        }
-    }
-
-
     private GameObject tempExperience;
     private GameObject tempDropItem;
+    private GameObject tempObject;
+
+    public static PoolManager Instance { get; private set; }
+
+    void Awake()
+    {
+        Instance = this;
+    }
+
+    public void GeneratePools()
+    {
+        _pools     = new Queue<GameObject>[(int)PoolTypes._Count];
+        _itemPools = new Queue<GameObject>[(int)ItemType._Count];
+
+        CreatePool(PoolTypes.Enemy,           EnemyPrefab,              EnemyPoolCount,           EnemyHolder);
+        CreatePool(PoolTypes.Bullet,          BulletPrefab,             BulletPoolCount,           BulletHolder);
+        CreatePool(PoolTypes.BloodShot,       BloodShotPrefabs,         BloodShotPoolCount,        BloodSHolder);
+        CreatePool(PoolTypes.BloodLake,       BloodLakePrefab,          BloodLakePoolCount,        BloodSHolder);
+        CreatePool(PoolTypes.BulletExplosion, BulletExplosionPrefab,    BulletExplosionPoolCount,  BulletExplosionHolder);
+        CreatePool(PoolTypes.WorldTextPopup,  WorldTextPrefab,          WorldTextPoolCount,        WorldTextHolder);
+        CreatePool(PoolTypes.SimpleExplosion, SimpleExplosionPrefab,    SimpleExplosionPoolCount,  VFXHolder);
+        CreatePool(PoolTypes.MegaExplosion,   MegaExplosionPrefab,      MegaExplosionPoolCount,    VFXHolder);
+        CreatePool(PoolTypes.Magnet,          MagnetPrefab,             MagnetPoolCount,           VFXHolder);
+        CreatePool(PoolTypes.SlowAreaVFX,     SlowAreaVFXPrefab,        SlowAreaVFXPoolCount,      VFXHolder);
+
+        CreateItemPool(ItemType.Experience,   ExperiencePrefab,             ExperiencePoolCount, ExperienceHolder);
+        CreateItemPool(ItemType.Bomb,         CollectableBombPrefab,        CollectableCount,    CollectableHolder);
+        CreateItemPool(ItemType.FireRateBoost,CollectableFireRateBoostPrefab,CollectableCount,   CollectableHolder);
+        CreateItemPool(ItemType.Health,       CollectableHealthPrefab,      CollectableCount,    CollectableHolder);
+        CreateItemPool(ItemType.MeshTrain,    CollectableMeshTrainPrefab,   CollectableCount,    CollectableHolder);
+        CreateItemPool(ItemType.Magnet,       CollectableMagnetPrefab,      CollectableCount,    CollectableHolder);
+        CreateItemPool(ItemType.SlowArea,     CollectableSlowAreaPrefab,    CollectableCount,    CollectableHolder);
+        CreateItemPool(ItemType.SpeedBoost,   CollectableSpeedBoostPrefab,  CollectableCount,    CollectableHolder);
+    }
+
+    // -----------------------------------------------------------------------
+    // Get
+    // -----------------------------------------------------------------------
+
+    public GameObject GetFromPool(PoolTypes type)
+    {
+        return Fetch(_pools[(int)type], type.ToString());
+    }
+
     public GameObject GetItemFromPool(ItemType type)
     {
-        switch (type)
+        return Fetch(_itemPools[(int)type], type.ToString());
+    }
+
+    // -----------------------------------------------------------------------
+    // Core fetch — inactive arar, hepsi aktifse en eskiyi çalar
+    // -----------------------------------------------------------------------
+
+    private static GameObject Fetch(Queue<GameObject> pool, string label)
+    {
+        int count = pool.Count;
+        for (int i = 0; i < count; i++)
         {
-            case ItemType.Experience:
-                tempExperience = experiencePool.Dequeue();
-                experiencePool.Enqueue(tempExperience);
-                return tempExperience;
-            case ItemType.Bomb:
-                tempDropItem = collectableBombPool.Dequeue();
-                collectableBombPool.Enqueue(tempDropItem);
-                return tempDropItem;
-            case ItemType.FireRateBoost:
-                tempDropItem = collectableFireRateBoostPool.Dequeue();
-                collectableFireRateBoostPool.Enqueue(tempDropItem);
-                return tempDropItem;
-            case ItemType.Health:
-                tempDropItem = collectableHealthPool.Dequeue();
-                collectableHealthPool.Enqueue(tempDropItem);
-                return tempDropItem;
-            case ItemType.MeshTrain:
-                tempDropItem = collectableMeshTrainPool.Dequeue();
-                collectableMeshTrainPool.Enqueue(tempDropItem);
-                return tempDropItem;
-            case ItemType.Magnet:
-                tempDropItem = collectableMagnetPool.Dequeue();
-                collectableMagnetPool.Enqueue(tempDropItem);
-                return tempDropItem;
-            case ItemType.SlowArea:
-                tempDropItem = collectableSlowAreaPool.Dequeue();
-                collectableSlowAreaPool.Enqueue(tempDropItem);
-                return tempDropItem;
-            case ItemType.SpeedBoost:
-                tempDropItem = collectableSpeedBoostPool.Dequeue();
-                collectableSpeedBoostPool.Enqueue(tempDropItem);
-                return tempDropItem;
-            default:
-                tempObject = null;
-                return tempObject;
+            var obj = pool.Dequeue();
+            pool.Enqueue(obj);
+            if (!obj.activeSelf) return obj;
         }
+
+        Debug.LogWarning($"[Pool:{label}] Tüm objeler aktif — pool boyutu artırılmalı.");
+        var stolen = pool.Dequeue();
+        pool.Enqueue(stolen);
+        return stolen;
+    }
+
+    // -----------------------------------------------------------------------
+    // Pool oluşturma
+    // -----------------------------------------------------------------------
+
+    private void CreatePool(PoolTypes type, GameObject prefab, int count, Transform holder)
+    {
+        var pool = new Queue<GameObject>(count);
+        for (int i = 0; i < count; i++)
+        {
+            tempObject = Instantiate(prefab, holder);
+            tempObject.SetActive(false);
+            pool.Enqueue(tempObject);
+        }
+        _pools[(int)type] = pool;
+    }
+
+    private void CreatePool(PoolTypes type, GameObject[] prefabs, int count, Transform holder)
+    {
+        var pool = new Queue<GameObject>(count);
+        for (int i = 0; i < count; i++)
+        {
+            tempObject = Instantiate(prefabs[Random.Range(0, prefabs.Length)], holder);
+            tempObject.SetActive(false);
+            pool.Enqueue(tempObject);
+        }
+        _pools[(int)type] = pool;
+    }
+
+    private void CreateItemPool(ItemType type, GameObject prefab, int count, Transform holder)
+    {
+        var pool = new Queue<GameObject>(count);
+        for (int i = 0; i < count; i++)
+        {
+            tempObject = Instantiate(prefab, holder);
+            tempObject.SetActive(false);
+            pool.Enqueue(tempObject);
+        }
+        _itemPools[(int)type] = pool;
     }
 }

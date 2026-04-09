@@ -30,6 +30,7 @@ public enum PoolTypes
     Magnet,
     BloodLake,
     SlowAreaVFX,
+    _Count  // sentinel — kod dışında kullanma
 }
 
 [Serializable]
@@ -43,4 +44,5 @@ public enum ItemType
     Magnet,
     SlowArea,
     SpeedBoost,
+    _Count  // sentinel — kod dışında kullanma
 }

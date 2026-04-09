@@ -29,6 +29,9 @@ public class HealthSystem : MonoBehaviour
         myTransform = transform;
     }
 
+    void OnEnable()  => GameEvents.OnHealRequest += HealPercent;
+    void OnDisable() => GameEvents.OnHealRequest -= HealPercent;
+
     public void SetHealth(float _health)
     {
         maxHealth = _health;

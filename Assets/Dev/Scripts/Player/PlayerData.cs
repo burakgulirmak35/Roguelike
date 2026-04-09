@@ -9,6 +9,31 @@ public enum GunType
 
 public class PlayerData : MonoBehaviour
 {
+    // -----------------------------------------------------------------------
+    // PlayerPrefs key sabitleri — tek yerden yönetilir, typo riski yok
+    // -----------------------------------------------------------------------
+    private static class Keys
+    {
+        public const string Exp = "Exp";
+        public const string Level = "Level";
+        public const string Score = "Score";
+        public const string MaxHealth = "MaxHealth";
+        public const string MovementSpeed = "MovementSpeed";
+        public const string Damage = "Damage";
+        public const string FireRate = "FireRate";
+        public const string FireRange = "FireRange";
+        public const string BurstCount = "BurstCount";
+        public const string BounceCount = "BounceCount";
+        public const string ExplosiveAmmoRange = "ExplosiveAmmoRange";
+        public const string ExplosiveAmmoDamage = "ExplosiveAmmoDamage";
+        public const string Penetrability = "Penetrability";
+        public const string ExplosiveAmmo = "ExplosiveAmmo";
+    }
+
+    // -----------------------------------------------------------------------
+    // Inspector alanları
+    // -----------------------------------------------------------------------
+
     [Header("Level")]
     public List<int> expPerLevel = new List<int>();
     public int level;
@@ -24,8 +49,8 @@ public class PlayerData : MonoBehaviour
     public float BaseDamage;
     public float BaseFireRate;
     public float BaseFireRange;
-    public int   BaseBurstCount;
-    public int   BaseBounceCount;
+    public int BaseBurstCount;
+    public int BaseBounceCount;
     public float BaseExplosiveAmmoRange;
     public float BaseExplosiveAmmoDamage;
 
@@ -35,12 +60,12 @@ public class PlayerData : MonoBehaviour
     public float Damage;
     public float FireRate;
     public float FireRange;
-    public int   BurstCount;
-    public int   BounceCount;
+    public int BurstCount;
+    public int BounceCount;
     public float ExplosiveAmmoRange;
     public float ExplosiveAmmoDamage;
-    public bool  Penetrability;
-    public bool  ExplosiveAmmo;
+    public bool Penetrability;
+    public bool ExplosiveAmmo;
     public GunType SelectedGun;
 
     [Header("Effects")]
@@ -62,7 +87,7 @@ public class PlayerData : MonoBehaviour
     {
         Instance = this;
         MovementSpeedMultipler = 1;
-        FireRateMultipler      = 1;
+        FireRateMultipler = 1;
     }
 
     void Start()
@@ -76,51 +101,51 @@ public class PlayerData : MonoBehaviour
 
     public void LoadData()
     {
-        exp   = PlayerPrefs.GetInt("Exp");
-        level = PlayerPrefs.GetInt("Level");
-        Score = PlayerPrefs.GetInt("Score");
+        exp = PlayerPrefs.GetInt(Keys.Exp);
+        level = PlayerPrefs.GetInt(Keys.Level);
+        Score = PlayerPrefs.GetInt(Keys.Score);
 
-        MaxHealth          = PlayerPrefs.GetFloat("MaxHealth",          BaseMaxHealth);
-        MovementSpeed      = PlayerPrefs.GetFloat("MovementSpeed",      BaseMovementSpeed);
-        Damage             = PlayerPrefs.GetFloat("Damage",             BaseDamage);
-        FireRate           = PlayerPrefs.GetFloat("FireRate",           BaseFireRate);
-        FireRange          = PlayerPrefs.GetFloat("FireRange",          BaseFireRange);
-        BurstCount         = PlayerPrefs.GetInt  ("BurstCount",         BaseBurstCount);
-        BounceCount        = PlayerPrefs.GetInt  ("BounceCount",        BaseBounceCount);
-        ExplosiveAmmoRange = PlayerPrefs.GetFloat("ExplosiveAmmoRange", BaseExplosiveAmmoRange);
-        ExplosiveAmmoDamage= PlayerPrefs.GetFloat("ExplosiveAmmoDamage",BaseExplosiveAmmoDamage);
-        Penetrability      = PlayerPrefs.GetInt  ("Penetrability")  == 1;
-        ExplosiveAmmo      = PlayerPrefs.GetInt  ("ExplosiveAmmo")  == 1;
+        MaxHealth = PlayerPrefs.GetFloat(Keys.MaxHealth, BaseMaxHealth);
+        MovementSpeed = PlayerPrefs.GetFloat(Keys.MovementSpeed, BaseMovementSpeed);
+        Damage = PlayerPrefs.GetFloat(Keys.Damage, BaseDamage);
+        FireRate = PlayerPrefs.GetFloat(Keys.FireRate, BaseFireRate);
+        FireRange = PlayerPrefs.GetFloat(Keys.FireRange, BaseFireRange);
+        BurstCount = PlayerPrefs.GetInt(Keys.BurstCount, BaseBurstCount);
+        BounceCount = PlayerPrefs.GetInt(Keys.BounceCount, BaseBounceCount);
+        ExplosiveAmmoRange = PlayerPrefs.GetFloat(Keys.ExplosiveAmmoRange, BaseExplosiveAmmoRange);
+        ExplosiveAmmoDamage = PlayerPrefs.GetFloat(Keys.ExplosiveAmmoDamage, BaseExplosiveAmmoDamage);
+        Penetrability = PlayerPrefs.GetInt(Keys.Penetrability) == 1;
+        ExplosiveAmmo = PlayerPrefs.GetInt(Keys.ExplosiveAmmo) == 1;
 
-        BulletExplosionSO.Range  = ExplosiveAmmoRange;
+        BulletExplosionSO.Range = ExplosiveAmmoRange;
         BulletExplosionSO.Damage = ExplosiveAmmoDamage;
     }
 
     public void SaveScore()
     {
-        PlayerPrefs.SetInt("Score", Score);
+        PlayerPrefs.SetInt(Keys.Score, Score);
         PlayerPrefs.Save();
     }
 
     public void ResetData()
     {
-        PlayerPrefs.SetInt  ("Exp",   0);
-        PlayerPrefs.SetInt  ("Level", 0);
-        PlayerPrefs.SetInt  ("Score", 0);
+        PlayerPrefs.SetInt(Keys.Exp, 0);
+        PlayerPrefs.SetInt(Keys.Level, 0);
+        PlayerPrefs.SetInt(Keys.Score, 0);
+        PlayerPrefs.SetFloat(Keys.MaxHealth, BaseMaxHealth);
+        PlayerPrefs.SetFloat(Keys.MovementSpeed, BaseMovementSpeed);
+        PlayerPrefs.SetFloat(Keys.Damage, BaseDamage);
+        PlayerPrefs.SetFloat(Keys.FireRate, BaseFireRate);
+        PlayerPrefs.SetFloat(Keys.FireRange, BaseFireRange);
+        PlayerPrefs.SetInt(Keys.BurstCount, BaseBurstCount);
+        PlayerPrefs.SetInt(Keys.BounceCount, BaseBounceCount);
+        PlayerPrefs.SetFloat(Keys.ExplosiveAmmoRange, BaseExplosiveAmmoRange);
+        PlayerPrefs.SetFloat(Keys.ExplosiveAmmoDamage, BaseExplosiveAmmoDamage);
+        PlayerPrefs.SetInt(Keys.Penetrability, 0);
+        PlayerPrefs.SetInt(Keys.ExplosiveAmmo, 0);
+        PlayerPrefs.Save();
 
-        PlayerPrefs.SetFloat("MaxHealth",           BaseMaxHealth);
-        PlayerPrefs.SetFloat("MovementSpeed",       BaseMovementSpeed);
-        PlayerPrefs.SetFloat("Damage",              BaseDamage);
-        PlayerPrefs.SetFloat("FireRate",            BaseFireRate);
-        PlayerPrefs.SetFloat("FireRange",           BaseFireRange);
-        PlayerPrefs.SetInt  ("BurstCount",          BaseBurstCount);
-        PlayerPrefs.SetInt  ("BounceCount",         BaseBounceCount);
-        PlayerPrefs.SetFloat("ExplosiveAmmoRange",  BaseExplosiveAmmoRange);
-        PlayerPrefs.SetFloat("ExplosiveAmmoDamage", BaseExplosiveAmmoDamage);
-        PlayerPrefs.SetInt  ("Penetrability",       0);
-        PlayerPrefs.SetInt  ("ExplosiveAmmo",       0);
-
-        BulletExplosionSO.Range  = BaseExplosiveAmmoRange;
+        BulletExplosionSO.Range = BaseExplosiveAmmoRange;
         BulletExplosionSO.Damage = BaseExplosiveAmmoDamage;
     }
 
@@ -134,63 +159,75 @@ public class PlayerData : MonoBehaviour
         {
             case StatType.MaxHealth:
                 Apply(ref MaxHealth, e);
-                PlayerPrefs.SetFloat("MaxHealth", MaxHealth);
+                PlayerPrefs.SetFloat(Keys.MaxHealth, MaxHealth);
                 break;
             case StatType.MovementSpeed:
                 Apply(ref MovementSpeed, e);
-                PlayerPrefs.SetFloat("MovementSpeed", MovementSpeed);
+                PlayerPrefs.SetFloat(Keys.MovementSpeed, MovementSpeed);
                 break;
             case StatType.Damage:
                 Apply(ref Damage, e);
-                PlayerPrefs.SetFloat("Damage", Damage);
+                PlayerPrefs.SetFloat(Keys.Damage, Damage);
                 break;
             case StatType.FireRate:
                 Apply(ref FireRate, e);
-                PlayerPrefs.SetFloat("FireRate", FireRate);
+                PlayerPrefs.SetFloat(Keys.FireRate, FireRate);
                 break;
             case StatType.FireRange:
                 Apply(ref FireRange, e);
-                PlayerPrefs.SetFloat("FireRange", FireRange);
+                PlayerPrefs.SetFloat(Keys.FireRange, FireRange);
                 break;
             case StatType.BurstCount:
-                BurstCount += (int)e.value;
-                PlayerPrefs.SetInt("BurstCount", BurstCount);
+                ApplyInt(ref BurstCount, e);
+                PlayerPrefs.SetInt(Keys.BurstCount, BurstCount);
                 break;
             case StatType.BounceCount:
-                BounceCount += (int)e.value;
-                PlayerPrefs.SetInt("BounceCount", BounceCount);
+                ApplyInt(ref BounceCount, e);
+                PlayerPrefs.SetInt(Keys.BounceCount, BounceCount);
                 break;
             case StatType.Penetrability:
                 Penetrability = true;
-                PlayerPrefs.SetInt("Penetrability", 1);
+                PlayerPrefs.SetInt(Keys.Penetrability, 1);
                 break;
             case StatType.ExplosiveAmmo:
                 ExplosiveAmmo = true;
-                PlayerPrefs.SetInt("ExplosiveAmmo", 1);
+                PlayerPrefs.SetInt(Keys.ExplosiveAmmo, 1);
                 break;
             case StatType.ExplosiveAmmoRange:
                 Apply(ref ExplosiveAmmoRange, e);
                 BulletExplosionSO.Range = ExplosiveAmmoRange;
-                PlayerPrefs.SetFloat("ExplosiveAmmoRange", ExplosiveAmmoRange);
+                PlayerPrefs.SetFloat(Keys.ExplosiveAmmoRange, ExplosiveAmmoRange);
                 break;
             case StatType.ExplosiveAmmoDamage:
                 Apply(ref ExplosiveAmmoDamage, e);
                 BulletExplosionSO.Damage = ExplosiveAmmoDamage;
-                PlayerPrefs.SetFloat("ExplosiveAmmoDamage", ExplosiveAmmoDamage);
+                PlayerPrefs.SetFloat(Keys.ExplosiveAmmoDamage, ExplosiveAmmoDamage);
                 break;
             case StatType.HealPercent:
-                Player.Instance.healthSystem.HealPercent(e.value);
+                GameEvents.RaiseHealRequest(e.value);
                 break;
         }
+
+        PlayerPrefs.Save();
     }
 
     private static void Apply(ref float stat, in UpgradeEffect e)
     {
         switch (e.operation)
         {
-            case OperationType.Add:      stat += e.value; break;
+            case OperationType.Add: stat += e.value; break;
             case OperationType.Multiply: stat *= e.value; break;
-            case OperationType.Set:      stat  = e.value; break;
+            case OperationType.Set: stat = e.value; break;
+        }
+    }
+
+    private static void ApplyInt(ref int stat, in UpgradeEffect e)
+    {
+        switch (e.operation)
+        {
+            case OperationType.Add: stat += (int)e.value; break;
+            case OperationType.Multiply: stat = Mathf.RoundToInt(stat * e.value); break;
+            case OperationType.Set: stat = (int)e.value; break;
         }
     }
 
@@ -200,8 +237,8 @@ public class PlayerData : MonoBehaviour
 
     private void CheckUpgradesList()
     {
-        CheckAndReplace(StatType.Penetrability, "Penetrability");
-        CheckAndReplace(StatType.ExplosiveAmmo,  "ExplosiveAmmo");
+        CheckAndReplace(StatType.Penetrability, Keys.Penetrability);
+        CheckAndReplace(StatType.ExplosiveAmmo, Keys.ExplosiveAmmo);
     }
 
     private void CheckAndReplace(StatType stat, string prefKey)

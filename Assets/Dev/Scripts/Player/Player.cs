@@ -108,6 +108,9 @@ public class Player : MonoBehaviour
     {
         toggleAimAction.performed -= ToggleAim;
         mapAction.performed -= ClickMap;
+
+        playerInputActions.Player.Disable();
+        playerInputActions.Dispose();
     }
 
     #region --- Map ---
