@@ -86,28 +86,28 @@ public class PoolManager : MonoBehaviour
 
     public void GeneratePools()
     {
-        _pools     = new Queue<GameObject>[(int)PoolTypes._Count];
+        _pools = new Queue<GameObject>[(int)PoolTypes._Count];
         _itemPools = new Queue<GameObject>[(int)ItemType._Count];
 
-        CreatePool(PoolTypes.Enemy,           EnemyPrefab,              EnemyPoolCount,           EnemyHolder);
-        CreatePool(PoolTypes.Bullet,          BulletPrefab,             BulletPoolCount,           BulletHolder);
-        CreatePool(PoolTypes.BloodShot,       BloodShotPrefabs,         BloodShotPoolCount,        BloodSHolder);
-        CreatePool(PoolTypes.BloodLake,       BloodLakePrefab,          BloodLakePoolCount,        BloodSHolder);
-        CreatePool(PoolTypes.BulletExplosion, BulletExplosionPrefab,    BulletExplosionPoolCount,  BulletExplosionHolder);
-        CreatePool(PoolTypes.WorldTextPopup,  WorldTextPrefab,          WorldTextPoolCount,        WorldTextHolder);
-        CreatePool(PoolTypes.SimpleExplosion, SimpleExplosionPrefab,    SimpleExplosionPoolCount,  VFXHolder);
-        CreatePool(PoolTypes.MegaExplosion,   MegaExplosionPrefab,      MegaExplosionPoolCount,    VFXHolder);
-        CreatePool(PoolTypes.Magnet,          MagnetPrefab,             MagnetPoolCount,           VFXHolder);
-        CreatePool(PoolTypes.SlowAreaVFX,     SlowAreaVFXPrefab,        SlowAreaVFXPoolCount,      VFXHolder);
+        CreatePool(PoolTypes.Enemy, EnemyPrefab, EnemyPoolCount, EnemyHolder);
+        CreatePool(PoolTypes.Bullet, BulletPrefab, BulletPoolCount, BulletHolder);
+        CreatePool(PoolTypes.BloodShot, BloodShotPrefabs, BloodShotPoolCount, BloodSHolder);
+        CreatePool(PoolTypes.BloodLake, BloodLakePrefab, BloodLakePoolCount, BloodSHolder);
+        CreatePool(PoolTypes.BulletExplosion, BulletExplosionPrefab, BulletExplosionPoolCount, BulletExplosionHolder);
+        CreatePool(PoolTypes.WorldTextPopup, WorldTextPrefab, WorldTextPoolCount, WorldTextHolder);
+        CreatePool(PoolTypes.SimpleExplosion, SimpleExplosionPrefab, SimpleExplosionPoolCount, VFXHolder);
+        CreatePool(PoolTypes.MegaExplosion, MegaExplosionPrefab, MegaExplosionPoolCount, VFXHolder);
+        CreatePool(PoolTypes.Magnet, MagnetPrefab, MagnetPoolCount, VFXHolder);
+        CreatePool(PoolTypes.SlowAreaVFX, SlowAreaVFXPrefab, SlowAreaVFXPoolCount, VFXHolder);
 
-        CreateItemPool(ItemType.Experience,   ExperiencePrefab,             ExperiencePoolCount, ExperienceHolder);
-        CreateItemPool(ItemType.Bomb,         CollectableBombPrefab,        CollectableCount,    CollectableHolder);
-        CreateItemPool(ItemType.FireRateBoost,CollectableFireRateBoostPrefab,CollectableCount,   CollectableHolder);
-        CreateItemPool(ItemType.Health,       CollectableHealthPrefab,      CollectableCount,    CollectableHolder);
-        CreateItemPool(ItemType.MeshTrain,    CollectableMeshTrainPrefab,   CollectableCount,    CollectableHolder);
-        CreateItemPool(ItemType.Magnet,       CollectableMagnetPrefab,      CollectableCount,    CollectableHolder);
-        CreateItemPool(ItemType.SlowArea,     CollectableSlowAreaPrefab,    CollectableCount,    CollectableHolder);
-        CreateItemPool(ItemType.SpeedBoost,   CollectableSpeedBoostPrefab,  CollectableCount,    CollectableHolder);
+        CreateItemPool(ItemType.Experience, ExperiencePrefab, ExperiencePoolCount, ExperienceHolder);
+        CreateItemPool(ItemType.Bomb, CollectableBombPrefab, CollectableCount, CollectableHolder);
+        CreateItemPool(ItemType.FireRateBoost, CollectableFireRateBoostPrefab, CollectableCount, CollectableHolder);
+        CreateItemPool(ItemType.Health, CollectableHealthPrefab, CollectableCount, CollectableHolder);
+        CreateItemPool(ItemType.MeshTrain, CollectableMeshTrainPrefab, CollectableCount, CollectableHolder);
+        CreateItemPool(ItemType.Magnet, CollectableMagnetPrefab, CollectableCount, CollectableHolder);
+        CreateItemPool(ItemType.SlowArea, CollectableSlowAreaPrefab, CollectableCount, CollectableHolder);
+        CreateItemPool(ItemType.SpeedBoost, CollectableSpeedBoostPrefab, CollectableCount, CollectableHolder);
     }
 
     // -----------------------------------------------------------------------

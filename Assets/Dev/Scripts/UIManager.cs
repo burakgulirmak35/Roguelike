@@ -42,21 +42,21 @@ public class UIManager : MonoBehaviour
         Instance = this;
         panelFadeInOut.FadeIn(1f);
         LeftJoystickBasePos = LeftJoystick.position;
-        txt_ScoreTransform  = txt_Score.transform;
+        txt_ScoreTransform = txt_Score.transform;
     }
 
     private void OnEnable()
     {
         GameEvents.OnEnemyKilled += OnEnemyKilled;
-        GameEvents.OnPlayerDead  += OnPlayerDead;
-        GameEvents.OnLevelUp     += OnLevelUp;
+        GameEvents.OnPlayerDead += OnPlayerDead;
+        GameEvents.OnLevelUp += OnLevelUp;
     }
 
     private void OnDisable()
     {
         GameEvents.OnEnemyKilled -= OnEnemyKilled;
-        GameEvents.OnPlayerDead  -= OnPlayerDead;
-        GameEvents.OnLevelUp     -= OnLevelUp;
+        GameEvents.OnPlayerDead -= OnPlayerDead;
+        GameEvents.OnLevelUp -= OnLevelUp;
     }
 
     private void Start()
