@@ -10,10 +10,13 @@ public class GameManager : MonoBehaviour
     [Range(-1, 60)][SerializeField] private int FPS_target = 60;
     [SerializeField] private bool FPS_counter = true;
 
+    private WaitForSeconds waitOneSecond;
+
     public static GameManager Instance { get; private set; }
     void Awake()
     {
         Instance = this;
+        waitOneSecond = new WaitForSeconds(1f);
     }
 
     void Start()
@@ -53,7 +56,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator MainMenuTimer()
     {
         UIManager.Instance.panelFadeInOut.FadeOut(1);
-        yield return new WaitForSeconds(1f);
+        yield return waitOneSecond;
         SceneManager.LoadScene("MainMenu");
     }
     #endregion
@@ -70,7 +73,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator RestartGameTimer()
     {
         UIManager.Instance.panelFadeInOut.FadeOut(1);
-        yield return new WaitForSeconds(1f);
+        yield return waitOneSecond;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     #endregion
@@ -89,6 +92,6 @@ public class GameManager : MonoBehaviour
     {
         if (!vSync_enable) { QualitySettings.vSyncCount = 0; }
         Application.targetFrameRate = FPS_target;
-        FindObjectOfType<FPSCounter>(true).gameObject.SetActive(FPS_counter);
+        FindFirstObjectByType<FPSCounter>(FindObjectsInactive.Include).gameObject.SetActive(FPS_counter);
     }
 }

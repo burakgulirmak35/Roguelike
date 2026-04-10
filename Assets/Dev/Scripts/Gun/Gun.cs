@@ -19,10 +19,10 @@ public class Gun : MonoBehaviour
 
     private void Awake()
     {
-        poolManager = FindObjectOfType<PoolManager>();
-        soundManager = FindObjectOfType<SoundManager>();
-        playerData = FindObjectOfType<PlayerData>();
-        cameraManager = FindObjectOfType<CameraManager>();
+        poolManager = FindFirstObjectByType<PoolManager>();
+        soundManager = FindFirstObjectByType<SoundManager>();
+        playerData = FindFirstObjectByType<PlayerData>();
+        cameraManager = FindFirstObjectByType<CameraManager>();
     }
 
     public Transform GetLeftHandPos()

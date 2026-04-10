@@ -71,10 +71,10 @@ public class Bullet : MonoBehaviour
 
         if (Physics.Raycast(transform.position - Vector3.forward * 1, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, 7))
         {
-            dir = Vector3.Reflect(rb.velocity.normalized, hit.normal);
-            rb.velocity = Vector3.zero;
+            dir = Vector3.Reflect(rb.linearVelocity.normalized, hit.normal);
+            rb.linearVelocity = Vector3.zero;
             transform.forward = dir;
-            rb.velocity = transform.forward * PlayerData.Instance.BulletSpeed;
+            rb.linearVelocity = transform.forward * PlayerData.Instance.BulletSpeed;
         }
     }
 
@@ -101,7 +101,7 @@ public class Bullet : MonoBehaviour
             DisableCoro = null;
         }
 
-        rb.velocity = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
         gameObject.SetActive(false);
     }
 
