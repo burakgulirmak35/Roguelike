@@ -24,51 +24,19 @@ public class SoundManager : MonoBehaviour
 
     private void StartMusic()
     {
-        musicPlayer.volume = MusicVolume;
+        MusicVolume = PlayerPrefs.GetFloat("MusicVolume", defaultMusicVolume);
+        SoundVolume = PlayerPrefs.GetFloat("SoundVolume", defaultSoundVolume);
         musicPlayer.clip = musicList;
         musicPlayer.loop = true;
+        musicPlayer.volume = MusicVolume;
         musicPlayer.Play();
-        CheckMusic();
     }
 
     public void ChangeMusicVolume(float _value)
     {
         MusicVolume = _value;
         musicPlayer.volume = MusicVolume;
-    }
-
-    public void ToggleMusic()
-    {
-        if (PlayerPrefs.GetInt("isMusic", 1) == 1)
-        {
-            PlayerPrefs.SetInt("isMusic", 0);
-            ChangeMusicVolume(0);
-            UIManager.Instance.img_MusicOn.SetActive(false);
-            UIManager.Instance.img_MusicOff.SetActive(true);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("isMusic", 1);
-            ChangeMusicVolume(defaultMusicVolume);
-            UIManager.Instance.img_MusicOn.SetActive(true);
-            UIManager.Instance.img_MusicOff.SetActive(false);
-        }
-    }
-
-    public void CheckMusic()
-    {
-        if (PlayerPrefs.GetInt("isMusic", 1) == 1)
-        {
-            ChangeMusicVolume(defaultMusicVolume);
-            UIManager.Instance.img_MusicOn.SetActive(true);
-            UIManager.Instance.img_MusicOff.SetActive(false);
-        }
-        else
-        {
-            ChangeMusicVolume(0);
-            UIManager.Instance.img_MusicOn.SetActive(false);
-            UIManager.Instance.img_MusicOff.SetActive(true);
-        }
+        PlayerPrefs.SetFloat("MusicVolume", MusicVolume);
     }
 
     // --- SFX Pool ---
@@ -78,7 +46,17 @@ public class SoundManager : MonoBehaviour
     private int _poolIndex;
 
     [Header("Sounds")]
-    [SerializeField] private float SoundVolume = 1f;
+    [SerializeField] private float defaultSoundVolume = 1f;
+    private float SoundVolume;
+
+    public float GetMusicVolume() => MusicVolume;
+    public float GetSoundVolume() => SoundVolume;
+
+    public void ChangeSoundVolume(float _value)
+    {
+        SoundVolume = _value;
+        PlayerPrefs.SetFloat("SoundVolume", SoundVolume);
+    }
     [Header("---")]
     [SerializeField] private Sound GrenadeExplosion;
     [SerializeField] private Sound RocketExplosion;

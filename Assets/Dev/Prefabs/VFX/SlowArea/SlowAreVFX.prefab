@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1352364685972499886}
   - component: {fileID: -6036379568082393786}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SlowAreVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

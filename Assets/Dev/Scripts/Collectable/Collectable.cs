@@ -111,7 +111,7 @@ public class Collectable : MonoBehaviour
     private void SlowArea()
     {
         Spawner.Instance.SpawnAtPos(PoolTypes.SlowAreaVFX, myTransform.position);
-        
+
         myTransform.parent = PoolManager.Instance.CollectableHolder;
         gameObject.SetActive(false);
     }

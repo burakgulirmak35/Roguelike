@@ -181,6 +181,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 830092786290617365, guid: c8c4ee63a7d55fe4fa7daf1e98e1925c,
+        type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 830092786951123871, guid: c8c4ee63a7d55fe4fa7daf1e98e1925c,
         type: 3}
       propertyPath: m_Pivot.x

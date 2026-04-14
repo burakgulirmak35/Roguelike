@@ -10,9 +10,10 @@ public class SlowAreaVFX : MonoBehaviour
     void OnEnable()
     {
         SoundManager.Instance.PlaySound(sound);
-        for (int i = 0; i < Spawner.Instance.ActiveEnemies.Count; i++)
+        var enemies = EnemyManager.Instance.GetEnemies();
+        for (int i = 0; i < enemies.Count; i++)
         {
-            Spawner.Instance.ActiveEnemies[i].GetComponent<Enemy>().SlowDown(slowAreaSO.SlowAreaPercent, slowAreaSO.SlowAreaTime);
+            enemies[i].SlowDown(slowAreaSO.SlowAreaPercent, slowAreaSO.SlowAreaTime);
         }
     }
 }

@@ -15,6 +15,7 @@ public class HoverBoard : MonoBehaviour
     void Awake()
     {
         BoardTransform = transform;
+        _propsLayer = LayerMask.GetMask("Props");
     }
 
 
@@ -25,9 +26,14 @@ public class HoverBoard : MonoBehaviour
         DisableHowerBoard();
     }
 
+    private static readonly WaitForSeconds _waitTransition = new WaitForSeconds(0.5f);
+    private WaitForSeconds _waitFly;
+
     private Coroutine HoverBoardActiveTimerCoro;
     private IEnumerator HoverBoardActiveTimer()
     {
+        if (_waitFly == null) _waitFly = new WaitForSeconds(FlyTime);
+
         Player.Instance.playerState = PlayerState.CutScene;
 
         UIManager.Instance.btn_HoverBoard.interactable = false;
@@ -36,14 +42,12 @@ public class HoverBoard : MonoBehaviour
         Player.Instance.LeftLegIK.weight = 1;
         Player.Instance.RightLegIK.weight = 1;
 
-
-
         Player.Instance.PlayerTransform.DOLocalMove(Player.Instance.PlayerTransform.position + Vector3.up * 4, 0.5f);
-        yield return new WaitForSeconds(0.5f);
+        yield return _waitTransition;
         Player.Instance.playerState = PlayerState.HoverBoard;
         HoverBoardAnim.enabled = true;
 
-        yield return new WaitForSeconds(FlyTime);
+        yield return _waitFly;
         Player.Instance.playerState = PlayerState.CutScene;
 
         if (isSafeLanding())
@@ -51,7 +55,7 @@ public class HoverBoard : MonoBehaviour
         else
             Player.Instance.PlayerTransform.DOLocalMove(Enviroment.Instance.CurrentCity.FindClosestSafePoint(), 0.5f);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return _waitTransition;
         DisableHowerBoard();
     }
 
@@ -73,21 +77,16 @@ public class HoverBoard : MonoBehaviour
         UIManager.Instance.img_HoverBoard.DOFillAmount(1, CoolDown).OnComplete(() => UIManager.Instance.btn_HoverBoard.interactable = true);
     }
 
+    private int _propsLayer;
+    private readonly Collider[] hitColliders = new Collider[8];
     private Vector3 LandingPos;
-    private Collider[] hitColliders;
+
     private bool isSafeLanding()
     {
         LandingPos = Player.Instance.PlayerTransform.position;
         LandingPos.y = 0;
 
-        hitColliders = Physics.OverlapSphere(LandingPos, 2);
-        for (int i = 0; i < hitColliders.Length; i++)
-        {
-            if (hitColliders[i].tag.Equals("Props"))
-            {
-                return false;
-            }
-        }
-        return true;
+        int count = Physics.OverlapSphereNonAlloc(LandingPos, 2, hitColliders, _propsLayer);
+        return count == 0;
     }
 }

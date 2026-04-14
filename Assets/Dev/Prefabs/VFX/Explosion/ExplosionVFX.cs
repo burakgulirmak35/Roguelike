@@ -7,17 +7,21 @@ public class ExplosionVFX : MonoBehaviour
     [SerializeField] private ExplosionSO explosionSO;
     [SerializeField] private Sound sound;
 
-    private Collider[] hitColliders;
+    private int _enemyLayer;
+    private readonly Collider[] hitColliders = new Collider[32];
+
+    private void Awake()
+    {
+        _enemyLayer = LayerMask.GetMask("Enemy");
+    }
+
     private void Explode()
     {
         SoundManager.Instance.PlaySound(sound);
-        hitColliders = Physics.OverlapSphere(transform.position, explosionSO.Range);
-        for (int i = 0; i < hitColliders.Length; i++)
+        int count = Physics.OverlapSphereNonAlloc(transform.position, explosionSO.Range, hitColliders, _enemyLayer);
+        for (int i = 0; i < count; i++)
         {
-            if (hitColliders[i].tag.Equals("Enemy"))
-            {
-                hitColliders[i].gameObject.GetComponent<Enemy>().enemyHealthSystem.TakeDamage(explosionSO.Damage);
-            }
+            hitColliders[i].GetComponent<Enemy>().enemyHealthSystem.TakeDamage(explosionSO.Damage);
         }
     }
 

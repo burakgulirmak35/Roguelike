@@ -17,18 +17,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject img_ToggleAim;
     [SerializeField] private GameObject img_AutoAim;
     [SerializeField] private GameObject img_ManuelAim;
-    [Header("Music")]
-    [SerializeField] private Button btn_ToggleMusic;
-    [SerializeField] public GameObject img_MusicOn;
-    [SerializeField] public GameObject img_MusicOff;
     [Header("HoverBoard")]
     [SerializeField] public Button btn_HoverBoard;
     [SerializeField] public Image img_HoverBoard;
+    [Header("Settings")]
+    [SerializeField] private Button btn_Settings;
 
     [Header("Panels")]
     [SerializeField] public PanelPlayerDead panelPlayerDead;
     [SerializeField] public PanelUpgrade panelUpgrade;
     [SerializeField] public PanelFadeInOut panelFadeInOut;
+    [SerializeField] public PanelSettings panelSettings;
     [Header("Elements")]
     [SerializeField] private TextMeshProUGUI txt_Score;
     private Transform txt_ScoreTransform;
@@ -61,7 +60,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        btn_ToggleMusic.onClick.AddListener(SoundManager.Instance.ToggleMusic);
+        btn_Settings.onClick.AddListener(() => EnablePanelSettings(true));
         CloseAllPanels();
         txt_Score.text = PlayerData.Instance.Score.ToString();
     }
@@ -87,6 +86,14 @@ public class UIManager : MonoBehaviour
     {
         EnablePanelUpgrade(false);
         EnablePanelPlayerDead(false);
+        EnablePanelSettings(false);
+    }
+
+    public void EnablePanelSettings(bool _state)
+    {
+        panelSettings.gameObject.SetActive(_state);
+        if (_state) GameManager.Instance.FreezeGame();
+        else GameManager.Instance.ResumeGame();
     }
 
     private void OnPlayerDead()

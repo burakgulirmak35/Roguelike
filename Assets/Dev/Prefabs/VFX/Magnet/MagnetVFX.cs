@@ -7,20 +7,25 @@ public class MagnetVFX : MonoBehaviour
     [SerializeField] private MagnetSO magnetSO;
     [SerializeField] private Sound sound;
 
-    private Collider[] hitColliders;
+    private int _collectableLayer;
+    private static readonly WaitForSeconds _waitPull = new WaitForSeconds(0.4f);
+    private readonly Collider[] hitColliders = new Collider[64];
+
+    private void Awake()
+    {
+        _collectableLayer = LayerMask.GetMask("Collectable");
+    }
+
     private IEnumerator Pull()
     {
         for (int repeat = 0; repeat < magnetSO.RepeatTime; repeat++)
         {
             SoundManager.Instance.PlaySound(sound);
-            yield return new WaitForSeconds(0.4f);
-            hitColliders = Physics.OverlapSphere(transform.position, magnetSO.Range);
-            for (int i = 0; i < hitColliders.Length; i++)
+            yield return _waitPull;
+            int count = Physics.OverlapSphereNonAlloc(transform.position, magnetSO.Range, hitColliders, _collectableLayer);
+            for (int i = 0; i < count; i++)
             {
-                if (hitColliders[i].tag.Equals("Collectable"))
-                {
-                    hitColliders[i].GetComponent<Collectable>().Collect();
-                }
+                hitColliders[i].GetComponent<Collectable>().Collect();
             }
         }
     }

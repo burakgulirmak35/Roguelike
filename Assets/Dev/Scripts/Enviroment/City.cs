@@ -6,29 +6,25 @@ public class City : MonoBehaviour
 {
     [SerializeField] private List<GameObject> ProbSets = new List<GameObject>();
     [SerializeField] public List<Transform> SpawnPoints = new List<Transform>();
-    private List<SafeLanding> SafeLandings = new List<SafeLanding>();
-
-    private int currentIndex = 0;
+    private SafeLanding activeSafeLanding;
 
     void Awake()
     {
-        if (ProbSets.Count <= 0) return;
-        for (int i = 0; i < ProbSets.Count; i++)
-        {
-            SafeLandings.Add(ProbSets[i].GetComponent<SafeLanding>());
-        }
-        RandomProps();
+        if (ProbSets.Count > 1) Open(1);
     }
 
     public Vector3 FindClosestSafePoint()
     {
-        return SafeLandings[currentIndex].FindClosestSafePoint();
+        if (activeSafeLanding == null) return transform.position;
+        return activeSafeLanding.FindClosestSafePoint();
     }
 
-    public void RandomProps()
+    public void Open(int index)
     {
-        ProbSets[currentIndex].SetActive(false);
-        currentIndex = Random.Range(0, ProbSets.Count);
-        ProbSets[currentIndex].SetActive(true);
+        for (int i = 0; i < ProbSets.Count; i++)
+        {
+            ProbSets[i].SetActive(i == index);
+        }
+        activeSafeLanding = ProbSets[index].GetComponent<SafeLanding>();
     }
 }

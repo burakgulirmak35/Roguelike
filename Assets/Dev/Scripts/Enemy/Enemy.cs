@@ -69,6 +69,11 @@ public class Enemy : MonoBehaviour, ITargetable
         EnemyAnim.SetBool("canMove", true);
     }
 
+    void OnDisable()
+    {
+        EnemyManager.Instance?.DeadEnemy(this);
+    }
+
     private static readonly WaitForSeconds _waitAttack = new WaitForSeconds(1f);
     private static readonly WaitForSeconds _waitDisable = new WaitForSeconds(5f);
     private WaitForSeconds _waitSlow;

@@ -41,7 +41,7 @@ public class PanelUpgrade : MonoBehaviour
         for (int i = 0; i < _candidates.Count; i++)
             total += _candidates[i].weight;
 
-        int roll       = Random.Range(0, total);
+        int roll = Random.Range(0, total);
         int cumulative = 0;
         for (int i = 0; i < _candidates.Count; i++)
         {

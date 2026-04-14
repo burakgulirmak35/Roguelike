@@ -96,6 +96,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6190357358133143477}
     m_Modifications:
+    - target: {fileID: 95162981939261422, guid: 252af186bc668c24ab6a96d70630eb73,
+        type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 1053952558533813175, guid: 252af186bc668c24ab6a96d70630eb73,
         type: 3}
       propertyPath: m_Pivot.x
