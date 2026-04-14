@@ -13,20 +13,16 @@ public class Spawner : MonoBehaviour
     [SerializeField] public int AliveEnemyCount;
     [SerializeField][Range(0, 1)] public float spawnDelay;
     [Space]
-    [HideInInspector] public KdTree<Transform> ActiveEnemies = new KdTree<Transform>();
     [Header("Item")]
     [SerializeField][Range(1, 5)] public float ItemDropDistanceMin;
     [SerializeField][Range(1, 5)] public float ItemDropDistanceMax;
-    [Space]
-    private List<Transform> EnemyList = new List<Transform>();
     [Space]
     private GameObject tempItem;
     public static Spawner Instance { get; private set; }
 
     private static readonly WaitForSeconds _waitRespawn = new WaitForSeconds(5f);
-    private static readonly WaitForSeconds _waitPopup   = new WaitForSeconds(1.5f);
+    private static readonly WaitForSeconds _waitPopup = new WaitForSeconds(1.5f);
     private WaitForSeconds _waitSpawnDelay;
-    private bool _treeRebuildPending;
 
     private void Awake()
     {
@@ -35,17 +31,13 @@ public class Spawner : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEvents.OnEnemyKilled  += OnEnemyKilled;
-        GameEvents.OnDamageTaken  += OnDamageTaken;
+        GameEvents.OnDamageTaken += OnDamageTaken;
     }
 
     private void OnDisable()
     {
-        GameEvents.OnEnemyKilled  -= OnEnemyKilled;
-        GameEvents.OnDamageTaken  -= OnDamageTaken;
+        GameEvents.OnDamageTaken -= OnDamageTaken;
     }
-
-    private void OnEnemyKilled(Transform t, Vector3 pos) => DeadEnemy(t);
 
     private void OnDamageTaken(float amount, Vector3 pos, bool isPlayer) =>
         WorldTextPopup(((int)amount).ToString(), pos, Color.red);
@@ -62,12 +54,10 @@ public class Spawner : MonoBehaviour
     {
         while (true)
         {
-            while (ActiveEnemies.Count < AliveEnemyCount)
+            while (EnemyManager.Instance.Count < AliveEnemyCount)
             {
                 spawnee = PoolManager.Instance.GetFromPool(PoolTypes.Enemy);
                 if (spawnee.gameObject.activeSelf) break;
-                ActiveEnemies.Add(spawnee.transform);
-                EnemyList.Add(spawnee.transform);
                 spawnee.transform.position = GetSpawnPos();
                 spawnee.GetComponent<Enemy>().Reborn();
                 spawnee.SetActive(true);
@@ -87,24 +77,6 @@ public class Spawner : MonoBehaviour
             if (SpawnPosID >= Enviroment.Instance.CurrentCity.SpawnPoints.Count) { SpawnPosID = 0; }
         }
         return Enviroment.Instance.CurrentCity.SpawnPoints[SpawnPosID].position;
-    }
-
-    public void DeadEnemy(Transform _enemy)
-    {
-        EnemyList.Remove(_enemy);
-        if (!_treeRebuildPending)
-        {
-            _treeRebuildPending = true;
-            StartCoroutine(RebuildTreeNextFrame());
-        }
-    }
-
-    private IEnumerator RebuildTreeNextFrame()
-    {
-        yield return null;
-        ActiveEnemies.Clear();
-        ActiveEnemies.AddAll(EnemyList);
-        _treeRebuildPending = false;
     }
 
     #region CreateText -----------------------

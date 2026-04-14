@@ -21,6 +21,9 @@ public class EnemyManager : MonoBehaviour
         StartCoroutine(FollowPlayerTimer());
     }
 
+    public int Count => enemies.Count;
+    public List<Enemy> GetEnemies() => enemies;
+
     public void AddEnemy(Enemy _enemy)
     {
         enemies.Add(_enemy);
@@ -34,7 +37,6 @@ public class EnemyManager : MonoBehaviour
             enemies[idx] = enemies[enemies.Count - 1];
             enemies.RemoveAt(enemies.Count - 1);
         }
-        Spawner.Instance.DeadEnemy(_enemy.transform);
     }
 
     private IEnumerator FollowPlayerTimer()

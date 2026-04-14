@@ -56,7 +56,6 @@ public class Player : MonoBehaviour
     [Space]
     private Vector3 TargetPoint;
     private Transform ClosestEnemy;
-    private float DistanceToEnemy;
 
     [Header("State")]
     [HideInInspector] public bool isAutoAim = false;
@@ -65,6 +64,7 @@ public class Player : MonoBehaviour
     [Space]
     [HideInInspector] public Transform PlayerTransform;
     private ITargetable _closestTargetable;
+    private float _fireRangeSqr;
 
 
     public static Player Instance { get; private set; }
@@ -304,45 +304,59 @@ public class Player : MonoBehaviour
     #endregion
 
     #region ---AutoAim---
-    //private Vector3 defaultY = ;
+    private static readonly WaitForSeconds _waitAutoAim = new WaitForSeconds(0.1f);
     private Coroutine AutoAimCoro;
     private IEnumerator AutoAimLoop()
     {
         while (healthSystem.isAlive)
         {
             AutoAim();
-            yield return new WaitForSeconds(0.1f);
+            yield return _waitAutoAim;
         }
     }
+
     private void AutoAim()
     {
-        Spawner.Instance.ActiveEnemies.UpdatePositions();
-        if (Spawner.Instance.ActiveEnemies.Count > 0)
+        UnTarget();
+
+        var enemies = EnemyManager.Instance.GetEnemies();
+        Transform closestTransform = null;
+        float minSqr = float.MaxValue;
+        Vector3 myPos = PlayerTransform.position;
+
+        for (int i = 0; i < enemies.Count; i++)
         {
-            UnTarget();
-
-            ClosestEnemy = Spawner.Instance.ActiveEnemies.FindClosest(PlayerTransform.position);
-            _closestTargetable = ClosestEnemy.GetComponent<ITargetable>();
-            _closestTargetable.Targeted(true);
-            DistanceToEnemy = Vector3.Distance(ClosestEnemy.position, PlayerTransform.position);
-
-            if (DistanceToEnemy <= PlayerData.Instance.FireRange)
+            var e = enemies[i];
+            if (!e.enemyHealthSystem.isAlive) continue;
+            float sqr = (e.transform.position - myPos).sqrMagnitude;
+            if (sqr < minSqr)
             {
-                TargetPoint = ClosestEnemy.position;
-
-                // TargetPoint.y = DefaultAimPoint.position.y;
-                TargetPoint.y = 1.16f;
-                AimPoint.DOMove(TargetPoint, 0.1f);
-
-                TargetPoint.y = Body.position.y;
-                Body.DOLookAt(TargetPoint, 0.1f);
-                Aim(true);
+                minSqr = sqr;
+                closestTransform = e.transform;
+                _closestTargetable = e;
             }
-            else
-            {
-                AimPoint.position = DefaultAimPoint.position;
-                Aim(false);
-            }
+        }
+
+        if (closestTransform == null)
+        {
+            AimPoint.position = DefaultAimPoint.position;
+            Aim(false);
+            return;
+        }
+
+        ClosestEnemy = closestTransform;
+        _closestTargetable.Targeted(true);
+
+        _fireRangeSqr = PlayerData.Instance.FireRange * PlayerData.Instance.FireRange;
+        if (minSqr <= _fireRangeSqr)
+        {
+            TargetPoint = ClosestEnemy.position;
+            TargetPoint.y = 1.16f;
+            AimPoint.DOMove(TargetPoint, 0.1f);
+
+            TargetPoint.y = Body.position.y;
+            Body.DOLookAt(TargetPoint, 0.1f);
+            Aim(true);
         }
         else
         {

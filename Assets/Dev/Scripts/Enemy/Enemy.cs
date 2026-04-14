@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour, ITargetable
         EnemyAnim.SetBool("canMove", true);
     }
 
-    private static readonly WaitForSeconds _waitAttack  = new WaitForSeconds(1f);
+    private static readonly WaitForSeconds _waitAttack = new WaitForSeconds(1f);
     private static readonly WaitForSeconds _waitDisable = new WaitForSeconds(5f);
     private WaitForSeconds _waitSlow;
     private float _lastSlowTime = -1f;
@@ -105,11 +105,12 @@ public class Enemy : MonoBehaviour, ITargetable
     }
 
     #region DeadAlive
-    private static readonly string[] DeadAnims   = { "Dead 0",   "Dead 1",   "Dead 2",   "Dead 3"   };
-    private static readonly string[] AttackAnims = { "Attack0",  "Attack1",  "Attack2",  "Attack3"  };
+    private static readonly string[] DeadAnims = { "Dead 0", "Dead 1", "Dead 2", "Dead 3" };
+    private static readonly string[] AttackAnims = { "Attack0", "Attack1", "Attack2", "Attack3" };
 
     private void OnDead()
     {
+        EnemyManager.Instance.DeadEnemy(this);
         GameEvents.RaiseEnemyKilled(myTransform, myTransform.position);
 
         EnemyAgent.ResetPath();
