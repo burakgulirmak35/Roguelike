@@ -69,6 +69,11 @@ public class Enemy : MonoBehaviour, ITargetable
         EnemyAnim.SetBool("canMove", true);
     }
 
+    private static readonly WaitForSeconds _waitAttack  = new WaitForSeconds(1f);
+    private static readonly WaitForSeconds _waitDisable = new WaitForSeconds(5f);
+    private WaitForSeconds _waitSlow;
+    private float _lastSlowTime = -1f;
+
     private float distance;
     public void FollowPlayer()
     {
@@ -194,7 +199,7 @@ public class Enemy : MonoBehaviour, ITargetable
     private Coroutine AttackCoro;
     private IEnumerator AttackTimer()
     {
-        yield return new WaitForSeconds(1f);
+        yield return _waitAttack;
         isBusy = false;
     }
 
@@ -219,7 +224,7 @@ public class Enemy : MonoBehaviour, ITargetable
     }
     private IEnumerator DisableTimer()
     {
-        yield return new WaitForSeconds(5f);
+        yield return _waitDisable;
         gameObject.SetActive(false);
     }
     #endregion
@@ -239,7 +244,12 @@ public class Enemy : MonoBehaviour, ITargetable
     }
     private IEnumerator SlowDownTimer(float _time)
     {
-        yield return new WaitForSeconds(_time);
+        if (_time != _lastSlowTime)
+        {
+            _lastSlowTime = _time;
+            _waitSlow = new WaitForSeconds(_time);
+        }
+        yield return _waitSlow;
 
         EnemyAgent.speed = enemySO.Speed;
         attackSpeed = enemySO.AttackSpeed;

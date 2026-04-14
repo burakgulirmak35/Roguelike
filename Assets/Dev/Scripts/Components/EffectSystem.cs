@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EffectSystem : MonoBehaviour
 {
+    private static readonly WaitForSeconds _waitBoost = new WaitForSeconds(3f);
+
     [Header("MeshTrail")]
     [SerializeField] public MeshTrail meshTrail;
     [Header("FireRatePowerEffect")]
@@ -37,7 +39,7 @@ public class EffectSystem : MonoBehaviour
 
         PlayerData.Instance.FireRateMultipler = 4f;
         Player.Instance.effectSystem.FireRatePowerEffect.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return _waitBoost;
         Player.Instance.effectSystem.FireRatePowerEffect.SetActive(false);
         PlayerData.Instance.FireRateMultipler = 1f;
         isFireRateBoost = false;
@@ -60,7 +62,7 @@ public class EffectSystem : MonoBehaviour
 
         PlayerData.Instance.MovementSpeedMultipler = 2f;
         Player.Instance.effectSystem.WindTrail.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return _waitBoost;
         Player.Instance.effectSystem.WindTrail.SetActive(false);
         PlayerData.Instance.MovementSpeedMultipler = 1f;
         isMovementSpeedBoost = false;

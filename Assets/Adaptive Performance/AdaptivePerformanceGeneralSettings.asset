@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5281292467979191713
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 21001, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: Android Providers
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.AdaptivePerformance.AdaptivePerformanceManagerSettings
+  m_AutomaticLoading: 0
+  m_AutomaticRunning: 0
+  m_Loaders:
+  - {fileID: 11400000, guid: 36bde023ce60b3a44a1c29ea405e50ad, type: 2}
+--- !u!114 &-3443983731268098800
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 21000, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: iPhone Settings
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.AdaptivePerformance.AdaptivePerformanceGeneralSettings
+  m_LoaderManagerInstance: {fileID: 3585575576680900409}
+  m_InitManagerOnStart: 1
+  m_LastSelectedProvider: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 21010, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: AdaptivePerformanceGeneralSettings
+  m_EditorClassIdentifier: UnityEditor.dll::UnityEditor.AdaptivePerformance.Editor.AdaptivePerformanceGeneralSettingsPerBuildTarget
+  Keys: 070000000100000004000000
+  Values:
+  - {fileID: 5872822730990701514}
+  - {fileID: 5554736693646235720}
+  - {fileID: -3443983731268098800}
+  m_EnableAdaptivePerformance: 1
+  m_Version: 6000.3
+--- !u!114 &3345617228742357315
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 21001, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: Standalone Providers
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.AdaptivePerformance.AdaptivePerformanceManagerSettings
+  m_AutomaticLoading: 0
+  m_AutomaticRunning: 0
+  m_Loaders: []
+--- !u!114 &3585575576680900409
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 21001, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: iPhone Providers
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.AdaptivePerformance.AdaptivePerformanceManagerSettings
+  m_AutomaticLoading: 0
+  m_AutomaticRunning: 0
+  m_Loaders: []
+--- !u!114 &5554736693646235720
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 21000, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: Standalone Settings
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.AdaptivePerformance.AdaptivePerformanceGeneralSettings
+  m_LoaderManagerInstance: {fileID: 3345617228742357315}
+  m_InitManagerOnStart: 1
+  m_LastSelectedProvider: 
+--- !u!114 &5872822730990701514
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 21000, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: Android Settings
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.AdaptivePerformance.AdaptivePerformanceGeneralSettings
+  m_LoaderManagerInstance: {fileID: -5281292467979191713}
+  m_InitManagerOnStart: 1
+  m_LastSelectedProvider: 

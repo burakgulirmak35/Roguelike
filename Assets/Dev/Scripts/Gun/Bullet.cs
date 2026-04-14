@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour
     private int bounceCount;
     private GameObject tempObject;
 
+    private static readonly WaitForSeconds _waitDisable = new WaitForSeconds(3f);
+
     void Awake()
     {
         bulletTransform = transform;
@@ -29,31 +31,29 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        switch (other.tag)
+        if (other.CompareTag("Enemy"))
         {
-            case "Enemy":
-                other.gameObject.GetComponent<Enemy>().enemyHealthSystem.TakeDamage(PlayerData.Instance.Damage);
-                tempObject = PoolManager.Instance.GetFromPool(PoolTypes.BloodShot);
-                tempObject.transform.position = transform.position;
-                tempObject.SetActive(true);
+            if (other.TryGetComponent<Enemy>(out var enemy))
+                enemy.enemyHealthSystem.TakeDamage(PlayerData.Instance.Damage);
 
-                if (PlayerData.Instance.ExplosiveAmmo) { Spawner.Instance.SpawnAtPos(PoolTypes.BulletExplosion, transform.position); }
-                if (PlayerData.Instance.Penetrability) { Penetration(); }
-                else { Disable(); }
+            tempObject = PoolManager.Instance.GetFromPool(PoolTypes.BloodShot);
+            tempObject.transform.position = transform.position;
+            tempObject.SetActive(true);
 
-                break;
-            case "Enviroment":
-                if (bounceCount > 0) { Bounce(); }
-                else { Disable(); }
-                break;
-            case "Props":
-                if (Player.Instance.playerState.Equals(PlayerState.HoverBoard)) return;
-                if (bounceCount > 0) { Bounce(); }
-                else { Disable(); }
-
-                break;
-            default:
-                break;
+            if (PlayerData.Instance.ExplosiveAmmo) { Spawner.Instance.SpawnAtPos(PoolTypes.BulletExplosion, transform.position); }
+            if (PlayerData.Instance.Penetrability) { Penetration(); }
+            else { Disable(); }
+        }
+        else if (other.CompareTag("Enviroment"))
+        {
+            if (bounceCount > 0) { Bounce(); }
+            else { Disable(); }
+        }
+        else if (other.CompareTag("Props"))
+        {
+            if (Player.Instance.playerState.Equals(PlayerState.HoverBoard)) return;
+            if (bounceCount > 0) { Bounce(); }
+            else { Disable(); }
         }
     }
 
@@ -89,7 +89,7 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator DisableTimer()
     {
-        yield return new WaitForSeconds(3f);
+        yield return _waitDisable;
         Disable();
     }
 

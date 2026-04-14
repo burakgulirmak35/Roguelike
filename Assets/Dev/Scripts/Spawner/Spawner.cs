@@ -23,6 +23,11 @@ public class Spawner : MonoBehaviour
     private GameObject tempItem;
     public static Spawner Instance { get; private set; }
 
+    private static readonly WaitForSeconds _waitRespawn = new WaitForSeconds(5f);
+    private static readonly WaitForSeconds _waitPopup   = new WaitForSeconds(1.5f);
+    private WaitForSeconds _waitSpawnDelay;
+    private bool _treeRebuildPending;
+
     private void Awake()
     {
         Instance = this;
@@ -47,6 +52,7 @@ public class Spawner : MonoBehaviour
 
     public void StartGame()
     {
+        _waitSpawnDelay = new WaitForSeconds(spawnDelay);
         StartCoroutine(SpawnTimer());
     }
 
@@ -65,9 +71,9 @@ public class Spawner : MonoBehaviour
                 spawnee.transform.position = GetSpawnPos();
                 spawnee.GetComponent<Enemy>().Reborn();
                 spawnee.SetActive(true);
-                yield return new WaitForSeconds(spawnDelay);
+                yield return _waitSpawnDelay;
             }
-            yield return new WaitForSeconds(5f);
+            yield return _waitRespawn;
         }
     }
 
@@ -86,9 +92,19 @@ public class Spawner : MonoBehaviour
     public void DeadEnemy(Transform _enemy)
     {
         EnemyList.Remove(_enemy);
+        if (!_treeRebuildPending)
+        {
+            _treeRebuildPending = true;
+            StartCoroutine(RebuildTreeNextFrame());
+        }
+    }
+
+    private IEnumerator RebuildTreeNextFrame()
+    {
+        yield return null;
         ActiveEnemies.Clear();
         ActiveEnemies.AddAll(EnemyList);
-        ActiveEnemies.UpdatePositions();
+        _treeRebuildPending = false;
     }
 
     #region CreateText -----------------------
@@ -102,7 +118,7 @@ public class Spawner : MonoBehaviour
         tempText.text = text;
         tempText.color = textColor;
         tempTextObject.SetActive(true);
-        StartCoroutine(DisableObject(tempTextObject, 1.5f));
+        StartCoroutine(DisableObject(tempTextObject));
     }
 
     #endregion
@@ -173,9 +189,9 @@ public class Spawner : MonoBehaviour
     #endregion
 
 
-    private IEnumerator DisableObject(GameObject go, float time)
+    private IEnumerator DisableObject(GameObject go)
     {
-        yield return new WaitForSeconds(time);
+        yield return _waitPopup;
         go.SetActive(false);
     }
 

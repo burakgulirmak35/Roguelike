@@ -8,6 +8,8 @@ public class EnemyManager : MonoBehaviour
     private List<Enemy> enemies = new List<Enemy>();
     [HideInInspector] public Vector3 TargetPos;
 
+    private static readonly WaitForSeconds _waitFollow = new WaitForSeconds(0.2f);
+
     public static EnemyManager Instance { get; private set; }
     private void Awake()
     {
@@ -26,7 +28,12 @@ public class EnemyManager : MonoBehaviour
 
     public void DeadEnemy(Enemy _enemy)
     {
-        enemies.Remove(_enemy);
+        int idx = enemies.IndexOf(_enemy);
+        if (idx >= 0)
+        {
+            enemies[idx] = enemies[enemies.Count - 1];
+            enemies.RemoveAt(enemies.Count - 1);
+        }
         Spawner.Instance.DeadEnemy(_enemy.transform);
     }
 
@@ -34,7 +41,7 @@ public class EnemyManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return _waitFollow;
             TargetPos = Player.Instance.PlayerTransform.position;
             TargetPos.y = 0;
 

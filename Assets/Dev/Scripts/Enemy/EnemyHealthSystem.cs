@@ -14,6 +14,8 @@ public class EnemyHealthSystem : MonoBehaviour
     private float maxHealth;
     private float health;
     private float healthAmount;
+    private int _lastDisplayedHealth = -1;
+    private Tweener _healthTween;
     [HideInInspector] public bool isAlive;
     private Transform myTransform;
 
@@ -30,7 +32,8 @@ public class EnemyHealthSystem : MonoBehaviour
         health = _health;
         healthAmount = 1f;
         slider_Health.value = healthAmount;
-        txt_Health.text = ((int)health).ToString();
+        _lastDisplayedHealth = (int)health;
+        txt_Health.text = _lastDisplayedHealth.ToString();
     }
 
     public void Heal(float amount)
@@ -41,8 +44,9 @@ public class EnemyHealthSystem : MonoBehaviour
             health = maxHealth;
         }
         healthAmount = health / maxHealth;
-        DOTween.To(() => slider_Health.value, x => slider_Health.value = x, healthAmount, 0.25f).SetEase(Ease.Linear);
-        txt_Health.text = ((int)health).ToString();
+        _healthTween?.Kill();
+        _healthTween = DOTween.To(() => slider_Health.value, x => slider_Health.value = x, healthAmount, 0.25f).SetEase(Ease.Linear);
+        UpdateHealthText();
     }
 
     public void HealPercent(float percent)
@@ -67,14 +71,27 @@ public class EnemyHealthSystem : MonoBehaviour
         {
             isAlive = false;
             health = 0;
+            _healthTween?.Kill();
             slider_Health.value = 0;
-            txt_Health.text = ((int)health).ToString();
+            txt_Health.text = "0";
+            _lastDisplayedHealth = 0;
             OnDead?.Invoke();
             return;
         }
         healthAmount = health / maxHealth;
-        DOTween.To(() => slider_Health.value, x => slider_Health.value = x, healthAmount, 0.2f).SetEase(Ease.Linear);
-        txt_Health.text = ((int)health).ToString();
+        _healthTween?.Kill();
+        _healthTween = DOTween.To(() => slider_Health.value, x => slider_Health.value = x, healthAmount, 0.2f).SetEase(Ease.Linear);
+        UpdateHealthText();
+    }
+
+    private void UpdateHealthText()
+    {
+        int displayVal = (int)health;
+        if (displayVal != _lastDisplayedHealth)
+        {
+            _lastDisplayedHealth = displayVal;
+            txt_Health.text = displayVal.ToString();
+        }
     }
 
     #region HeathVisualTimer

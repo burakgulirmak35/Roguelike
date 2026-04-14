@@ -6,14 +6,15 @@ public class PlayerCollider : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        switch (other.tag)
+        if (other.CompareTag("Gate"))
         {
-            case "Gate":
-                other.GetComponent<Gate>().PassGate();
-                break;
-            case "Collectable":
-                other.GetComponent<Collectable>().Collect();
-                break;
+            if (other.TryGetComponent<Gate>(out var gate))
+                gate.PassGate();
+        }
+        else if (other.CompareTag("Collectable"))
+        {
+            if (other.TryGetComponent<Collectable>(out var collectable))
+                collectable.Collect();
         }
     }
 }

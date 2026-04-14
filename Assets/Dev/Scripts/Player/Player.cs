@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
 
     [Space]
     [HideInInspector] public Transform PlayerTransform;
+    private ITargetable _closestTargetable;
 
 
     public static Player Instance { get; private set; }
@@ -321,7 +322,8 @@ public class Player : MonoBehaviour
             UnTarget();
 
             ClosestEnemy = Spawner.Instance.ActiveEnemies.FindClosest(PlayerTransform.position);
-            ClosestEnemy.GetComponent<ITargetable>().Targeted(true);
+            _closestTargetable = ClosestEnemy.GetComponent<ITargetable>();
+            _closestTargetable.Targeted(true);
             DistanceToEnemy = Vector3.Distance(ClosestEnemy.position, PlayerTransform.position);
 
             if (DistanceToEnemy <= PlayerData.Instance.FireRange)
@@ -351,9 +353,10 @@ public class Player : MonoBehaviour
 
     private void UnTarget()
     {
-        if (ClosestEnemy != null)
+        if (_closestTargetable != null)
         {
-            ClosestEnemy.GetComponent<ITargetable>().Targeted(false);
+            _closestTargetable.Targeted(false);
+            _closestTargetable = null;
         }
     }
     #endregion

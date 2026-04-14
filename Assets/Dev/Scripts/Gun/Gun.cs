@@ -16,6 +16,7 @@ public class Gun : MonoBehaviour
     [Space]
     private Coroutine FireCoro;
     private bool isFire;
+    private WaitForSeconds _waitBurst;
 
     private void Awake()
     {
@@ -23,6 +24,11 @@ public class Gun : MonoBehaviour
         soundManager = FindFirstObjectByType<SoundManager>();
         playerData = FindFirstObjectByType<PlayerData>();
         cameraManager = FindFirstObjectByType<CameraManager>();
+    }
+
+    private void Start()
+    {
+        _waitBurst = new WaitForSeconds(playerData.EachBurstTime);
     }
 
     public Transform GetLeftHandPos()
@@ -59,16 +65,21 @@ public class Gun : MonoBehaviour
     private Rigidbody tmpBulletRB;
     private IEnumerator FireLoop()
     {
+        float elapsed = 0f;
         while (isFire)
         {
-            yield return new WaitForSeconds(1.0f / (playerData.FireRate * playerData.FireRateMultipler));
-            for (int i = 0; i < firePoint.Length; i++)
+            elapsed += Time.deltaTime;
+            float interval = 1.0f / (playerData.FireRate * playerData.FireRateMultipler);
+            if (elapsed >= interval)
             {
-                for (int j = 0; j < playerData.BurstCount; j++)
+                elapsed -= interval;
+                for (int i = 0; i < firePoint.Length; i++)
                 {
-                    cameraManager.ShakeCamera();
-                    if (isFire)
+                    for (int j = 0; j < playerData.BurstCount; j++)
                     {
+                        if (!isFire) yield break;
+                        cameraManager.ShakeCamera();
+
                         tmpBullet = poolManager.GetFromPool(PoolTypes.Bullet);
                         tmpBulletTransform = tmpBullet.transform;
                         tmpBulletRB = tmpBullet.GetComponent<Rigidbody>();
@@ -82,10 +93,11 @@ public class Gun : MonoBehaviour
                         tmpBullet.SetActive(true);
                         tmpBulletRB.AddForce(tmpBulletTransform.forward * playerData.BulletSpeed, ForceMode.Impulse);
 
-                        yield return new WaitForSeconds(playerData.EachBurstTime);
+                        yield return _waitBurst;
                     }
                 }
             }
+            yield return null;
         }
     }
 

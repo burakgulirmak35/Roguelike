@@ -12,6 +12,7 @@ public class LevelSystem : MonoBehaviour
     [SerializeField] private GameObject particle_LevelUp;
     [SerializeField] private Sound LevelUpSound;
     private float expAmount;
+    private Tweener _expTween;
 
     public void SetLevel()
     {
@@ -26,7 +27,8 @@ public class LevelSystem : MonoBehaviour
             LevelUp();
         }
         expAmount = (float)PlayerData.Instance.exp / (float)PlayerData.Instance.expPerLevel[PlayerData.Instance.level];
-        DOTween.To(() => slider_Exp.value, x => slider_Exp.value = x, expAmount, 0.25f).SetEase(Ease.Linear);
+        _expTween?.Kill();
+        _expTween = DOTween.To(() => slider_Exp.value, x => slider_Exp.value = x, expAmount, 0.25f).SetEase(Ease.Linear);
         PlayerPrefs.SetInt("Exp", PlayerData.Instance.exp);
     }
 
@@ -39,7 +41,7 @@ public class LevelSystem : MonoBehaviour
         if (PlayerData.Instance.level < PlayerData.Instance.expPerLevel.Count - 1)
         {
             PlayerData.Instance.level += 1;
-            txt_Level.text = "Lv." + (PlayerData.Instance.level + 1).ToString();
+            txt_Level.text = $"Lv.{PlayerData.Instance.level + 1}";
         }
         else
         {
