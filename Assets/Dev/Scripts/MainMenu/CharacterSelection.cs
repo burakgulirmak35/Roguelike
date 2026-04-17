@@ -8,7 +8,13 @@ public class CharacterSelection : MonoBehaviour
     [SerializeField] private List<GameObject> Characters = new List<GameObject>();
     [SerializeField] private int DefaultCharacterIndex;
     private int SelectedCharacterIndex;
-    [SerializeField] private List<string> CharacterNames = new List<string>();
+    private readonly List<string> CharacterNames = new()
+    {
+        "Ghost", "Reaper", "Viper", "Phantom", "Wraith",
+        "Blaze", "Havoc", "Nova", "Rogue", "Specter",
+        "Cipher", "Titan", "Shade", "Volt", "Nyx",
+        "Striker", "Venom", "Echo", "Surge", "Nexus"
+    };
 
     public static CharacterSelection Instance { get; private set; }
     private void Awake()

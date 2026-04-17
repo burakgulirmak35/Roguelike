@@ -10,8 +10,13 @@ public class Spawner : MonoBehaviour
     [Header("Unit")]
     [SerializeField][Range(10, 30)] public float MinEnemyDistanceToSpawn;
     [SerializeField][Range(20, 50)] public float UnitDissapearDistance;
-    [SerializeField] public int AliveEnemyCount;
+    public int AliveEnemyCount;
     [SerializeField][Range(0, 1)] public float spawnDelay;
+
+    [Header("Enemy Count Scaling (5 Kademe)")]
+    [SerializeField] private int[] EnemyCountStages = { 5, 8, 11, 14, 17 };
+    [SerializeField] private int[] StageLevelThresholds = { 0, 2, 4, 6, 8 };
+    [SerializeField] private int MaxAliveEnemyCount = 75;
     [Space]
     [Header("Item")]
     [SerializeField][Range(1, 5)] public float ItemDropDistanceMin;
@@ -32,11 +37,25 @@ public class Spawner : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.OnDamageTaken += OnDamageTaken;
+        GameEvents.OnLevelUp += OnLevelUp;
     }
 
     private void OnDisable()
     {
         GameEvents.OnDamageTaken -= OnDamageTaken;
+        GameEvents.OnLevelUp -= OnLevelUp;
+    }
+
+    private void OnLevelUp(int level)
+    {
+        for (int i = StageLevelThresholds.Length - 1; i >= 0; i--)
+        {
+            if (level >= StageLevelThresholds[i])
+            {
+                AliveEnemyCount = Mathf.Min(EnemyCountStages[i], MaxAliveEnemyCount);
+                return;
+            }
+        }
     }
 
     private void OnDamageTaken(float amount, Vector3 pos, bool isPlayer) =>
@@ -44,6 +63,7 @@ public class Spawner : MonoBehaviour
 
     public void StartGame()
     {
+        OnLevelUp(PlayerData.Instance.level);
         _waitSpawnDelay = new WaitForSeconds(spawnDelay);
         StartCoroutine(SpawnTimer());
     }

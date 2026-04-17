@@ -22,11 +22,11 @@ public class LevelSystem : MonoBehaviour
     public void AddExperience(int _amount)
     {
         PlayerData.Instance.exp += _amount;
-        if (PlayerData.Instance.exp >= PlayerData.Instance.expPerLevel[PlayerData.Instance.level])
+        if (PlayerData.Instance.exp >= PlayerData.Instance.expToLevelUp[PlayerData.Instance.level])
         {
             LevelUp();
         }
-        expAmount = (float)PlayerData.Instance.exp / (float)PlayerData.Instance.expPerLevel[PlayerData.Instance.level];
+        expAmount = (float)PlayerData.Instance.exp / (float)PlayerData.Instance.expToLevelUp[PlayerData.Instance.level];
         _expTween?.Kill();
         _expTween = DOTween.To(() => slider_Exp.value, x => slider_Exp.value = x, expAmount, 0.25f).SetEase(Ease.Linear);
         PlayerPrefs.SetInt("Exp", PlayerData.Instance.exp);
@@ -38,7 +38,7 @@ public class LevelSystem : MonoBehaviour
 
         PlayerData.Instance.exp = 0;
         slider_Exp.value = 0;
-        if (PlayerData.Instance.level < PlayerData.Instance.expPerLevel.Count - 1)
+        if (PlayerData.Instance.level < PlayerData.Instance.expToLevelUp.Count - 1)
         {
             PlayerData.Instance.level += 1;
             txt_Level.text = $"Lv.{PlayerData.Instance.level + 1}";

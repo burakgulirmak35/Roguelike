@@ -1,12 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public enum GunType
-{
-    Rifle, Pistol, ShotGun, Sniper, Grenade, Minigun, Rocket
-}
-
 public class PlayerData : MonoBehaviour
 {
     // -----------------------------------------------------------------------
@@ -35,7 +29,7 @@ public class PlayerData : MonoBehaviour
     // -----------------------------------------------------------------------
 
     [Header("Level")]
-    public List<int> expPerLevel = new List<int>();
+    public List<int> expToLevelUp = new List<int>();
     public int level;
     public int exp;
 
@@ -66,7 +60,6 @@ public class PlayerData : MonoBehaviour
     public float ExplosiveAmmoDamage;
     public bool Penetrability;
     public bool ExplosiveAmmo;
-    public GunType SelectedGun;
 
     [Header("Effects")]
     [HideInInspector] public float MovementSpeedMultipler;

@@ -88,7 +88,7 @@ public class Gun : MonoBehaviour
                         tmpBulletTransform.forward = firePoint[i].forward;
 
                         Muzzle.Play();
-                        soundManager.PlayGunSound(playerData.SelectedGun);
+                        soundManager.PlayGunSound();
 
                         tmpBullet.SetActive(true);
                         tmpBulletRB.AddForce(tmpBulletTransform.forward * playerData.BulletSpeed, ForceMode.Impulse);

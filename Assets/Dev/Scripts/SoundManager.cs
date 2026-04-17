@@ -19,7 +19,8 @@ public class SoundManager : MonoBehaviour
     [Header("Music")]
     [SerializeField] private AudioSource musicPlayer;
     [SerializeField] private AudioClip musicList;
-    [SerializeField] private float defaultMusicVolume = 0.5f;
+    [SerializeField] private float defaultMusicVolume = 0.2f;
+    [SerializeField] private float defaultSoundVolume = 1f;
     private float MusicVolume;
 
     private void StartMusic()
@@ -45,8 +46,11 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource[] sfxPool;
     private int _poolIndex;
 
+    [Header("SFX Gun Pool")]
+    [SerializeField] private AudioSource[] sfxGunPool;
+    private int _sfxGunPoolIndex;
+
     [Header("Sounds")]
-    [SerializeField] private float defaultSoundVolume = 1f;
     private float SoundVolume;
 
     public float GetMusicVolume() => MusicVolume;
@@ -58,36 +62,30 @@ public class SoundManager : MonoBehaviour
         PlayerPrefs.SetFloat("SoundVolume", SoundVolume);
     }
     [Header("---")]
-    [SerializeField] private Sound GrenadeExplosion;
-    [SerializeField] private Sound RocketExplosion;
-    [Header("---")]
-    [SerializeField] private Sound Pistol;
-    [SerializeField] private Sound Rifle;
-    [SerializeField] private Sound Shotgun;
-    [SerializeField] private Sound Sniper;
-    [SerializeField] private Sound Grenade;
-    [SerializeField] private Sound Minigun;
-    [SerializeField] private Sound Rocket;
+    [SerializeField] private Sound GunSound;
 
-    public void PlayGunSound(GunType gunType)
+    public void PlayGunSound()
     {
-        Sound sound = gunType switch
-        {
-            GunType.Pistol   => Pistol,
-            GunType.Rifle    => Rifle,
-            GunType.ShotGun  => Shotgun,
-            GunType.Sniper   => Sniper,
-            GunType.Grenade  => Grenade,
-            GunType.Minigun  => Minigun,
-            GunType.Rocket   => Rocket,
-            _                => Pistol,
-        };
-        PlayDirect(sound);
+        PlayBulletDirect(GunSound);
     }
 
     public void PlaySound(Sound sound)
     {
         PlayDirect(sound);
+    }
+
+    private void PlayBulletDirect(Sound _audio)
+    {
+        if (_audio.audioClip == null || _audio.audioClip.Length == 0) return;
+
+        AudioSource source = sfxGunPool[_sfxGunPoolIndex];
+        _sfxGunPoolIndex = (_sfxGunPoolIndex + 1) % sfxGunPool.Length;
+
+        source.Stop();
+        source.clip = _audio.audioClip[Random.Range(0, _audio.audioClip.Length)];
+        source.volume = Random.Range(_audio.minVolume, _audio.maxVolume) * SoundVolume;
+        source.pitch = Random.Range(_audio.minPitch, _audio.maxPitch);
+        source.Play();
     }
 
     private void PlayDirect(Sound _audio)

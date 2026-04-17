@@ -128,7 +128,7 @@ public class PoolManager : MonoBehaviour
     // Core fetch — inactive arar, hepsi aktifse en eskiyi çalar
     // -----------------------------------------------------------------------
 
-    private static GameObject Fetch(Queue<GameObject> pool, string label)
+    private static GameObject Fetch(Queue<GameObject> pool, string _)
     {
         int count = pool.Count;
         for (int i = 0; i < count; i++)
@@ -138,8 +138,8 @@ public class PoolManager : MonoBehaviour
             if (!obj.activeSelf) return obj;
         }
 
-        Debug.LogWarning($"[Pool:{label}] Tüm objeler aktif — pool boyutu artırılmalı.");
         var stolen = pool.Dequeue();
+        stolen.SetActive(false);
         pool.Enqueue(stolen);
         return stolen;
     }

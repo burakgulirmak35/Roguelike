@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
     {
         SetInputs();
         PlayerData.Instance.LoadData();
-        EquipGun(PlayerData.Instance.SelectedGun);
+        EquipGun();
 
         costumeSystem.SetCharacter();
         healthSystem.SetHealth(PlayerData.Instance.MaxHealth);
@@ -154,20 +154,15 @@ public class Player : MonoBehaviour
         healthSystem.UpgradeMaxHealth(PlayerData.Instance.MaxHealth);
     }
 
-    private void EquipGun(GunType _gunType)
+    private void EquipGun()
     {
         if (gun != null)
         {
             gun.gameObject.SetActive(false);
         }
 
-        switch (_gunType)
-        {
-            case GunType.Rifle:
-                Rifle.SetActive(true);
-                gun = Rifle.GetComponent<Gun>();
-                break;
-        }
+        Rifle.SetActive(true);
+        gun = Rifle.GetComponent<Gun>();
         LeftArmTarget.position = gun.GetLeftHandPos().position;
         LeftArmTarget.rotation = gun.GetLeftHandPos().rotation;
     }

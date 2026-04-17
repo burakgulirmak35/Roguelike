@@ -150,6 +150,9 @@ MonoBehaviour:
   UnitDissapearDistance: 50
   AliveEnemyCount: 75
   spawnDelay: 0.2
+  EnemyCountStages: 19000000320000004b000000
+  StageLevelThresholds: 000000000300000006000000
+  MaxAliveEnemyCount: 75
   ItemDropDistanceMin: 1.5
   ItemDropDistanceMax: 4
 --- !u!114 &3796402444691986334
@@ -176,10 +179,10 @@ MonoBehaviour:
   - {fileID: 193062, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
   BloodLakePoolCount: 50
   BloodLakePrefab: {fileID: 192166, guid: aade56583c1d3cf4d91c402e10bab311, type: 3}
-  BulletExplosionPoolCount: 10
+  BulletExplosionPoolCount: 15
   BulletExplosionPrefab: {fileID: 127072, guid: 901cb763553a9c948a201ff4479d311a,
     type: 3}
-  WorldTextPoolCount: 10
+  WorldTextPoolCount: 15
   WorldTextPrefab: {fileID: 2415433774831474974, guid: 11da45d4a0a22ab48a10bbfed425324a,
     type: 3}
   ExperiencePoolCount: 80
