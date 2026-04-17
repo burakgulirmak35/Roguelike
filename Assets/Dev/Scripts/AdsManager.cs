@@ -5,11 +5,7 @@ using UnityEngine.Advertisements;
 public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     public static AdsManager Instance { get; private set; }
-
-    [Header("Unity Dashboard'dan al → dashboard.unity.com")]
-    [SerializeField] private string _androidGameId = "YOUR_GAME_ID";
-
-    [Header("Yayına almadan önce false yap")]
+    [SerializeField] private string _androidGameId = "6093566";
     [SerializeField] private bool _testMode = true;
 
     private const string INTERSTITIAL_ID = "Interstitial_Android";
@@ -40,7 +36,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
         LoadRewarded();
         _bannerLoadOptions = new BannerLoadOptions
         {
-            loadCallback  = () => { },
+            loadCallback = () => { },
             errorCallback = (msg) => Debug.LogWarning($"[Ads] Banner load failed: {msg}")
         };
     }

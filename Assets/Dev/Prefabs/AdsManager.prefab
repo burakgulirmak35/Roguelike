@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1176639648c15a646b302f482e9572f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AdsManager
-  _androidGameId: YOUR_GAME_ID
+  _androidGameId: 6093566
   _testMode: 1

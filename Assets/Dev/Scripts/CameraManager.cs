@@ -29,6 +29,7 @@ public class CameraManager : MonoBehaviour
         cinemachineFollow = cinemachineCamera.GetCinemachineComponent(CinemachineCore.Stage.Body) as CinemachineFollow;
         cinemachineBasicMultiChannelPerlin = cinemachineCamera.GetCinemachineComponent(CinemachineCore.Stage.Noise) as CinemachineBasicMultiChannelPerlin;
         cinemachineCamera.Priority.Value = 1;
+        cinemachineBasicMultiChannelPerlin.AmplitudeGain = 0;
     }
 
     void Start()

@@ -3,7 +3,8 @@
     "allow": [
       "Bash(rm -rf \"c:/Users/BURAK GULIRMAK/Desktop/Projelerim/Roguelike/Assets/Plugins/Editor/JetBrains.RiderFlow\")",
       "Bash(rm -f \"c:/Users/BURAK GULIRMAK/Desktop/Projelerim/Roguelike/Assets/Plugins/Editor/JetBrains.RiderFlow.meta\")",
-      "Bash(rm -f \"c:/Users/BURAK GULIRMAK/Desktop/Projelerim/Roguelike/Assets/RiderFlow.UserData.meta\")"
+      "Bash(rm -f \"c:/Users/BURAK GULIRMAK/Desktop/Projelerim/Roguelike/Assets/RiderFlow.UserData.meta\")",
+      "Bash(xargs grep *)"
     ]
   }
 }

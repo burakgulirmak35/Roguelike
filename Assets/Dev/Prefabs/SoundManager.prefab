@@ -825,8 +825,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicPlayer: {fileID: 6561332159870828244}
-  musicList: {fileID: 8300000, guid: f9f39a76ff6e65a438a12148a158f8eb, type: 3}
-  defaultMusicVolume: 0.5
+  musicList: {fileID: 8300000, guid: 36b460a1ae493e7438f3084b22bd8ea0, type: 3}
+  defaultMusicVolume: 0.4
   sfxPool:
   - {fileID: 1322422422482643242}
   - {fileID: 1048328362724887671}
