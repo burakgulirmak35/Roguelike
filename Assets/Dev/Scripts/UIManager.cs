@@ -32,6 +32,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txt_Score;
     private Transform txt_ScoreTransform;
 
+    [Header("Damage Effect")]
+    [SerializeField] private Image img_DamageEffect;
+    [SerializeField] private float damageEffectDuration = 0.4f;
+    [SerializeField] private float damageEffectIncrement = 0.2f;
+    private Tweener _damageTween;
+
     [Header("DG.T")]
     private Sequence mySequence;
 
@@ -42,6 +48,7 @@ public class UIManager : MonoBehaviour
         panelFadeInOut.FadeIn(1f);
         LeftJoystickBasePos = LeftJoystick.position;
         txt_ScoreTransform = txt_Score.transform;
+        img_DamageEffect.color = new Color(1, 1, 1, 0);
     }
 
     private void OnEnable()
@@ -49,6 +56,7 @@ public class UIManager : MonoBehaviour
         GameEvents.OnEnemyKilled += OnEnemyKilled;
         GameEvents.OnPlayerDead += OnPlayerDead;
         GameEvents.OnLevelUp += OnLevelUp;
+        GameEvents.OnDamageTaken += OnDamageTaken;
     }
 
     private void OnDisable()
@@ -56,6 +64,7 @@ public class UIManager : MonoBehaviour
         GameEvents.OnEnemyKilled -= OnEnemyKilled;
         GameEvents.OnPlayerDead -= OnPlayerDead;
         GameEvents.OnLevelUp -= OnLevelUp;
+        GameEvents.OnDamageTaken -= OnDamageTaken;
     }
 
     private void Start()
@@ -115,6 +124,15 @@ public class UIManager : MonoBehaviour
             AdsManager.Instance.HideBanner();
         }
         panelPlayerDead.gameObject.SetActive(_state);
+    }
+
+    private void OnDamageTaken(float amount, Vector3 pos, bool isPlayer)
+    {
+        if (!isPlayer) return;
+        _damageTween?.Kill();
+        float newAlpha = Mathf.Min(img_DamageEffect.color.a + damageEffectIncrement, 1f);
+        img_DamageEffect.color = new Color(1, 1, 1, newAlpha);
+        _damageTween = img_DamageEffect.DOFade(0f, damageEffectDuration);
     }
 
     private void OnLevelUp(int level)

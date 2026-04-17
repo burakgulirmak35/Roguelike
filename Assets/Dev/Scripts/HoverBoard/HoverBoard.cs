@@ -16,6 +16,7 @@ public class HoverBoard : MonoBehaviour
     {
         BoardTransform = transform;
         _propsLayer = LayerMask.GetMask("Props");
+        _waitFly = new WaitForSeconds(FlyTime);
     }
 
 
@@ -32,8 +33,6 @@ public class HoverBoard : MonoBehaviour
     private Coroutine HoverBoardActiveTimerCoro;
     private IEnumerator HoverBoardActiveTimer()
     {
-        if (_waitFly == null) _waitFly = new WaitForSeconds(FlyTime);
-
         Player.Instance.playerState = PlayerState.CutScene;
 
         UIManager.Instance.btn_HoverBoard.interactable = false;

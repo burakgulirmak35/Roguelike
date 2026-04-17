@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private ParticleSystem[] BulletParticles;
     [SerializeField] private Rigidbody rb;
+    public Rigidbody Rb => rb;
     private Transform bulletTransform;
     private int bounceCount;
     private GameObject tempObject;

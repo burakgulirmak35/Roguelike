@@ -18,16 +18,12 @@ public class Gun : MonoBehaviour
     private bool isFire;
     private WaitForSeconds _waitBurst;
 
-    private void Awake()
-    {
-        poolManager = FindFirstObjectByType<PoolManager>();
-        soundManager = FindFirstObjectByType<SoundManager>();
-        playerData = FindFirstObjectByType<PlayerData>();
-        cameraManager = FindFirstObjectByType<CameraManager>();
-    }
-
     private void Start()
     {
+        poolManager = PoolManager.Instance;
+        soundManager = SoundManager.Instance;
+        playerData = PlayerData.Instance;
+        cameraManager = CameraManager.Instance;
         _waitBurst = new WaitForSeconds(playerData.EachBurstTime);
     }
 
@@ -61,8 +57,8 @@ public class Gun : MonoBehaviour
     }
 
     private GameObject tmpBullet;
+    private Bullet tmpBulletComp;
     private Transform tmpBulletTransform;
-    private Rigidbody tmpBulletRB;
     private IEnumerator FireLoop()
     {
         float elapsed = 0f;
@@ -81,8 +77,8 @@ public class Gun : MonoBehaviour
                         cameraManager.ShakeCamera();
 
                         tmpBullet = poolManager.GetFromPool(PoolTypes.Bullet);
+                        tmpBulletComp = tmpBullet.GetComponent<Bullet>();
                         tmpBulletTransform = tmpBullet.transform;
-                        tmpBulletRB = tmpBullet.GetComponent<Rigidbody>();
 
                         tmpBulletTransform.position = firePoint[i].position;
                         tmpBulletTransform.forward = firePoint[i].forward;
@@ -91,7 +87,7 @@ public class Gun : MonoBehaviour
                         soundManager.PlayGunSound();
 
                         tmpBullet.SetActive(true);
-                        tmpBulletRB.AddForce(tmpBulletTransform.forward * playerData.BulletSpeed, ForceMode.Impulse);
+                        tmpBulletComp.Rb.AddForce(tmpBulletTransform.forward * playerData.BulletSpeed, ForceMode.Impulse);
 
                         yield return _waitBurst;
                     }

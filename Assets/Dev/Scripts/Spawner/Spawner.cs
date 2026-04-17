@@ -70,6 +70,7 @@ public class Spawner : MonoBehaviour
 
     private int SpawnPosID;
     private GameObject spawnee;
+    private Enemy tempSpawnEnemy;
     private IEnumerator SpawnTimer()
     {
         while (true)
@@ -79,7 +80,8 @@ public class Spawner : MonoBehaviour
                 spawnee = PoolManager.Instance.GetFromPool(PoolTypes.Enemy);
                 if (spawnee.gameObject.activeSelf) break;
                 spawnee.transform.position = GetSpawnPos();
-                spawnee.GetComponent<Enemy>().Reborn();
+                spawnee.TryGetComponent(out tempSpawnEnemy);
+                tempSpawnEnemy.Reborn();
                 spawnee.SetActive(true);
                 yield return _waitSpawnDelay;
             }
@@ -100,15 +102,15 @@ public class Spawner : MonoBehaviour
     }
 
     #region CreateText -----------------------
-    private TextMeshProUGUI tempText;
+    private PopupText tempPopupText;
     private GameObject tempTextObject;
     public void WorldTextPopup(string text, Vector3 position, Color textColor)
     {
         tempTextObject = PoolManager.Instance.GetFromPool(PoolTypes.WorldTextPopup);
-        tempText = tempTextObject.GetComponent<PopupText>().txt_Popup;
+        tempTextObject.TryGetComponent(out tempPopupText);
         tempTextObject.transform.position = position;
-        tempText.text = text;
-        tempText.color = textColor;
+        tempPopupText.txt_Popup.text = text;
+        tempPopupText.txt_Popup.color = textColor;
         tempTextObject.SetActive(true);
         StartCoroutine(DisableObject(tempTextObject));
     }

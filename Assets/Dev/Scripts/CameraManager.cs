@@ -19,6 +19,7 @@ public class CameraManager : MonoBehaviour
     [Header("RifleShake")]
     [SerializeField][Range(0, 5)] private float shakeCameraTime = 0.1f;
     [SerializeField][Range(0, 5)] private float shakeCameraIntensity = 1f;
+    private WaitForSeconds _waitShake;
 
     public static CameraManager Instance { get; private set; }
     private void Awake()
@@ -30,6 +31,7 @@ public class CameraManager : MonoBehaviour
         cinemachineBasicMultiChannelPerlin = cinemachineCamera.GetCinemachineComponent(CinemachineCore.Stage.Noise) as CinemachineBasicMultiChannelPerlin;
         cinemachineCamera.Priority.Value = 1;
         cinemachineBasicMultiChannelPerlin.AmplitudeGain = 0;
+        _waitShake = new WaitForSeconds(shakeCameraTime);
     }
 
     void Start()
@@ -71,7 +73,7 @@ public class CameraManager : MonoBehaviour
     private IEnumerator ShakeCameraTimer()
     {
         cinemachineBasicMultiChannelPerlin.AmplitudeGain = shakeCameraIntensity;
-        yield return new WaitForSeconds(shakeCameraTime);
+        yield return _waitShake;
         cinemachineBasicMultiChannelPerlin.AmplitudeGain = 0;
     }
 

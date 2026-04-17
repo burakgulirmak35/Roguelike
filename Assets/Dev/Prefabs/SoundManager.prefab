@@ -1102,8 +1102,7 @@ MonoBehaviour:
   GunSound:
     audioClip:
     - {fileID: 8300000, guid: c922c34f559ead440a273a13a924cfc7, type: 3}
-    minVolume: 0.3
-    maxVolume: 0.3
+    volume: 0.3
     minPitch: 1.2
     maxPitch: 0.8
 --- !u!1 &7625779148820939894

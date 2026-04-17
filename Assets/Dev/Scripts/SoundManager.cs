@@ -83,7 +83,7 @@ public class SoundManager : MonoBehaviour
 
         source.Stop();
         source.clip = _audio.audioClip[Random.Range(0, _audio.audioClip.Length)];
-        source.volume = Random.Range(_audio.minVolume, _audio.maxVolume) * SoundVolume;
+        source.volume = _audio.volume * SoundVolume;
         source.pitch = Random.Range(_audio.minPitch, _audio.maxPitch);
         source.Play();
     }
@@ -97,7 +97,7 @@ public class SoundManager : MonoBehaviour
 
         source.Stop();
         source.clip = _audio.audioClip[Random.Range(0, _audio.audioClip.Length)];
-        source.volume = Random.Range(_audio.minVolume, _audio.maxVolume) * SoundVolume;
+        source.volume = _audio.volume * SoundVolume;
         source.pitch = Random.Range(_audio.minPitch, _audio.maxPitch);
         source.Play();
     }
@@ -107,8 +107,7 @@ public class SoundManager : MonoBehaviour
 public class Sound
 {
     public AudioClip[] audioClip;
-    [Range(0, 2)] public float minVolume = 1f;
-    [Range(0, 2)] public float maxVolume = 1f;
+    [Range(0, 2)] public float volume = 1f;
     [Range(0, 2)] public float minPitch = 1f;
     [Range(0, 2)] public float maxPitch = 1f;
 }
