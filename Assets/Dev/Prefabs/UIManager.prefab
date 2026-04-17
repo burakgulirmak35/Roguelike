@@ -1104,6 +1104,7 @@ MonoBehaviour:
   btn_HoverBoard: {fileID: 5607710371322634638}
   img_HoverBoard: {fileID: 6220949650164233155}
   btn_Settings: {fileID: 8659584854577500524}
+  btn_SupportDev: {fileID: 0}
   panelPlayerDead: {fileID: 951277050401500981}
   panelUpgrade: {fileID: 2679873079473623685}
   panelFadeInOut: {fileID: 1184406352917078182}
@@ -13112,7 +13113,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0.00024414062, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2774978443107067451

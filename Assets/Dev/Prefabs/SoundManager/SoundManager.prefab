@@ -43,6 +43,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -171,6 +172,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -299,6 +301,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -427,6 +430,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -555,6 +559,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -683,6 +688,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -827,7 +833,7 @@ MonoBehaviour:
   - {fileID: 4256443245039891378}
   - {fileID: 1549414014803403416}
   - {fileID: 3409000483514016748}
-  SoundVolume: 0.25
+  defaultSoundVolume: 1
   GrenadeExplosion:
     audioClip: []
     minVolume: 1
@@ -851,10 +857,10 @@ MonoBehaviour:
   Rifle:
     audioClip:
     - {fileID: 8300000, guid: c922c34f559ead440a273a13a924cfc7, type: 3}
-    minVolume: 1
-    maxVolume: 1
-    minPitch: 1.1
-    maxPitch: 0.9
+    minVolume: 0.5
+    maxVolume: 0.5
+    minPitch: 1.2
+    maxPitch: 0.8
   Shotgun:
     audioClip: []
     minVolume: 1

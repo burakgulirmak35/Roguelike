@@ -10,6 +10,7 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private Button btn_NextCharacter;
     [SerializeField] private Button btn_PreviousCharacter;
     [SerializeField] private Button btn_Start;
+    [SerializeField] private Button btn_SupportDev;
     [SerializeField] private TextMeshProUGUI txt_SelectedCharacterName;
 
     public static UIMenuManager Instance { get; private set; }
@@ -23,6 +24,7 @@ public class UIMenuManager : MonoBehaviour
         btn_NextCharacter.onClick.AddListener(BtnNextCharacter);
         btn_PreviousCharacter.onClick.AddListener(BtnPreviousCharacter);
         btn_Start.onClick.AddListener(CharacterSelection.Instance.StartGame);
+        btn_SupportDev.onClick.AddListener(() => AdsManager.Instance.ShowRewarded(null));
     }
 
     private void BtnNextCharacter()

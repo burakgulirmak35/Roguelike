@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
+using Unity.Cinemachine;
 using DG.Tweening;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(CinemachineCamera))]
 public class CameraManager : MonoBehaviour
 {
     [Header("CameraSettings")]
     [SerializeField] private Vector3 DeathPos;
     [SerializeField] private List<Vector3> FollowPoints = new List<Vector3>();
 
-    private CinemachineVirtualCamera cinemachineVirtualCamera;
-    private CinemachineTransposer cinemachineTransposer;
+    private CinemachineCamera cinemachineCamera;
+    private CinemachineFollow cinemachineFollow;
     private CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin;
 
     [Header("RifleShake")]
@@ -24,15 +25,15 @@ public class CameraManager : MonoBehaviour
     {
         Instance = this;
 
-        cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
-        cinemachineTransposer = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>();
-        cinemachineBasicMultiChannelPerlin = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        cinemachineVirtualCamera.m_Priority = 1;
+        cinemachineCamera = GetComponent<CinemachineCamera>();
+        cinemachineFollow = cinemachineCamera.GetCinemachineComponent(CinemachineCore.Stage.Body) as CinemachineFollow;
+        cinemachineBasicMultiChannelPerlin = cinemachineCamera.GetCinemachineComponent(CinemachineCore.Stage.Noise) as CinemachineBasicMultiChannelPerlin;
+        cinemachineCamera.Priority.Value = 1;
     }
 
     void Start()
     {
-        cinemachineVirtualCamera.Follow = Player.Instance.PlayerTransform;
+        cinemachineCamera.Follow = Player.Instance.PlayerTransform;
     }
 
     #region Zoom
@@ -41,18 +42,18 @@ public class CameraManager : MonoBehaviour
     {
         CurrentCamIndex++;
         if (CurrentCamIndex >= FollowPoints.Count) CurrentCamIndex = 0;
-        DOTween.To(() => cinemachineTransposer.m_FollowOffset, x => cinemachineTransposer.m_FollowOffset = x, FollowPoints[CurrentCamIndex], 0.5f);
+        DOTween.To(() => cinemachineFollow.FollowOffset, x => cinemachineFollow.FollowOffset = x, FollowPoints[CurrentCamIndex], 0.5f);
     }
 
     public void CamDefaultPos()
     {
         CurrentCamIndex = 0;
-        DOTween.To(() => cinemachineTransposer.m_FollowOffset, x => cinemachineTransposer.m_FollowOffset = x, FollowPoints[CurrentCamIndex], 0.5f);
+        DOTween.To(() => cinemachineFollow.FollowOffset, x => cinemachineFollow.FollowOffset = x, FollowPoints[CurrentCamIndex], 0.5f);
     }
 
     public void CamDeathPos()
     {
-        DOTween.To(() => cinemachineTransposer.m_FollowOffset, x => cinemachineTransposer.m_FollowOffset = x, DeathPos, 0.5f);
+        DOTween.To(() => cinemachineFollow.FollowOffset, x => cinemachineFollow.FollowOffset = x, DeathPos, 0.5f);
     }
     #endregion
 
@@ -68,9 +69,9 @@ public class CameraManager : MonoBehaviour
     private Coroutine ShakeCameraCoro;
     private IEnumerator ShakeCameraTimer()
     {
-        cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = shakeCameraIntensity;
+        cinemachineBasicMultiChannelPerlin.AmplitudeGain = shakeCameraIntensity;
         yield return new WaitForSeconds(shakeCameraTime);
-        cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0;
+        cinemachineBasicMultiChannelPerlin.AmplitudeGain = 0;
     }
 
 }

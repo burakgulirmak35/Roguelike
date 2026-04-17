@@ -100,11 +100,20 @@ public class UIManager : MonoBehaviour
     {
         CameraManager.Instance.CamDeathPos();
         panelPlayerDead.gameObject.SetActive(true);
+        AdsManager.Instance.ShowBanner();
     }
 
     public void EnablePanelPlayerDead(bool _state)
     {
-        if (_state) CameraManager.Instance.CamDeathPos();
+        if (_state)
+        {
+            CameraManager.Instance.CamDeathPos();
+            AdsManager.Instance.ShowBanner();
+        }
+        else
+        {
+            AdsManager.Instance.HideBanner();
+        }
         panelPlayerDead.gameObject.SetActive(_state);
     }
 

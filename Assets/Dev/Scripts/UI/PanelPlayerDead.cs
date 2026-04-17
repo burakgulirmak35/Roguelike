@@ -14,7 +14,10 @@ public class PanelPlayerDead : MonoBehaviour
     {
         btn_MainMenu.onClick.AddListener(GameManager.Instance.MainMenu);
         btn_TryAgain.onClick.AddListener(GameManager.Instance.RestartGame);
-        btn_Continue.onClick.AddListener(GameManager.Instance.ContinueGame);
+
+        // Interstitial reklam bittikten sonra can gelsin
+        btn_Continue.onClick.AddListener(() =>
+            AdsManager.Instance.ShowInterstitial(GameManager.Instance.ContinueGame));
     }
 
 }
