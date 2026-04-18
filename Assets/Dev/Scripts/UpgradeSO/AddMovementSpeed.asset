@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: AddMovementSpeed
   m_EditorClassIdentifier: 
   skillName: AddMovementSpeed
-  description: +%20 Movement Speed
+  description: +%10 Movement Speed
   icon: {fileID: 21300000, guid: 5e1e3a15db2bb5f46b667b9bb5e4c99c, type: 3}
   rarity: 0
   effects:
   - stat: 1
     operation: 1
-    value: 1.2
+    value: 1.1
   nextUpgrades:
   - {fileID: 11400000}

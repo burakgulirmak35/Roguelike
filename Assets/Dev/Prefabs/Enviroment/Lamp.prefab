@@ -175,11 +175,11 @@ Light:
   m_Enabled: 1
   serializedVersion: 12
   m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 8
+  m_Color: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
+  m_Intensity: 6
   m_Range: 8
-  m_SpotAngle: 130.98572
-  m_InnerSpotAngle: 122.78783
+  m_SpotAngle: 120
+  m_InnerSpotAngle: 90
   m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 0

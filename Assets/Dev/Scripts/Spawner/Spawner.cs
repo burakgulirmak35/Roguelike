@@ -10,13 +10,14 @@ public class Spawner : MonoBehaviour
     [Header("Unit")]
     [SerializeField][Range(10, 30)] public float MinEnemyDistanceToSpawn;
     [SerializeField][Range(20, 50)] public float UnitDissapearDistance;
-    public int AliveEnemyCount;
+    private int AliveEnemyCount;
     [SerializeField][Range(0, 1)] public float spawnDelay;
 
     [Header("Enemy Count Scaling (5 Kademe)")]
-    [SerializeField] private int[] EnemyCountStages = { 5, 8, 11, 14, 17 };
-    [SerializeField] private int[] StageLevelThresholds = { 0, 2, 4, 6, 8 };
-    [SerializeField] private int MaxAliveEnemyCount = 75;
+    [SerializeField] private int[] EnemyCountStages;
+    [SerializeField] private int[] StageLevelThresholds;
+    [SerializeField] private int MaxAliveEnemyCount;
+    [SerializeField] private float HealthScalePerLevel = 0.1f;
     [Space]
     [Header("Item")]
     [SerializeField][Range(1, 5)] public float ItemDropDistanceMin;
@@ -25,8 +26,10 @@ public class Spawner : MonoBehaviour
     private GameObject tempItem;
     public static Spawner Instance { get; private set; }
 
-    private static readonly WaitForSeconds _waitRespawn = new WaitForSeconds(5f);
+    public float EnemyHealthMultiplier { get; private set; } = 1f;
+    private const float respawnDelay = 1f;
     private static readonly WaitForSeconds _waitPopup = new WaitForSeconds(1.5f);
+    private WaitForSeconds _waitRespawn;
     private WaitForSeconds _waitSpawnDelay;
 
     private void Awake()
@@ -53,6 +56,7 @@ public class Spawner : MonoBehaviour
             if (level >= StageLevelThresholds[i])
             {
                 AliveEnemyCount = Mathf.Min(EnemyCountStages[i], MaxAliveEnemyCount);
+                EnemyHealthMultiplier = 1f + level * HealthScalePerLevel;
                 return;
             }
         }
@@ -64,6 +68,7 @@ public class Spawner : MonoBehaviour
     public void StartGame()
     {
         OnLevelUp(PlayerData.Instance.level);
+        _waitRespawn = new WaitForSeconds(respawnDelay);
         _waitSpawnDelay = new WaitForSeconds(spawnDelay);
         StartCoroutine(SpawnTimer());
     }

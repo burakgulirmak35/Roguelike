@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class HoverBoard : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class HoverBoard : MonoBehaviour
     void Awake()
     {
         BoardTransform = transform;
-        _propsLayer = LayerMask.GetMask("Props");
         _waitFly = new WaitForSeconds(FlyTime);
     }
 
@@ -52,7 +52,7 @@ public class HoverBoard : MonoBehaviour
         if (isSafeLanding())
             Player.Instance.PlayerTransform.DOLocalMove(Player.Instance.PlayerTransform.position + Vector3.up * -4, 0.5f);
         else
-            Player.Instance.PlayerTransform.DOLocalMove(Enviroment.Instance.CurrentCity.FindClosestSafePoint(), 0.5f);
+            Player.Instance.PlayerTransform.DOLocalMove(FindClosestNavMeshPoint(), 0.5f);
 
         yield return _waitTransition;
         DisableHowerBoard();
@@ -76,16 +76,22 @@ public class HoverBoard : MonoBehaviour
         UIManager.Instance.img_HoverBoard.DOFillAmount(1, CoolDown).OnComplete(() => UIManager.Instance.btn_HoverBoard.interactable = true);
     }
 
-    private int _propsLayer;
-    private readonly Collider[] hitColliders = new Collider[8];
+    private NavMeshHit _navHit;
     private Vector3 LandingPos;
 
     private bool isSafeLanding()
     {
         LandingPos = Player.Instance.PlayerTransform.position;
         LandingPos.y = 0;
+        return NavMesh.SamplePosition(LandingPos, out _navHit, 0.5f, NavMesh.AllAreas);
+    }
 
-        int count = Physics.OverlapSphereNonAlloc(LandingPos, 2, hitColliders, _propsLayer);
-        return count == 0;
+    private Vector3 FindClosestNavMeshPoint()
+    {
+        LandingPos = Player.Instance.PlayerTransform.position;
+        LandingPos.y = 0;
+        if (NavMesh.SamplePosition(LandingPos, out _navHit, 20f, NavMesh.AllAreas))
+            return _navHit.position;
+        return LandingPos;
     }
 }

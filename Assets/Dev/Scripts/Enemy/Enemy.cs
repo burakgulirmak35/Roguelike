@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour, ITargetable
         enemyHealthSystem.isAlive = true;
         enemyHealthSystem.HealthBar.SetActive(false);
         TargetedIcon.SetActive(false);
-        enemyHealthSystem.SetHealth(enemySO.Health);
+        enemyHealthSystem.SetHealth(enemySO.Health * Spawner.Instance.EnemyHealthMultiplier);
         myCollider.enabled = true;
 
         EnemyAgent.speed = enemySO.Speed;

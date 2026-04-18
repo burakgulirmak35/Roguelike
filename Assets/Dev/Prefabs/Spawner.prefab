@@ -148,7 +148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinEnemyDistanceToSpawn: 15
   UnitDissapearDistance: 50
-  AliveEnemyCount: 75
   spawnDelay: 0.2
   EnemyCountStages: 19000000320000004b000000
   StageLevelThresholds: 000000000300000006000000

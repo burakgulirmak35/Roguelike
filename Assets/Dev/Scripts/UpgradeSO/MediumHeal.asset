@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: MeadiumHeal
   description: '%50 Heal'
   icon: {fileID: 21300000, guid: 8820f2404b85e4c059bb1aff048a3309, type: 3}
-  rarity: 0
+  rarity: 2
   effects:
   - stat: 11
     operation: 0

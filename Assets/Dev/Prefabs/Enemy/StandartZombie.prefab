@@ -55,7 +55,7 @@ MonoBehaviour:
   EnemyAnim: {fileID: 6112879269371486627}
   TargetedIcon: {fileID: 2170706084202013523}
   Body: {fileID: 3846565994605388114}
-  EnemyAgent: {fileID: 0}
+  EnemyAgent: {fileID: 331228732015298744}
 --- !u!195 &331228732015298744
 NavMeshAgent:
   m_ObjectHideFlags: 0
