@@ -149,9 +149,10 @@ MonoBehaviour:
   MinEnemyDistanceToSpawn: 15
   UnitDissapearDistance: 50
   spawnDelay: 0.2
-  EnemyCountStages: 19000000320000004b000000
-  StageLevelThresholds: 000000000300000006000000
+  EnemyCountStages: 050000000a0000000f00000019000000230000002d00000037000000410000004c000000
+  StageLevelThresholds: 000000000100000002000000030000000400000005000000060000000700000008000000
   MaxAliveEnemyCount: 75
+  HealthScalePerLevel: 0.1
   ItemDropDistanceMin: 1.5
   ItemDropDistanceMax: 4
 --- !u!114 &3796402444691986334
