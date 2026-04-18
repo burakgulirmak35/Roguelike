@@ -6,7 +6,8 @@
       "Bash(rm -f \"c:/Users/BURAK GULIRMAK/Desktop/Projelerim/Roguelike/Assets/RiderFlow.UserData.meta\")",
       "Bash(xargs grep *)",
       "Bash(grep -E \"\\\\.\\(json|asset\\)$\")",
-      "Bash(grep -i \"\\\\.cs$\")"
+      "Bash(grep -i \"\\\\.cs$\")",
+      "WebSearch"
     ]
   }
 }
