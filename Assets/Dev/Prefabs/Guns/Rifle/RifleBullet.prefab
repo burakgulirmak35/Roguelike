@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Wep_Ammo_Rifle_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1915812027166286, guid: 71043590938610d4784abb3b88fa0d80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4479199188350380, guid: 71043590938610d4784abb3b88fa0d80, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0

@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
         Player.Instance.ClearInputs();
         PlayerData.Instance.SaveScore();
         PlayerData.Instance.ResetData();
+        AdsManager.Instance.HideBanner();
         StartCoroutine(MainMenuTimer());
     }
 

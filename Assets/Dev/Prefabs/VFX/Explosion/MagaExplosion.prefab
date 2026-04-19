@@ -14577,8 +14577,7 @@ MonoBehaviour:
   sound:
     audioClip:
     - {fileID: 8300000, guid: 92d3259b6a9732e4ba3fb95331b2c95d, type: 3}
-    minVolume: 1
-    maxVolume: 1
+    volume: 1
     minPitch: 0.9
     maxPitch: 1.1
 --- !u!1 &1738165949659254
