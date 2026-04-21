@@ -12,6 +12,8 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private Button btn_Start;
     [SerializeField] private Button btn_SupportDev;
     [SerializeField] private TextMeshProUGUI txt_SelectedCharacterName;
+    [SerializeField] private PanelPrivacy panel_Privacy;
+    [SerializeField] private GameObject panel_CharacterSelection;
 
     public static UIMenuManager Instance { get; private set; }
     void Awake()
@@ -25,6 +27,12 @@ public class UIMenuManager : MonoBehaviour
         btn_PreviousCharacter.onClick.AddListener(BtnPreviousCharacter);
         btn_Start.onClick.AddListener(CharacterSelection.Instance.StartGame);
         btn_SupportDev.onClick.AddListener(() => AdsManager.Instance.ShowRewarded(null));
+
+        bool accepted = panel_Privacy.IsAccepted();
+        panel_Privacy.gameObject.SetActive(!accepted);
+        panel_CharacterSelection.SetActive(accepted);
+
+        panel_Privacy.OnAccepted += () => panel_CharacterSelection.SetActive(true);
     }
 
     private void BtnNextCharacter()

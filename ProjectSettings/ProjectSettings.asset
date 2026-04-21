@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: "BurakG\xFCl\u0131rmak"
+  companyName: BurakGulirmak
   productName: CyberDeadZone
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -168,7 +168,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.BurakGlrmak.CyberDeadZone
+    Android: com.BurakGulirmak.CyberDeadZone
     Standalone: com.Unity-Technologies.com.unity.template.urp-blank
     iPhone: com.Unity-Technologies.com.unity.template.urp-blank
   buildNumber:
@@ -176,7 +176,7 @@ PlayerSettings:
     VisionOS: 0
     iPhone: 0
     tvOS: 0
-  overrideDefaultApplicationIdentifier: 1
+  overrideDefaultApplicationIdentifier: 0
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 25
   AndroidTargetSdkVersion: 36
