@@ -16,6 +16,7 @@ public class LevelSystem : MonoBehaviour
 
     public void SetLevel()
     {
+        txt_Level.text = $"Lv.{PlayerData.Instance.level + 1}";
         AddExperience(0);
     }
 

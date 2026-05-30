@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AdsManager
   _androidGameId: 6093611
-  _testMode: 1
+  _testMode: 0

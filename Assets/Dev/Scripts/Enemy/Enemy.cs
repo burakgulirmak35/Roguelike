@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour, ITargetable
         if (enemyHealthSystem.isAlive && !isBusy)
         {
             distance = DistToPlayer();
-            if (distance > Spawner.Instance.UnitDissapearDistance)
+            if (Spawner.Instance.UnitDissapearEnabled && distance > Spawner.Instance.UnitDissapearDistance)
             {
                 Remove();
                 return;

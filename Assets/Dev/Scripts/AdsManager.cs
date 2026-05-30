@@ -5,8 +5,8 @@ using UnityEngine.Advertisements;
 public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     public static AdsManager Instance { get; private set; }
-    [SerializeField] private string _androidGameId = "6093566";
-    [SerializeField] private bool _testMode = true;
+    [SerializeField] private string _androidGameId = "6093611";
+    [SerializeField] private bool _testMode = false;
 
     private const string INTERSTITIAL_ID = "Interstitial_Android";
     private const string REWARDED_ID = "Rewarded_Android";

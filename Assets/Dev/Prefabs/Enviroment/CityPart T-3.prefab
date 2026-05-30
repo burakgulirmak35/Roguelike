@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 901467528690985163}
   - component: {fileID: 7361589546341966219}
   - component: {fileID: 8815153206291620371}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Gate (1)
   m_TagString: Gate
   m_Icon: {fileID: 0}
@@ -1006,7 +1006,7 @@ GameObject:
   - component: {fileID: 417389407692430381}
   - component: {fileID: 4255116639347639350}
   - component: {fileID: 2691401033458533256}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Gate
   m_TagString: Gate
   m_Icon: {fileID: 0}
@@ -2472,7 +2472,7 @@ GameObject:
   - component: {fileID: 7757340362399683705}
   - component: {fileID: 9168224542176300650}
   - component: {fileID: 450517749245891308}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Gate (2)
   m_TagString: Gate
   m_Icon: {fileID: 0}

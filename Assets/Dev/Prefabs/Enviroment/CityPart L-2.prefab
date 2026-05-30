@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 3244203188916784652}
   - component: {fileID: 2856567772302644662}
   - component: {fileID: 1163062773178009608}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Gate (2)
   m_TagString: Gate
   m_Icon: {fileID: 0}
@@ -3431,7 +3431,7 @@ GameObject:
   - component: {fileID: 1526955797313421957}
   - component: {fileID: 2792400445514795913}
   - component: {fileID: 153042069902466847}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Gate
   m_TagString: Gate
   m_Icon: {fileID: 0}

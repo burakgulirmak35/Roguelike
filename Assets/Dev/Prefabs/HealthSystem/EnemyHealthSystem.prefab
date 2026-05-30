@@ -48,6 +48,7 @@ MonoBehaviour:
   HealthBar: {fileID: 2873848924506807168}
   slider_Health: {fileID: 2873848924024094305}
   txt_Health: {fileID: 2873848923024213046}
+  isAlive: 0
 --- !u!1001 &3198930826046220323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59,12 +60,17 @@ PrefabInstance:
     - target: {fileID: 830092785351097903, guid: c8c4ee63a7d55fe4fa7daf1e98e1925c,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 830092785351097903, guid: c8c4ee63a7d55fe4fa7daf1e98e1925c,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 830092786290617365, guid: c8c4ee63a7d55fe4fa7daf1e98e1925c,
+        type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     - target: {fileID: 830092786951123871, guid: c8c4ee63a7d55fe4fa7daf1e98e1925c,
         type: 3}
@@ -99,12 +105,12 @@ PrefabInstance:
     - target: {fileID: 830092786951123871, guid: c8c4ee63a7d55fe4fa7daf1e98e1925c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 830092786951123871, guid: c8c4ee63a7d55fe4fa7daf1e98e1925c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 830092786951123871, guid: c8c4ee63a7d55fe4fa7daf1e98e1925c,
         type: 3}
@@ -170,6 +176,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 830092786951123875, guid: c8c4ee63a7d55fe4fa7daf1e98e1925c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

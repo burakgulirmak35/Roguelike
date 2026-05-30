@@ -31,9 +31,12 @@ public class EnemyHealthSystem : MonoBehaviour
         maxHealth = _health;
         health = _health;
         healthAmount = 1f;
-        slider_Health.value = healthAmount;
         _lastDisplayedHealth = (int)health;
-        txt_Health.text = _lastDisplayedHealth.ToString();
+        if (Spawner.Instance.ShowEnemyHealth)
+        {
+            slider_Health.value = healthAmount;
+            txt_Health.text = _lastDisplayedHealth.ToString();
+        }
     }
 
     public void Heal(float amount)
@@ -44,9 +47,12 @@ public class EnemyHealthSystem : MonoBehaviour
             health = maxHealth;
         }
         healthAmount = health / maxHealth;
-        _healthTween?.Kill();
-        _healthTween = DOTween.To(() => slider_Health.value, x => slider_Health.value = x, healthAmount, 0.25f).SetEase(Ease.Linear);
-        UpdateHealthText();
+        if (Spawner.Instance.ShowEnemyHealth)
+        {
+            _healthTween?.Kill();
+            _healthTween = DOTween.To(() => slider_Health.value, x => slider_Health.value = x, healthAmount, 0.25f).SetEase(Ease.Linear);
+            UpdateHealthText();
+        }
     }
 
     public void HealPercent(float percent)
@@ -71,17 +77,23 @@ public class EnemyHealthSystem : MonoBehaviour
         {
             isAlive = false;
             health = 0;
-            _healthTween?.Kill();
-            slider_Health.value = 0;
-            txt_Health.text = "0";
             _lastDisplayedHealth = 0;
+            if (Spawner.Instance.ShowEnemyHealth)
+            {
+                _healthTween?.Kill();
+                slider_Health.value = 0;
+                txt_Health.text = "0";
+            }
             OnDead?.Invoke();
             return;
         }
         healthAmount = health / maxHealth;
-        _healthTween?.Kill();
-        _healthTween = DOTween.To(() => slider_Health.value, x => slider_Health.value = x, healthAmount, 0.2f).SetEase(Ease.Linear);
-        UpdateHealthText();
+        if (Spawner.Instance.ShowEnemyHealth)
+        {
+            _healthTween?.Kill();
+            _healthTween = DOTween.To(() => slider_Health.value, x => slider_Health.value = x, healthAmount, 0.2f).SetEase(Ease.Linear);
+            UpdateHealthText();
+        }
     }
 
     private void UpdateHealthText()
@@ -114,6 +126,8 @@ public class EnemyHealthSystem : MonoBehaviour
 
     public void ShowHealth()
     {
+        if (!Spawner.Instance.ShowEnemyHealth) return;
+
         if (ShowHealthCoro != null)
         {
             StopCoroutine(ShowHealthCoro);

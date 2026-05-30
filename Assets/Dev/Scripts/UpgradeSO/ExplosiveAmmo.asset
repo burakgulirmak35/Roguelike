@@ -22,10 +22,10 @@ MonoBehaviour:
     value: 1
   - stat: 9
     operation: 0
-    value: 5
+    value: 1
   - stat: 10
     operation: 0
-    value: 5
+    value: 1
   nextUpgrades:
   - {fileID: 11400000, guid: a49ffed96fde420459533af9da89b45f, type: 2}
   - {fileID: 11400000, guid: 829def710fec3ff4f9ce764e38c0fa68, type: 2}

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: AddDamage
   m_EditorClassIdentifier: 
   skillName: AddDamage
-  description: +5 Bulelt Damage
+  description: +3 Bulelt Damage
   icon: {fileID: 21300000, guid: 62fd4642f8ce5bb4aa7d3c90bbe7d232, type: 3}
   rarity: 0
   effects:
   - stat: 2
     operation: 0
-    value: 5
+    value: 3
   nextUpgrades:
   - {fileID: 11400000}

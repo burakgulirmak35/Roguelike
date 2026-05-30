@@ -8,14 +8,14 @@ public class PanelPrivacy : MonoBehaviour
     [SerializeField] private Button btn_PrivacyPolicy;
 
     private const string PREFS_KEY = "PrivacyAccepted";
-    private const string PRIVACY_URL = "https://your-privacy-policy-url.com"; // Privacy policy linkini buraya yaz
+    [SerializeField] private string privacyUrl = "https://burakgulirmak35.github.io/cyberdeadzone";
 
     public event Action OnAccepted;
 
     void Awake()
     {
         btn_Ok.onClick.AddListener(Accept);
-        btn_PrivacyPolicy.onClick.AddListener(() => Application.OpenURL(PRIVACY_URL));
+        btn_PrivacyPolicy.onClick.AddListener(() => Application.OpenURL(privacyUrl));
     }
 
     void OnDestroy()

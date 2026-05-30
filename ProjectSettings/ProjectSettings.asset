@@ -286,7 +286,7 @@ PlayerSettings:
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 0
+  androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
     height: 180
@@ -302,7 +302,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 4d3f696a8a9684143afbc5ef4e31104b, type: 3}
+      m_Icon: {fileID: 2800000, guid: 8a9098ab480147b4e894c2ff5352a62d, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

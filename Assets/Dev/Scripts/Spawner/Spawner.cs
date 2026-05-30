@@ -10,6 +10,8 @@ public class Spawner : MonoBehaviour
     [Header("Unit")]
     [SerializeField][Range(10, 30)] public float MinEnemyDistanceToSpawn;
     [SerializeField][Range(20, 50)] public float UnitDissapearDistance;
+    public bool UnitDissapearEnabled = true;
+    public bool ShowEnemyHealth = true;
     private int AliveEnemyCount;
     [SerializeField][Range(0, 1)] public float spawnDelay;
 

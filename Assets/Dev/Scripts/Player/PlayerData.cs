@@ -58,7 +58,7 @@ public class PlayerData : MonoBehaviour
     public int BounceCount;
     public float ExplosiveAmmoRange;
     public float ExplosiveAmmoDamage;
-    public bool Penetrability;
+    public int PenetrationCount;
     public bool ExplosiveAmmo;
 
     [Header("Effects")]
@@ -107,7 +107,7 @@ public class PlayerData : MonoBehaviour
         BounceCount = PlayerPrefs.GetInt(Keys.BounceCount, BaseBounceCount);
         ExplosiveAmmoRange = PlayerPrefs.GetFloat(Keys.ExplosiveAmmoRange, BaseExplosiveAmmoRange);
         ExplosiveAmmoDamage = PlayerPrefs.GetFloat(Keys.ExplosiveAmmoDamage, BaseExplosiveAmmoDamage);
-        Penetrability = PlayerPrefs.GetInt(Keys.Penetrability) == 1;
+        PenetrationCount = PlayerPrefs.GetInt(Keys.Penetrability, 0);
         ExplosiveAmmo = PlayerPrefs.GetInt(Keys.ExplosiveAmmo) == 1;
 
         BulletExplosionSO.Range = ExplosiveAmmoRange;
@@ -179,8 +179,8 @@ public class PlayerData : MonoBehaviour
                 PlayerPrefs.SetInt(Keys.BounceCount, BounceCount);
                 break;
             case StatType.Penetrability:
-                Penetrability = true;
-                PlayerPrefs.SetInt(Keys.Penetrability, 1);
+                PenetrationCount++;
+                PlayerPrefs.SetInt(Keys.Penetrability, PenetrationCount);
                 break;
             case StatType.ExplosiveAmmo:
                 ExplosiveAmmo = true;
@@ -236,7 +236,7 @@ public class PlayerData : MonoBehaviour
 
     private void CheckAndReplace(StatType stat, string prefKey)
     {
-        if (PlayerPrefs.GetInt(prefKey) != 1) return;
+        if (PlayerPrefs.GetInt(prefKey) <= 0) return;
 
         for (int i = 0; i < Upgrades.Count; i++)
         {

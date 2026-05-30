@@ -454,19 +454,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 95273578377624966, guid: 9d6944272ca1ef448a6c08e77fec10f0,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 5a83278d4b1ced4428ff5d37ff7be915, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1199693883326640, guid: 9d6944272ca1ef448a6c08e77fec10f0,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5741607006625547716}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d6944272ca1ef448a6c08e77fec10f0, type: 3}
 --- !u!95 &6112879269371486627 stripped
 Animator:
@@ -474,24 +465,6 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 6162953569110662181}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6161899021021502613 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1199693883326640, guid: 9d6944272ca1ef448a6c08e77fec10f0,
-    type: 3}
-  m_PrefabInstance: {fileID: 6162953569110662181}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5741607006625547716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6161899021021502613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 805217d6d79cff04cb854c5d3c7e06d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6163328032059569809 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4432881096010420, guid: 9d6944272ca1ef448a6c08e77fec10f0,
@@ -554,21 +527,6 @@ PrefabInstance:
     - target: {fileID: 1636725533910272557, guid: 3f930b0818b4c874ba10ac845d31e3eb,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873848923024213046, guid: 3f930b0818b4c874ba10ac845d31e3eb,
-        type: 3}
-      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
-      value: 1801810542
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873848923963741708, guid: 3f930b0818b4c874ba10ac845d31e3eb,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873848923963741708, guid: 3f930b0818b4c874ba10ac845d31e3eb,
-        type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2874833624311079827, guid: 3f930b0818b4c874ba10ac845d31e3eb,

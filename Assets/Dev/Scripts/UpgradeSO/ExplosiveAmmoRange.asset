@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: ExplosiveAmmoRange
   m_EditorClassIdentifier: 
   skillName: ExplosiveAmmoRange
-  description: +2 Explosive Range
+  description: +1 Explosive Range
   icon: {fileID: 21300000, guid: 9bd917ba38b058c4db5f9e72d76785e5, type: 3}
   rarity: 0
   effects:
   - stat: 9
     operation: 0
-    value: 2
+    value: 1
   nextUpgrades:
   - {fileID: 11400000}

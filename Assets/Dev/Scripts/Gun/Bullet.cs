@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     public Rigidbody Rb => rb;
     private Transform bulletTransform;
     private int bounceCount;
+    private int penetrationCount;
     private GameObject tempObject;
 
     private static readonly WaitForSeconds _waitDisable = new WaitForSeconds(3f);
@@ -26,6 +27,7 @@ public class Bullet : MonoBehaviour
             BulletParticles[i].Play();
         }
         bounceCount = PlayerData.Instance.BounceCount;
+        penetrationCount = PlayerData.Instance.PenetrationCount;
         StartDisableTimer();
     }
 
@@ -42,7 +44,7 @@ public class Bullet : MonoBehaviour
             tempObject.SetActive(true);
 
             if (PlayerData.Instance.ExplosiveAmmo) { Spawner.Instance.SpawnAtPos(PoolTypes.BulletExplosion, transform.position); }
-            if (PlayerData.Instance.Penetrability) { Penetration(); }
+            if (penetrationCount > 0) { Penetration(); }
             else { Disable(); }
         }
         else if (other.CompareTag("Enviroment"))
@@ -60,6 +62,7 @@ public class Bullet : MonoBehaviour
 
     private void Penetration()
     {
+        penetrationCount--;
         StartDisableTimer();
     }
 
